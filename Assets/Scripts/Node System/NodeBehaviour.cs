@@ -22,11 +22,36 @@ public class NodeBehaviour : MonoBehaviour {
 	{
 		Links = new List<NodeBehaviour> ();
 		RaycastHit hit = new RaycastHit ();
-		foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour> ()) {
-			if (Physics.Raycast (position, (node.position - position).normalized, out hit)) {
-				if (hit.collider.gameObject.GetComponent<NodeBehaviour> () == node) {
-					Bind (node);
-				}
+
+//		foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour> ()) {
+//			if (Physics.Raycast (position, (node.position - position).normalized, out hit)) {
+//				if (hit.collider.gameObject.GetComponent<NodeBehaviour> () == node) {
+//					Bind (node);
+//				}
+//			}
+//		}
+
+		if (Physics.Raycast (position, Vector3.forward, out hit)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
+			}
+		}
+
+		if (Physics.Raycast (position, Vector3.back, out hit)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
+			}
+		}
+
+		if (Physics.Raycast (position, Vector3.right, out hit)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
+			}
+		}
+
+		if (Physics.Raycast (position, Vector3.left, out hit)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
 	}

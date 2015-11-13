@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Pathfinder
 {
+	static bool debug = false;
 
 	public static List<NodeBehaviour> GetPath (NodeBehaviour start, NodeBehaviour target)
 	{
@@ -30,7 +31,7 @@ public class Pathfinder
 			
 			foreach (NodeBehaviour node in currentNode.Links){
 				if(!tested.Contains(node)){
-					//Debug.Log("Added node to testing");
+					if(debug) Debug.Log("Added node to testing");
 					testing.Add(node);
 				}
 			}
@@ -38,12 +39,12 @@ public class Pathfinder
 			foreach (NodeBehaviour node in testing){
 				
 				if (node == target) {
-					//Debug.Log("Found Goal");
+					if(debug) Debug.Log("Found Goal");
 					parentTable[node] = currentNode;
 					
 					NodeBehaviour tempNode = node;
 					while (tempNode != null) {
-						//Debug.Log("Add to path");
+						if(debug) Debug.Log("Add to path");
 						path.Add(tempNode);
 						tempNode = parentTable[tempNode];
 					}
@@ -54,18 +55,18 @@ public class Pathfinder
 				}
 				
 				if(!parentTable.ContainsKey(node)){
-					//Debug.Log("New table entry");
+					if(debug) Debug.Log("New table entry");
 					parentTable[node] = currentNode;
 				} else if (parentTable.ContainsKey(node) &&
 				           EstimatedTotalCost(target, node, parentTable) > 
 				           EstimatedTotalCost(target, node, currentNode, parentTable))
 				{
-					//Debug.Log("Updating parent entry");
+					if(debug) Debug.Log("Updating parent entry");
 					parentTable[node] = currentNode;
 				}
 			}
 			
-			//Debug.Log("Moving node from testing to tested");
+			if(debug) Debug.Log("Moving node from testing to tested");
 			testing.Remove(currentNode);
 			tested.Add(currentNode);
 			

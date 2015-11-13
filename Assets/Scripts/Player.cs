@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetMouseButtonUp (1)) {
+		if (Input.GetMouseButtonUp (1) && SelectionManager.selected != null) {
 			if(SelectionManager.selected.GetComponent<Pawn>() != null){
 				if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null){
 					Move (SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<NodeBehaviour>());

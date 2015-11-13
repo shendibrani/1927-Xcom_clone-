@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-class GridMovementBehaviour : MonoBehaviour
+public class GridMovementBehaviour : MonoBehaviour
 {
 	List<NodeBehaviour> path;
 
@@ -10,7 +10,7 @@ class GridMovementBehaviour : MonoBehaviour
 
 	bool stopped = true;
 	
-	[SerializeField] NodeBehaviour StartingNode;
+	public NodeBehaviour StartingNode;
 	
 	public Vector3 position { 
 		get { return gameObject.transform.position; } 
