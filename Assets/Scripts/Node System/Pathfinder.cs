@@ -131,5 +131,20 @@ public class Pathfinder
 		
 		return total;
 	}
+
+	public static List<NodeBehaviour> FindNodesWithinSteps(NodeBehaviour start, int steps){
+
+		List<NodeBehaviour> nodes = new List<NodeBehaviour> ();
+
+		nodes.Add (start);
+
+		if (steps == 1) {
+			nodes.AddRange (start.Links);
+			return nodes;
+		} else {
+			nodes.AddRange (FindNodesWithinSteps (start, steps - 1));
+			return nodes;
+		}
+	}
 }
 
