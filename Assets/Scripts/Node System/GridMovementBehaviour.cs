@@ -18,7 +18,7 @@ public class GridMovementBehaviour : MonoBehaviour
 	}
 	
 	NodeBehaviour currentDestination;
-	public NodeBehaviour currentNode { get; private set; }
+	[HideInInspector] public NodeBehaviour currentNode;
 	
 	[SerializeField] float Speed;
 	
