@@ -9,11 +9,13 @@ public class NodeBehaviour : MonoBehaviour {
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + Vector3.up; } }
 
+	public static bool debug;
+
 	public List<NodeBehaviour> Links { get; private set; }
 	
 	protected virtual void Start () 
 	{
-		//Debug.Log ("Exist");
+		if(debug) Debug.Log ("Exist");
 
 		NodeSetup ();
 	}
@@ -54,6 +56,8 @@ public class NodeBehaviour : MonoBehaviour {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
+
+		if (debug) Debug.Log ("Links: " + Links.Count);
 	}
 
 	public void Bind (NodeBehaviour other){
@@ -68,6 +72,7 @@ public class NodeBehaviour : MonoBehaviour {
 	}
 
 	public void Unbind (NodeBehaviour other){
+		if (debug) Debug.Log ("Unbinding");
 		Links.Remove(other);
 	}
 
@@ -76,7 +81,9 @@ public class NodeBehaviour : MonoBehaviour {
 		return Vector3.Distance(this.position, other.position);
 	}
 
-	protected virtual void OnDestroy() {
+	protected virtual void OnDestroy() 
+	{
+		if (debug) Debug.Log ("Destroying");
 		foreach (NodeBehaviour link in Links){
 			link.Unbind(this);
 		}
