@@ -21,11 +21,7 @@ public class MouseRotateAxis : Axis
         _axisValue = 0;
         if (focus)
         {
-            if (Input.GetMouseButtonDown(2))
-            {
-                Debug.Log("Test");
-
-            }
+			_axisValue = Mathf.Clamp(deltaMousePosition.x, (-1 * tolerance), tolerance)/tolerance;
         }
         previousMousePosition = Input.mousePosition;
     }

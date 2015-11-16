@@ -3,15 +3,20 @@ using System.Collections;
 
 [RequireComponent(typeof(VerticalEdgePanAxis))]
 [RequireComponent(typeof(HorizontalEdgePanAxis))]
+[RequireComponent(typeof(MouseRotateAxis))]
 public class CameraViewController : MonoBehaviour {
 
     VerticalEdgePanAxis verticalAxis;
     HorizontalEdgePanAxis horizontalAxis;
+	MouseRotateAxis rotateAxis;
+
+	[SerializeField] float speed = 0.5f;
 
 	// Use this for initialization
 	void Start () {
         verticalAxis = GetComponent<VerticalEdgePanAxis>();
         horizontalAxis = GetComponent<HorizontalEdgePanAxis>();
+		rotateAxis = GetComponent<MouseRotateAxis> ();
 	}
 	
 	// Update is called once per frame
@@ -29,13 +34,14 @@ public class CameraViewController : MonoBehaviour {
     //move camera according to mouse offest in axis values according to dolly rotation
     void SlideCamera()
     {
-        transform.position += transform.right * horizontalAxis.axisValue;
-        transform.position += transform.forward * verticalAxis.axisValue;
+		Vector3 offset = (transform.right * horizontalAxis.axisValue + transform.forward * verticalAxis.axisValue) * speed;
+
+        transform.position += offset;
     }
 
     void RotateCamera()
     {
-        transform.Rotate(0, horizontalAxis.axisValue, 0);
+        transform.Rotate(0, rotateAxis.axisValue, 0);
     }
 
     public void RotateCamera(Vector3 pRotation)
