@@ -5,8 +5,6 @@ using System.Collections.Generic;
 [RequireComponent(typeof(GridMovementBehaviour))]
 public class Pawn : MonoBehaviour
 {
-	public string name;
-
 	public Command move;
 
 	public Command attack;
