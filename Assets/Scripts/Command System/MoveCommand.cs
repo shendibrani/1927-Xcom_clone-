@@ -29,12 +29,8 @@ public class MoveCommand : Command
 
 	public override bool Undo ()
 	{
-		List<NodeBehaviour> path = Pathfinder.GetPath (owner.currentNode, originalPosition);
-		if (path == null || path.Count == 0) {
-			//also send UI feedback at some point
-			return false;
-		}
-		owner.GetComponent<GridMovementBehaviour> ().SetPath (path);
+		owner.GetComponent<GridMovementBehaviour> ().currentNode = originalPosition;
+		owner.GetComponent<GridMovementBehaviour> ().position = originalPosition.offsetPosition;
 		//also send UI feedback at some point
 		return true;
 	}
