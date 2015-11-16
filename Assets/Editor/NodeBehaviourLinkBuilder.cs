@@ -7,7 +7,8 @@ using UnityEditor;
 
 public class NodeBehaviourLinkBuilder : Editor {
 
-	public override void OnInspectorGUI() {
+	public override void OnInspectorGUI() 
+	{
 		DrawDefaultInspector();
 		if(GUILayout.Button("Refresh Links")){
 			foreach(NodeBehaviour node in FindObjectsOfType<NodeBehaviour>()){
