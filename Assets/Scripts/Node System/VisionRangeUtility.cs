@@ -11,7 +11,8 @@ public class VisionRangeUtility
     public static List<NodeBehaviour> GetNodes(Pawn source, int range)
     {
         if (debug) Debug.Log("Gets all nodes");
-        List<NodeBehaviour> nodes = Pathfinder.ReturnAllNodes(source.currentNode);
+        List<NodeBehaviour> nodes = new List<NodeBehaviour>(GameObject.FindObjectsOfType<NodeBehaviour>());
+        if (debug) Debug.Log("Returned " + nodes.Count + " nodes");
         return nodes.FindAll(x => Vector3.Distance(source.transform.position, x.position) <= range);
     }
 
@@ -21,23 +22,27 @@ public class VisionRangeUtility
         float time = 0;
         if (debug) time = Time.realtimeSinceStartup;
 
-        List<Pawn> pawnList = new List<Pawn>();
-        List<NodeBehaviour> nodes = GetNodes(source, range);
-        foreach (NodeBehaviour node in nodes)
+        List<Pawn> pawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn>());
+        pawns = pawns.FindAll(x => Vector3.Distance(source.transform.position, x.transform.position) <= range);
+
+        List<Pawn> visibleList = new List<Pawn>();
+
+        foreach (Pawn p in pawns)
         {
-            RaycastHit[] hits = Physics.RaycastAll(source.currentNode.offsetPosition, node.offsetPosition, range);
+            RaycastHit[] hits = Physics.RaycastAll(source.transform.position, p.transform.position, range);
+            if (debug) Debug.Log("Raycast hits " + hits.Length);
             for (int i = 0; i < hits.Length; i++)
             {
                 if (hits[i].transform.gameObject.GetComponent<Pawn>())
                 {
                     Pawn tmpPawn = hits[i].transform.gameObject.GetComponent<Pawn>();
-                    pawnList.Add(tmpPawn);
-                    //if (!pawnList.Contains(tmpPawn)) pawnList.Add(tmpPawn);
+                    visibleList.Add(tmpPawn);
+                    if (!visibleList.Contains(tmpPawn)) visibleList.Add(tmpPawn);
                 }
             }
         }
         if (debug) Debug.Log("Time to GetPawns: " + (Time.realtimeSinceStartup - time));
-        if (debug) Debug.Log(pawnList.Count + " pawns found");
-        return pawnList;
+        if (debug) Debug.Log(visibleList.Count + " pawns found");
+        return visibleList;
     }
 }
