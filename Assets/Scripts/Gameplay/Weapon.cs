@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+[System.Serializable]
+public class Weapon {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public string name; // { get; private set;}
+	public int damage; // { get; private set;}
+
+//	public Weapon (string pName, int pDamage)
+//	{
+//		name = pName;
+//		damage = pDamage;
+//	}
 }

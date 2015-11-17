@@ -11,23 +11,32 @@ public class AttackCommand : Command {
     {
         name = "Attack Command";
         target = pTarget;
+		weapon = owner.weapon;
     }
 
 	public override bool Execute ()
 	{
-        if (Random.value > 0.5f)
+		if(target.GetComponent<Health>() == null){
+			return false;
+		}
+
+        if (RNG.NextFloat() > 0.5f)
         {
-            Debug.Log(owner + " hit " + target);
+			Debug.Log(owner + " hit " + target + "and dealt " + weapon.damage + " damage.");
+			target.GetComponent<Health>().Damage(weapon.damage);
         }
         else
         {
             Debug.Log(owner + " missed " + target);
         }
+
 		return true;
 	}
 
 	public override bool Undo ()
 	{
+		target.GetComponent<Health>().Heal(weapon.damage);
+
 		return true;
 	}
 }

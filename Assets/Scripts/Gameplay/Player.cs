@@ -19,21 +19,13 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetMouseButtonUp (1) && SelectionManager.selected != null) {
 			if(SelectionManager.selected.GetComponent<Pawn>() != null){
-				if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null){
+				if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null)	{
 					Move (SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<NodeBehaviour>());
+				} else if (SelectionManager.hovered.GetComponent<Pawn>() != null) {
+					Attack(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<Pawn>());
 				}
 			}
 		}
-        if (Input.GetMouseButtonUp(1) && SelectionManager.selected != null)
-        {
-            if (SelectionManager.selected.GetComponent<Pawn>() != null)
-            {
-                if (SelectionManager.hovered.GetComponent<Pawn>() != null)
-                {
-                    Attack(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<Pawn>());
-                }
-            }
-        }
 	}
 
 	void Move(Pawn p, NodeBehaviour target)

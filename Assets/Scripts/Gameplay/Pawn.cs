@@ -6,27 +6,15 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Health))]
 public class Pawn : MonoBehaviour
 {
-    public int movement
-    {
-        get
-        {
-            return actionPoints * STEPSPERPOINT;
-        }
-    }
-
-    public Player owner;
-
+	public int movement { get { return actionPoints * STEPSPERPOINT; } }
     public int actionPoints { get; private set; }
-
     [SerializeField] int actionPointsPerTurn = 3;
-
     public const int STEPSPERPOINT = 3;
 
     public Command move;
-
 	public Command attack;
-
 	public List<Command> abilities; 
+
 
 	public NodeBehaviour currentNode { 
 		get { return GetComponent<GridMovementBehaviour> ().currentNode;}
@@ -36,6 +24,10 @@ public class Pawn : MonoBehaviour
     {
         get { return Pathfinder.FindNodesWithinSteps(currentNode, movement); }
     }
+
+	public Player owner;
+
+	public Weapon weapon;
 
     public override string ToString ()
 	{
