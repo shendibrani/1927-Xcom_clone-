@@ -24,9 +24,15 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetMouseButtonUp(1) && SelectionManager.selected != null)
         {
-            VisionRangeUtility.GetPawns(pawns[0], 100);
+            if (SelectionManager.selected.GetComponent<Pawn>() != null)
+            {
+                if (SelectionManager.hovered.GetComponent<Pawn>() != null)
+                {
+                    Attack(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<Pawn>());
+                }
+            }
         }
 	}
 
@@ -41,5 +47,18 @@ public class Player : MonoBehaviour
 
 		}
 	}
+
+    void Attack(Pawn p, Pawn target)
+    {
+        if (pawns.Contains(p))
+        {
+            p.attack = new AttackCommand(p, target);
+            if (p.attack.Execute())
+            {
+                if (debug) Debug.Log("Attack Successful");
+            }
+            else if (debug) { Debug.LogError("Attack Failed"); }
+        }
+    }
 }
 
