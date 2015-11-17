@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TooltipBehaviour : MonoBehaviour
 {
-	[SerializeField] Renderer highlighting;
+	[SerializeField] Renderer tooltip;
 
 	Color startingColor;
 
@@ -13,13 +13,15 @@ public class TooltipBehaviour : MonoBehaviour
 
 	void Start()
 	{
-		startingColor = highlighting.material.color;
+		startingColor = tooltip.material.color;
 		Hide ();
 	}
 
 	void Update() 
 	{
-		highlighting.material.color += new Color (0,0,0,(targetAlpha-highlighting.material.color.a)*easing);
+		foreach(Renderer r in tooltip.GetComponentsInChildren<Renderer>()){
+			r.material.color += new Color (0,0,0,(targetAlpha-r.material.color.a)*easing);
+		}
 	}
 
 	void OnMouseEnter()
