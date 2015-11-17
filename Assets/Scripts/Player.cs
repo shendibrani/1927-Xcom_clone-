@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
+        if (Input.GetKeyUp(KeyCode.Return))
+        {
+            VisionRangeUtility.GetPawns(pawns[0], 100);
+        }
 	}
 
 	void Move(Pawn p, NodeBehaviour target)

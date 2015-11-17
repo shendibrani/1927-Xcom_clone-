@@ -146,5 +146,11 @@ public class Pathfinder
 			return nodes;
 		}
 	}
+
+    public static List<NodeBehaviour> ReturnAllNodes(NodeBehaviour start)
+    {
+        return FindNodesWithinSteps(start, 240);
+        //return FindNodesWithinSteps(start, int.MaxValue);
+    }
 }
 
