@@ -18,6 +18,10 @@ public class EventBroadcaster {
 
 	public delegate void BroadcastedEvent (EventType type, EventData data);
 
-	public event BroadcastedEvent BroadcastDelegate;
+	public event BroadcastedEvent BroadcastEvent;
+
+	public static void Broacast(EventType type, EventData data){
+		instance.BroadcastEvent.Invoke (type, data);
+	}
 }
 

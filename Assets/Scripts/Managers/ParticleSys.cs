@@ -59,7 +59,7 @@ public class ParticleSys : MonoBehaviour {
 
     public void spawnParticle(ParticleEffect pe, Vector3 pPosition)
     {
-        GameObject go = (GameObject)Instantiate(coupledParticleList.Find(x => x.TheParticleEffect == pe).Particle, pPosition, Quaternion.identity);
+        Instantiate(coupledParticleList.Find(x => x.TheParticleEffect == pe).Particle, pPosition, Quaternion.identity);
     }
 
     public void spawnParticleDestroyable(ParticleEffect pe, Vector3 pPosition, float delay)
