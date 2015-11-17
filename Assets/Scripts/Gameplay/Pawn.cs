@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(GridMovementBehaviour))]
+[RequireComponent(typeof(Health))]
 public class Pawn : MonoBehaviour
 {
     public int movement
