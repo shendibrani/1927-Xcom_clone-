@@ -101,7 +101,7 @@ public class MultiLayeredLoader : MonoBehaviour {
                             originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
                             tempStore = (GameObject)Instantiate(PrefabLoader[temp], placeholder, Quaternion.identity);
                             tempStore.tag = "CustomGenerated";
-                        } else if (PrefabLoader[temp] == null)
+                        } else if (PrefabLoader[temp] == null && tempStore == null)
                         {
                             Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.  ");
                         }
