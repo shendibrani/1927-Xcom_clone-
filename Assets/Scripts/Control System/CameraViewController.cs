@@ -10,7 +10,8 @@ public class CameraViewController : MonoBehaviour {
     HorizontalEdgePanAxis horizontalAxis;
 	MouseRotateAxis rotateAxis;
 
-	[SerializeField] float speed = 0.5f;
+	[SerializeField] float panSpeed = 0.5f;
+	[SerializeField] float rotateSpeed = 36f;
 
 	// Use this for initialization
 	void Start () {
@@ -34,14 +35,14 @@ public class CameraViewController : MonoBehaviour {
     //move camera according to mouse offest in axis values according to dolly rotation
     void SlideCamera()
     {
-		Vector3 offset = (transform.right * horizontalAxis.axisValue + transform.forward * verticalAxis.axisValue) * speed;
+		Vector3 offset = (transform.right * horizontalAxis.axisValue + transform.forward * verticalAxis.axisValue) * panSpeed * Time.deltaTime;
 
         transform.position += offset;
     }
 
     void RotateCamera()
     {
-        transform.Rotate(0, rotateAxis.axisValue, 0);
+        transform.Rotate(0, rotateAxis.axisValue * rotateSpeed * Time.deltaTime, 0);
     }
 
     public void RotateCamera(Vector3 pRotation)
