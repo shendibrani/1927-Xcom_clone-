@@ -94,15 +94,18 @@ public class MultiLayeredLoader : MonoBehaviour {
                     }
                     
                     _data[j - 1, i] = temp;
-                        
-                    if (temp != 0 && PrefabLoader[temp] != null)
-                    {
+
+                        if (temp != 0 | PrefabLoader[temp] != null)
+                        {
                             Vector3 placeholder = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
                             originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
                             tempStore = (GameObject)Instantiate(PrefabLoader[temp], placeholder, Quaternion.identity);
-                            tempStore.tag = "CustomGenerated";   
-                     }
-                        runOnce = true;
+                            tempStore.tag = "CustomGenerated";
+                        } else if (PrefabLoader[temp] == null)
+                        {
+                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.  ");
+                        }
+                     runOnce = true;
                     }
             }
 
