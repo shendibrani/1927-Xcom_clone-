@@ -11,7 +11,7 @@ public class NodeBehaviour : MonoBehaviour {
 
 	public static bool debug;
 
-	public List<NodeBehaviour> links { get; private set; }
+	public List<NodeBehaviour> links { get; protected set; }
 	
 	protected virtual void Start () 
 	{
@@ -20,7 +20,7 @@ public class NodeBehaviour : MonoBehaviour {
 		NodeSetup ();
 	}
 
-	public void NodeSetup ()
+	public virtual void NodeSetup ()
 	{
 		links = new List<NodeBehaviour> ();
 		RaycastHit hit = new RaycastHit ();
@@ -54,6 +54,32 @@ public class NodeBehaviour : MonoBehaviour {
 		if (Physics.Raycast (position, Vector3.left, out hit)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
+			}
+		}
+
+		//////////////////////////////////////////////////
+
+		if (Physics.Raycast (position, Vector3.forward + Vector3.up, out hit)) {
+			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
+			}
+		}
+		
+		if (Physics.Raycast (position, Vector3.back + Vector3.up, out hit)) {
+			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
+			}
+		}
+		
+		if (Physics.Raycast (position, Vector3.right + Vector3.up, out hit)) {
+			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
+			}
+		}
+		
+		if (Physics.Raycast (position, Vector3.left + Vector3.up, out hit)) {
+			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}
 		}
 

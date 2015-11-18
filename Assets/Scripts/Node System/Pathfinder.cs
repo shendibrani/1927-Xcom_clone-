@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Pathfinder
 {
-	static bool debug = false;
+	static bool debug = true;
 
 	public static List<NodeBehaviour> GetPath (NodeBehaviour start, NodeBehaviour target)
 	{
@@ -75,7 +75,7 @@ public class Pathfinder
 			currentNode = testing[0];
 			
 			counter++;
-		} while (testing.Count != 0/* && counter < 100*/);
+		} while (testing.Count != 0 && counter < 100);
 		
 		return null;
 	}
