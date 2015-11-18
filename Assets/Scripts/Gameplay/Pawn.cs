@@ -15,6 +15,7 @@ public class Pawn : MonoBehaviour
 	public Command attack;
 	public List<Command> abilities; 
 
+	public int sightRange;
 
 	public NodeBehaviour currentNode { 
 		get { return GetComponent<GridMovementBehaviour> ().currentNode;}
@@ -33,5 +34,9 @@ public class Pawn : MonoBehaviour
 	{
 		return name;
 	}
+
+	#region callbacks
+
+	#endregion
 }
 
