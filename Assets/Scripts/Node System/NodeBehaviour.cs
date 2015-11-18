@@ -11,7 +11,7 @@ public class NodeBehaviour : MonoBehaviour {
 
 	public static bool debug;
 
-	public List<NodeBehaviour> Links { get; private set; }
+	public List<NodeBehaviour> links { get; private set; }
 	
 	protected virtual void Start () 
 	{
@@ -22,7 +22,7 @@ public class NodeBehaviour : MonoBehaviour {
 
 	public void NodeSetup ()
 	{
-		Links = new List<NodeBehaviour> ();
+		links = new List<NodeBehaviour> ();
 		RaycastHit hit = new RaycastHit ();
 
 //		foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour> ()) {
@@ -57,15 +57,15 @@ public class NodeBehaviour : MonoBehaviour {
 			}
 		}
 
-		if (debug) Debug.Log ("Links: " + Links.Count);
+		if (debug) Debug.Log ("Links: " + links.Count);
 	}
 
 	public void Bind (NodeBehaviour other){
 		if (other != this){
-			if (!Links.Contains(other)){
-				Links.Add(other);
-				if(other.Links != null){
-					other.Links.Add(this);
+			if (!links.Contains(other)){
+				links.Add(other);
+				if(other.links != null){
+					other.links.Add(this);
 				}
 			}
 		}
@@ -73,7 +73,7 @@ public class NodeBehaviour : MonoBehaviour {
 
 	public void Unbind (NodeBehaviour other){
 		if (debug) Debug.Log ("Unbinding");
-		Links.Remove(other);
+		links.Remove(other);
 	}
 
 	public float NodeDistance(NodeBehaviour other)
@@ -84,18 +84,18 @@ public class NodeBehaviour : MonoBehaviour {
 	protected virtual void OnDestroy() 
 	{
 		if (debug) Debug.Log ("Destroying");
-		foreach (NodeBehaviour link in Links){
+		foreach (NodeBehaviour link in links){
 			link.Unbind(this);
 		}
 	}
 
 	void OnDrawGizmos()
 	{
-		if (Links == null) {
+		if (links == null) {
 			return;
 		}
 		Gizmos.color = Color.blue;
-		foreach (NodeBehaviour node in Links) {
+		foreach (NodeBehaviour node in links) {
 			Gizmos.DrawLine(position, node.position);
 		}
 	}

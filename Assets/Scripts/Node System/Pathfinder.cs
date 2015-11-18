@@ -29,7 +29,7 @@ public class Pathfinder
 		do {
 			tested.Add(currentNode);
 			
-			foreach (NodeBehaviour node in currentNode.Links){
+			foreach (NodeBehaviour node in currentNode.links){
 				if(!tested.Contains(node)){
 					if(debug) Debug.Log("Added node to testing");
 					testing.Add(node);
@@ -139,7 +139,7 @@ public class Pathfinder
 		nodes.Add (start);
 
 		if (steps == 1) {
-			nodes.AddRange (start.Links);
+			nodes.AddRange (start.links);
 			return nodes;
 		} else {
 			nodes.AddRange (FindNodesWithinSteps (start, steps - 1));

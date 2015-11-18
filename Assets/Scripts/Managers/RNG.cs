@@ -2,7 +2,10 @@
 
 public class RNG
 {
+
 	private static Random RandomNumberGenerator = new Random();
+
+    private static int RNGCount;
 
 	private RNG () {}
 
@@ -26,7 +29,6 @@ public class RNG
 		return RandomNumberGenerator.Next(min, max);
 	}
 
-
 	public static double NextDouble()
 	{
 		return RandomNumberGenerator.NextDouble();
@@ -39,4 +41,5 @@ public class RNG
 		}
 		return true;
 	}
+
 }
