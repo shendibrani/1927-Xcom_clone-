@@ -5,11 +5,10 @@ public class HighlightWithObject : Highlightable
 {
 	[SerializeField] Renderer highlighting;
 
-	Color startingColor;
+	[SerializeField] Color startingColor;
 
 	protected override void Start()
 	{
-		startingColor = highlighting.material.color;
 		base.Start();
 	}
 
