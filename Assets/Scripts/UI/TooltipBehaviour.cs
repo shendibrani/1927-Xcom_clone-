@@ -1,11 +1,10 @@
 using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TooltipBehaviour : MonoBehaviour
 {
-	[SerializeField] Renderer tooltip;
-
-	Color startingColor;
+	[SerializeField] Canvas tooltip;
 
 	float targetAlpha;
 
@@ -13,14 +12,14 @@ public class TooltipBehaviour : MonoBehaviour
 
 	void Start()
 	{
-		startingColor = tooltip.material.color;
 		Hide ();
 	}
 
 	void Update() 
 	{
-		foreach(Renderer r in tooltip.GetComponentsInChildren<Renderer>()){
-			r.material.color += new Color (0,0,0,(targetAlpha-r.material.color.a)*easing);
+		foreach(Image r in tooltip.GetComponentsInChildren<Image>())
+        {
+			r.color += new Color (0,0,0,(targetAlpha-r.color.a)*easing);
 		}
 	}
 
