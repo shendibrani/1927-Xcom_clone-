@@ -16,7 +16,7 @@ public class HealthBarBehaviour : MonoBehaviour {
 	void Update () 
 	{
 		if(linkedHealthComponent.maxHealth != 0){
-			bar.transform.localScale = new Vector3(ratio, 0, 0);
+			bar.transform.localScale = new Vector3(ratio, 1, 1);
 			Debug.Log(ratio);
 		}
 	}
