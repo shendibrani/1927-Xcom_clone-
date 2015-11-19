@@ -13,8 +13,8 @@ public class LevelBuilderEditor : Editor {
 		if(GUILayout.Button("Build")){
 			(target as MultiLayeredLoader).DestroyAllLoaded();
 			(target as MultiLayeredLoader).LoadFile();
-
-			foreach(NodeBehaviour node in FindObjectsOfType<NodeBehaviour>()){
+            (target as MultiLayeredLoader).runOnce = false;
+            foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour>()){
 				node.NodeSetup();
 				EditorUtility.SetDirty(node);
 			}
