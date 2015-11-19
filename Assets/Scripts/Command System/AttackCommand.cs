@@ -17,49 +17,58 @@ public class AttackCommand : Command
 
     public override bool Execute()
     {
-            if (target.GetComponent<Health>() == null)
+        if (owner.sightList.Contains(target))
+        {
+            List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= weapon.range);
+
+            if (validTargets.Contains(target))
             {
-                Debug.Log(target + " does not have health");
-                return false;
-            }
 
-            double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, target.transform.position) - 1) / (weapon.range - 1);
-            Debug.Log(System.Math.Round(hitChance * 100) + "% chance to hit");
-
-            if (RNG.NextDouble() < hitChance)
-            {
-                int damage = weapon.damage;
-                double accuracy = (owner.Accuracy / 100d) + RNG.NextDouble();
-                if (accuracy > 1d) accuracy = 1d;
-
-                if (RNG.NextDouble() < weapon.criticalChance)
+                if (target.GetComponent<Health>() == null)
                 {
-                    damage = (int)System.Math.Round((double)weapon.damage * 1.5d * accuracy);
-                    if (damage < 1) damage = 1;
-                    Debug.Log(owner + " critically hit " + target + " and dealt " + damage + " damage.");
-                    target.GetComponent<Health>().Damage(damage);
+                    Debug.Log(target + " does not have health");
+                    return false;
+                }
+
+                double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, target.transform.position) - 1) / (weapon.range - 1);
+                Debug.Log(System.Math.Round(hitChance * 100) + "% chance to hit");
+
+                if (RNG.NextDouble() < hitChance)
+                {
+                    int damage = weapon.damage;
+                    double accuracy = (owner.Accuracy / 100d) + RNG.NextDouble();
+                    if (accuracy > 1d) accuracy = 1d;
+
+                    if (RNG.NextDouble() < weapon.criticalChance)
+                    {
+                        damage = (int)System.Math.Round((double)weapon.damage * 1.5d * accuracy);
+                        if (damage < 1) damage = 1;
+                        Debug.Log(owner + " critically hit " + target + " and dealt " + damage + " damage.");
+                        target.GetComponent<Health>().Damage(damage);
+                    }
+                    else
+                    {
+                        damage = (int)System.Math.Round((double)weapon.damage * accuracy);
+                        if (damage < 1) damage = 1;
+                        Debug.Log(owner + " hit " + target + " and dealt " + weapon.damage + " damage.");
+                        target.GetComponent<Health>().Damage(weapon.damage);
+                    }
+                    if (weapon.weaponEffects != null)
+                    {
+                        for (int i = weapon.weaponEffects.Count - 1; i >= 0; i--)
+                        {
+                            weapon.weaponEffects[i].Execute(owner, weapon, target);
+                        }
+                    }
                 }
                 else
                 {
-                    damage = (int)System.Math.Round((double)weapon.damage * accuracy);
-                    if (damage < 1) damage = 1;
-                    Debug.Log(owner + " hit " + target + " and dealt " + weapon.damage + " damage.");
-                    target.GetComponent<Health>().Damage(weapon.damage);
+                    Debug.Log(owner + " missed " + target);
                 }
-                if (weapon.weaponEffects != null)
-                {
-                    for (int i = weapon.weaponEffects.Count - 1; i >= 0; i--)
-                    {
-                        weapon.weaponEffects[i].Execute(owner, weapon, target);
-                    }
-                }
+                return true;
             }
-            else
-            {
-                Debug.Log(owner + " missed " + target);
-            }
-
-            return true;
+        }
+        return false;
     }
 
     public override bool Undo()
