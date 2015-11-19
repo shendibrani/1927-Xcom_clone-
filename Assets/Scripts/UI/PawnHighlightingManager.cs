@@ -34,6 +34,9 @@ public class PawnHighlightingManager : MonoBehaviour
 		foreach (Pawn p in GetComponent<Pawn>().validTargets){
 			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
 		}
+		foreach (NodeBehaviour node in Pathfinder.NodesWithinSteps(GetComponent<Pawn>().currentNode, GetComponent<Pawn>().movement)) {
+			node.GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Reachable);
+		}
 	}
 	
 	void OnDeselected(){
@@ -41,6 +44,9 @@ public class PawnHighlightingManager : MonoBehaviour
 		SetState (PawnHighlightStates.Deselected);
 		foreach (PawnHighlightingManager p in FindObjectsOfType<PawnHighlightingManager>()){
 			p.SetState(PawnHighlightStates.Deselected);
+		}
+		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
+			node.SetState(NodeHighlightStates.Deselected);
 		}
 	}
 }

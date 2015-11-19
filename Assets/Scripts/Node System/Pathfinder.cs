@@ -132,19 +132,17 @@ public class Pathfinder
 		return total;
 	}
 
-	public static List<NodeBehaviour> FindNodesWithinSteps(NodeBehaviour start, int steps){
-
-		List<NodeBehaviour> nodes = new List<NodeBehaviour> ();
-
-		nodes.Add (start);
-
-		if (steps == 1) {
-			nodes.AddRange (start.links);
-			return nodes;
-		} else {
-			nodes.AddRange (FindNodesWithinSteps (start, steps - 1));
-			return nodes;
+	public static List<NodeBehaviour> NodesWithinSteps(NodeBehaviour node, int steps)
+	{
+		List<NodeBehaviour> list = new List<NodeBehaviour>();
+		list.Add(node);
+		if(steps == 0){	return list;}
+		
+		foreach (NodeBehaviour neighbour in node.links){
+			list.AddRange(NodesWithinSteps(neighbour, steps-1));
 		}
+		
+		return list;
 	}
 }
 

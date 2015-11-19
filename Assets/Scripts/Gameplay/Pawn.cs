@@ -89,7 +89,7 @@ public class Pawn : MonoBehaviour
 
     public List<NodeBehaviour> reachableNodes
     {
-        get { return Pathfinder.FindNodesWithinSteps(currentNode, movement); }
+        get { return Pathfinder.NodesWithinSteps(currentNode, movement); }
     }
 
     public override string ToString()
