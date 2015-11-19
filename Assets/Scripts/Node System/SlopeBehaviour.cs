@@ -9,7 +9,7 @@ public class SlopeBehaviour : NodeBehaviour
         links = new List<NodeBehaviour>();
         RaycastHit hit = new RaycastHit();
 
-        if (Physics.Raycast(position, transform.forward, out hit))
+		if (Physics.Raycast(position, transform.forward, out hit,1))
         {
             if (hit.collider.gameObject.GetComponent<NodeBehaviour>() != null)
             {
@@ -17,7 +17,7 @@ public class SlopeBehaviour : NodeBehaviour
             }
         }
 
-        if (Physics.Raycast(position, ((transform.forward*-1) + (transform.up*-1)).normalized , out hit))
+		if (Physics.Raycast(position, ((transform.forward*-1) + (transform.up*-1)).normalized , out hit,1))
         {
             if (hit.collider.gameObject.GetComponent<NodeBehaviour>() != null)
             {
@@ -25,7 +25,7 @@ public class SlopeBehaviour : NodeBehaviour
             }
         }
 
-		if (Physics.Raycast (position, transform.forward + Vector3.up, out hit)) {
+		if (Physics.Raycast (position, transform.forward + Vector3.up, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}
