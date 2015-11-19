@@ -34,7 +34,7 @@ public class PawnHighlightingManager : MonoBehaviour
 		foreach (Pawn p in GetComponent<Pawn>().validTargets){
 			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
 		}
-		foreach (NodeBehaviour node in Pathfinder.NodesWithinSteps(GetComponent<Pawn>().currentNode, GetComponent<Pawn>().movement)) {
+		foreach (NodeBehaviour node in Pathfinder.NodesWithinSteps(GetComponent<Pawn>().currentNode, GetComponent<Pawn>().Movement)) {
 			node.GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Reachable);
 		}
 	}

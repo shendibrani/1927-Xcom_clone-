@@ -64,8 +64,6 @@ public class Pawn : MonoBehaviour
     public Command attack;
     public List<Command> abilities;
 
-    public int sightRange;
-
     void Start()
     {
 
@@ -96,10 +94,8 @@ public class Pawn : MonoBehaviour
     {
         return name;
     }
-    #region callbacks
-=======
+
 	#region Callbacks
->>>>>>> 9bc0aed4bedaf2879cdd37431af45738ed51f01f
 
     #endregion
 }
