@@ -59,7 +59,7 @@ public class RNG
 		RandomNumberGenerator = new Random (seed);
 		RNGCount = 0;
 
-		for (int counter = 0; counter <= useCount; counter++) {
+		for (int counter = 0; counter < useCount; counter++) {
 			RNG.Next();
 		}
 	}

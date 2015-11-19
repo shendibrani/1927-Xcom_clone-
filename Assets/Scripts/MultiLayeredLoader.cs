@@ -5,35 +5,64 @@ using System;
 using System.IO;
 
 
-
 public class MultiLayeredLoader : MonoBehaviour {
 
     [SerializeField]
-    public UnityEngine.Object xmlTxt;
+    public UnityEngine.Object TiledSaveFile;
+    public ushort X_MarginDistance = 1;
+    public ushort Y_MarginDistance = 1;
+    public ushort Z_MarginDistance = 1;
+
+    public bool printLayersInnerInfo;
    
+    private bool runOnce = false;
 
     [SerializeField]
-    public GameObject[] GOarray;
-    
+    [Tooltip("Enter the size of IDs of your Tiled save file into the Prefab Loader. Then Load the prefabs you want to replace your tiled ID's with. Element 0 is empty space, therefore always empty. Note: When creating a new file in Tiled, select CSV for the tile layer format")]
+    public GameObject[] PrefabLoader;
+
+    GameObject tempStore;
+
+    Vector3 originalPosition;
     int WIDTH;
     int HEIGHT;
     int[,] _data;
 
+
+
     void Start()
     {
-        LoadFile();
-        
+        //LoadFile();
+        originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
+
+        if (PrefabLoader[0] != null) {
+            Debug.LogError("You were trying to initialize a GameObject in Element 0, you shouldn't do that. bye...");
+            PrefabLoader[0] = null;
+        }
     }
 
-        void LoadFile()
-    {
 
+    void Update()
+    {
+        
+        if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
+        {
+            DestroyAllLoaded();
+            runOnce = false;
+            
+
+        }
+        LoadFile();
+    }
+
+     void LoadFile()
+     {
+        if (!runOnce) { 
         XmlDocument xml = new XmlDocument();
         xml.PreserveWhitespace = false;
         
-        xml.Load(Application.dataPath + "\\Tiled\\" + xmlTxt.name + ".tmx");
-     
-        XmlNode dataNode = xml.SelectSingleNode("/map/layer/data");
+        xml.Load(Application.dataPath + "\\Tiled\\" + TiledSaveFile.name + ".tmx");
+  
         XmlNode mapNode = xml.SelectSingleNode("/map");
         XmlNodeList layerNodeList = xml.SelectNodes("/map/layer");
 
@@ -44,7 +73,8 @@ public class MultiLayeredLoader : MonoBehaviour {
 
         for (int k = 0; k < layerNodeList.Count; k++) {
             XmlNode layerNode = layerNodeList[k];
-            Debug.Log("Innertext of layers: " + layerNode.InnerText);
+
+            if (printLayersInnerInfo) Debug.Log("Layer " + k + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
 
             string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -52,7 +82,7 @@ public class MultiLayeredLoader : MonoBehaviour {
             {
 
                 string[] cols = splitLines[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
+                    
                 for (int i = 0; i < WIDTH; i++)
                 {
                     
@@ -64,17 +94,31 @@ public class MultiLayeredLoader : MonoBehaviour {
                     }
                     
                     _data[j - 1, i] = temp;
-                    
-                    if (temp != 0)
-                    Instantiate(GOarray[temp], new Vector3(WIDTH + i, k, HEIGHT + j ), Quaternion.identity);
-                    
-                }
+
+                        if (temp != 0 | PrefabLoader[temp] != null)
+                        {
+                            Vector3 placeholder = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
+                            originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
+                            tempStore = (GameObject)Instantiate(PrefabLoader[temp], placeholder, Quaternion.identity);
+                            tempStore.tag = "CustomGenerated";
+                        } else if (PrefabLoader[temp] == null && tempStore == null)
+                        {
+                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.  ");
+                        }
+                     runOnce = true;
+                    }
             }
 
         }
         
+        }
     }
 
-   
+    void DestroyAllLoaded() {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("CustomGenerated")) {
+            Destroy(go);                                                                                                                                          
+        }
+    }
+
 
 }
