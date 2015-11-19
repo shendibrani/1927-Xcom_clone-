@@ -47,6 +47,7 @@ public class GridMovementBehaviour : MonoBehaviour
 					}
 				}
 				currentNode = currentDestination;
+                position = currentNode.offsetPosition;
 				NextDestination ();
 			} else {
 				position += velocity;
