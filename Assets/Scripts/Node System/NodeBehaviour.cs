@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class NodeBehaviour : MonoBehaviour {
 	
 	public Vector3 position { get { return gameObject.transform.position; } }
-	public Vector3 offsetPosition { get { return gameObject.transform.position + Vector3.up; } }
+	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
 	public static bool debug;
 
@@ -33,25 +33,25 @@ public class NodeBehaviour : MonoBehaviour {
 //			}
 //		}
 
-		if (Physics.Raycast (position, Vector3.forward, out hit)) {
+		if (Physics.Raycast (position, Vector3.forward, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
 
-		if (Physics.Raycast (position, Vector3.back, out hit)) {
+		if (Physics.Raycast (position, Vector3.back, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
 
-		if (Physics.Raycast (position, Vector3.right, out hit)) {
+		if (Physics.Raycast (position, Vector3.right, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
 
-		if (Physics.Raycast (position, Vector3.left, out hit)) {
+		if (Physics.Raycast (position, Vector3.left, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
@@ -59,25 +59,25 @@ public class NodeBehaviour : MonoBehaviour {
 
 		//////////////////////////////////////////////////
 
-		if (Physics.Raycast (position, Vector3.forward + Vector3.up, out hit)) {
+		if (Physics.Raycast (position, Vector3.forward + Vector3.up, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}
 		}
 		
-		if (Physics.Raycast (position, Vector3.back + Vector3.up, out hit)) {
+		if (Physics.Raycast (position, Vector3.back + Vector3.up, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}
 		}
 		
-		if (Physics.Raycast (position, Vector3.right + Vector3.up, out hit)) {
+		if (Physics.Raycast (position, Vector3.right + Vector3.up, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}
 		}
 		
-		if (Physics.Raycast (position, Vector3.left + Vector3.up, out hit)) {
+		if (Physics.Raycast (position, Vector3.left + Vector3.up, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
 			}

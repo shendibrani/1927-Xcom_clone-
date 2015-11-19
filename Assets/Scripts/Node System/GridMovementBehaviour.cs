@@ -11,7 +11,9 @@ public class GridMovementBehaviour : MonoBehaviour
 	bool stopped = true;
 	
 	public NodeBehaviour StartingNode;
-	
+
+	[SerializeField] Transform modelRoot;
+
 	public Vector3 position { 
 		get { return gameObject.transform.position; } 
 		set { gameObject.transform.position = value; } 
@@ -28,7 +30,6 @@ public class GridMovementBehaviour : MonoBehaviour
 
 	public PathfinderEvent DestinationReached;
 
-	// Use this for initialization
 	void Start () 
 	{
 		position = StartingNode.offsetPosition;
@@ -36,7 +37,6 @@ public class GridMovementBehaviour : MonoBehaviour
 		currentDestination = StartingNode;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (!stopped) {
 			if (ReachedCurrentDestination ()) {
@@ -53,6 +53,7 @@ public class GridMovementBehaviour : MonoBehaviour
 				position += velocity;
 			}
 		}
+		modelRoot.LookAt (currentDestination.offsetPosition);
 	}
 	
 	bool ReachedCurrentDestination(){

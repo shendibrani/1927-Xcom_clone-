@@ -50,6 +50,16 @@ public class Pawn : MonoBehaviour
         }
     }
 
+	public static int sightRange = 10;
+
+	public List<Pawn> sightList{ 
+		get { return LineOfSightManager.GetSightList(this); } 
+	}
+
+	public List<Pawn> validTargets{
+		get{ return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= weapon.range); }
+	}
+
     public Command move;
     public Command attack;
     public List<Command> abilities;
@@ -87,6 +97,9 @@ public class Pawn : MonoBehaviour
         return name;
     }
     #region callbacks
+=======
+	#region Callbacks
+>>>>>>> 9bc0aed4bedaf2879cdd37431af45738ed51f01f
 
     #endregion
 }

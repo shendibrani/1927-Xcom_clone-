@@ -6,6 +6,8 @@ using System.IO;
 
 
 public class MultiLayeredLoader : MonoBehaviour {
+    [NonSerialized]
+    public bool runOnce = false;
 
     [SerializeField]
     public UnityEngine.Object TiledSaveFile;
@@ -14,8 +16,7 @@ public class MultiLayeredLoader : MonoBehaviour {
     public ushort Z_MarginDistance = 1;
 
     public bool printLayersInnerInfo;
-   
-    private bool runOnce = false;
+    public bool AutoBuild;
 
     [SerializeField]
     [Tooltip("Enter the size of IDs of your Tiled save file into the Prefab Loader. Then Load the prefabs you want to replace your tiled ID's with. Element 0 is empty space, therefore always empty. Note: When creating a new file in Tiled, select CSV for the tile layer format")]
@@ -27,8 +28,6 @@ public class MultiLayeredLoader : MonoBehaviour {
     int WIDTH;
     int HEIGHT;
     int[,] _data;
-
-
 
     void Start()
     {
@@ -44,18 +43,20 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Update()
     {
-        
+        if (AutoBuild) {
+           
+        }
+
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
             DestroyAllLoaded();
             runOnce = false;
             
-
         }
         LoadFile();
     }
 
-     void LoadFile()
+     public void LoadFile()
      {
         if (!runOnce) { 
         XmlDocument xml = new XmlDocument();
@@ -95,7 +96,7 @@ public class MultiLayeredLoader : MonoBehaviour {
                     
                     _data[j - 1, i] = temp;
 
-                        if (temp != 0 | PrefabLoader[temp] != null)
+                        if ( PrefabLoader[temp] != null)
                         {
                             Vector3 placeholder = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
                             originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
@@ -114,9 +115,9 @@ public class MultiLayeredLoader : MonoBehaviour {
         }
     }
 
-    void DestroyAllLoaded() {
+    public void DestroyAllLoaded() {
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("CustomGenerated")) {
-            Destroy(go);                                                                                                                                          
+            DestroyImmediate(go);                                                                                                                                          
         }
     }
 

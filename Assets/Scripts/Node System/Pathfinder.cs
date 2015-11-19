@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Pathfinder
 {
-	static bool debug = true;
+	static bool debug = false;
 
 	public static List<NodeBehaviour> GetPath (NodeBehaviour start, NodeBehaviour target)
 	{
