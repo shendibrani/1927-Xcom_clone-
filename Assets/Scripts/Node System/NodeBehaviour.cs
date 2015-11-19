@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class NodeBehaviour : MonoBehaviour {
 	
 	public Vector3 position { get { return gameObject.transform.position; } }
-	public Vector3 offsetPosition { get { return gameObject.transform.position + Vector3.up; } }
+	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
 	public static bool debug;
 

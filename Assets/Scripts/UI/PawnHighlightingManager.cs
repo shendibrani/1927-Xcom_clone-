@@ -31,7 +31,7 @@ public class PawnHighlightingManager : MonoBehaviour
 	void OnSelected(){
 		//Debug.Log ("Selected");
 		SetState (PawnHighlightStates.Selected);
-		foreach (Pawn p in VisionRangeUtility.GetPawns(GetComponent<Pawn>(),GetComponent<Pawn>().weapon.range)){
+		foreach (Pawn p in GetComponent<Pawn>().validTargets){
 			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
 		}
 	}
@@ -39,8 +39,8 @@ public class PawnHighlightingManager : MonoBehaviour
 	void OnDeselected(){
 		//Debug.Log ("Deselected");
 		SetState (PawnHighlightStates.Deselected);
-		foreach (Pawn p in VisionRangeUtility.GetPawns(GetComponent<Pawn>(),GetComponent<Pawn>().weapon.range)){
-			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Deselected);
+		foreach (PawnHighlightingManager p in FindObjectsOfType<PawnHighlightingManager>()){
+			p.SetState(PawnHighlightStates.Deselected);
 		}
 	}
 }
