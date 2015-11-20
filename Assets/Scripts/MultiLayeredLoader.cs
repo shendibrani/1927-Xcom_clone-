@@ -34,7 +34,6 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Start()
     {
-    
         
         if (PrefabLoader[0] != null) {
             Debug.LogError("You were trying to initialize a GameObject in Element 0, you shouldn't do that. bye...");
@@ -44,7 +43,7 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Update()
     {
-        if (ParentOfInstantiations != null) Instantiate(ParentOfInstantiations);
+        
 
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
