@@ -22,21 +22,33 @@ public class MenuManager : MonoBehaviour {
 
     void Start()
     {
+        menuCanvasReference = new Dictionary<int, MenuCanvas>();
         foreach (MenuCanvas m in MenuCanvasList)
         {
+            Debug.Log(m);
+            if (m != null)
             menuCanvasReference.Add(m.GetID(), m);
         }
     }
 
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ChangeMenu(0);
+        }
     }
 
     //called by button/states to trigger transition
     public void ChangeMenu(int id)
     {
-        if (previousMenuID != null) previousMenuID = activeMenuID;
+        Debug.Log(menuCanvasReference[id]);
+        if (previousMenuID != null)
+        {
+            menuCanvasReference[previousMenuID].deselectMenu();
+            previousMenuID = activeMenuID; 
+        }
         activeMenuID = id;
-        menuCanvasReference[activeMenuID].ActivateMenu();
+        menuCanvasReference[activeMenuID].setMenu();
     }
 }
