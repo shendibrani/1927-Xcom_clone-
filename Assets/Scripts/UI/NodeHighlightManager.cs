@@ -6,7 +6,9 @@ public class NodeHighlightManager : MonoBehaviour
 {
 
 	[SerializeField] List<Highlightable> Highlights;
-	
+	NodeHighlightStates state;
+	bool dirty;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -14,10 +16,27 @@ public class NodeHighlightManager : MonoBehaviour
 		GetComponent<Selectable> ().Deselected += OnDeselected;
 		GetComponent<Selectable> ().Selected += OnSelected;
 	}
-	
-	public void SetState(NodeHighlightStates state){
+
+	void Update(){
+		if (dirty) {
+			Debug.Log("Clearing Dirty flag");
+			UpdateHighlight ();
+			dirty = false;
+		}
+	}
+
+	public void SetState(NodeHighlightStates pState){
+		if (state == pState) {
+			return;
+		}
+		state = pState;
+		dirty = true;
+	}
+
+	void UpdateHighlight()
+	{
 		foreach (Highlightable h in Highlights) {
-			h.SetHighlight(false);
+			h.SetHighlight (false);
 		}
 		
 		if (state == NodeHighlightStates.Deselected) {
@@ -25,9 +44,9 @@ public class NodeHighlightManager : MonoBehaviour
 		}
 		//Debug.Log ((int)state);
 		
-		Highlights[(int)state].SetHighlight(true);
+		Highlights [(int)state].SetHighlight (true);
 	}
-	
+
 	void OnSelected(){
 		//Debug.Log ("Selected");
 		SetState (NodeHighlightStates.Selected);
