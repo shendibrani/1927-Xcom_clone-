@@ -15,9 +15,12 @@ public class MultiLayeredLoader : MonoBehaviour {
     public ushort Y_MarginDistance = 1;
     public ushort Z_MarginDistance = 1;
 
-    public bool printLayersInnerInfo;
-    public bool AutoBuild;
+    private Vector3 instanceLocation;
+    public GameObject ParentOfInstantiations;
+    public GameObject defaultInstantiation;
 
+    public bool printLayersInnerInfo;
+   
     [SerializeField]
     [Tooltip("Enter the size of IDs of your Tiled save file into the Prefab Loader. Then Load the prefabs you want to replace your tiled ID's with. Element 0 is empty space, therefore always empty. Note: When creating a new file in Tiled, select CSV for the tile layer format")]
     public GameObject[] PrefabLoader;
@@ -31,21 +34,16 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Start()
     {
-        //LoadFile();
-        originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
-
+        
         if (PrefabLoader[0] != null) {
             Debug.LogError("You were trying to initialize a GameObject in Element 0, you shouldn't do that. bye...");
             PrefabLoader[0] = null;
         }
     }
 
-
     void Update()
     {
-        if (AutoBuild) {
-           
-        }
+        
 
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
@@ -59,58 +57,63 @@ public class MultiLayeredLoader : MonoBehaviour {
      public void LoadFile()
      {
         if (!runOnce) { 
-        XmlDocument xml = new XmlDocument();
-        xml.PreserveWhitespace = false;
+            XmlDocument xml = new XmlDocument();
+            xml.PreserveWhitespace = false;
         
-        xml.Load(Application.dataPath + "\\Tiled\\" + TiledSaveFile.name + ".tmx");
+            xml.Load(Application.dataPath + "\\Tiled\\" + TiledSaveFile.name + ".tmx");
   
-        XmlNode mapNode = xml.SelectSingleNode("/map");
-        XmlNodeList layerNodeList = xml.SelectNodes("/map/layer");
+            XmlNode mapNode = xml.SelectSingleNode("/map");
+            XmlNodeList layerNodeList = xml.SelectNodes("/map/layer");
 
-        WIDTH = int.Parse(mapNode.Attributes["width"].Value); //tiled width
-        HEIGHT = int.Parse(mapNode.Attributes["height"].Value); // tiled height
+            WIDTH = int.Parse(mapNode.Attributes["width"].Value); //tiled width
+            HEIGHT = int.Parse(mapNode.Attributes["height"].Value); // tiled height
 
-        _data = new int[WIDTH, HEIGHT];
+            _data = new int[WIDTH, HEIGHT];
 
-        for (int k = 0; k < layerNodeList.Count; k++) {
-            XmlNode layerNode = layerNodeList[k];
+            GameObject layerParent;
+        
+            for (int k = 0; k < layerNodeList.Count; k++) {
+                layerParent = (GameObject)Instantiate(ParentOfInstantiations);
+                layerParent.tag = "CustomGenerated";
+                XmlNode layerNode = layerNodeList[k];
+            
+                if (printLayersInnerInfo) Debug.Log("Layer " + (k + 1) + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
 
-            if (printLayersInnerInfo) Debug.Log("Layer " + k + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
+                string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            for (int j = 1; j <= HEIGHT; j++)
-            {
-
-                string[] cols = splitLines[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    
-                for (int i = 0; i < WIDTH; i++)
+                for (int j = 1; j <= HEIGHT; j++)
                 {
+
+                    string[] cols = splitLines[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                     
-                    string col = cols[i];
-                    int temp;
-                    if (!int.TryParse(col, out temp))
+                    for (int i = 0; i < WIDTH; i++)
                     {
-                        Debug.Log(col + i + j);
-                    }
                     
-                    _data[j - 1, i] = temp;
-
-                        if ( PrefabLoader[temp] != null)
+                        string col = cols[i];
+                        int temp;
+                        if (!int.TryParse(col, out temp))
                         {
-                            Vector3 placeholder = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
-                            originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
-                            tempStore = (GameObject)Instantiate(PrefabLoader[temp], placeholder, Quaternion.identity);
-                            tempStore.tag = "CustomGenerated";
-                        } else if (PrefabLoader[temp] == null && tempStore == null)
-                        {
-                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.  ");
+                            Debug.Log(col + i + j);
                         }
-                     runOnce = true;
-                    }
-            }
+                      
+                        if (PrefabLoader[temp] != null)
+                        {
+                                instanceLocation = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
+                                originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
+                                tempStore = (GameObject)Instantiate(PrefabLoader[temp], instanceLocation, Quaternion.identity);
+                                tempStore.transform.parent = layerParent.transform;
+                                tempStore.tag = "CustomGenerated";
+                            } else if (PrefabLoader[temp] == null && tempStore == null & defaultInstantiation != null)
+                            {
+                            PrefabLoader[temp] = defaultInstantiation;
+                            
+                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.");
+                            }
+                         runOnce = true;
+                        }
+                }
 
-        }
+            }
         
         }
     }
@@ -120,6 +123,5 @@ public class MultiLayeredLoader : MonoBehaviour {
             DestroyImmediate(go);                                                                                                                                          
         }
     }
-
 
 }
