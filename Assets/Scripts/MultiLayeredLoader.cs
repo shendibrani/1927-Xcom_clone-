@@ -17,6 +17,7 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     private Vector3 instanceLocation;
     public GameObject ParentOfInstantiations;
+    public GameObject defaultInstantiation;
 
     public bool printLayersInnerInfo;
    
@@ -43,7 +44,8 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Update()
     {
-        
+        if (ParentOfInstantiations != null) Instantiate(ParentOfInstantiations);
+
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
             DestroyAllLoaded();
@@ -56,58 +58,63 @@ public class MultiLayeredLoader : MonoBehaviour {
      public void LoadFile()
      {
         if (!runOnce) { 
-        XmlDocument xml = new XmlDocument();
-        xml.PreserveWhitespace = false;
+            XmlDocument xml = new XmlDocument();
+            xml.PreserveWhitespace = false;
         
-        xml.Load(Application.dataPath + "\\Tiled\\" + TiledSaveFile.name + ".tmx");
+            xml.Load(Application.dataPath + "\\Tiled\\" + TiledSaveFile.name + ".tmx");
   
-        XmlNode mapNode = xml.SelectSingleNode("/map");
-        XmlNodeList layerNodeList = xml.SelectNodes("/map/layer");
+            XmlNode mapNode = xml.SelectSingleNode("/map");
+            XmlNodeList layerNodeList = xml.SelectNodes("/map/layer");
 
-        WIDTH = int.Parse(mapNode.Attributes["width"].Value); //tiled width
-        HEIGHT = int.Parse(mapNode.Attributes["height"].Value); // tiled height
+            WIDTH = int.Parse(mapNode.Attributes["width"].Value); //tiled width
+            HEIGHT = int.Parse(mapNode.Attributes["height"].Value); // tiled height
 
-        _data = new int[WIDTH, HEIGHT];
+            _data = new int[WIDTH, HEIGHT];
 
-        for (int k = 0; k < layerNodeList.Count; k++) {
-            XmlNode layerNode = layerNodeList[k];
+            GameObject layerParent;
+        
+            for (int k = 0; k < layerNodeList.Count; k++) {
+                layerParent = (GameObject)Instantiate(ParentOfInstantiations);
+                layerParent.tag = "CustomGenerated";
+                XmlNode layerNode = layerNodeList[k];
             
-            if (printLayersInnerInfo) Debug.Log("Layer " + (k + 1) + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
+                if (printLayersInnerInfo) Debug.Log("Layer " + (k + 1) + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
 
-            string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            for (int j = 1; j <= HEIGHT; j++)
-            {
-
-                string[] cols = splitLines[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    
-                for (int i = 0; i < WIDTH; i++)
+                for (int j = 1; j <= HEIGHT; j++)
                 {
-                    
-                    string col = cols[i];
-                    int temp;
-                    if (!int.TryParse(col, out temp))
-                    {
-                        Debug.Log(col + i + j);
-                    }
-                      
-                    if (PrefabLoader[temp] != null)
-                    {
-                            instanceLocation = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
-                            originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
-                            tempStore = (GameObject)Instantiate(PrefabLoader[temp], instanceLocation, Quaternion.identity);
-                            
-                            if ( ParentOfInstantiations != null) tempStore.transform.parent = ParentOfInstantiations.transform;
-                            tempStore.tag = "CustomGenerated";
-                        } else if (PrefabLoader[temp] == null && tempStore == null)
-                        {
-                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.");
-                        }
-                     runOnce = true;
-                    }
-            }
 
-        }
+                    string[] cols = splitLines[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    
+                    for (int i = 0; i < WIDTH; i++)
+                    {
+                    
+                        string col = cols[i];
+                        int temp;
+                        if (!int.TryParse(col, out temp))
+                        {
+                            Debug.Log(col + i + j);
+                        }
+                      
+                        if (PrefabLoader[temp] != null)
+                        {
+                                instanceLocation = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
+                                originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
+                                tempStore = (GameObject)Instantiate(PrefabLoader[temp], instanceLocation, Quaternion.identity);
+                                tempStore.transform.parent = layerParent.transform;
+                                tempStore.tag = "CustomGenerated";
+                            } else if (PrefabLoader[temp] == null && tempStore == null & defaultInstantiation != null)
+                            {
+                            PrefabLoader[temp] = defaultInstantiation;
+                            
+                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.");
+                            }
+                         runOnce = true;
+                        }
+                }
+
+            }
         
         }
     }
