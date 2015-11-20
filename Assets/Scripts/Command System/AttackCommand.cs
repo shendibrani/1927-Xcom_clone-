@@ -13,7 +13,7 @@ public class AttackCommand : Command
     {
         name = "Attack Command";
         target = pTarget;
-        weapon = owner.weapon;
+        weapon = owner.Weapon;
     }
 
     public override bool Execute()

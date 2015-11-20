@@ -9,13 +9,19 @@ public class Pawn : MonoBehaviour
     public Player owner;
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
 
-    [HideInInspector] public Weapon weapon = new SniperRifle(); //either an instance of weapon or a reference (flywheel)
+    public Weapon Weapon
+    {
+        get;
+        private set;
+    }//either an instance of weapon or a reference (flywheel)
+
+    //Weapon weapon;
 
     int actionPointsPerTurn = 3;
 
     int movement;
-    int actionPoints;
-    int accuracy;
+    int actionPoints = 3;
+    int accuracy = 15;
 
     public int Movement { 
         get { return (actionPoints * STEPSPERPOINT) + movementMod; }
@@ -36,8 +42,11 @@ public class Pawn : MonoBehaviour
 
     public const int STEPSPERPOINT = 3;
 
+    [HideInInspector]
     public int movementMod;
+    [HideInInspector]
     public int actionPointsMod;
+    [HideInInspector]
     public int accuracyMod;
 
     List <PawnEffect> effectList;
@@ -57,7 +66,7 @@ public class Pawn : MonoBehaviour
 	}
 
 	public List<Pawn> validTargets{
-		get{ return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= weapon.range); }
+		get{ return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
 	}
 
     public Command move;
@@ -66,7 +75,7 @@ public class Pawn : MonoBehaviour
 
     void Start()
     {
-
+        Weapon = new AssaultRifle();
     }
 
     public void Turn()
@@ -76,7 +85,7 @@ public class Pawn : MonoBehaviour
         accuracyMod = 0;
         for (int i = effectList.Count - 1; i < 0; i--)
         {
-            effectList[i].OnTurn();
+            effectList[i].Turn();
         }
     }
 
