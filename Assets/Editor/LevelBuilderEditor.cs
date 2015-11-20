@@ -23,5 +23,14 @@ public class LevelBuilderEditor : Editor {
 				gmb.position = gmb.StartingNode.offsetPosition;
 			}
 		}
-	}
+
+        if (GUILayout.Button("Delete Generated"))
+        {
+            (target as MultiLayeredLoader).DestroyAllLoaded();
+        }
+
+    
+    }
+
+    
 }

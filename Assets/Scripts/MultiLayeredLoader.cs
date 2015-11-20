@@ -15,9 +15,11 @@ public class MultiLayeredLoader : MonoBehaviour {
     public ushort Y_MarginDistance = 1;
     public ushort Z_MarginDistance = 1;
 
-    public bool printLayersInnerInfo;
-    public bool AutoBuild;
+    private Vector3 instanceLocation;
+    public GameObject ParentOfInstantiations;
 
+    public bool printLayersInnerInfo;
+   
     [SerializeField]
     [Tooltip("Enter the size of IDs of your Tiled save file into the Prefab Loader. Then Load the prefabs you want to replace your tiled ID's with. Element 0 is empty space, therefore always empty. Note: When creating a new file in Tiled, select CSV for the tile layer format")]
     public GameObject[] PrefabLoader;
@@ -31,22 +33,17 @@ public class MultiLayeredLoader : MonoBehaviour {
 
     void Start()
     {
-        //LoadFile();
-        originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
-
+    
+        
         if (PrefabLoader[0] != null) {
             Debug.LogError("You were trying to initialize a GameObject in Element 0, you shouldn't do that. bye...");
             PrefabLoader[0] = null;
         }
     }
 
-
     void Update()
     {
-        if (AutoBuild) {
-           
-        }
-
+        
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
             DestroyAllLoaded();
@@ -74,8 +71,8 @@ public class MultiLayeredLoader : MonoBehaviour {
 
         for (int k = 0; k < layerNodeList.Count; k++) {
             XmlNode layerNode = layerNodeList[k];
-
-            if (printLayersInnerInfo) Debug.Log("Layer " + k + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
+            
+            if (printLayersInnerInfo) Debug.Log("Layer " + (k + 1) + " out of ["+ layerNodeList.Count + "] Contains: " + layerNode.InnerText);
 
             string[] splitLines = layerNode.InnerText.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -93,18 +90,18 @@ public class MultiLayeredLoader : MonoBehaviour {
                     {
                         Debug.Log(col + i + j);
                     }
-                    
-                    _data[j - 1, i] = temp;
-
-                        if ( PrefabLoader[temp] != null)
-                        {
-                            Vector3 placeholder = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
+                      
+                    if (PrefabLoader[temp] != null)
+                    {
+                            instanceLocation = new Vector3(WIDTH + i * X_MarginDistance, k * Y_MarginDistance, HEIGHT + j * Z_MarginDistance);
                             originalPosition = new Vector3(X_MarginDistance, Y_MarginDistance, Z_MarginDistance);
-                            tempStore = (GameObject)Instantiate(PrefabLoader[temp], placeholder, Quaternion.identity);
+                            tempStore = (GameObject)Instantiate(PrefabLoader[temp], instanceLocation, Quaternion.identity);
+                            
+                            if ( ParentOfInstantiations != null) tempStore.transform.parent = ParentOfInstantiations.transform;
                             tempStore.tag = "CustomGenerated";
                         } else if (PrefabLoader[temp] == null && tempStore == null)
                         {
-                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.  ");
+                            Debug.LogError("You have run into a weird bug, for now just increment the size of the prefab loader by 1.");
                         }
                      runOnce = true;
                     }
@@ -120,6 +117,5 @@ public class MultiLayeredLoader : MonoBehaviour {
             DestroyImmediate(go);                                                                                                                                          
         }
     }
-
 
 }
