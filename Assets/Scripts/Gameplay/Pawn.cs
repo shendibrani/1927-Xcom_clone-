@@ -9,7 +9,7 @@ public class Pawn : MonoBehaviour
     public Player owner;
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
 
-    public Weapon weapon = new Cryogun(); //either an instance of weapon or a reference (flywheel)
+    [HideInInspector] public Weapon weapon = new SniperRifle(); //either an instance of weapon or a reference (flywheel)
 
     int actionPointsPerTurn = 3;
 
