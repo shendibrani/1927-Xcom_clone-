@@ -31,16 +31,22 @@ public class PawnHighlightingManager : MonoBehaviour
 	void OnSelected(){
 		//Debug.Log ("Selected");
 		SetState (PawnHighlightStates.Selected);
-		foreach (Pawn p in VisionRangeUtility.GetPawns(GetComponent<Pawn>(),GetComponent<Pawn>().weapon.range)){
+		foreach (Pawn p in GetComponent<Pawn>().validTargets){
 			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
+		}
+		foreach (NodeBehaviour node in Pathfinder.NodesWithinSteps(GetComponent<Pawn>().currentNode, GetComponent<Pawn>().Movement)) {
+			node.GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Reachable);
 		}
 	}
 	
 	void OnDeselected(){
 		//Debug.Log ("Deselected");
 		SetState (PawnHighlightStates.Deselected);
-		foreach (Pawn p in VisionRangeUtility.GetPawns(GetComponent<Pawn>(),GetComponent<Pawn>().weapon.range)){
-			p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Deselected);
+		foreach (PawnHighlightingManager p in FindObjectsOfType<PawnHighlightingManager>()){
+			p.SetState(PawnHighlightStates.Deselected);
+		}
+		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
+			node.SetState(NodeHighlightStates.Deselected);
 		}
 	}
 }

@@ -6,37 +6,106 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Health))]
 public class Pawn : MonoBehaviour
 {
-	public int movement { get { return actionPoints * STEPSPERPOINT; } }
-    public int actionPoints { get; private set; }
-    [SerializeField] int actionPointsPerTurn = 3;
+    public Player owner;
+    //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
+
+    public Weapon Weapon
+    {
+        get;
+        private set;
+    }//either an instance of weapon or a reference (flywheel)
+
+    //Weapon weapon;
+
+    int actionPointsPerTurn = 3;
+
+    int movement;
+    int actionPoints = 3;
+    int accuracy = 15;
+
+    public int Movement { 
+        get { return (actionPoints * STEPSPERPOINT) + movementMod; }
+        set { movement = value; }
+    }
+    
+    public int ActionPoints 
+    { 
+        get { return actionPoints + actionPointsMod; } 
+        private set { actionPoints = value; } 
+    }
+    
+    public int Accuracy 
+    { 
+        get { return accuracy + accuracyMod; }
+        private set { accuracy = value; } 
+    }
+
     public const int STEPSPERPOINT = 3;
 
-    public Command move;
-	public Command attack;
-	public List<Command> abilities; 
+    [HideInInspector]
+    public int movementMod;
+    [HideInInspector]
+    public int actionPointsMod;
+    [HideInInspector]
+    public int accuracyMod;
 
-	public int sightRange;
+    List <PawnEffect> effectList;
+    public List<PawnEffect> EffectList
+    {
+        get
+        {
+            if (effectList == null) effectList = new List<PawnEffect>();
+            return effectList;
+        }
+    }
 
-	public NodeBehaviour currentNode { 
-		get { return GetComponent<GridMovementBehaviour> ().currentNode;}
+	public static int sightRange = 10;
+
+	public List<Pawn> sightList{ 
+		get { return LineOfSightManager.GetSightList(this); } 
 	}
+
+	public List<Pawn> validTargets{
+		get{ return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
+	}
+
+    public Command move;
+    public Command attack;
+    public List<Command> abilities;
+
+    void Start()
+    {
+        Weapon = new AssaultRifle();
+    }
+
+    public void Turn()
+    {
+        movementMod = 0;
+        actionPointsMod = 0;
+        accuracyMod = 0;
+        for (int i = effectList.Count - 1; i < 0; i--)
+        {
+            effectList[i].Turn();
+        }
+    }
+
+    public NodeBehaviour currentNode
+    {
+        get { return GetComponent<GridMovementBehaviour>().currentNode; }
+    }
 
     public List<NodeBehaviour> reachableNodes
     {
-        get { return Pathfinder.FindNodesWithinSteps(currentNode, movement); }
+        get { return Pathfinder.NodesWithinSteps(currentNode, movement); }
     }
 
-	public Player owner;
+    public override string ToString()
+    {
+        return name;
+    }
 
-	public Weapon weapon;
+	#region Callbacks
 
-    public override string ToString ()
-	{
-		return name;
-	}
-
-	#region callbacks
-
-	#endregion
+    #endregion
 }
 

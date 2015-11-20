@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             {
                 if (debug) Debug.Log("Attack Successful");
             }
-            else if (debug) { Debug.LogError("Attack Failed"); }
+            else if (debug) { Debug.Log("Attack Failed"); }
         }
     }
 }
