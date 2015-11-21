@@ -112,18 +112,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10a02c449b5fa440bcb6e9b14e6fb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: d91c6e08dbcbece4a9fe0411756fdfa2, type: 3}
-  X_MarginDistance: 2
-  Y_MarginDistance: 2
-  Z_MarginDistance: 2
+  TiledSaveFile: {fileID: 102900000, guid: fd68ab256fa95fb44b4cf3362faa8066, type: 3}
+  X_MarginDistance: 1
+  Y_MarginDistance: 1
+  Z_MarginDistance: 1
   ParentOfInstantiations: {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0,
     type: 2}
   defaultInstantiation: {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
-  printLayersInnerInfo: 0
+  printLayersInnerInfo: 1
   PrefabLoader:
   - {fileID: 0}
-  - {fileID: 124094, guid: 6cd1d81285476564a9ad5cdbbb93b71a, type: 2}
-  - {fileID: 124094, guid: 6cd1d81285476564a9ad5cdbbb93b71a, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
+  - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
 --- !u!4 &234032633
 Transform:
   m_ObjectHideFlags: 0
