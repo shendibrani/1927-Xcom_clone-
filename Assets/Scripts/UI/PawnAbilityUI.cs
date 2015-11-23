@@ -3,14 +3,6 @@ using System.Collections;
 
 [RequireComponent(typeof(RectTransform))]
 public class PawnAbilityUI : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    //recieves a message from selection manager detailing which pawn is selected
+    //message recieved populates this, calls the menumanager change?
 }

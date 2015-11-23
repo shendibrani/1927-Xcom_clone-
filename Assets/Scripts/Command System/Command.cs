@@ -19,5 +19,20 @@ public abstract class Command
 	{
 		return string.Format ("[Command: {0} executes {1}]", owner, name);
 	}
+
+    //check against specific action point cost and apply charge
+    protected bool CheckCost(int cost)
+    {
+        if (owner.ActionPoints < cost)
+        {
+            Debug.Log("Not enough action points");
+            return false;
+        }
+        else
+        {
+            owner.actionPointsMod -= cost;
+            return true;
+        }
+    }
 }
 
