@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class TurnManager
@@ -33,12 +34,20 @@ public class TurnManager
 	private TurnManager()
 	{
 		turnOrder = new List<Player> ();
+		turnOrder.AddRange (GameObject.FindObjectsOfType<Player> ());
+
 	}
 
 	public void NextTurn(){
-		TurnEnd.Invoke ();
+		if (TurnEnd != null) {
+			TurnEnd.Invoke ();
+		}
 		turn++;
-		TurnStart.Invoke ();
+		Debug.Log (turnPlayer);
+		turnPlayer.Turn ();
+		if (TurnStart != null) {
+			TurnStart.Invoke ();
+		}
 	}
 
 	public void AddPlayer(Player p){
@@ -51,11 +60,20 @@ public class TurnManager
 		turnOrder.Remove (p);
 	}
 
+	public void StartGame(){
+		turnPlayer.Turn ();
+		if (TurnStart != null) {
+			TurnStart.Invoke ();
+		}
+	}
+
 	public void SetBusy(){
 		busy = true;
+		Debug.Log ("Busy is " + busy);
 	}
 
 	public void SetFree(){
 		busy = false;
+		Debug.Log ("Busy is " + busy);
 	}
 }

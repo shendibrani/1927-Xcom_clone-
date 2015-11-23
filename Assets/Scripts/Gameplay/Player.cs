@@ -17,44 +17,60 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!TurnManager.instance.busy) {
+		if (!TurnManager.instance.busy && TurnManager.instance.turnPlayer == this) {
+			Debug.Log(this);
 			if (Input.GetMouseButtonUp (1) && SelectionManager.selected != null) {
 				if (SelectionManager.selected.GetComponent<Pawn> () != null) {
 					if (SelectionManager.hovered.GetComponent<NodeBehaviour> () != null) {
-						TurnManager.instance.SetBusy();
-						Move (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<NodeBehaviour> ());
+						if(Move (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<NodeBehaviour> ())){
+							TurnManager.instance.SetBusy();
+						}
 					} else if (SelectionManager.hovered.GetComponent<Pawn> () != null) {
-						TurnManager.instance.SetBusy();
-						Attack (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<Pawn> ());
+						if(Attack (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<Pawn> ())){
+							TurnManager.instance.SetBusy();
+						}
 					}
 				}
 			}
 		}
 	}
 
-	void Move(Pawn p, NodeBehaviour target)
+	bool Move(Pawn p, NodeBehaviour target)
 	{
 		if (pawns.Contains (p)) {
 			p.move = new MoveCommand (p,target);
 			if(debug) Debug.Log(p.move);
-			if(p.move.Execute()){
+			bool result = p.move.Execute();
+			if(result){
 				if(debug) Debug.Log("Pathfinder Successful");
-			} else if(debug) { Debug.LogError("Pathfinder Failed");}
-
+			} else if(debug) { Debug.Log("Pathfinder Failed");}
+			return result;
 		}
+		return false;
 	}
 
-    void Attack(Pawn p, Pawn target)
+    bool Attack(Pawn p, Pawn target)
     {
         if (pawns.Contains(p))
         {
             p.attack = new AttackCommand(p, target);
-            if (p.attack.Execute())
+			bool result = p.attack.Execute();
+            if (result)
             {
                 if (debug) Debug.Log("Attack Successful");
             }
             else if (debug) { Debug.Log("Attack Failed"); }
+			return result;
         }
+
+		return false;
     }
+
+	public void Turn()
+	{
+		foreach (Pawn p in pawns) {
+			p.Turn ();
+		}
+	}
 }
 

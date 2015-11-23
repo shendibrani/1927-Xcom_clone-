@@ -67,6 +67,7 @@ public class AttackCommand : Command
                 {
                     Debug.Log(owner + " missed " + target);
                 }
+                TurnManager.instance.SetFree();
                 return true;
             }
         }

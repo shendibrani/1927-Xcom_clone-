@@ -25,14 +25,6 @@ public class NodeBehaviour : MonoBehaviour {
 		links = new List<NodeBehaviour> ();
 		RaycastHit hit = new RaycastHit ();
 
-//		foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour> ()) {
-//			if (Physics.Raycast (position, (node.position - position).normalized, out hit)) {
-//				if (hit.collider.gameObject.GetComponent<NodeBehaviour> () == node) {
-//					Bind (node);
-//				}
-//			}
-//		}
-
 		if (Physics.Raycast (position, Vector3.forward, out hit,1)) {
 			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
 				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
@@ -115,6 +107,51 @@ public class NodeBehaviour : MonoBehaviour {
 		}
 	}
 
+	public LinkPositions GetRelativePosition(NodeBehaviour node)
+	{
+		if(links.Contains(node)){
+			Vector3 offset = node.position - position;
+			offset = new Vector3 (offset.x, 0, offset.z);
+			offset.Normalize ();
+
+			if (Vector3.Dot (offset, Vector3.forward) == 1) {
+				return LinkPositions.Forward;
+			} else if (Vector3.Dot (offset, Vector3.right) == 1) {
+				return LinkPositions.Right;
+			} else if (Vector3.Dot (offset, Vector3.back) == 1) {
+				return LinkPositions.Back;
+			} else if (Vector3.Dot (offset, Vector3.left) == 1) {
+				return LinkPositions.Left;
+			}
+		}
+
+		throw new UnityException ("Nodes not aligned");
+	}
+
+	public NodeBehaviour GetLinkInDirection (LinkPositions linkDir)
+	{
+		Vector3 direction;
+
+		switch (linkDir){
+		case LinkPositions.Forward: 
+			direction = Vector3.forward;
+			return (links.Find(x => x.position == position + direction));
+			break;
+		case LinkPositions.Right:
+			direction = Vector3.right;
+			return (links.Find(x => x.position == position + direction));
+			break;
+		case LinkPositions.Back:
+			direction = Vector3.back;
+			return (links.Find(x => x.position == position + direction));
+			break;
+		case LinkPositions.Left:
+			direction = Vector3.left;
+			return (links.Find(x => x.position == position + direction));
+			break;
+		}
+	}
+
 	void OnDrawGizmos()
 	{
 		if (links == null) {
@@ -125,4 +162,8 @@ public class NodeBehaviour : MonoBehaviour {
 			Gizmos.DrawLine(position, node.position);
 		}
 	}
+}
+
+public enum LinkPositions{
+	Forward, Right, Back, Left
 }
