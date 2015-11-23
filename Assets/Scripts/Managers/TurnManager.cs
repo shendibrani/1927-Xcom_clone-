@@ -16,6 +16,8 @@ public class TurnManager
 
 	public int turn { get; private set; }
 
+	public bool busy { get; private set; }
+
 	private List<Player> turnOrder;
 
 	public Player turnPlayer{
@@ -47,5 +49,13 @@ public class TurnManager
 
 	public void RemovePlayer(Player p){
 		turnOrder.Remove (p);
+	}
+
+	public void SetBusy(){
+		busy = true;
+	}
+
+	public void SetFree(){
+		busy = false;
 	}
 }

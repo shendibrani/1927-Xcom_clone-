@@ -35,20 +35,22 @@ public class GridMovementBehaviour : MonoBehaviour
 		position = StartingNode.offsetPosition;
 		currentNode = StartingNode;
 		currentDestination = StartingNode;
+		DestinationReached += TurnManager.instance.SetFree;
 	}
 	
 	void Update () {
 		if (!stopped) {
 			if (ReachedCurrentDestination ()) {
+				currentNode = currentDestination;
+				position = currentNode.offsetPosition;
 				if (path == null) {
 					stopped = true;
 					if (DestinationReached != null) {
 						DestinationReached ();
 					}
+				} else {
+					NextDestination ();
 				}
-				currentNode = currentDestination;
-                position = currentNode.offsetPosition;
-				NextDestination ();
 			} else {
 				position += velocity;
 			}

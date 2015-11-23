@@ -17,12 +17,16 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetMouseButtonUp (1) && SelectionManager.selected != null) {
-			if(SelectionManager.selected.GetComponent<Pawn>() != null){
-				if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null)	{
-					Move (SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<NodeBehaviour>());
-				} else if (SelectionManager.hovered.GetComponent<Pawn>() != null) {
-					Attack(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<Pawn>());
+		if (!TurnManager.instance.busy) {
+			if (Input.GetMouseButtonUp (1) && SelectionManager.selected != null) {
+				if (SelectionManager.selected.GetComponent<Pawn> () != null) {
+					if (SelectionManager.hovered.GetComponent<NodeBehaviour> () != null) {
+						TurnManager.instance.SetBusy();
+						Move (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<NodeBehaviour> ());
+					} else if (SelectionManager.hovered.GetComponent<Pawn> () != null) {
+						TurnManager.instance.SetBusy();
+						Attack (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<Pawn> ());
+					}
 				}
 			}
 		}
