@@ -43,6 +43,7 @@ public class TurnManager
 		}
 		turn++;
 		Debug.Log (turnPlayer);
+		turnPlayer.Turn ();
 		if (TurnStart != null) {
 			TurnStart.Invoke ();
 		}

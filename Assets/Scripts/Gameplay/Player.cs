@@ -65,5 +65,12 @@ public class Player : MonoBehaviour
 
 		return false;
     }
+
+	public void Turn()
+	{
+		foreach (Pawn p in pawns) {
+			p.Turn ();
+		}
+	}
 }
 
