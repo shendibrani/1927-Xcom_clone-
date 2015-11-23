@@ -19,21 +19,22 @@ public class Pawn : MonoBehaviour
 
     int actionPointsPerTurn = 3;
 
-    int movement;
     int actionPoints = 3;
+    int movement;
     int accuracy = 15;
-
-    public int Movement { 
-        get { return (actionPoints * STEPSPERPOINT) + movementMod; }
-        set { movement = value; }
-    }
     
     public int ActionPoints 
     { 
         get { return actionPoints + actionPointsMod; } 
         private set { actionPoints = value; } 
     }
-    
+
+    public int Movement
+    {
+        get { return (ActionPoints * STEPSPERPOINT); }
+        set { movement = value; }
+    }
+
     public int Accuracy 
     { 
         get { return accuracy + accuracyMod; }
@@ -43,11 +44,13 @@ public class Pawn : MonoBehaviour
     public const int STEPSPERPOINT = 3;
 
     [HideInInspector]
-    public int movementMod;
-    [HideInInspector]
     public int actionPointsMod;
     [HideInInspector]
     public int accuracyMod;
+    [HideInInspector]
+    public double hitMod;
+    [HideInInspector]
+    public double damageMod;
 
     List <PawnEffect> effectList;
     public List<PawnEffect> EffectList
@@ -80,10 +83,11 @@ public class Pawn : MonoBehaviour
 
     public void Turn()
     {
-        movementMod = 0;
         actionPointsMod = 0;
         accuracyMod = 0;
-        for (int i = effectList.Count - 1; i < 0; i--)
+        hitMod = 0;
+        damageMod = 0;
+        for (int i = effectList.Count - 1; i >= 0; i--)
         {
             effectList[i].Turn();
         }
