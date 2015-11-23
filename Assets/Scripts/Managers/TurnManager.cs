@@ -35,6 +35,7 @@ public class TurnManager
 	{
 		turnOrder = new List<Player> ();
 		turnOrder.AddRange (GameObject.FindObjectsOfType<Player> ());
+
 	}
 
 	public void NextTurn(){
@@ -57,6 +58,13 @@ public class TurnManager
 
 	public void RemovePlayer(Player p){
 		turnOrder.Remove (p);
+	}
+
+	public void StartGame(){
+		turnPlayer.Turn ();
+		if (TurnStart != null) {
+			TurnStart.Invoke ();
+		}
 	}
 
 	public void SetBusy(){
