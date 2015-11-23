@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class AttackCommand : Command
 {
-
     Pawn target;
     Weapon weapon;
 
@@ -18,6 +17,7 @@ public class AttackCommand : Command
 
     public override bool Execute()
     {
+
         if (!CheckCost(weapon.actionCost)) return false;
         if (owner.sightList.Contains(target))
         {

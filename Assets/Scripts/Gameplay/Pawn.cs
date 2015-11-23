@@ -19,7 +19,6 @@ public class Pawn : MonoBehaviour
 
     int actionPointsPerTurn = 3;
 
-   
     int actionPoints = 3;
     int movement;
     int accuracy = 15;
@@ -50,6 +49,10 @@ public class Pawn : MonoBehaviour
     public int actionPointsMod;
     [HideInInspector]
     public int accuracyMod;
+    [HideInInspector]
+    public double hitMod;
+    [HideInInspector]
+    public double damageMod;
 
     List <PawnEffect> effectList;
     public List<PawnEffect> EffectList
