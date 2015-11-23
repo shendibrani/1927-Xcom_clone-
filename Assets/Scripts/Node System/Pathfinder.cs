@@ -138,8 +138,19 @@ public class Pathfinder
 		list.Add(node);
 		if(steps == 0){	return list;}
 		
-		foreach (NodeBehaviour neighbour in node.links){
-			list.AddRange(NodesWithinSteps(neighbour, steps-1));
+		List<NodeBehaviour> parser = new List<NodeBehaviour>();
+		parser.AddRange (node.links);
+		List<NodeBehaviour> temp = new List<NodeBehaviour>();
+		
+		while(parser.Count != 0 && steps > 0){
+			foreach (NodeBehaviour neighbour in parser){
+				if(!list.Contains(neighbour)){
+					list.Add(neighbour);
+					temp.AddRange(neighbour.links);
+				}
+			}
+			parser.AddRange(temp.FindAll(x => !list.Contains(x)));
+			steps--;
 		}
 		
 		return list;
