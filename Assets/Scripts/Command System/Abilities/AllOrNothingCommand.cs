@@ -12,7 +12,7 @@ public class AllOrNothingCommand : Command
     public AllOrNothingCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
     {
-        name = "Vital Strike";
+        name = "Vital Strike Command";
         target = pTarget;
         weapon = owner.Weapon;
     }
