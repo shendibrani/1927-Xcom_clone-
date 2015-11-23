@@ -24,7 +24,7 @@ public class MoveCommand : Command
 			return false;
 		}
 
-        int cost = (path.Count - 1) / Pawn.STEPSPERPOINT;
+        int cost = Mathf.CeilToInt(((float)path.Count - 1f) / (float)Pawn.STEPSPERPOINT);
 
         if (!CheckCost(cost)) return false;
 
@@ -35,7 +35,7 @@ public class MoveCommand : Command
 
 	public override bool Undo ()
 	{
-        owner.actionPointsMod += Pathfinder.GetPath(owner.currentNode, originalPosition).Count - 1;
+        owner.actionPointsMod += (Pathfinder.GetPath(owner.currentNode, originalPosition).Count - 1) * Pawn.STEPSPERPOINT;
 		owner.GetComponent<GridMovementBehaviour> ().currentNode = originalPosition;
 		owner.GetComponent<GridMovementBehaviour> ().position = originalPosition.offsetPosition;
 		//also send UI feedback at some point
