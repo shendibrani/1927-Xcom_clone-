@@ -30,7 +30,7 @@ public abstract class Command
         }
         else
         {
-            owner.actionPointsMod -= cost;
+            owner.actionPointsSpent += cost;
             return true;
         }
     }

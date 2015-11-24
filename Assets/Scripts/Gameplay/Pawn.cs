@@ -22,11 +22,11 @@ public class Pawn : MonoBehaviour
     int actionPoints = 3;
     int movement;
     int accuracy = 15;
-    
-    public int ActionPoints 
-    { 
-        get { return actionPoints + actionPointsMod; } 
-        private set { actionPoints = value; } 
+
+    public int ActionPoints
+    {
+        get { return actionPoints + actionPointsMod - actionPointsSpent; }
+        private set { actionPoints = value; }
     }
 
     public int Movement
@@ -35,24 +35,116 @@ public class Pawn : MonoBehaviour
         set { movement = value; }
     }
 
-    public int Accuracy 
-    { 
+    public int Accuracy
+    {
         get { return accuracy + accuracyMod; }
-        private set { accuracy = value; } 
+        private set { accuracy = value; }
     }
 
     public const int STEPSPERPOINT = 3;
 
     [HideInInspector]
-    public int actionPointsMod;
-    [HideInInspector]
-    public int accuracyMod;
-    [HideInInspector]
-    public double hitMod;
-    [HideInInspector]
-    public double damageMod;
+    public int actionPointsSpent;
 
-    List <PawnEffect> effectList;
+    public int actionPointsMod
+    {
+        get
+        {
+            int tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.actionPointMod;
+            }
+            return tmp;
+        }
+    }
+    public int accuracyMod
+    {
+        get
+        {
+            int tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.accuracyMod;
+            }
+            return tmp;
+        }
+    }
+    public int accuracyMulti
+    {
+        get
+        {
+            int tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.accuracyMulti;
+            }
+            return tmp;
+        }
+    }
+    public double hitMod
+    {
+        get
+        {
+            double tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.hitMod;
+            }
+            return tmp;
+        }
+    }
+    public double hitMulti
+    {
+        get
+        {
+            double tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.hitMulti;
+            }
+            return tmp;
+        }
+    }
+    public double damageMod
+    {
+        get
+        {
+            double tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.damageMod;
+            }
+            return tmp;
+        }
+    }
+    public double damageMulti
+    {
+        get
+        {
+            double tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.damageMulti;
+            }
+            return tmp;
+        }
+    }
+    public double critChanceMod
+    {
+        get
+        {
+            double tmp = 0;
+            foreach (PawnEffect e in EffectList)
+            {
+                tmp += e.critChanceMod;
+            }
+            return tmp;
+        }
+    }
+
+
+    List<PawnEffect> effectList;
     public List<PawnEffect> EffectList
     {
         get
@@ -62,15 +154,17 @@ public class Pawn : MonoBehaviour
         }
     }
 
-	public static int sightRange = 10;
+    public static int sightRange = 10;
 
-	public List<Pawn> sightList{ 
-		get { return LineOfSightManager.GetSightList(this); } 
-	}
+    public List<Pawn> sightList
+    {
+        get { return LineOfSightManager.GetSightList(this); }
+    }
 
-	public List<Pawn> validTargets{
-		get{ return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
-	}
+    public List<Pawn> validTargets
+    {
+        get { return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
+    }
 
     public Command move;
     public Command attack;
@@ -83,10 +177,6 @@ public class Pawn : MonoBehaviour
 
     public void Turn()
     {
-        actionPointsMod = 0;
-        accuracyMod = 0;
-        hitMod = 0;
-        damageMod = 0;
         for (int i = effectList.Count - 1; i >= 0; i--)
         {
             effectList[i].Turn();
@@ -108,7 +198,7 @@ public class Pawn : MonoBehaviour
         return name;
     }
 
-	#region Callbacks
+    #region Callbacks
 
     #endregion
 }

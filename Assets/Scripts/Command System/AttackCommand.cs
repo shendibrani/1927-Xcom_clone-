@@ -19,6 +19,7 @@ public class AttackCommand : Command
     {
 
         if (!CheckCost(weapon.actionCost)) return false;
+
         if (owner.sightList.Contains(target))
         {
             List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= weapon.range);
@@ -38,8 +39,9 @@ public class AttackCommand : Command
                 if (RNG.NextDouble() < hitChance)
                 {
                     int damage = weapon.damage;
-                    double accuracy = (owner.Accuracy / 100d) + RNG.NextDouble();
-                    if (accuracy > 1d) accuracy = 1d;
+                    double accuracy = owner.Accuracy / 100d;
+                    double tmpDamageMod = (1 - accuracy) * RNG.NextDouble() + accuracy;
+                    if (tmpDamageMod > 1d) tmpDamageMod = 1d;
 
                     if (RNG.NextDouble() < weapon.criticalChance)
                     {
@@ -61,6 +63,10 @@ public class AttackCommand : Command
                         {
                             weapon.weaponEffects[i].Execute(owner, weapon, target);
                         }
+                    }
+                    for (int i = owner.EffectList.Count - 1; i >= 0; i--)
+                    {
+                        owner.EffectList[i].OnRemove();
                     }
                 }
                 else
