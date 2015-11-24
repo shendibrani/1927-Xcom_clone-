@@ -143,7 +143,6 @@ public class Pawn : MonoBehaviour
         }
     }
 
-
     List<PawnEffect> effectList;
     public List<PawnEffect> EffectList
     {
@@ -200,8 +199,28 @@ public class Pawn : MonoBehaviour
         return name;
     }
 
+	public CoverState GetCoverState(Pawn other)
+	{
+		Vector3 direction = other.currentNode.position - currentNode.position;
+		direction.Normalize ();
+
+		RaycastHit hit;
+
+		if (Physics.Raycast (transform.position + (Vector3.up * 1.5f), direction, hit, 1f)) {
+			return CoverState.Full;
+		}
+		if (Physics.Raycast (transform.position + (Vector3.up * 0.5f), direction, hit, 1f)) {
+			return CoverState.Half;
+		}
+
+		return CoverState.None;
+	}
+
     #region Callbacks
 
     #endregion
 }
 
+public enum CoverState {
+	None, Half, Full
+}
