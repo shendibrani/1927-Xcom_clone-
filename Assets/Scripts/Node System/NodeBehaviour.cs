@@ -25,73 +25,54 @@ public class NodeBehaviour : MonoBehaviour {
 		links = new List<NodeBehaviour> ();
 		RaycastHit hit = new RaycastHit ();
 
-		if (Physics.Raycast (position, Vector3.forward, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
-			}
-		}
-
-		if (Physics.Raycast (position, Vector3.back, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
-			}
-		}
-
-		if (Physics.Raycast (position, Vector3.right, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
-			}
-		}
-
-		if (Physics.Raycast (position, Vector3.left, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
-			}
-		}
-
-		//////////////////////////////////////////////////
-
-		if (Physics.Raycast (position, Vector3.forward + Vector3.up, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
-			}
-		}
-		
-		if (Physics.Raycast (position, Vector3.back + Vector3.up, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
-			}
-		}
-		
-		if (Physics.Raycast (position, Vector3.right + Vector3.up, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
-			}
-		}
-		
-		if (Physics.Raycast (position, Vector3.left + Vector3.up, out hit,1)) {
-			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
-				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
-			}
-		}
+		FindNodeInDirectionAndBind (Vector3.forward, ref hit);
+		FindNodeInDirectionAndBind (Vector3.right, ref hit);
+		FindNodeInDirectionAndBind (Vector3.back, ref hit);
+		FindNodeInDirectionAndBind (Vector3.left, ref hit);
 
 		if (debug) Debug.Log ("Links: " + links.Count);
 	}
 
-	public void Bind (NodeBehaviour other){
-		if (other != this){
-			if (!links.Contains(other)){
-				links.Add(other);
-				if(other.links != null){
-					other.links.Add(this);
-				}
+	void FindNodeInDirectionAndBind (Vector3 direction, ref RaycastHit hit)
+	{
+		if (Physics.Raycast (position, direction, out hit, 1)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
+			}
+		} else if (Physics.Raycast (position, direction + Vector3.up, out hit, 1)) {
+			if (hit.collider.gameObject.GetComponent<SlopeBehaviour> () != null) {
+				Bind (hit.collider.gameObject.GetComponent<SlopeBehaviour> ());
+			}
+		} else if (Physics.Raycast (position + direction, Vector3.down, out hit, 3)) {
+			if (hit.collider.gameObject.GetComponent<NodeBehaviour> () != null) {
+				OneWayBind (hit.collider.gameObject.GetComponent<NodeBehaviour> ());
 			}
 		}
 	}
 
-	public void Unbind (NodeBehaviour other){
+	public void Bind (NodeBehaviour other)
+	{
+		OneWayBind (other);
+
+		if(other.links != null){
+			other.OneWayBind(this);
+		}
+	}
+
+	public void OneWayBind(NodeBehaviour other)
+	{
+		if (other != this){
+			if (!links.Contains(other)){
+				links.Add(other);
+			}
+		}
+	}
+
+	public void Unbind (NodeBehaviour other)
+	{
 		if (debug) Debug.Log ("Unbinding");
 		links.Remove(other);
+		other.links.Remove (this);
 	}
 
 	public float NodeDistance(NodeBehaviour other)
@@ -102,8 +83,8 @@ public class NodeBehaviour : MonoBehaviour {
 	protected virtual void OnDestroy() 
 	{
 		if (debug) Debug.Log ("Destroying");
-		foreach (NodeBehaviour link in links){
-			link.Unbind(this);
+		for (int counter = links.Count -1; counter >= 0; counter--){
+			Unbind(links[counter]);
 		}
 	}
 
