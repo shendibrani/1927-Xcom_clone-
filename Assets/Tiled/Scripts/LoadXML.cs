@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System;
 
 public class LoadXML : ReadXML {
-    public ushort X_MarginDistance = 1;
-    public ushort Y_MarginDistance = 1;
-    public ushort Z_MarginDistance = 1;
+    public int X_MarginDistance = 1;
+    public int Y_MarginDistance = 1;
+    public int Z_MarginDistance = 1;
 
     private Vector3 instanceLocation;
     public GameObject ParentOfInstantiations;
@@ -53,6 +53,7 @@ public class LoadXML : ReadXML {
                         if (tile != 0)
                         {
                             tempStore = (GameObject)Instantiate(PrefabLoader[tile], instanceLocation, Quaternion.identity);
+                            //tempStore = (GameObject)Resources.Load("//Assets//Tiled//Cube");
                             generatedObjects.Add(tempStore);
                             tempStore.transform.parent = layerParent.transform;
                             tempStore.tag = "CustomGenerated";
