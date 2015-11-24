@@ -11,6 +11,10 @@ public class NodeBehaviour : MonoBehaviour, Targetable {
 
 	public static bool debug;
 
+    public bool isOccupied { get { return (currentObject != null); } }
+
+    public Targetable currentObject;
+
 	public List<NodeBehaviour> links { get; protected set; }
 	
 	protected virtual void Start () 
