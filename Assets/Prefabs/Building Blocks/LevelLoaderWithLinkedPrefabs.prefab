@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.56880331, y: 5.04247808, z: -.639145195}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   TiledSaveFile: {fileID: 102900000, guid: 2a8c6da9771e5614c9b146773c9e7bdc, type: 3}
   X_MarginDistance: 1
   Y_MarginDistance: 1
-  Z_MarginDistance: -1
+  Z_MarginDistance: 0
   ParentOfInstantiations: {fileID: 0}
   defaultInstantiation: {fileID: 0}
   printLayersInnerInfo: 1
@@ -90,6 +90,8 @@ MonoBehaviour:
   - {fileID: 100782, guid: 2482bb4d6dc53c24bb2b61ee04f9c710, type: 2}
   - {fileID: 193370, guid: 48b5e0a26608c164b97a7accb382917f, type: 2}
   - {fileID: 160978, guid: aa93364c16072be43b218bf032d2e89c, type: 2}
+  - {fileID: 172300, guid: 25e51b4a4bbdbdb4288c18c61a3ecc05, type: 2}
+  - {fileID: 190328, guid: b532b0ae72a12924a856a12016250e50, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
