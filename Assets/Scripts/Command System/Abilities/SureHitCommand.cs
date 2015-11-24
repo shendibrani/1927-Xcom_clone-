@@ -23,7 +23,7 @@ public class SureHitCommand : Command {
 
         owner.EffectList.Add(new SureHitTemporaryEffect(owner));
 
-        return new AttackCommand(owner, target).Execute();
+        return new AttackCommand(owner, target).Attack();
 
     }
 

@@ -177,6 +177,8 @@ public class Pawn : MonoBehaviour
 
     public void Turn()
     {
+        actionPointsSpent = 0;
+
         for (int i = effectList.Count - 1; i >= 0; i--)
         {
             effectList[i].Turn();

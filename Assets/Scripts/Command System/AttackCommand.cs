@@ -20,6 +20,11 @@ public class AttackCommand : Command
 
         if (!CheckCost(weapon.actionCost)) return false;
 
+        return Attack();
+    }
+
+    public bool Attack()
+    {
         if (owner.sightList.Contains(target))
         {
             List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= weapon.range);
@@ -73,7 +78,6 @@ public class AttackCommand : Command
                 {
                     Debug.Log(owner + " missed " + target);
                 }
-                TurnManager.instance.SetFree();
                 return true;
             }
         }

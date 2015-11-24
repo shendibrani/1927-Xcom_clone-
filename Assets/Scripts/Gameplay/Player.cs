@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 						}
 					} else if (SelectionManager.hovered.GetComponent<Pawn> () != null) {
 						if(Attack (SelectionManager.selected.GetComponent<Pawn> (), SelectionManager.hovered.GetComponent<Pawn> ())){
-							TurnManager.instance.SetBusy();
+							//TurnManager.instance.SetBusy();
 						}
 					}
 				}
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         if (pawns.Contains(p))
         {
             p.attack = new AttackCommand(p, target);
-			bool result = p.attack.Execute();
+            bool result = p.attack.Execute();
             if (result)
             {
                 if (debug) Debug.Log("Attack Successful");
