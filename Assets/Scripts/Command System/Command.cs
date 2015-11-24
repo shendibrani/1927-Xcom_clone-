@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public abstract class Command 
+public abstract class Command
 {
+
 	public string name {get; protected set;}
 
 	public Pawn owner {get; private set;}
@@ -14,6 +16,10 @@ public abstract class Command
 	public abstract bool Execute ();
 
 	public abstract bool Undo ();
+
+    public abstract System.Type targetType { get; }
+
+    public abstract IList validTargets { get; }
 
 	public override string ToString ()
 	{
@@ -35,4 +41,13 @@ public abstract class Command
         }
     }
 }
+/*
+public abstract class Command<T> : Command where T : Targetable
+{
+    public override System.Type targetType { get { return typeof(T); } }
 
+
+
+    public Command (Pawn pOwner) : base (pOwner){}
+}
+*/

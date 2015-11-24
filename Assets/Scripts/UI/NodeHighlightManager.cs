@@ -63,5 +63,7 @@ public enum NodeHighlightStates
 	Deselected = -1,
 	Selected = 0,
 	Reachable = 1,
+    Targetable = 2,
+    Targeted = 3
 }
 

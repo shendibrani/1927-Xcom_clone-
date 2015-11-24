@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(Selectable))]
 [RequireComponent(typeof(Pawn))]
-public class PawnHighlightingManager : MonoBehaviour, Targetable
+public class PawnHighlightingManager : MonoBehaviour
 {
 	[SerializeField] List<Highlightable> Highlights;
 
@@ -50,11 +50,6 @@ public class PawnHighlightingManager : MonoBehaviour, Targetable
 		UpdateNodes ();
 	}
 
-	public void OnTargeted(Pawn targeter)
-	{
-		SetState (PawnHighlightStates.Targetable);
-	}
-
 	void UpdateHighlight(){
 
 		foreach (Highlightable h in Highlights) {
@@ -73,8 +68,8 @@ public class PawnHighlightingManager : MonoBehaviour, Targetable
 
 			break;
 		case PawnHighlightStates.Selected:
-			foreach (Pawn p in GetComponent<Pawn>().validTargets) {
-				p.GetComponent<PawnHighlightingManager> ().OnTargeted(GetComponent<Pawn>());
+			foreach (Pawn p in GetComponent<Pawn>().sightList) {
+				p.OnTargeted(GetComponent<Pawn>());
 			}
 			break;
 		}

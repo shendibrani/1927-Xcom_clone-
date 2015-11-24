@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
 	[SerializeField] List<Pawn> pawns;
 
+    Command cachedCommand = null;
+
 	// Use this for initialization
 	void Start ()
 	{

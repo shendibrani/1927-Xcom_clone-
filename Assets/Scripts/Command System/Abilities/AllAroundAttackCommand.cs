@@ -21,19 +21,19 @@ public class AllAroundAttackCommand : Command
 
         if (!CheckCost(actionCost)) return false;
         //checks all targets in sight for one square
-        List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= 1);
-        validTargets = validTargets.FindAll(x => x.owner != owner.owner);
-        if (validTargets.Count == 0)
-        {
-            Debug.Log("There are no valid targets");
-            return false;
-        }
+        //List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= 1);
+        //validTargets = validTargets.FindAll(x => x.owner != owner.owner);
+        //if (validTargets.Count == 0)
+        //{
+        //    Debug.Log("There are no valid targets");
+        //    return false;
+        //}
         if (weapon.range == 1)
         {
-            foreach (Pawn p in validTargets)
-            {
-                new AttackCommand(owner, p).Attack();
-            }
+            //foreach (Pawn p in validTargets)
+            //{
+            //    new AttackCommand(owner, p).Attack();
+            //}
             return true;
         }
         else

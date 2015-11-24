@@ -7,6 +7,13 @@ public class AttackCommand : Command
     Pawn target;
     Weapon weapon;
 
+    public override System.Type targetType
+    {
+        get { return typeof(Pawn); }
+    }
+
+    public override IList validTargets { get { return owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
+
     public AttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
     {

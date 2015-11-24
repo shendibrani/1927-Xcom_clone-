@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(GridMovementBehaviour))]
 [RequireComponent(typeof(Health))]
-public class Pawn : MonoBehaviour
+public class Pawn : MonoBehaviour, Targetable
 {
     public Player owner;
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
@@ -160,10 +160,7 @@ public class Pawn : MonoBehaviour
         get { return LineOfSightManager.GetSightList(this); }
     }
 
-    public List<Pawn> validTargets
-    {
-        get { return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
-    }
+   
 
     public Command move;
     public Command attack;
@@ -199,26 +196,34 @@ public class Pawn : MonoBehaviour
         return name;
     }
 
-	public CoverState GetCoverState(Pawn other)
-	{
-		Vector3 direction = other.currentNode.position - currentNode.position;
-		direction.Normalize ();
-	
-		if (Physics.Raycast (transform.position + (Vector3.up * 1.5f), direction, 1f)) {
-			return CoverState.Full;
-		}
-		if (Physics.Raycast (transform.position + (Vector3.up * 0.5f), direction, 1f)) {
-			return CoverState.Half;
-		}
+    public CoverState GetCoverState(Pawn other)
+    {
+        Vector3 direction = other.currentNode.position - currentNode.position;
+        direction.Normalize();
 
-		return CoverState.None;
-	}
+        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, 1f))
+        {
+            return CoverState.Full;
+        }
+        if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
+        {
+            return CoverState.Half;
+        }
+
+        return CoverState.None;
+    }
+
+    public void OnTargeted(Pawn targeter)
+    {
+        GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
+    }
 
     #region Callbacks
 
     #endregion
 }
 
-public enum CoverState {
-	None, Half, Full
+public enum CoverState
+{
+    None, Half, Full
 }
