@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(GridMovementBehaviour))]
+[RequireComponent(typeof(GridNavMeshWrapper))]
 [RequireComponent(typeof(Health))]
 public class Pawn : MonoBehaviour, Targetable
 {
@@ -183,7 +183,7 @@ public class Pawn : MonoBehaviour, Targetable
 
     public NodeBehaviour currentNode
     {
-        get { return GetComponent<GridMovementBehaviour>().currentNode; }
+        get { return GetComponent<GridNavMeshWrapper>().currentNode; }
     }
 
     public List<NodeBehaviour> reachableNodes
