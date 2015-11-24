@@ -35,7 +35,6 @@ public class MoveCommand : Command
 
 	public override bool Undo ()
 	{
-        owner.actionPointsMod += (Pathfinder.GetPath(owner.currentNode, originalPosition).Count - 1) * Pawn.STEPSPERPOINT;
 		owner.GetComponent<GridMovementBehaviour> ().currentNode = originalPosition;
 		owner.GetComponent<GridMovementBehaviour> ().position = originalPosition.offsetPosition;
 		//also send UI feedback at some point
