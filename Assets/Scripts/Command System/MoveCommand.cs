@@ -32,12 +32,5 @@ public class MoveCommand : Command
 		//also send UI feedback at some point
 		return true;
 	}
-
-	public override bool Undo ()
-	{
-		owner.GetComponent<GridNavMeshWrapper> ().position = originalPosition.offsetPosition;
-		//also send UI feedback at some point
-		return true;
-	}
 }
 
