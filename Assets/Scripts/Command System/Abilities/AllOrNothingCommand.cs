@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AllOrNothingCommand : Command
+public class AllOrNothingCommand : PawnTargetingCommand
 {
 
     Pawn target;
@@ -24,10 +24,5 @@ public class AllOrNothingCommand : Command
         owner.EffectList.Add(new AllOrNothingTemporaryEffect(owner));
 
         return new AttackCommand(owner, target).Attack();
-    }
-
-    public override bool Undo()
-    {
-        return true;
     }
 }

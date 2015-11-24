@@ -15,25 +15,22 @@ public class AllAroundAttackCommand : PawnTargetingCommand
         weapon = owner.Weapon;
     }
 
-	public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
+    public override List<Pawn> validTargets { get { return base.validTargets.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
 
     public override bool Execute()
     {
         if (!CheckCost(actionCost)) return false;
-        //checks all targets in sight for one square
-        //List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= 1);
-        //validTargets = validTargets.FindAll(x => x.owner != owner.owner);
-        //if (validTargets.Count == 0)
-        //{
-        //    Debug.Log("There are no valid targets");
-        //    return false;
-        //}
+        if (validTargets.Count == 0)
+        {
+            Debug.Log("There are no valid targets");
+            return false;
+        }
         if (weapon.range == 1)
         {
-            //foreach (Pawn p in validTargets)
-            //{
-            //    new AttackCommand(owner, p).Attack();
-            //}
+            foreach (Pawn p in validTargets)
+            {
+                new AttackCommand(owner, p).Attack();
+            }
             return true;
         }
         else
@@ -41,12 +38,5 @@ public class AllAroundAttackCommand : PawnTargetingCommand
             Debug.Log("Melee Weapon Not Equiped");
             return false;
         }
-    }
-
-    public override bool Undo()
-    {
-        //target.GetComponent<Health>().Heal(weapon.damage);
-
-        return true;
     }
 }

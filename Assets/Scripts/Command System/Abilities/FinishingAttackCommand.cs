@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class FinishingAttackCommand : Command {
+public class FinishingAttackCommand : PawnTargetingCommand
+{
 
-	 Pawn target;
+    Pawn target;
     Weapon weapon;
     int actionCost = 2;
+
+    public override List<Pawn> validTargets
+    {
+        get { return base.validTargets.FindAll(x => x.GetComponent<Health>().health < x.GetComponent<Health>().maxHealth / 3); }
+    }
 
     public FinishingAttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
@@ -20,16 +27,16 @@ public class FinishingAttackCommand : Command {
 
         if (!CheckCost(actionCost)) return false;
 
-        owner.EffectList.Add(new SureHitTemporaryEffect(owner));
+        if (validTargets.Contains(target))
+        {
+            owner.EffectList.Add(new SureHitTemporaryEffect(owner));
 
-        return new AttackCommand(owner, target).Attack();
+            return new AttackCommand(owner, target).Attack();
+        }
+        else
+        {
+            return false;
+        }
 
-    }
-
-    public override bool Undo()
-    {
-        //target.GetComponent<Health>().Heal(weapon.damage);
-
-        return true;
     }
 }

@@ -7,8 +7,6 @@ public class AttackCommand : PawnTargetingCommand
     Pawn target;
     Weapon weapon;
 
-	public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
-
     public AttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
     {
@@ -29,7 +27,6 @@ public class AttackCommand : PawnTargetingCommand
     {
         if (owner.sightList.Contains(target))
         {
-            List<Pawn> validTargets = owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) <= weapon.range);
 
             if (validTargets.Contains(target))
             {
@@ -41,28 +38,29 @@ public class AttackCommand : PawnTargetingCommand
                 }
 
                 double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, target.transform.position) - 1) / (weapon.range - 1);
-                Debug.Log(System.Math.Round(hitChance * 100) + "% chance to hit");
+                Debug.Log(System.Math.Round(hitChance * 100 * owner.hitMulti) + "% chance to hit");
 
                 if (RNG.NextDouble() < hitChance)
                 {
                     int damage = weapon.damage;
-                    double accuracy = owner.Accuracy / 100d;
+                    double accuracy = (owner.Accuracy * owner.accuracyMulti + owner.accuracyMod) / 100d;
                     double tmpDamageMod = (1 - accuracy) * RNG.NextDouble() + accuracy;
                     if (tmpDamageMod > 1d) tmpDamageMod = 1d;
+                    tmpDamageMod *= owner.damageMulti;
 
-                    if (RNG.NextDouble() < weapon.criticalChance)
+                    if (RNG.NextDouble() < weapon.criticalChance + owner.critChanceMod)
                     {
-                        damage = (int)System.Math.Round((double)weapon.damage * 1.5d * accuracy);
+                        damage = (int)System.Math.Round((double)weapon.damage * 1.5d * tmpDamageMod);
                         if (damage < 1) damage = 1;
                         Debug.Log(owner + " critically hit " + target + " and dealt " + damage + " damage.");
                         target.GetComponent<Health>().Damage(damage);
                     }
                     else
                     {
-                        damage = (int)System.Math.Round((double)weapon.damage * accuracy);
+                        damage = (int)System.Math.Round((double)weapon.damage * tmpDamageMod);
                         if (damage < 1) damage = 1;
-                        Debug.Log(owner + " hit " + target + " and dealt " + weapon.damage + " damage.");
-                        target.GetComponent<Health>().Damage(weapon.damage);
+                        Debug.Log(owner + " hit " + target + " and dealt " + damage + " damage.");
+                        target.GetComponent<Health>().Damage(damage);
                     }
                     if (weapon.weaponEffects != null)
                     {
@@ -86,10 +84,4 @@ public class AttackCommand : PawnTargetingCommand
         return false;
     }
 
-    public override bool Undo()
-    {
-        //target.GetComponent<Health>().Heal(weapon.damage);
-
-        return true;
-    }
 }

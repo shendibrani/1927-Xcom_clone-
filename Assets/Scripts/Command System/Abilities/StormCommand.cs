@@ -2,20 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class StormCommand : Command {
+public class StormCommand : NodeTargetingCommand {
 
-	List <object> targetList; //list of targetables? that pawn hits
+    int actionCost = 3;
 
-	public StormCommand (Pawn pOwner, List<object> pTargetList): base (pOwner){
+	public StormCommand (Pawn pOwner): base (pOwner){
         name = "Storm Command";
-        targetList = pTargetList;
+        //targetList = pTargetList;
 	}
 
 	public override bool Execute (){
-        return true;
-    }
-
-	public override bool Undo (){
         return true;
     }
 }

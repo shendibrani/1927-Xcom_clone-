@@ -14,7 +14,6 @@ public abstract class Command
 
 	public abstract bool Execute ();
 
-	public abstract bool Undo ();
 
 	public override string ToString ()
 	{
@@ -47,8 +46,9 @@ public abstract class NodeTargetingCommand : Command
 public abstract class PawnTargetingCommand : Command
 {
 	public PawnTargetingCommand (Pawn pOwner) : base (pOwner){}
-	
-	public abstract List<Pawn> validTargets { get; } 
+
+    //defaults to targeting enemy pawns
+    public virtual List<Pawn> validTargets { get { return owner.sightList.FindAll(x => (Vector3.Distance(owner.transform.position, x.transform.position) < owner.Weapon.range) && (x.owner != owner.owner)); } }
 }
 
 public abstract class TargetableTargetingCommand : Command
