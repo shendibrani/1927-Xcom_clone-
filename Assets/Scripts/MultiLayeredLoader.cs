@@ -32,16 +32,9 @@ public class MultiLayeredLoader : MonoBehaviour {
     int HEIGHT;
     int[,] _data;
 
-    void Start()
-    {
-        
-        
-    }
-
     void Update()
     {
         
-
         if (X_MarginDistance != originalPosition.x || Y_MarginDistance != originalPosition.y || Z_MarginDistance != originalPosition.z)
         {
             DestroyAllLoaded();
@@ -50,9 +43,8 @@ public class MultiLayeredLoader : MonoBehaviour {
         LoadFile();
     }
      
-
-     public void LoadFile()
-     {
+    public void LoadFile()
+    {
         if (!runOnce) {
             
             XmlDocument xml = new XmlDocument();
@@ -71,6 +63,7 @@ public class MultiLayeredLoader : MonoBehaviour {
             GameObject layerParent;
 
             for (int k = 0; k < layerNodeList.Count; k++) {
+                
                 layerParent = (GameObject)Instantiate(ParentOfInstantiations);
                 layerParent.tag = "CustomGenerated";
                 XmlNode layerNode = layerNodeList[k];
@@ -107,7 +100,6 @@ public class MultiLayeredLoader : MonoBehaviour {
                             Debug.Log(col + i + j);
                         }
 
-
                         if (temp != 0 & PrefabLoader[temp] == null & defaultInstantiation != null) PrefabLoader[temp] = defaultInstantiation;
                         if (temp != 0 & PrefabLoader[temp] != null )
                         {
@@ -120,11 +112,8 @@ public class MultiLayeredLoader : MonoBehaviour {
                             tempStore.transform.parent = layerParent.transform;
                             tempStore.tag = "CustomGenerated";
                          }
-
-                       
-
                          runOnce = true;
-                        }
+                    }
                 }
 
             }
