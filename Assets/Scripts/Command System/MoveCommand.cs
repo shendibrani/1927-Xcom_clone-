@@ -28,15 +28,14 @@ public class MoveCommand : Command
 
         if (!CheckCost(cost)) return false;
 
-		owner.GetComponent<GridMovementBehaviour> ().SetPath (path);
+		owner.GetComponent<GridNavMeshWrapper> ().SetPath (path);
 		//also send UI feedback at some point
 		return true;
 	}
 
 	public override bool Undo ()
 	{
-		owner.GetComponent<GridMovementBehaviour> ().currentNode = originalPosition;
-		owner.GetComponent<GridMovementBehaviour> ().position = originalPosition.offsetPosition;
+		owner.GetComponent<GridNavMeshWrapper> ().position = originalPosition.offsetPosition;
 		//also send UI feedback at some point
 		return true;
 	}

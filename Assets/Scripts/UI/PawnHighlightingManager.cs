@@ -17,7 +17,7 @@ public class PawnHighlightingManager : MonoBehaviour
 		SetState (PawnHighlightStates.Deselected);
 		GetComponent<Selectable> ().Deselected += OnDeselected;
 		GetComponent<Selectable> ().Selected += OnSelected;
-		GetComponent<GridMovementBehaviour> ().DestinationReached += UpdateNodes;
+		GetComponent<GridNavMeshWrapper> ().DestinationReached += UpdateNodes;
 	}
 
 	public void SetState(PawnHighlightStates pState){
