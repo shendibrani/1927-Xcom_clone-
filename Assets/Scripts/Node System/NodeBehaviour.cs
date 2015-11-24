@@ -150,6 +150,8 @@ public class NodeBehaviour : MonoBehaviour {
 			return (links.Find(x => x.position == position + direction));
 			break;
 		}
+
+		return null;
 	}
 
 	void OnDrawGizmos()
