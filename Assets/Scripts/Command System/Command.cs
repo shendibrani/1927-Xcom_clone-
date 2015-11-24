@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public abstract class Command
 {
-
 	public string name {get; protected set;}
 
 	public Pawn owner {get; private set;}
@@ -16,10 +15,6 @@ public abstract class Command
 	public abstract bool Execute ();
 
 	public abstract bool Undo ();
-
-    public abstract System.Type targetType { get; }
-
-    public abstract IList validTargets { get; }
 
 	public override string ToString ()
 	{
@@ -41,13 +36,25 @@ public abstract class Command
         }
     }
 }
-/*
-public abstract class Command<T> : Command where T : Targetable
+
+public abstract class NodeTargetingCommand : Command
 {
-    public override System.Type targetType { get { return typeof(T); } }
+	public NodeTargetingCommand (Pawn pOwner) : base (pOwner){}
 
-
-
-    public Command (Pawn pOwner) : base (pOwner){}
+	public abstract List<NodeBehaviour> validTargets { get; } 
 }
-*/
+
+public abstract class PawnTargetingCommand : Command
+{
+	public PawnTargetingCommand (Pawn pOwner) : base (pOwner){}
+	
+	public abstract List<Pawn> validTargets { get; } 
+}
+
+public abstract class TargetableTargetingCommand : Command
+{
+	public TargetableTargetingCommand (Pawn pOwner) : base (pOwner){}
+	
+	public abstract List<Targetable> validTargets { get; } 
+}
+

@@ -2,17 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AttackCommand : Command
+public class AttackCommand : PawnTargetingCommand
 {
     Pawn target;
     Weapon weapon;
 
-    public override System.Type targetType
-    {
-        get { return typeof(Pawn); }
-    }
-
-    public override IList validTargets { get { return owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
+	public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
 
     public AttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
