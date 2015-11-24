@@ -6,8 +6,8 @@ public class SureHitTemporaryEffect : PawnEffect {
     public SureHitTemporaryEffect(Pawn pOwner)
         : base(pOwner, -1, EffectType.TEMPORARY)
     {
-        hitMulti = 2;
-        damageMulti = 0.5;
+        hitMulti = 2d;
+        damageMulti = 0.5d;
     }
 
     public override void OnTurn() { }

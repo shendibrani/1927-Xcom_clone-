@@ -32,13 +32,13 @@ public class AllAroundAttackCommand : Command
         {
             foreach (Pawn p in validTargets)
             {
-                new AttackCommand(owner, p).Execute();
+                new AttackCommand(owner, p).Attack();
             }
-            TurnManager.instance.SetFree();
             return true;
         }
         else
         {
+            Debug.Log("Melee Weapon Not Equiped");
             return false;
         }
     }

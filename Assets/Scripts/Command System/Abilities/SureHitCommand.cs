@@ -21,7 +21,7 @@ public class SureHitCommand : Command {
 
         if (!CheckCost(actionCost)) return false;
 
-        owner.EffectList.Add(new SureHitTemporaryEffect(owner));
+        target.EffectList.Add(new SureHitTemporaryEffect(target));
 
         return new AttackCommand(owner, target).Attack();
 
