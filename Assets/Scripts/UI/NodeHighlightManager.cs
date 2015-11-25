@@ -13,8 +13,6 @@ public class NodeHighlightManager : MonoBehaviour
 	void Start ()
 	{
 		SetState (NodeHighlightStates.Deselected);
-		GetComponent<Selectable> ().Deselected += OnDeselected;
-		GetComponent<Selectable> ().Selected += OnSelected;
 	}
 
 	void Update(){
@@ -45,16 +43,6 @@ public class NodeHighlightManager : MonoBehaviour
 		//Debug.Log ((int)state);
 		
 		Highlights [(int)state].SetHighlight (true);
-	}
-
-	void OnSelected(){
-		//Debug.Log ("Selected");
-		SetState (NodeHighlightStates.Selected);
-	}
-	
-	void OnDeselected(){
-		//Debug.Log ("Deselected");
-		SetState (NodeHighlightStates.Deselected);
 	}
 }
 

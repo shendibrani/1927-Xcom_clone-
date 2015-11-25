@@ -244,10 +244,10 @@ public class Pawn : MonoBehaviour, Targetable
         return CoverState.None;
     }
 
-    public void OnTargeted(Pawn targeter)
-    {
-        GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
-    }
+	public void OnTargeted(Pawn targeter)
+	{
+
+	}
 
     #region Callbacks
 

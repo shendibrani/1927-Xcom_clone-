@@ -15,8 +15,6 @@ public class PawnHighlightingManager : MonoBehaviour
 	void Start ()
 	{
 		SetState (PawnHighlightStates.Deselected);
-		GetComponent<Selectable> ().Deselected += OnDeselected;
-		GetComponent<Selectable> ().Selected += OnSelected;
 		GetComponent<GridNavMeshWrapper> ().DestinationReached += UpdateNodes;
 	}
 
@@ -31,27 +29,13 @@ public class PawnHighlightingManager : MonoBehaviour
 	void Update(){
 		if (dirty) {
 			Debug.Log("Clearing Dirty flag");
-			UpdateHighlight ();
+			UpdateHighlight();
 			dirty = false;
 		}
 	}
 
-	void OnSelected()
+	void UpdateHighlight()
 	{
-		Debug.Log ("Selected");
-		SetState (PawnHighlightStates.Selected);
-		UpdateNodes ();
-	}
-	
-	void OnDeselected()
-	{
-		Debug.Log ("Deselected");
-		SetState (PawnHighlightStates.Deselected);
-		UpdateNodes ();
-	}
-
-	void UpdateHighlight(){
-
 		foreach (Highlightable h in Highlights) {
 			h.SetHighlight (false);
 		}
@@ -59,23 +43,9 @@ public class PawnHighlightingManager : MonoBehaviour
 		if (state != PawnHighlightStates.Deselected) {
 			Highlights [(int)state].SetHighlight (true);
 		}
-
-		switch (state) {
-		case PawnHighlightStates.Deselected:
-			foreach (PawnHighlightingManager p in FindObjectsOfType<PawnHighlightingManager>()) {
-				p.SetState (PawnHighlightStates.Deselected);
-			}
-
-			break;
-		case PawnHighlightStates.Selected:
-			foreach (Pawn p in GetComponent<Pawn>().sightList) {
-				p.OnTargeted(GetComponent<Pawn>());
-			}
-			break;
-		}
 	}
 
-	void UpdateNodes(){
+	public void UpdateNodes(){
 		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
 			node.SetState (NodeHighlightStates.Deselected);
 		}
