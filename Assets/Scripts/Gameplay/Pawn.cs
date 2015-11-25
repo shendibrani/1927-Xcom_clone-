@@ -18,6 +18,8 @@ public class Pawn : MonoBehaviour, Targetable
     //Weapon weapon;
 
     int actionPointsPerTurn = 3;
+	public int MaxActionPointsPerTurn {	get { return actionPointsPerTurn; } }
+
     int movement;
     int actionPoints = 3;
     public int accuracy
@@ -206,9 +208,9 @@ public class Pawn : MonoBehaviour, Targetable
 		if(currentNode.tileEffect != null){
 			currentNode.tileEffect.Turn();
 		}
-		for (int i = effectList.Count - 1; i >= 0; i--)
+		for (int i = EffectList.Count - 1; i >= 0; i--)
         {
-            effectList[i].Turn();
+            EffectList[i].Turn();
         }
     }
 
