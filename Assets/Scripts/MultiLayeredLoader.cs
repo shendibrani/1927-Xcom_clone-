@@ -13,7 +13,7 @@ public class MultiLayeredLoader : MonoBehaviour {
     public UnityEngine.Object TiledSaveFile;
     public ushort X_MarginDistance = 1;
     public ushort Y_MarginDistance = 1;
-    public ushort Z_MarginDistance = 1;
+    public int Z_MarginDistance = -1;
 
     private Vector3 instanceLocation;
     public GameObject ParentOfInstantiations;
