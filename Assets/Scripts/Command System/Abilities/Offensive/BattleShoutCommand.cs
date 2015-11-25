@@ -15,7 +15,7 @@ public class BattleShoutCommand : PawnTargetingCommand
         }
     }
 
-    public BattleShoutCommand(Pawn pOwner, Pawn pTarget)
+    public BattleShoutCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Battle Cry Command";

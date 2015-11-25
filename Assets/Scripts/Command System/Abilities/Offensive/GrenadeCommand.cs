@@ -15,7 +15,7 @@ public class GrenadeCommand : NodeTargetingCommand {
         get { return Pathfinder.NodesWithinSteps(owner.currentNode, range); }
     }
 
-    public GrenadeCommand(Pawn pOwner, NodeBehaviour pTargetNode, int pRange)
+    public GrenadeCommand(Pawn pOwner, NodeBehaviour pTargetNode)
         : base(pOwner)
     {
         name = "Grenade Command";
