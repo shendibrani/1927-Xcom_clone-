@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FinishingAttackTemporaryEffect : PawnEffect
-{
+public class AimedMotivationTemporaryEffect : PawnEffect {
 
-    public FinishingAttackTemporaryEffect(Pawn pOwner)
+    public AimedMotivationTemporaryEffect(Pawn pOwner)
         : base(pOwner, -1, EffectType.TEMPORARY)
     {
+        hitMulti = 100d;
+        critChanceMod = 1d;
     }
 
     public override void OnTurn() { }
     public override void OnAttack() { }
     public override void OnDefense(Pawn pOther) { }
-    public override void OnHit(Pawn pOther, int value)
-    {
-        owner.GetComponent<Health>().Damage(owner.GetComponent<Health>().health);
-        owner.EffectList.Remove(this);
-    }
+    public override void OnHit(Pawn pOther, int value) { }
     public override void OnRemove() { owner.EffectList.Remove(this); }
 }
