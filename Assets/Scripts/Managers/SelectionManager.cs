@@ -11,14 +11,13 @@ public class SelectionManager
 			if (instance._selected != null){
 				instance._selected.OnDeselect();
 			}
+			if(instance.SelectionChange != null){
+				instance.SelectionChange.Invoke(instance._selected, value);
+			}
 			instance._selected = value;
 			instance._selected.OnSelect();
 
 			//Debug.Log("Selection");
-
-			if(instance.SelectionChange != null){
-				instance.SelectionChange.Invoke();
-			}
 		}
 	}
 
@@ -48,11 +47,12 @@ public class SelectionManager
 
 	private static SelectionManager _instance;
 
-	public delegate void VoidVoidDelegate();
+	public delegate void SelectionDelegate(Selectable previous, Selectable current);
 
-	public event VoidVoidDelegate SelectionChange;
+	public event SelectionDelegate SelectionChange;
 
 	private SelectionManager ()
 	{
+		SelectionChange += HighlightingManager.instance.ComputeHighlightChange;
 	}
 }
