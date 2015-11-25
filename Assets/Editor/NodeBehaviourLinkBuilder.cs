@@ -16,8 +16,15 @@ public class NodeBehaviourLinkBuilder : Editor {
 				EditorUtility.SetDirty(node);
 			}
 
-			foreach(GridMovementBehaviour gmb in FindObjectsOfType<GridMovementBehaviour>()){
-				gmb.position = gmb.StartingNode.offsetPosition;
+			foreach(SlopeBehaviour node in FindObjectsOfType<SlopeBehaviour>()){
+				node.NodeSetup();
+				EditorUtility.SetDirty(node);
+			}
+
+			foreach(GridNavMeshWrapper wrapper in FindObjectsOfType<GridNavMeshWrapper>()){
+				if(wrapper.StartingNode != null){
+					wrapper.position = wrapper.StartingNode.offsetPosition;
+				}
 			}
 		}
 	}

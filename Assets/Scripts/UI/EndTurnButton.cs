@@ -14,6 +14,7 @@ public class EndTurnButton : MonoBehaviour
 	{
 		Debug.Log ("End Turn");
 		TurnManager.instance.NextTurn ();
+		SelectionManager.selected = null;
 	}
 }
 
