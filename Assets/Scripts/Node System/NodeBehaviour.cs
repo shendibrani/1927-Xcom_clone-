@@ -27,6 +27,8 @@ public class NodeBehaviour : MonoBehaviour, Targetable {
 		}
 	}
 
+	public PawnEffect tileEffect { get; protected set;}
+
 	public List<NodeBehaviour> links { get; protected set; }
 	
 	protected virtual void Start () 
