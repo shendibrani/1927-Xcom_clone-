@@ -49,7 +49,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 464068}
   m_Layer: 0
-  m_Name: 008_Pavement_Center
+  m_Name: 001_Pavement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

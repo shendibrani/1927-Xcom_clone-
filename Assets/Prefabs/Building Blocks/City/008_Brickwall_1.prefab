@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455388}
   m_Layer: 0
-  m_Name: 029_Brickwall_1_Up
+  m_Name: 008_Brickwall_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

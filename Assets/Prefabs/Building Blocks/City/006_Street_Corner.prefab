@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 479482}
   m_Layer: 0
-  m_Name: 017_Street_Corner_UpRight
+  m_Name: 006_Street_Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

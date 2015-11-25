@@ -32,7 +32,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 458296}
   m_Layer: 0
-  m_Name: 013_Pavement_Down
+  m_Name: 002_Pavement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
