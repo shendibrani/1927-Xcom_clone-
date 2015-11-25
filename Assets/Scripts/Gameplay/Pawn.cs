@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(GridMovementBehaviour))]
+[RequireComponent(typeof(GridNavMeshWrapper))]
 [RequireComponent(typeof(Health))]
-public class Pawn : MonoBehaviour
+public class Pawn : MonoBehaviour, Targetable
 {
     public Player owner;
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
@@ -18,11 +18,15 @@ public class Pawn : MonoBehaviour
     //Weapon weapon;
 
     int actionPointsPerTurn = 3;
-
-    int actionPoints = 3;
     int movement;
-    int accuracy = 15;
+    int actionPoints = 3;
+    public int accuracy
+    {
+        get;
+        private set;
+    }
 
+	#region Properties
     public int ActionPoints
     {
         get { return actionPoints + actionPointsMod - actionPointsSpent; }
@@ -51,7 +55,10 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.actionPointMod;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.actionPointMod;
             }
@@ -63,19 +70,25 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.accuracyMod;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.accuracyMod;
             }
             return tmp;
         }
     }
-    public int accuracyMulti
+    public double accuracyMulti
     {
         get
         {
-            int tmp = 0;
-            foreach (PawnEffect e in EffectList)
+            double tmp = 0;
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.accuracyMulti;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.accuracyMulti;
             }
@@ -87,7 +100,10 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.hitMod;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.hitMod;
             }
@@ -99,7 +115,10 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.hitMulti;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.hitMulti;
             }
@@ -111,7 +130,10 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.damageMod;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.damageMod;
             }
@@ -123,7 +145,10 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.damageMulti;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.damageMulti;
             }
@@ -135,7 +160,10 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            foreach (PawnEffect e in EffectList)
+			if(currentNode.tileEffect != null){
+				tmp += currentNode.tileEffect.critChanceMod;
+			}
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.critChanceMod;
             }
@@ -160,10 +188,7 @@ public class Pawn : MonoBehaviour
         get { return LineOfSightManager.GetSightList(this); }
     }
 
-    public List<Pawn> validTargets
-    {
-        get { return sightList.FindAll(x => Vector3.Distance(transform.position, x.transform.position) <= Weapon.range); }
-    }
+	#endregion
 
     public Command move;
     public Command attack;
@@ -178,7 +203,10 @@ public class Pawn : MonoBehaviour
     {
         actionPointsSpent = 0;
 
-        for (int i = effectList.Count - 1; i >= 0; i--)
+		if(currentNode.tileEffect != null){
+			currentNode.tileEffect.Turn();
+		}
+		for (int i = effectList.Count - 1; i >= 0; i--)
         {
             effectList[i].Turn();
         }
@@ -186,12 +214,12 @@ public class Pawn : MonoBehaviour
 
     public NodeBehaviour currentNode
     {
-        get { return GetComponent<GridMovementBehaviour>().currentNode; }
+        get { return GetComponent<GridNavMeshWrapper>().currentNode; }
     }
 
     public List<NodeBehaviour> reachableNodes
     {
-        get { return Pathfinder.NodesWithinSteps(currentNode, movement); }
+        get { return Pathfinder.NodesWithinSteps(currentNode, Movement); }
     }
 
     public override string ToString()
@@ -199,19 +227,26 @@ public class Pawn : MonoBehaviour
         return name;
     }
 
-	public CoverState GetCoverState(Pawn other)
-	{
-		Vector3 direction = other.currentNode.position - currentNode.position;
-		direction.Normalize ();
-	
-		if (Physics.Raycast (transform.position + (Vector3.up * 1.5f), direction, 1f)) {
-			return CoverState.Full;
-		}
-		if (Physics.Raycast (transform.position + (Vector3.up * 0.5f), direction, 1f)) {
-			return CoverState.Half;
-		}
+    public CoverState GetCoverState(Pawn other)
+    {
+        Vector3 direction = other.currentNode.position - currentNode.position;
+        direction.Normalize();
 
-		return CoverState.None;
+        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, 1f))
+        {
+            return CoverState.Full;
+        }
+        if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
+        {
+            return CoverState.Half;
+        }
+
+        return CoverState.None;
+    }
+
+	public void OnTargeted(Pawn targeter)
+	{
+
 	}
 
     #region Callbacks
@@ -219,6 +254,7 @@ public class Pawn : MonoBehaviour
     #endregion
 }
 
-public enum CoverState {
-	None, Half, Full
+public enum CoverState
+{
+    None, Half, Full
 }

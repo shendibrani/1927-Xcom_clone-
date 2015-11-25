@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public abstract class Command 
+public abstract class Command
 {
 	public string name {get; protected set;}
 
@@ -13,7 +14,6 @@ public abstract class Command
 
 	public abstract bool Execute ();
 
-	public abstract bool Undo ();
 
 	public override string ToString ()
 	{
@@ -34,5 +34,27 @@ public abstract class Command
             return true;
         }
     }
+}
+
+public abstract class NodeTargetingCommand : Command
+{
+	public NodeTargetingCommand (Pawn pOwner) : base (pOwner){}
+
+	public abstract List<NodeBehaviour> validTargets { get; } 
+}
+
+public abstract class PawnTargetingCommand : Command
+{
+	public PawnTargetingCommand (Pawn pOwner) : base (pOwner){}
+
+    //defaults to targeting enemy pawns
+    public virtual List<Pawn> validTargets { get { return owner.sightList.FindAll(x => (Vector3.Distance(owner.transform.position, x.transform.position) < owner.Weapon.range) && (x.owner != owner.owner)); } }
+}
+
+public abstract class TargetableTargetingCommand : Command
+{
+	public TargetableTargetingCommand (Pawn pOwner) : base (pOwner){}
+	
+	public abstract List<Targetable> validTargets { get; } 
 }
 

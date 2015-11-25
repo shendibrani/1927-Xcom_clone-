@@ -13,8 +13,6 @@ public class NodeHighlightManager : MonoBehaviour
 	void Start ()
 	{
 		SetState (NodeHighlightStates.Deselected);
-		GetComponent<Selectable> ().Deselected += OnDeselected;
-		GetComponent<Selectable> ().Selected += OnSelected;
 	}
 
 	void Update(){
@@ -46,16 +44,6 @@ public class NodeHighlightManager : MonoBehaviour
 		
 		Highlights [(int)state].SetHighlight (true);
 	}
-
-	void OnSelected(){
-		//Debug.Log ("Selected");
-		SetState (NodeHighlightStates.Selected);
-	}
-	
-	void OnDeselected(){
-		//Debug.Log ("Deselected");
-		SetState (NodeHighlightStates.Deselected);
-	}
 }
 
 public enum NodeHighlightStates
@@ -63,5 +51,7 @@ public enum NodeHighlightStates
 	Deselected = -1,
 	Selected = 0,
 	Reachable = 1,
+    Targetable = 2,
+    Targeted = 3
 }
 

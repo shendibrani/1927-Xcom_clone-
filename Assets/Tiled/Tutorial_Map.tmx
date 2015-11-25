@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="44">
+ <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="52">
   <terraintypes>
    <terrain name="Pavement" tile="-1"/>
    <terrain name="Null" tile="-1"/>
@@ -138,6 +138,30 @@
   <tile id="43">
    <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_043_SLopeDummy.png"/>
   </tile>
+  <tile id="44">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_044_Pavement_Brickwall_R.png"/>
+  </tile>
+  <tile id="45">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_045_Pavement_Brickwall_U.png"/>
+  </tile>
+  <tile id="46">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_046_Pavement_Brickwall_D.png"/>
+  </tile>
+  <tile id="47">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_046_Pavement_Brickwall_L.png"/>
+  </tile>
+  <tile id="48">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_047_Bench.png"/>
+  </tile>
+  <tile id="49">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_048_Bench_90.png"/>
+  </tile>
+  <tile id="50">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_049_Bench_180.png"/>
+  </tile>
+  <tile id="51">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_050_Bench_270.png"/>
+  </tile>
  </tileset>
  <layer name="Level_1" width="30" height="30">
   <data encoding="csv">
@@ -207,18 +231,18 @@
 34,35,35,35,35,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="Level_3" width="30" height="30" visible="0">
+ <layer name="Level_3" width="30" height="30">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,30,0,0,0,0,0,0,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,9,9,9,9,9,9,9,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,30,29,0,0,0,0,0,9,9,9,9,9,9,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,9,9,9,9,9,9,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,9,9,9,9,9,9,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,9,9,9,9,9,9,

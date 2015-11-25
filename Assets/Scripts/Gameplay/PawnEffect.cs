@@ -10,7 +10,7 @@ public abstract class PawnEffect {
 
     public int actionPointMod { get; protected set; }
     public int accuracyMod { get; protected set; }
-    public int accuracyMulti { get; protected set; }
+    public double accuracyMulti { get; protected set; }
     public double hitMod { get; protected set; }
     public double hitMulti { get; protected set; }
     public double damageMod { get; protected set; }

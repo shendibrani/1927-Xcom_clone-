@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &411780
 Transform:
   m_ObjectHideFlags: 1
@@ -39,10 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10a02c449b5fa440bcb6e9b14e6fb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: 2a8c6da9771e5614c9b146773c9e7bdc, type: 3}
+  TiledSaveFile: {fileID: 102900000, guid: a684ccebe3fb4c848839b502c414ba63, type: 3}
   X_MarginDistance: 1
   Y_MarginDistance: 1
-  Z_MarginDistance: 0
+  Z_MarginDistance: 65535
   ParentOfInstantiations: {fileID: 0}
   defaultInstantiation: {fileID: 0}
   printLayersInnerInfo: 1
@@ -91,7 +91,11 @@ MonoBehaviour:
   - {fileID: 193370, guid: 48b5e0a26608c164b97a7accb382917f, type: 2}
   - {fileID: 160978, guid: aa93364c16072be43b218bf032d2e89c, type: 2}
   - {fileID: 172300, guid: 25e51b4a4bbdbdb4288c18c61a3ecc05, type: 2}
-  - {fileID: 190328, guid: b532b0ae72a12924a856a12016250e50, type: 2}
+  - {fileID: 0}
+  - {fileID: 153110, guid: 1acf7383837098046b5d53664dff4b67, type: 2}
+  - {fileID: 115446, guid: 1b28afd1cd860c94fa01f12cb9efc166, type: 2}
+  - {fileID: 137022, guid: 205479a724f4eb54c82bfe67beebd61c, type: 2}
+  - {fileID: 166408, guid: 7c8d3a48fcaed0944b50a95bc85471fe, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

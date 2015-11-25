@@ -4,12 +4,30 @@ using System.Collections;
 using System.Collections.Generic;
 
 [ExecuteInEditMode]
-public class NodeBehaviour : MonoBehaviour {
+public class NodeBehaviour : MonoBehaviour, Targetable {
 	
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
 	public static bool debug;
+
+    public bool isOccupied { get { return (currentObject != null); } }
+
+	private Targetable _currentObject;
+    public Targetable currentObject {
+		get{ return _currentObject;}
+		set {
+			if (_currentObject is Pawn) {
+				AddOnLeaveEffect(_currentObject as Pawn);
+			}
+			_currentObject = value;
+			if (_currentObject is Pawn) {
+				AddOnEnterEffect(_currentObject as Pawn);
+			}
+		}
+	}
+
+	public PawnEffect tileEffect { get; protected set;}
 
 	public List<NodeBehaviour> links { get; protected set; }
 	
@@ -135,6 +153,11 @@ public class NodeBehaviour : MonoBehaviour {
 		return null;
 	}
 
+    public void OnTargeted(Pawn targeter)
+    {
+        GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Targeted);
+    }
+
 	void OnDrawGizmos()
 	{
 		if (links == null) {
@@ -144,6 +167,16 @@ public class NodeBehaviour : MonoBehaviour {
 		foreach (NodeBehaviour node in links) {
 			Gizmos.DrawLine(position, node.position);
 		}
+	}
+
+	void AddOnEnterEffect (Pawn target)
+	{
+		
+	}
+
+	void AddOnLeaveEffect(Pawn target)
+	{
+
 	}
 }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(Selectable))]
 [RequireComponent(typeof(Pawn))]
-public class PawnHighlightingManager : MonoBehaviour, Targetable
+public class PawnHighlightingManager : MonoBehaviour
 {
 	[SerializeField] List<Highlightable> Highlights;
 
@@ -15,9 +15,7 @@ public class PawnHighlightingManager : MonoBehaviour, Targetable
 	void Start ()
 	{
 		SetState (PawnHighlightStates.Deselected);
-		GetComponent<Selectable> ().Deselected += OnDeselected;
-		GetComponent<Selectable> ().Selected += OnSelected;
-		GetComponent<GridMovementBehaviour> ().DestinationReached += UpdateNodes;
+		GetComponent<GridNavMeshWrapper> ().DestinationReached += UpdateNodes;
 	}
 
 	public void SetState(PawnHighlightStates pState){
@@ -31,32 +29,13 @@ public class PawnHighlightingManager : MonoBehaviour, Targetable
 	void Update(){
 		if (dirty) {
 			Debug.Log("Clearing Dirty flag");
-			UpdateHighlight ();
+			UpdateHighlight();
 			dirty = false;
 		}
 	}
 
-	void OnSelected()
+	void UpdateHighlight()
 	{
-		Debug.Log ("Selected");
-		SetState (PawnHighlightStates.Selected);
-		UpdateNodes ();
-	}
-	
-	void OnDeselected()
-	{
-		Debug.Log ("Deselected");
-		SetState (PawnHighlightStates.Deselected);
-		UpdateNodes ();
-	}
-
-	public void OnTargeted(Pawn targeter)
-	{
-		SetState (PawnHighlightStates.Targetable);
-	}
-
-	void UpdateHighlight(){
-
 		foreach (Highlightable h in Highlights) {
 			h.SetHighlight (false);
 		}
@@ -64,23 +43,9 @@ public class PawnHighlightingManager : MonoBehaviour, Targetable
 		if (state != PawnHighlightStates.Deselected) {
 			Highlights [(int)state].SetHighlight (true);
 		}
-
-		switch (state) {
-		case PawnHighlightStates.Deselected:
-			foreach (PawnHighlightingManager p in FindObjectsOfType<PawnHighlightingManager>()) {
-				p.SetState (PawnHighlightStates.Deselected);
-			}
-
-			break;
-		case PawnHighlightStates.Selected:
-			foreach (Pawn p in GetComponent<Pawn>().validTargets) {
-				p.GetComponent<PawnHighlightingManager> ().OnTargeted(GetComponent<Pawn>());
-			}
-			break;
-		}
 	}
 
-	void UpdateNodes(){
+	public void UpdateNodes(){
 		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
 			node.SetState (NodeHighlightStates.Deselected);
 		}
