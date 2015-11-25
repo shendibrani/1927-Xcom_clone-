@@ -18,10 +18,13 @@ public class Pawn : MonoBehaviour, Targetable
     //Weapon weapon;
 
     int actionPointsPerTurn = 3;
-
-    int actionPoints = 3;
     int movement;
-    int accuracy = 15;
+    int actionPoints = 3;
+    public int accuracy
+    {
+        get;
+        private set;
+    }
 
 	#region Properties
     public int ActionPoints
@@ -55,7 +58,7 @@ public class Pawn : MonoBehaviour, Targetable
 			if(currentNode.tileEffect != null){
 				tmp += currentNode.tileEffect.actionPointMod;
 			}
-            foreach (PawnEffect e in EffectList)
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.actionPointMod;
             }
@@ -70,18 +73,18 @@ public class Pawn : MonoBehaviour, Targetable
 			if(currentNode.tileEffect != null){
 				tmp += currentNode.tileEffect.accuracyMod;
 			}
-            foreach (PawnEffect e in EffectList)
+			foreach (PawnEffect e in EffectList)
             {
                 tmp += e.accuracyMod;
             }
             return tmp;
         }
     }
-    public int accuracyMulti
+    public double accuracyMulti
     {
         get
         {
-            int tmp = 0;
+            double tmp = 0;
 			if(currentNode.tileEffect != null){
 				tmp += currentNode.tileEffect.accuracyMulti;
 			}
@@ -203,7 +206,6 @@ public class Pawn : MonoBehaviour, Targetable
 		if(currentNode.tileEffect != null){
 			currentNode.tileEffect.Turn();
 		}
-		
 		for (int i = effectList.Count - 1; i >= 0; i--)
         {
             effectList[i].Turn();
@@ -217,7 +219,7 @@ public class Pawn : MonoBehaviour, Targetable
 
     public List<NodeBehaviour> reachableNodes
     {
-        get { return Pathfinder.NodesWithinSteps(currentNode, movement); }
+        get { return Pathfinder.NodesWithinSteps(currentNode, Movement); }
     }
 
     public override string ToString()
