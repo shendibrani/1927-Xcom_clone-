@@ -27,7 +27,7 @@ public class BattleShoutCommand : PawnTargetingCommand
 
         foreach (Pawn p in validTargets)
         {
-            owner.EffectList.Add(new AccuracyBuff(owner));
+            p.EffectList.Add(new AccuracyBuff(p));
         }
         return true;
     }

@@ -10,7 +10,12 @@ public class LoadXML : ReadXML {
     private Vector3 instanceLocation;
     public GameObject ParentOfInstantiations;
     public GameObject defaultInstantiation;
-
+    
+    const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
+    const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
+    const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+    const uint FLIP_MASK = ~(FLIPPED_HORIZONTALLY_FLAG | FLIPPED_VERTICALLY_FLAG | FLIPPED_DIAGONALLY_FLAG);
+    
     public bool generateMesh;
     // Use this for initialization
     public List<GameObject> PrefabLoader;
@@ -47,13 +52,25 @@ public class LoadXML : ReadXML {
                     for (int i = 0; i < WIDTH; i++)
                     {
 
-                        instanceLocation = new Vector3( i * X_MarginDistance, k * Y_MarginDistance, j * Z_MarginDistance);
-                        int tile = data[j, i, k];
+                        instanceLocation = new Vector3( i * X_MarginDistance, k * Y_MarginDistance, j * -Z_MarginDistance);
+                        var tile = data[j, i, k];
+                       
+                        bool flippedHorizontal;
+                        bool flippedVertical;
+                        bool flippedDiagonal;
 
-                        if (tile != 0)
+                        int tileID = GetTiledID(tile, out flippedHorizontal, out flippedVertical, out flippedDiagonal);
+
+                        if (tileID != 0)
                         {
-                            tempStore = (GameObject)Instantiate(PrefabLoader[tile], instanceLocation, Quaternion.identity);
-                            //tempStore = (GameObject)Resources.Load("//Assets//Tiled//Cube");
+                            Quaternion rotation = Quaternion.identity;
+                            //if (flippedHorizontal) rotation = Quaternion.Euler(0, 180, 0);
+                            if (flippedVertical & !flippedDiagonal) rotation = Quaternion.Euler(0, 90, 0);
+                            else if (flippedDiagonal & !flippedVertical) rotation = Quaternion.Euler(0, 180, 0);
+                            else if (flippedDiagonal & flippedVertical) rotation = Quaternion.Euler(0, 270, 0);
+
+                            Debug.Log("Tile " + tileID);
+                            tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);
                             generatedObjects.Add(tempStore);
                             tempStore.transform.parent = layerParent.transform;
                             tempStore.tag = "CustomGenerated";
@@ -65,6 +82,18 @@ public class LoadXML : ReadXML {
 
         }
         
+    }
+
+    public static int GetTiledID(uint Data, out bool flippedH, out bool flippedD, out bool flippedV) {
+        bool FlippedHorizontally = (Data & FLIPPED_HORIZONTALLY_FLAG) > 0;
+        bool FlippedVertically = (Data & FLIPPED_VERTICALLY_FLAG) > 0;
+        bool FlippedDiagonally = (Data & FLIPPED_DIAGONALLY_FLAG) > 0;
+
+        flippedH = FlippedHorizontally;
+        flippedD = FlippedDiagonally;
+        flippedV = FlippedVertically;
+
+        return (int)(Data & FLIP_MASK);
     }
 
     public void DestroyOthers() {
