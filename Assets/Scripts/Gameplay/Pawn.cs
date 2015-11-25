@@ -23,6 +23,7 @@ public class Pawn : MonoBehaviour, Targetable
     int movement;
     int accuracy = 15;
 
+	#region Properties
     public int ActionPoints
     {
         get { return actionPoints + actionPointsMod - actionPointsSpent; }
@@ -160,7 +161,7 @@ public class Pawn : MonoBehaviour, Targetable
         get { return LineOfSightManager.GetSightList(this); }
     }
 
-   
+	#endregion
 
     public Command move;
     public Command attack;
