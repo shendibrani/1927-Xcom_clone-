@@ -12,7 +12,7 @@ public class ActionBoostCommand : PawnTargetingCommand
         get { return base.validTargets.FindAll(x => x == owner); }
     }
 
-    public ActionBoostCommand(Pawn pOwner, Pawn pTarget)
+    public ActionBoostCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Action Boost Command";
