@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class CombineChildren : MonoBehaviour
 {
     
-
     void Start()
     {
         Matrix4x4 myTransform = transform.worldToLocalMatrix;

@@ -4,12 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 
 [ExecuteInEditMode]
-public class NodeBehaviour : MonoBehaviour {
+public class NodeBehaviour : MonoBehaviour, Targetable {
 	
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
 	public static bool debug;
+
+    public bool isOccupied { get { return (currentObject != null); } }
+
+    public Targetable currentObject;
 
 	public List<NodeBehaviour> links { get; protected set; }
 	
@@ -134,6 +138,11 @@ public class NodeBehaviour : MonoBehaviour {
 
 		return null;
 	}
+
+    public void OnTargeted(Pawn targeter)
+    {
+        GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Targeted);
+    }
 
 	void OnDrawGizmos()
 	{

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SureHitCommand : Command {
+public class SureHitCommand : PawnTargetingCommand {
 
     Pawn target;
     Weapon weapon;
@@ -21,16 +21,9 @@ public class SureHitCommand : Command {
 
         if (!CheckCost(actionCost)) return false;
 
-        owner.EffectList.Add(new SureHitTemporaryEffect(owner));
+        target.EffectList.Add(new SureHitTemporaryEffect(target));
 
         return new AttackCommand(owner, target).Attack();
 
-    }
-
-    public override bool Undo()
-    {
-        //target.GetComponent<Health>().Heal(weapon.damage);
-
-        return true;
     }
 }
