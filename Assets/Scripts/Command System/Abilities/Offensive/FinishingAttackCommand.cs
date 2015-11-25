@@ -6,7 +6,6 @@ public class FinishingAttackCommand : PawnTargetingCommand
 {
 
     Pawn target;
-    Weapon weapon;
     int actionCost = 2;
 
     public override List<Pawn> validTargets
@@ -17,9 +16,8 @@ public class FinishingAttackCommand : PawnTargetingCommand
     public FinishingAttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
     {
-        name = "Execution";
+        name = "Execution Command";
         target = pTarget;
-        weapon = owner.Weapon;
     }
 
     public override bool Execute()
@@ -29,7 +27,7 @@ public class FinishingAttackCommand : PawnTargetingCommand
 
         if (validTargets.Contains(target))
         {
-            owner.EffectList.Add(new SureHitTemporaryEffect(owner));
+            target.EffectList.Add(new FinishingAttackTemporaryEffect(target));
 
             return new AttackCommand(owner, target).Attack();
         }

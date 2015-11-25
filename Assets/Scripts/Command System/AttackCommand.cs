@@ -69,14 +69,18 @@ public class AttackCommand : PawnTargetingCommand
                             weapon.weaponEffects[i].Execute(owner, weapon, target);
                         }
                     }
-                    for (int i = owner.EffectList.Count - 1; i >= 0; i--)
+                    for (int i = target.EffectList.Count - 1; i >= 0; i--)
                     {
-                        owner.EffectList[i].OnRemove();
+                        target.EffectList[i].OnHit(owner, damage);
                     }
                 }
                 else
                 {
                     Debug.Log(owner + " missed " + target);
+                }
+                for (int i = owner.EffectList.Count - 1; i >= 0; i--)
+                {
+                    owner.EffectList[i].OnRemove();
                 }
                 return true;
             }

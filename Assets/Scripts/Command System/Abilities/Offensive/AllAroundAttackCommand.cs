@@ -15,7 +15,7 @@ public class AllAroundAttackCommand : PawnTargetingCommand
         weapon = owner.Weapon;
     }
 
-    public override List<Pawn> validTargets { get { return base.validTargets.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < weapon.range); } }
+    public override List<Pawn> validTargets { get { return base.validTargets.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < 1); } }
 
     public override bool Execute()
     {

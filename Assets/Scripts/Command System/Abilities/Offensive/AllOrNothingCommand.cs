@@ -6,7 +6,6 @@ public class AllOrNothingCommand : PawnTargetingCommand
 {
 
     Pawn target;
-    Weapon weapon;
     int actionCost = 2;
 
     public AllOrNothingCommand(Pawn pOwner, Pawn pTarget)
@@ -14,7 +13,6 @@ public class AllOrNothingCommand : PawnTargetingCommand
     {
         name = "Vital Strike Command";
         target = pTarget;
-        weapon = owner.Weapon;
     }
 
     public override bool Execute()
