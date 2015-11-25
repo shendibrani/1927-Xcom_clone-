@@ -5,18 +5,21 @@ public class Selectable : MonoBehaviour
 {
 
 	public delegate void VoidVoidDelegate();
-	
+
+	[SerializeField] bool debug;
+
 	public event VoidVoidDelegate Selected, Deselected;
 
 	void OnMouseEnter()
 	{
+		if(debug){Debug.Log("Hovered");}
 		SelectionManager.hovered = this;
 	}
 
 	void OnMouseOver()
 	{
 		if (Input.GetMouseButtonUp(0)){
-			//Debug.Log ("Select");
+			if(debug){Debug.Log("Select");}
 			SelectionManager.selected = this;
 		}
 	}

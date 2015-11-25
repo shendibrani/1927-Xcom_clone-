@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11444860}
   - 114: {fileID: 11414932}
   - 114: {fileID: 11404258}
-  - 64: {fileID: 6472222}
+  - 65: {fileID: 6527894}
   m_Layer: 0
   m_Name: Slope
   m_TagString: Untagged
@@ -125,18 +125,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168894}
   m_Mesh: {fileID: 4300000, guid: 789a1cf8471fa55449314def6a0410a3, type: 3}
---- !u!64 &6472222
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 789a1cf8471fa55449314def6a0410a3, type: 3}
 --- !u!65 &6513614
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -148,6 +136,18 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6527894
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .999999821, y: .99999994, z: .999999821}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6537794
 BoxCollider:
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ece97bdfecb824299a0896b273412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!114 &11414932
 MonoBehaviour:
   m_ObjectHideFlags: 1
