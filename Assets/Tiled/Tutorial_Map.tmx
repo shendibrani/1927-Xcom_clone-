@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="44">
+ <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="45">
   <terraintypes>
    <terrain name="Pavement" tile="-1"/>
    <terrain name="Null" tile="-1"/>
@@ -138,6 +138,9 @@
   <tile id="43">
    <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_043_SLopeDummy.png"/>
   </tile>
+  <tile id="44">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_0_Empty.png"/>
+  </tile>
  </tileset>
  <layer name="Level_1" width="30" height="30">
   <data encoding="csv">
@@ -187,7 +190,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,30,29,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,41,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,41,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,41,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,45,0,0,0,0,0,0,41,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,0,0,0,0,0,0,0,33,0,0,0,0,0,0,

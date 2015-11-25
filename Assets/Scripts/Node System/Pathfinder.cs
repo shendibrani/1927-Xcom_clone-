@@ -30,7 +30,7 @@ public class Pathfinder
 			tested.Add(currentNode);
 			
 			foreach (NodeBehaviour node in currentNode.links){
-				if(!tested.Contains(node)){
+				if(!tested.Contains(node) && !node.isOccupied){
 					if(debug) Debug.Log("Added node to testing");
 					testing.Add(node);
 				}
