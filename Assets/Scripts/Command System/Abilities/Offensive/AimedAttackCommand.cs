@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class SureHitCommand : PawnTargetingCommand {
+public class AimedAttackCommand : PawnTargetingCommand {
 
-    Pawn target;
-    Weapon weapon;
-    int actionCost = 2;
+	Pawn target;
+    int actionCost = 4;
 
-    public SureHitCommand(Pawn pOwner, Pawn pTarget)
+    public AimedAttackCommand(Pawn pOwner, Pawn pTarget)
         : base(pOwner)
     {
         name = "Sure Hit Command";
         target = pTarget;
-        weapon = owner.Weapon;
     }
 
     public override bool Execute()

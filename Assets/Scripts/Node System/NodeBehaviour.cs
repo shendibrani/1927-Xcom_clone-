@@ -13,7 +13,21 @@ public class NodeBehaviour : MonoBehaviour, Targetable {
 
     public bool isOccupied { get { return (currentObject != null); } }
 
-    public Targetable currentObject;
+	private Targetable _currentObject;
+    public Targetable currentObject {
+		get{ return _currentObject;}
+		set {
+			if (_currentObject is Pawn) {
+				AddOnLeaveEffect(_currentObject as Pawn);
+			}
+			_currentObject = value;
+			if (_currentObject is Pawn) {
+				AddOnEnterEffect(_currentObject as Pawn);
+			}
+		}
+	}
+
+	public PawnEffect tileEffect { get; protected set;}
 
 	public List<NodeBehaviour> links { get; protected set; }
 	
@@ -153,6 +167,16 @@ public class NodeBehaviour : MonoBehaviour, Targetable {
 		foreach (NodeBehaviour node in links) {
 			Gizmos.DrawLine(position, node.position);
 		}
+	}
+
+	void AddOnEnterEffect (Pawn target)
+	{
+		
+	}
+
+	void AddOnLeaveEffect(Pawn target)
+	{
+
 	}
 }
 
