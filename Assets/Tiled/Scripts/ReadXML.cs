@@ -9,7 +9,7 @@ public class ReadXML : MonoBehaviour {
 
     [NonSerialized]
     public int HEIGHT, WIDTH, DEPTH;
-    public int[,,] data;
+    public uint[,,] data;
     
     public void ReadXMLFile() {
 
@@ -24,7 +24,7 @@ public class ReadXML : MonoBehaviour {
         HEIGHT = int.Parse(mapNode.Attributes["height"].Value);
         DEPTH = layerNodeList.Count;
 
-        data = new int[HEIGHT, WIDTH, DEPTH];
+        data = new uint[HEIGHT, WIDTH, DEPTH];
 
         for (int k = 0; k < DEPTH; k++)
         {
@@ -41,9 +41,9 @@ public class ReadXML : MonoBehaviour {
                 {
 
                     string col = cols[i];
-                    int temp = int.Parse(col);
-                    data[j - 1, i, k] = int.Parse(col);
-
+                    //int temp = int.Parse(col);
+                    data[j - 1, i, k] = uint.Parse(col);
+                    
                 }
             }
 
