@@ -10,15 +10,21 @@ public class DestroyableProp : MonoBehaviour, Targetable
 
 	void Start ()
 	{
-		destroyed.material.color -= new Color (0, 0, 0, 1); 
+		destroyed.enabled = false;
 		GetComponent<Health> ().OnDeath.AddListener(ShowDestroyed);
 		currentNode.currentObject = this;
 	}
 
+//	void Update(){
+//		if (Input.GetKeyDown (KeyCode.Space)) {
+//			ShowDestroyed();
+//		}
+//	}
+
 	void ShowDestroyed()
 	{
-		intact.material.color -= new Color (0, 0, 0, 1); 
-		destroyed.material.color += new Color (0, 0, 0, 1);
+		intact.enabled = false;
+		destroyed.enabled = true;
 		currentNode.currentObject = null;
 		GetComponent<NavMeshObstacle> ().enabled = false;
 	}

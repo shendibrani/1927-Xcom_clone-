@@ -74,7 +74,7 @@ public class LoadXML : ReadXML {
                             tempStore.transform.parent = layerParent.transform;
                             tempStore.tag = "CustomGenerated";
                         }
-						Debug.Log("nr of objects in scene: " + generatedObjects.Count);
+						UnityEngine.Debug.Log("nr of objects in scene: " + generatedObjects.Count);
 						runOnce = true;
                     }
                 }
