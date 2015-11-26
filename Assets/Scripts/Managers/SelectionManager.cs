@@ -14,6 +14,9 @@ public class SelectionManager
 			if(instance.SelectionChange != null){
 				instance.SelectionChange.Invoke(instance._selected, value);
 			}
+
+			instance._selected = value;
+
 			if (instance._selected != null){
 				instance._selected.OnSelect();
 			}

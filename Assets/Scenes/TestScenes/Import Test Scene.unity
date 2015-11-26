@@ -573,7 +573,7 @@ Transform:
   - {fileID: 914985814}
   - {fileID: 1137478943}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &644106244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1732,7 @@ Transform:
   - {fileID: 35128223}
   - {fileID: 644106248}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1622795673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2044,7 @@ Transform:
   - {fileID: 1378127679}
   - {fileID: 1622795674}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1931612990
 GameObject:
   m_ObjectHideFlags: 0

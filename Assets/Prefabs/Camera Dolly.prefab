@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11479052}
   - 114: {fileID: 11418668}
   - 114: {fileID: 11418264}
+  - 114: {fileID: 11417626}
   m_Layer: 0
   m_Name: Camera Dolly
   m_TagString: Untagged
@@ -112,6 +113,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117994}
   m_Enabled: 1
+--- !u!114 &11417626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d9913b8afa85d4ea230173adf3b4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easingFactor: .600000024
 --- !u!114 &11418264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 7.5
   rotateSpeed: 270
+  minDistance: 10
+  maxDistance: 30
 --- !u!114 &11458702
 MonoBehaviour:
   m_ObjectHideFlags: 1

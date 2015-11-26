@@ -144,7 +144,7 @@ public class Pathfinder
 		
 		while(parser.Count != 0 && steps > 0){
 			foreach (NodeBehaviour neighbour in parser){
-				if(!list.Contains(neighbour)){
+				if(!list.Contains(neighbour) && !neighbour.isOccupied){
 					list.Add(neighbour);
 					temp.AddRange(neighbour.links);
 				}

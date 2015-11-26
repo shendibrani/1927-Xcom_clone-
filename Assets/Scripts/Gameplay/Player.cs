@@ -46,9 +46,10 @@ public class Player : MonoBehaviour
     {
         if (!TurnManager.instance.busy && TurnManager.instance.turnPlayer == this)
         {
-            Debug.Log(this);
+			if(debug) Debug.Log(SelectionManager.selected);
             if (Input.GetMouseButtonUp(1) && SelectionManager.selected != null)
             {
+				if(debug) Debug.Log("Right Click");
                 if (SelectionManager.selected.GetComponent<Pawn>() != null)
                 {
                     if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null)
