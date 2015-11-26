@@ -5,12 +5,13 @@ using System.Collections;
 [RequireComponent(typeof(NavMeshObstacle))]
 public class DestroyableProp : MonoBehaviour, Targetable
 {
-	[SerializeField] Renderer intact, destroyed;
+	Renderer intact; //destroyed;
 	[SerializeField] NodeBehaviour currentNode;
 
 	void Start ()
 	{
-		destroyed.enabled = false;
+		//destroyed.enabled = false;
+		intact = GetComponent<Renderer> ();
 		GetComponent<Health> ().OnDeath.AddListener(ShowDestroyed);
 		currentNode.currentObject = this;
 	}
@@ -24,7 +25,7 @@ public class DestroyableProp : MonoBehaviour, Targetable
 	void ShowDestroyed()
 	{
 		intact.enabled = false;
-		destroyed.enabled = true;
+		//destroyed.enabled = true;
 		currentNode.currentObject = null;
 		GetComponent<NavMeshObstacle> ().enabled = false;
 	}
