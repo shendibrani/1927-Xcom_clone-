@@ -75,7 +75,8 @@ public class LoadXML : ReadXML {
                             tempStore.transform.parent = layerParent.transform;
                             tempStore.tag = "CustomGenerated";
                         }
-                        runOnce = true;
+						Debug.Log("nr of objects in scene: " + generatedObjects.Count);
+						runOnce = true;
                     }
                 }
             }
