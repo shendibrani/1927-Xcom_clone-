@@ -25,6 +25,7 @@ GameObject:
   - 4: {fileID: 499040}
   - 33: {fileID: 3386686}
   - 23: {fileID: 2311704}
+  - 64: {fileID: 6439084}
   m_Layer: 0
   m_Name: Roof_Top_R
   m_TagString: Untagged
@@ -87,6 +88,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170282}
+  m_Mesh: {fileID: 4300006, guid: 286b22712f0c72b449b609552bcaa051, type: 3}
+--- !u!64 &6439084
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
   m_Mesh: {fileID: 4300006, guid: 286b22712f0c72b449b609552bcaa051, type: 3}
 --- !u!1001 &100100000
 Prefab:
