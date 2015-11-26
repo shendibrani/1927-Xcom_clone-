@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939d15a367ed97c46b76099f67b45cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: 708893c6efeeb2c4ebdb9d4b8b3c0826, type: 3}
+  TiledSaveFile: {fileID: 102900000, guid: 09fc319f5f9f7d147b0fe61accad8e86, type: 3}
   printLayersInnerInfo: 0
   X_MarginDistance: 1
   Y_MarginDistance: 1
@@ -66,6 +66,14 @@ MonoBehaviour:
   - {fileID: 172300, guid: 25e51b4a4bbdbdb4288c18c61a3ecc05, type: 2}
   - {fileID: 199000, guid: 2073ff30c21c8b6448daaaa54e9b1735, type: 2}
   - {fileID: 182064, guid: 19e946501b034b945972d337888e42e7, type: 2}
+  - {fileID: 119144, guid: 4691df08c2feedd4fbdb770aaa216b6e, type: 2}
+  - {fileID: 171136, guid: 1d88e682b818a8b42a63d0ebc1e0cbe8, type: 2}
+  - {fileID: 101226, guid: 06dd9f0e70c74ac438a75e63998cce0e, type: 2}
+  - {fileID: 156220, guid: 49a02fb502217b4428fa3e7cf8e07f58, type: 2}
+  - {fileID: 137770, guid: a15db9e69eaea2440a9e865520b133c4, type: 2}
+  - {fileID: 100162, guid: e4fd3da2f6384bf43b20edaabdb5f066, type: 2}
+  - {fileID: 160978, guid: aa93364c16072be43b218bf032d2e89c, type: 2}
+  - {fileID: 193370, guid: 48b5e0a26608c164b97a7accb382917f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

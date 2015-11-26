@@ -43,6 +43,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 		currentNode = StartingNode;
 		currentDestination = StartingNode;
 		DestinationReached += TurnManager.instance.SetFree;
+		GetComponent<NavMeshAgent> ().updateRotation = false;
 	}
 	
 	void Update () 
@@ -56,14 +57,13 @@ public class GridNavMeshWrapper : MonoBehaviour
 					DestinationReached ();
 				}
 			}
-			modelRoot.forward = GetComponent<NavMeshAgent> ().velocity.normalized;
-			modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
+			UpdateRotation();
 		}
 	}
 	
 	bool ReachedDestination()
 	{
-		return GetComponent<NavMeshAgent>().remainingDistance < 1f;
+		return GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude == 0;
 	}
 	
 	public void SetPath(List<NodeBehaviour> pPath){
@@ -74,5 +74,14 @@ public class GridNavMeshWrapper : MonoBehaviour
 			stopped = false;
 		}
 	}
+
+	void UpdateRotation ()
+	{
+		if(GetComponent<NavMeshAgent> ().velocity.normalized.sqrMagnitude !=0){
+			modelRoot.forward = Vector3.Lerp(modelRoot.forward, GetComponent<NavMeshAgent> ().velocity.normalized, 0.5f);
+		}
+		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
+	}
+
 }
 
