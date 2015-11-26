@@ -8,7 +8,7 @@ public class DefendCommand : PawnTargetingCommand {
 
     public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => (Vector3.Distance(owner.transform.position, x.transform.position) < owner.Weapon.range) && (x.owner == owner.owner)); } }
 
-    public DefendCommand(Pawn pOwner, Pawn pTarget)
+    public DefendCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Defend Command";

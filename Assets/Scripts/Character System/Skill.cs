@@ -6,5 +6,4 @@ public class Skill{
     Command abilityCommand;
     string name;
     string description;
-	
 }

@@ -18,27 +18,35 @@ public class HighlightingManager
 
 	public void ComputeHighlightChange(Selectable previous, Selectable current)
 	{
+		ClearSelections ();
 		if (previous != null) {
 			if (previous.GetComponent<PawnHighlightingManager> () != null) {
-				previous.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Deselected);
 				previous.GetComponent<PawnHighlightingManager> ().UpdateNodes ();
 			}
-
-			if (previous.GetComponent<NodeHighlightManager> () != null) {
-				previous.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Deselected);
-			}
 		}
 
-		if (current.GetComponent<PawnHighlightingManager> () != null) {
-			current.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Selected);
-			foreach (Pawn p in current.GetComponent<Pawn>().sightList) {
-				p.GetComponent<PawnHighlightingManager>().SetState(PawnHighlightStates.Targetable);
+		if (current != null) {
+			if (current.GetComponent<PawnHighlightingManager> () != null && TurnManager.instance.turnPlayer.Owns (current.GetComponent<Pawn> ())) {
+				current.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Selected);
+				foreach (Pawn p in current.GetComponent<Pawn>().sightList) {
+					p.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Targetable);
+				}
+				current.GetComponent<PawnHighlightingManager> ().UpdateNodes ();
 			}
-			current.GetComponent<PawnHighlightingManager> ().UpdateNodes ();
-		}
 
-		if (current.GetComponent<NodeHighlightManager> () != null) {
-			previous.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Selected);
+			if (current.GetComponent<NodeHighlightManager> () != null) {
+				previous.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Selected);
+			}
+		}
+	}
+
+	public void ClearSelections()
+	{
+		foreach (PawnHighlightingManager phm in GameObject.FindObjectsOfType<PawnHighlightingManager>()){
+			phm.SetState (PawnHighlightStates.Deselected);
+		}
+		foreach (NodeHighlightManager nhm in GameObject.FindObjectsOfType<NodeHighlightManager>()){
+			nhm.SetState (NodeHighlightStates.Deselected);
 		}
 	}
 }

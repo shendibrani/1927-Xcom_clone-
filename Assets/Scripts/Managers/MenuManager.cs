@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour {
         menuCanvasReference = new Dictionary<int, MenuCanvas>();
         foreach (MenuCanvas m in MenuCanvasList)
         {
-            Debug.Log(m);
+            if (menuCanvasReference.ContainsKey(m.GetID())) Debug.LogError("ID " + m.GetID() + "used by two MenuCanvas components");
             if (m != null)
             menuCanvasReference.Add(m.GetID(), m);
         }
@@ -51,4 +51,6 @@ public class MenuManager : MonoBehaviour {
         activeMenuID = id;
         menuCanvasReference[activeMenuID].setMenu();
     }
+
+
 }

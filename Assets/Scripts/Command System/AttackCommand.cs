@@ -37,7 +37,22 @@ public class AttackCommand : PawnTargetingCommand
                     return false;
                 }
 
-                double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, target.transform.position) - 1) / (weapon.range - 1);
+                int effectiveRange = weapon.range;
+                if (owner.transform.position.y - target.transform.position.y > 0){
+                    effectiveRange += (int)((owner.transform.position.y - target.transform.position.y) / 2f);
+                }
+
+                double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, target.transform.position) - 1) / (effectiveRange - 1);
+                CoverState coverState = target.GetCoverState(owner);
+                switch (coverState)
+                {
+                    case CoverState.Half:
+                        owner.EffectList.Add(new HalfCoverDebuff(owner));
+                        break;
+                    case CoverState.Full:
+                        owner.EffectList.Add(new FullCoverDebuff(owner));
+                        break;
+                }
                 Debug.Log(System.Math.Round(hitChance * 100 * owner.hitMulti) + "% chance to hit");
 
                 if (RNG.NextDouble() < hitChance)

@@ -15,10 +15,14 @@ public class Player : MonoBehaviour
 
     Command cachedCommand = null;
 
+	public Sprite playerSymbol;
+
 	// Use this for initialization
 	void Start ()
 	{
-
+		foreach (Pawn p in pawns) {
+			p.owner = this;
+		}
 	}
 	
 	// Update is called once per frame
@@ -41,6 +45,12 @@ public class Player : MonoBehaviour
 			}
 		}
 	}
+
+	public bool Owns(Pawn p)
+	{
+		return pawns.Contains (p);
+	}
+
 
 	bool Move(Pawn p, NodeBehaviour target)
 	{
