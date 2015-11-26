@@ -207,11 +207,13 @@ public class Pawn : MonoBehaviour, Targetable
 
     public void Initalise(Character pCharacter)
     {
+        Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
         Weapon = pCharacter.assignedWeapon;
+        accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
-        accuracy = pCharacter.accuracy;
+        
         skillList = new List<Skill>(pCharacter.skillList);
     }
 

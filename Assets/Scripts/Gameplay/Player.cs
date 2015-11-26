@@ -26,14 +26,21 @@ public class Player : MonoBehaviour
         Initilisation();
     }
 
+    public void Start()
+    {
+        Initilisation();
+    }
     // Use this for initialization of level on loading
     public void Initilisation()
     {
         for (int i = 0; i < pawns.Count; i++)
         {
             pawns[i].owner = this;
-            if (characterList[i] != null)
-            { pawns[i].Initalise(characterList[i]); }
+            if (characterList != null)
+            {
+                if (characterList[i] != null)
+                { pawns[i].Initalise(characterList[i]); }
+            }
             else
             {
                 pawns[i].Initalise(new Character());

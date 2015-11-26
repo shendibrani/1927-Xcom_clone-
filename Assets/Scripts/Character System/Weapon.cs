@@ -10,7 +10,7 @@ public class Weapon {
     public int range { get; protected set; }
     public double criticalChance { get; protected set; }
     public int actionCost { get; protected set; } //critical will be in decimal format (0.15);
-    public List<WeaponEffect> weaponEffects;
+    public List<WeaponEffect> weaponEffects; //read from enum WeaponEffects
 
     public Weapon(string pName, int pDamage, int pRange, double pCrit, int pAPCost, List<WeaponEffect> pEffects)
     {
@@ -30,7 +30,7 @@ public class Weapon {
 
 public class WeaponData
 {
-    public static Dictionary<Weapons, Weapon> universalWeaponList;
+    public Dictionary<Weapons, Weapon> universalWeaponList;
 
     public static WeaponData instance
     {
@@ -52,7 +52,8 @@ public class WeaponData
     //load skills from default XML (not related to save)
     public void LoadFromSave()
     {
-
+        universalWeaponList = new Dictionary<Weapons, Weapon>();
+        universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, null));
     }
 }
 

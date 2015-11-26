@@ -25,7 +25,7 @@ public class Skill{
 
 public class SkillData
 {
-    public static Dictionary<Skills, Skill> universalSkillList;
+    public Dictionary<Skills, Skill> universalSkillList;
 
     public static SkillData instance {
 		get {

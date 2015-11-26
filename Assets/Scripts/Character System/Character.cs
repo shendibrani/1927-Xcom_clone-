@@ -10,6 +10,11 @@ public class Character
     int baseAcc = 0;
     int baseAP = 3;
     int baseHP = 10;
+
+    public SkillTree offenseTree = new SkillTree();
+    public SkillTree defenseTree = new SkillTree();
+    public SkillTree supportTree = new SkillTree();
+
     public int accuracy
     {
         get
@@ -56,19 +61,15 @@ public class Character
         }
     }
 
-    public SkillTree offenseTree { get; private set; }
-    public SkillTree defenseTree { get; private set; }
-    public SkillTree supportTree { get; private set; }
-
     //default unidentified character
     public Character()
     {
         ID = 0;
         name = "tmpName";
-        assignedWeapon = WeaponData.universalWeaponList[Weapons.DefaultPistol].Clone();
-        offenseTree = SkillTree.CreateOffenseTree();
-        defenseTree = SkillTree.CreateDefenseTree();
-        supportTree = SkillTree.CreateSupportTree();
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.DefaultPistol].Clone();
+        //offenseTree = SkillTree.CreateOffenseTree();
+        //defenseTree = SkillTree.CreateDefenseTree();
+        //supportTree = SkillTree.CreateSupportTree();
     }
 
     public Character(int uID, string pName, SkillTree pOffense, SkillTree pDefense, SkillTree pSupport, Weapon pWeapon)
