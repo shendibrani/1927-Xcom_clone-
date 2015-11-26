@@ -7,6 +7,11 @@ using System.Collections.Generic;
 public class Pawn : MonoBehaviour, Targetable
 {
     public Player owner;
+
+    //unique id for the pawn to determine who is doing what
+    int pawnID;
+
+    Character character;
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
 
     public Weapon Weapon
@@ -20,8 +25,8 @@ public class Pawn : MonoBehaviour, Targetable
     int actionPointsPerTurn = 3;
 	public int MaxActionPointsPerTurn {	get { return actionPointsPerTurn; } }
 
-    int movement;
     int actionPoints = 3;
+    int movement;
     public int accuracy
     {
         get;
@@ -31,7 +36,7 @@ public class Pawn : MonoBehaviour, Targetable
 	#region Properties
     public int ActionPoints
     {
-        get { return actionPoints + actionPointsMod - actionPointsSpent; }
+        get { return actionPointsPerTurn + actionPointsMod - actionPointsSpent; }
         private set { actionPoints = value; }
     }
 
@@ -194,11 +199,22 @@ public class Pawn : MonoBehaviour, Targetable
 
     public Command move;
     public Command attack;
+    public List<Skill> skillList;
     public List<Command> abilities;
 
     void Start()
     {
         Weapon = new AssaultRifle();
+    }
+
+    public void Initalise(Character pCharacter)
+    {
+        character = pCharacter;
+        Weapon = pCharacter.assignedWeapon;
+        actionPoints = pCharacter.actionPoints;
+        actionPointsPerTurn = pCharacter.actionPoints;
+        accuracy = pCharacter.accuracy;
+        skillList = new List<Skill>(pCharacter.skillList);
     }
 
     public void Turn()
