@@ -12,8 +12,9 @@ public class LoadXML_Editor : Editor {
 		DrawDefaultInspector();
 		if(GUILayout.Button("Build")){
 			(target as LoadXML).DestroyAllLoaded();
-            (target as LoadXML).LoadTo3D();
             (target as LoadXML).runOnce = false;
+            (target as LoadXML).LoadTo3D();
+            
             foreach (NodeBehaviour node in FindObjectsOfType<NodeBehaviour>()){
 				node.NodeSetup();
 				EditorUtility.SetDirty(node);
