@@ -56,8 +56,28 @@ public class Character
         }
     }
 
-    SkillTree offenseTree;
-    SkillTree defenseTree;
-    SkillTree supportTree;
+    public SkillTree offenseTree { get; private set; }
+    public SkillTree defenseTree { get; private set; }
+    public SkillTree supportTree { get; private set; }
 
+    //default unidentified character
+    public Character()
+    {
+        ID = 0;
+        name = "tmpName";
+        assignedWeapon = WeaponData.universalWeaponList[Weapons.DefaultPistol].Clone();
+        offenseTree = SkillTree.CreateOffenseTree();
+        defenseTree = SkillTree.CreateDefenseTree();
+        supportTree = SkillTree.CreateSupportTree();
+    }
+
+    public Character(int uID, string pName, SkillTree pOffense, SkillTree pDefense, SkillTree pSupport, Weapon pWeapon)
+    {
+        ID = uID;
+        name = pName;
+        offenseTree = pOffense;
+        defenseTree = pDefense;
+        supportTree = pSupport;
+        assignedWeapon = pWeapon;
+    }
 }
