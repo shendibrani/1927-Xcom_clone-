@@ -69,4 +69,6 @@ public class CharacterStaticStorage
     {
         _instance = null;
     }
+
+
 }
