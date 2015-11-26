@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class Health : MonoBehaviour {
 
 	int _health;
+
+	public UnityEvent OnDeath;
 
 	public int health { 
 		get {
@@ -29,6 +32,9 @@ public class Health : MonoBehaviour {
 	public void Damage (int damage)
 	{
 		health -= damage;
+		if (health <= 0 && OnDeath != null) {
+			OnDeath.Invoke();
+		}
 	}
 
 	public void Heal (int heal)
