@@ -29,48 +29,6 @@ public class SkillTree : MonoBehaviour
 
 }
 
-public class OffenseTree : SkillTree
-{
-    public OffenseTree()
-    {
-        levelList[0].skillList = new List<Skill>()
-        {
-            //new skill();
-        };
-        levelList[1].skillList = new List<Skill>(){
-            //new skill();
-            //new skill();
-        };
-        levelList[2].skillList = new List<Skill>(){
-            //new skill();
-            //new skill();
-        };
-        levelList[3].skillList = new List<Skill>(){
-            //new skill();
-            //new skill();
-        };
-        levelList[4].skillList = new List<Skill>()
-        {
-            //new skill();
-            //new skill();
-        };
-        levelList[5].skillList = new List<Skill>()
-        {
-            //new skill();
-            //new skill();
-        };
-    }
-}
-
-public class DefenseTree : SkillTree
-{
-
-}
-
-public class SupportTree : SkillTree{
-
-}
-
 public struct SkillLevel
 {
     public List<Skill> skillList;

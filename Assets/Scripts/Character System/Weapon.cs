@@ -14,11 +14,6 @@ public class Weapon {
     public int actionCost { get; protected set; } //critical will be in decimal format (0.15);
     public List<WeaponEffect> weaponEffects;
 
-//	public Weapon (string pName, int pDamage)
-//	{
-//		name = pName;
-//		damage = pDamage;
-//	}
 }
 
 public class AssaultRifle : Weapon

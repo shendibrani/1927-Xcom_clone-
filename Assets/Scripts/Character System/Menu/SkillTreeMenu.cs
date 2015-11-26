@@ -8,17 +8,23 @@ public class SkillTreeMenu : MenuCanvas {
     class SkillTreeDisplay
     {
         Text title;
-        Button tier0Skill1;
+        Button tier0Skill0;
+        Button tier1Skill0;
         Button tier1Skill1;
-        Button tier1Skill2;
+        Button tier2Skill0;
         Button tier2Skill1;
-        Button tier2Skill2;
+        Button tier3Skill0;
         Button tier3Skill1;
-        Button tier3Skill2;
+        Button tier4Skill0;
         Button tier4Skill1;
-        Button tier4Skill2;
+        Button tier5Skill0;
         Button tier5Skill1;
-        Button tier5Skill2;
+
+        public void populateTree(SkillTree tree){
+
+            //tier0Skill0 = tree.levelList[0].skillList[0];
+
+        }
     }
 
     [SerializeField]
@@ -30,6 +36,7 @@ public class SkillTreeMenu : MenuCanvas {
 
     void PopulateMenu(Character pCharacter)
     {
+
 
     }
 
