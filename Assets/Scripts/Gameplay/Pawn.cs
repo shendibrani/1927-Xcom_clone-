@@ -200,11 +200,9 @@ public class Pawn : MonoBehaviour, Targetable
     public Command move;
     public Command attack;
     public List<Skill> skillList;
-    public List<Command> abilities;
 
     void Start()
     {
-        Weapon = new AssaultRifle();
     }
 
     public void Initalise(Character pCharacter)
