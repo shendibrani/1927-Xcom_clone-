@@ -21,6 +21,8 @@ public class Character
         }
     }
 
+    public Weapon assignedWeapon;
+
     public List<Skill> skillList
     {
         get
@@ -33,8 +35,8 @@ public class Character
         }
     }
 
-    OffenseTree offenseTree;
-    DefenseTree defenseTree;
-    SupportTree supportTree;
+    SkillTree offenseTree;
+    SkillTree defenseTree;
+    SkillTree supportTree;
 
 }
