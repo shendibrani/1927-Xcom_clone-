@@ -71,7 +71,7 @@ public class AttackCommand : Command
 			}
 			if (weapon.weaponEffects != null) {
 				for (int i = weapon.weaponEffects.Count - 1; i >= 0; i--) {
-					weapon.weaponEffects [i].Execute (owner, weapon, target);
+					//weapon.weaponEffects [i].Execute (owner, weapon, target);
 				}
 			}
 			for (int i = target.EffectList.Count - 1; i >= 0; i--) {

@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public void Start()
     {
         Initilisation();
+        TurnManager.instance.SetFree();
     }
     // Use this for initialization of level on loading
     public void Initilisation()
@@ -59,18 +60,16 @@ public class Player : MonoBehaviour
 				if(debug) Debug.Log("Right Click");
                 if (SelectionManager.selected.GetComponent<Pawn>() != null)
                 {
-                    if (SelectionManager.hovered.GetComponent<NodeBehaviour>() != null)
+                    //default movement atm
+                    cachedCommand = Factory.GetCommand(Commands.Move, SelectionManager.selected.GetComponent<Pawn>());
+                    //highlight all options for movement (validtargets?);=
+                   
+                    if (SelectionManager.hovered.GetComponent<Targetable>() != null)
                     {
-                        if (Move(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<NodeBehaviour>()))
+                        if (cachedCommand.IsValidTarget(SelectionManager.hovered.GetComponent<Targetable>()))
                         {
                             TurnManager.instance.SetBusy();
-                        }
-                    }
-                    else if (SelectionManager.hovered.GetComponent<Pawn>() != null)
-                    {
-                        if (Attack(SelectionManager.selected.GetComponent<Pawn>(), SelectionManager.hovered.GetComponent<Pawn>()))
-                        {
-                            //TurnManager.instance.SetBusy();
+                            cachedCommand.Execute();
                         }
                     }
                 }
