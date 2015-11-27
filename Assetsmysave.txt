@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWeapon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Weapon>
+    <weaponEffects>
+      <WeaponEffects>WeaponChill</WeaponEffects>
+    </weaponEffects>
+    <weaponEnum>DefaultPistol</weaponEnum>
+    <name>Default Pistol</name>
+    <damage>1</damage>
+    <range>5</range>
+    <criticalChance>0.15</criticalChance>
+    <actionCost>1</actionCost>
+  </Weapon>
+  <Weapon>
+    <weaponEffects />
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <name>Assault Rifle</name>
+    <damage>3</damage>
+    <range>5</range>
+    <criticalChance>0.09</criticalChance>
+    <actionCost>2</actionCost>
+  </Weapon>
+  <Weapon>
+    <weaponEffects />
+    <weaponEnum>SniperRifle</weaponEnum>
+    <name>Sniper Rifle</name>
+    <damage>3</damage>
+    <range>5</range>
+    <criticalChance>0.09</criticalChance>
+    <actionCost>2</actionCost>
+  </Weapon>
+</ArrayOfWeapon>

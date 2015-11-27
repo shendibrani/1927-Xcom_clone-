@@ -6,10 +6,12 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Skill{
 
+    Skills skillEnum;
     string name;
     string description;
     Commands abilityCommand;
 
+    public Skill() { }
     public Skill(string pName, string pDescription, Commands pCommand)
     {
         name = pName;

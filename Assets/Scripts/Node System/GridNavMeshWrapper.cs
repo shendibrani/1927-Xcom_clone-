@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[System.Serializable]
 public class GridNavMeshWrapper : MonoBehaviour
 {
 	[SerializeField] bool debug;
