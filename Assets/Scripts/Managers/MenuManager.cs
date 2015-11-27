@@ -41,13 +41,12 @@ public class MenuManager : MonoBehaviour {
 
     //called by button/states to trigger transition
     public void ChangeMenu(int id)
-    {
-        Debug.Log(menuCanvasReference[id]);
-        if (previousMenuID != null)
+    {;
+		if (menuCanvasReference[previousMenuID] != null)
         {
             menuCanvasReference[previousMenuID].deselectMenu();
-            previousMenuID = activeMenuID; 
         }
+		previousMenuID = activeMenuID; 
         activeMenuID = id;
         menuCanvasReference[activeMenuID].setMenu();
     }
