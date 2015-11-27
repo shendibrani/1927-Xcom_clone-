@@ -6807,7 +6807,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 40
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11444332, guid: d153c0b40133b1541a7b8b5633e471f1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d153c0b40133b1541a7b8b5633e471f1, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2059839290 stripped
