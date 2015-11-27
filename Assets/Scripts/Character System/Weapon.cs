@@ -5,21 +5,25 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Weapon {
 
+    public Weapons weaponEnum { get; private set; }
 	public string name { get; protected set;}
     public int damage { get; protected set; }
     public int range { get; protected set; }
     public double criticalChance { get; protected set; }
     public int actionCost { get; protected set; } //critical will be in decimal format (0.15);
-    public List<WeaponEffect> weaponEffects; //read from enum WeaponEffects
+    public List<WeaponEffects> weaponEffects; //read from enum WeaponEffects
 
-    public Weapon(string pName, int pDamage, int pRange, double pCrit, int pAPCost, List<WeaponEffect> pEffects)
+    public Weapon() {
+    }
+
+    public Weapon(string pName, int pDamage, int pRange, double pCrit, int pAPCost, List<WeaponEffects> pEffects)
     {
         name = pName;
         damage = pDamage;
         range = pRange;
         criticalChance = pCrit;
         actionCost = pAPCost;
-        weaponEffects = new List<WeaponEffect>();
+        weaponEffects = new List<WeaponEffects>(pEffects);
     }
 
     public Weapon Clone()
@@ -53,8 +57,10 @@ public class WeaponData
     public void LoadFromSave()
     {
         universalWeaponList = new Dictionary<Weapons, Weapon>();
-        universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, null));
-        universalWeaponList.Add(Weapons.AssaultRifle, new Weapon("Assault Rifle", 3, 5, 0.09d, 2, null));
+        List<WeaponEffects> tmpList = new List<WeaponEffects>();
+        tmpList.Add(WeaponEffects.WeaponChill);
+        //universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, tmpList));
+        //universalWeaponList.Add(Weapons.AssaultRifle, new Weapon("Assault Rifle", 3, 5, 0.09d, 2, new List<WeaponEffects>()));
     }
 }
 
