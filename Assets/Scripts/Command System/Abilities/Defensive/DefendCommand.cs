@@ -21,7 +21,7 @@ public class DefendCommand : PawnTargetingCommand {
 
         foreach (Pawn p in validTargets)
         {
-            p.EffectList.Add(new DefendBuff(p));
+            p.EffectList.Add(Factory.GetEffect(Effects.DefendBuff, owner));
         }
 
         return true;

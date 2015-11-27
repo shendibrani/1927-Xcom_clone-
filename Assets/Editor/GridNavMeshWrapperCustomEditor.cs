@@ -16,6 +16,7 @@ public class GridNavMeshWrapperCustomEditor : Editor {
 				if(hit.collider.GetComponent<NodeBehaviour>() != null){
 					(target as GridNavMeshWrapper).StartingNode = hit.collider.GetComponent<NodeBehaviour>();
 					(target as GridNavMeshWrapper).position = (target as GridNavMeshWrapper).StartingNode.offsetPosition;
+					EditorUtility.SetDirty(target);
 				}
 			}
 		}

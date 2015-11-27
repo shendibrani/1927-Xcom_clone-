@@ -9,15 +9,79 @@ public class Weapon {
     public int damage { get; protected set; }
     public int range { get; protected set; }
     public double criticalChance { get; protected set; }
-    public double maxHitChance { get; protected set; }
-    public double minHitChance { get; protected set; }
     public int actionCost { get; protected set; } //critical will be in decimal format (0.15);
-    public List<WeaponEffect> weaponEffects;
+    public List<WeaponEffect> weaponEffects; //read from enum WeaponEffects
 
+    public Weapon(string pName, int pDamage, int pRange, double pCrit, int pAPCost, List<WeaponEffect> pEffects)
+    {
+        name = pName;
+        damage = pDamage;
+        range = pRange;
+        criticalChance = pCrit;
+        actionCost = pAPCost;
+        weaponEffects = new List<WeaponEffect>();
+    }
+
+    public Weapon Clone()
+    {
+        return new Weapon(name,damage,range,criticalChance,actionCost,weaponEffects);
+    }
 }
 
-public class AssaultRifle : Weapon
+public class WeaponData
 {
+    public Dictionary<Weapons, Weapon> universalWeaponList;
+
+    public static WeaponData instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new WeaponData();
+                _instance.LoadFromSave();
+            }
+            return _instance;
+        }
+    }
+
+    private static WeaponData _instance;
+
+    private WeaponData() { }
+
+    //load skills from default XML (not related to save)
+    public void LoadFromSave()
+    {
+        universalWeaponList = new Dictionary<Weapons, Weapon>();
+        universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, null));
+        universalWeaponList.Add(Weapons.AssaultRifle, new Weapon("Assault Rifle", 3, 5, 0.09d, 2, null));
+    }
+}
+
+public enum Weapons
+{
+    AssaultRifle,
+    PrototypeAssaultRifle,
+    SniperRifle,
+    PrototypeSniperRifle,
+    Shotgun,
+    PrototypeShotgun,
+    Machete,
+    ElectricMachete,
+    Cryogun,
+    PrototypeShockGun,
+    DoublePistol,
+    DoublePrototypePistol,
+    DefaultPistol
+}
+
+public enum WeaponEffects
+{
+    WeaponChill,
+    WeaponStun,
+}
+
+    /*
     public AssaultRifle()
     {
         name = "Assault Rifle";
@@ -27,6 +91,7 @@ public class AssaultRifle : Weapon
         actionCost = 2;
         weaponEffects = new List<WeaponEffect>();
     }
+ 
 }
 
 public class PrototypeAssaultRifle : Weapon
@@ -81,6 +146,7 @@ public class Cryogun : Weapon
         weaponEffects.Add(new ApplyChilled());
     }
 }
+ */
 
 
 

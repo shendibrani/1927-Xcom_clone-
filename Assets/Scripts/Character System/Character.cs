@@ -10,6 +10,11 @@ public class Character
     int baseAcc = 0;
     int baseAP = 3;
     int baseHP = 10;
+
+    public SkillTree offenseTree = new SkillTree();
+    public SkillTree defenseTree = new SkillTree();
+    public SkillTree supportTree = new SkillTree();
+
     public int accuracy
     {
         get
@@ -56,8 +61,24 @@ public class Character
         }
     }
 
-    SkillTree offenseTree;
-    SkillTree defenseTree;
-    SkillTree supportTree;
+    //default unidentified character
+    public Character()
+    {
+        ID = 0;
+        name = "tmpName";
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
+        //offenseTree = SkillTree.CreateOffenseTree();
+        //defenseTree = SkillTree.CreateDefenseTree();
+        //supportTree = SkillTree.CreateSupportTree();
+    }
 
+    public Character(int uID, string pName, SkillTree pOffense, SkillTree pDefense, SkillTree pSupport, Weapon pWeapon)
+    {
+        ID = uID;
+        name = pName;
+        offenseTree = pOffense;
+        defenseTree = pDefense;
+        supportTree = pSupport;
+        assignedWeapon = pWeapon;
+    }
 }
