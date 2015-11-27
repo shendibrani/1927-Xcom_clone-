@@ -130,6 +130,9 @@ public static class Factory
             case Effects.DefendBuff:
                 return new DefendBuff(owner);
                 break;
+            case Effects.CounterBuff:
+                //return new DefendBuff(owner);
+                break;
             case Effects.PawnChilledDebuff:
                 return new PawnChilledDebuff(owner);
                 break;
@@ -207,6 +210,8 @@ public enum Effects
 	AccuracyBuff,
 	ActionPointBoost,
 	DefendBuff,
+    CounterBuff,
+
 	PawnChilledDebuff,
 		
 	AimedMotivationTemporary,
