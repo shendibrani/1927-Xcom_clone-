@@ -3,15 +3,15 @@ using UnityEngine;
 
 public static class Factory
 {
-    public static Command GetCommand(Commands type, Pawn owner, Targetable target)
+    public static Command GetCommand(Commands type, Pawn owner)
     {
         switch (type)
         {
             case Commands.Move:
-                return new MoveCommand(owner, target as NodeBehaviour);
+                return new MoveCommand(owner);
                 break;
             case Commands.Attack:
-                return new AttackCommand(owner, target as Pawn);
+                return new AttackCommand(owner);
                 break;
             case Commands.AbsorbShield:
 
@@ -23,13 +23,13 @@ public static class Factory
                 return new ActionBoostCommand(owner);
                 break;
             case Commands.AimedAttack:
-                return new AimedAttackCommand(owner, target as Pawn);
+                return new AimedAttackCommand(owner);
                 break;
             case Commands.AllAroundAttack:
                 return new AllAroundAttackCommand(owner);
                 break;
             case Commands.AllOrNothing:
-                return new AllOrNothingCommand(owner, target as Pawn);
+                return new AllOrNothingCommand(owner);
                 break;
             case Commands.AllyActionBoost:
 
@@ -53,13 +53,13 @@ public static class Factory
 
                 break;
             case Commands.FinishingAttack:
-                return new FinishingAttackCommand(owner, target as Pawn);
+                return new FinishingAttackCommand(owner);
                 break;
             case Commands.FirstAid:
 
                 break;
             case Commands.Grenade:
-                return new GrenadeCommand(owner, target as NodeBehaviour);
+                return new GrenadeCommand(owner);
                 break;
             case Commands.GroupBuff:
 
@@ -68,7 +68,7 @@ public static class Factory
 
                 break;
             case Commands.Lifesteal:
-                return new LifestealCommand(owner, target as Pawn);
+                return new LifestealCommand(owner);
                 break;
             case Commands.Medicine:
 
@@ -104,13 +104,13 @@ public static class Factory
 
                 break;
             case Commands.SureHit:
-                return new SureHitCommand(owner, target as Pawn);
+                return new SureHitCommand(owner);
                 break;
             case Commands.Taunt:
 
                 break;
             case Commands.TripleAttack:
-                return new TripleAttackCommand(owner, target as Pawn);
+                return new TripleAttackCommand(owner);
                 break;
         }
 

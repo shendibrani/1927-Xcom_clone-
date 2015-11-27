@@ -2,15 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ActionBoostCommand : PawnTargetingCommand
+public class ActionBoostCommand : Command
 {
-
     int actionCost = 0;
-
-    public override List<Pawn> validTargets
-    {
-        get { return base.validTargets.FindAll(x => x == owner); }
-    }
 
     public ActionBoostCommand(Pawn pOwner)
         : base(pOwner)
@@ -20,10 +14,15 @@ public class ActionBoostCommand : PawnTargetingCommand
 
     public override bool Execute()
     {
-
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost)||!CheckTarget()) return false;
         owner.EffectList.Add(new ActionPointBoost(owner));
         owner.EffectList.Add(new EndTurnTemporaryEffect(owner));
         return true;
     }
+
+	public override bool IsValidTarget(Targetable t)
+	{
+		Pawn x = t as Pawn;
+		return x == owner;
+	}
 }
