@@ -54,6 +54,7 @@ public class WeaponData
     {
         universalWeaponList = new Dictionary<Weapons, Weapon>();
         universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, null));
+        universalWeaponList.Add(Weapons.AssaultRifle, new Weapon("Assault Rifle", 3, 5, 0.09d, 2, null));
     }
 }
 

@@ -66,7 +66,7 @@ public class Character
     {
         ID = 0;
         name = "tmpName";
-        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.DefaultPistol].Clone();
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
         //offenseTree = SkillTree.CreateOffenseTree();
         //defenseTree = SkillTree.CreateDefenseTree();
         //supportTree = SkillTree.CreateSupportTree();
