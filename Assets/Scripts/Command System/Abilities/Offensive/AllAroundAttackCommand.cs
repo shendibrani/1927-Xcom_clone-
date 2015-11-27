@@ -11,7 +11,7 @@ public class AllAroundAttackCommand : PawnTargetingCommand
     public AllAroundAttackCommand(Pawn pOwner)
         : base(pOwner)
     {
-        name = "Attack Command";
+        name = "All Around Attack Command";
         weapon = owner.Weapon;
     }
 
@@ -36,7 +36,17 @@ public class AllAroundAttackCommand : PawnTargetingCommand
         else
         {
             Debug.Log("Melee Weapon Not Equiped");
-            return false;
+            foreach (Pawn p in validTargets)
+            {
+                LinkPositions pushDirection;
+                pushDirection = owner.currentNode.GetRelativePosition(p.currentNode);
+                NodeBehaviour tmpNode = p.currentNode.GetLinkInDirection(pushDirection);
+                if (!tmpNode.isOccupied)
+                {
+                    p.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
+                }
+            }
+            return true;
         }
     }
 }
