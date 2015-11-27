@@ -18,7 +18,8 @@ public class CameraViewController : MonoBehaviour {
 	[SerializeField] float maxDistance = 30f;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
         verticalAxis = GetComponent<VerticalEdgePanAxis>();
         horizontalAxis = GetComponent<HorizontalEdgePanAxis>();
 		rotateAxis = GetComponent<MouseRotateAxis> ();
@@ -28,7 +29,8 @@ public class CameraViewController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
         if (Input.GetMouseButton(2))
         {
             RotateCamera();
@@ -55,13 +57,11 @@ public class CameraViewController : MonoBehaviour {
 
 	void ZoomCamera ()
 	{
+		if ((Vector3.Distance (Camera.main.transform.localPosition, Vector3.zero) <= minDistance && scrollAxis.axisValue > 0) ||
+		    (Vector3.Distance (Camera.main.transform.localPosition, Vector3.zero) >= maxDistance) && scrollAxis.axisValue < 0) {
+			return;
+		}
 		Camera.main.transform.position += Camera.main.transform.forward * scrollAxis.axisValue;
-		if (Vector3.Distance (Camera.main.transform.position, transform.position) < minDistance) {
-			Camera.main.transform.localPosition = Camera.main.transform.forward * -1 * minDistance;
-		}
-		if (Vector3.Distance (Camera.main.transform.position, transform.position) > maxDistance) {
-			Camera.main.transform.localPosition = Camera.main.transform.forward * -1 * maxDistance;
-		}
 	}
 
     public void RotateCamera(Vector3 pRotation)
@@ -74,8 +74,8 @@ public class CameraViewController : MonoBehaviour {
         transform.position = pPosition.position;
     }
 
-    public void MoveToPostion(Transform pPosition, float pSpeed)
-    {
-
-    }
+//    public void MoveToPostion(Transform pPosition, float pSpeed)
+//    {
+//
+//    }
 }
