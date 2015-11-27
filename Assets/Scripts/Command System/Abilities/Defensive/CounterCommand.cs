@@ -2,16 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DefendCommand : PawnTargetingCommand {
+public class CounterCommand : PawnTargetingCommand
+{
 
-    int actionCost = 1;
+	int actionCost = 2;
 
     public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => (Vector3.Distance(owner.transform.position, x.transform.position) < owner.Weapon.range) && (x.owner == owner.owner)); } }
 
-    public DefendCommand(Pawn pOwner)
+    public CounterCommand(Pawn pOwner)
         : base(pOwner)
     {
-        name = "Defend Command";
+        name = "Counter Command";
     }
 
     public override bool Execute()
@@ -19,10 +20,7 @@ public class DefendCommand : PawnTargetingCommand {
 
         if (!CheckCost(actionCost)) return false;
 
-        foreach (Pawn p in validTargets)
-        {
-            p.EffectList.Add(Factory.GetEffect(Effects.DefendBuff, owner));
-        }
+        owner.EffectList.Add(Factory.GetEffect(Effects.CounterBuff,owner));
 
         return true;
     }

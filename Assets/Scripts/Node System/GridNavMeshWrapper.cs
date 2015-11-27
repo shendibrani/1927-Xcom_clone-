@@ -25,7 +25,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 	NodeBehaviour _currentNode;
 	public NodeBehaviour currentNode { 
 		get { return _currentNode; } 
-		private set {
+		set {
 			if(_currentNode != null){
 				_currentNode.currentObject = null;
 			}

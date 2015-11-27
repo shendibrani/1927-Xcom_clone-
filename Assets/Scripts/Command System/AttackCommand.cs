@@ -59,6 +59,7 @@ public class AttackCommand : PawnTargetingCommand
                 {
                     int damage = weapon.damage;
                     double accuracy = (owner.Accuracy * owner.accuracyMulti + owner.accuracyMod) / 100d;
+                    if (1 - accuracy <= 0) accuracy = 1d;
                     double tmpDamageMod = (1 - accuracy) * RNG.NextDouble() + accuracy;
                     if (tmpDamageMod > 1d) tmpDamageMod = 1d;
                     tmpDamageMod *= owner.damageMulti;
