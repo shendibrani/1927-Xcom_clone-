@@ -2,11 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PushCommand : PawnTargetingCommand
+public class PushCommand : Command
 {
-
-    Weapon weapon;
-    Pawn target;
     int actionCost = 2;
     int distance = 3;
 
@@ -14,30 +11,35 @@ public class PushCommand : PawnTargetingCommand
         : base(pOwner)
     {
         name = "Push Command";
-        target = pTarget;
-        weapon = owner.Weapon;
     }
-
-    public override List<Pawn> validTargets { get { return base.validTargets.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < 1); } }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-        if (weapon.range == 1)
+		Pawn tPawn = targets [0] as Pawn;
+
+        if (owner.Weapon.range == 1)
         {
-            new AttackCommand(owner, target).Attack();
+			AttackCommand.Attack(owner, tPawn);
         }
-        LinkPositions pushDirection;
-        pushDirection = owner.currentNode.GetRelativePosition(target.currentNode);
+        
+		LinkPositions pushDirection;
+        pushDirection = owner.currentNode.GetRelativePosition(tPawn.currentNode);
         for (int i = 0; i < distance; i++)
         {
-            NodeBehaviour tmpNode = target.currentNode.GetLinkInDirection(pushDirection);
+            NodeBehaviour tmpNode = tPawn.currentNode.GetLinkInDirection(pushDirection);
             if (!tmpNode.isOccupied)
             {
-                target.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
+                tPawn.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
             }
         }
         return true;
     }
+
+	public override bool IsValidTarget (Targetable t)
+	{
+		Pawn x = t as Pawn;
+		return (x != null) && (Vector3.Distance (owner.transform.position, x.transform.position) < 1);
+	}
 }

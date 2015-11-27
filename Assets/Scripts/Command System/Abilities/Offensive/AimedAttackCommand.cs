@@ -1,26 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AimedAttackCommand : PawnTargetingCommand {
+public class AimedAttackCommand : Command {
 
-	Pawn target;
-    int actionCost = 4;
+	int actionCost = 4;
 
-    public AimedAttackCommand(Pawn pOwner, Pawn pTarget)
+    public AimedAttackCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Sure Hit Command";
-        target = pTarget;
     }
 
     public override bool Execute()
     {
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-        if (!CheckCost(actionCost)) return false;
+		Pawn tPawn = target as Pawn;
 
-        target.EffectList.Add(new SureHitTemporaryEffect(target));
+        tPawn.EffectList.Add(new SureHitTemporaryEffect(tPawn));
 
-        return new AttackCommand(owner, target).Attack();
+		AttackCommand.Attack(owner, tPawn);
 
+		return true;
     }
+
+	public override bool IsValidTarget(Targetable x){
+		Pawn p = x as Pawn;
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+	}
 }

@@ -4,23 +4,20 @@ using System.Collections.Generic;
 
 public class MoveCommand : Command
 {
-	NodeBehaviour target;
-
-	NodeBehaviour originalPosition;
-
-	public MoveCommand(Pawn pOwner, NodeBehaviour pTarget) : base(pOwner)
+	public MoveCommand(Pawn pOwner) : base(pOwner)
 	{
 		name = "Move Command";
-		target = pTarget;
-		originalPosition = pOwner.currentNode;
 	}
 
 	public override bool Execute ()
 	{
-		List<NodeBehaviour> path = Pathfinder.GetPath (owner.currentNode, target);
+		if (!CheckTarget ()) return false;
+
+		NodeBehaviour tNode = target as NodeBehaviour;
+
+		List<NodeBehaviour> path = Pathfinder.GetPath (owner.currentNode, tNode);
         
-		if (path == null || path.Count == 0) {
-			//also send UI feedback at some point
+		if (path.Count == 0) {
 			return false;
 		}
 
@@ -31,6 +28,12 @@ public class MoveCommand : Command
 		owner.GetComponent<GridNavMeshWrapper> ().SetPath (path);
 		//also send UI feedback at some point
 		return true;
+	}
+
+	public override bool IsValidTarget (Targetable t)
+	{
+		NodeBehaviour x = t as NodeBehaviour;
+		return (x != null) && (Pathfinder.NodesWithinSteps (owner.currentNode, owner.Movement).Contains (x));
 	}
 }
 

@@ -1,33 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LifestealCommand : PawnTargetingCommand {
+public class LifestealCommand : Command {
 
-	Pawn target;
     int actionCost = 4;
 
-    public LifestealCommand(Pawn pOwner, Pawn pTarget)
+    public LifestealCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Execution Command";
-        target = pTarget;
     }
 
     public override bool Execute()
     {
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-        if (!CheckCost(actionCost)) return false;
+		Pawn tPawn = target as Pawn;
 
-        if (validTargets.Contains(target))
-        {
-            target.EffectList.Add(new LifestealTemporaryEffect(target));
+        tPawn.EffectList.Add(new LifestealTemporaryEffect(tPawn));
 
-            return new AttackCommand(owner, target).Attack();
-        }
-        else
-        {
-            return false;
-        }
+		AttackCommand.Attack(owner, tPawn);
 
+		return true;
     }
+
+	public override bool IsValidTarget(Targetable x)
+	{
+		Pawn p = x as Pawn;
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class AllAroundAttackCommand : PawnTargetingCommand
+public class AllAroundAttackCommand : Command
 {
     Weapon weapon;
     int actionCost = 2;
@@ -14,9 +14,7 @@ public class AllAroundAttackCommand : PawnTargetingCommand
         name = "All Around Attack Command";
         weapon = owner.Weapon;
     }
-
-    public override List<Pawn> validTargets { get { return base.validTargets.FindAll(x => Vector3.Distance(owner.transform.position, x.transform.position) < 1); } }
-
+	
     public override bool Execute()
     {
         if (!CheckCost(actionCost)) return false;
@@ -27,26 +25,38 @@ public class AllAroundAttackCommand : PawnTargetingCommand
         }
         if (weapon.range == 1)
         {
-            foreach (Pawn p in validTargets)
+            foreach (Targetable t in validTargets)
             {
-                new AttackCommand(owner, p).Attack();
+				Pawn p = t as Pawn;
+				if(p != null){
+					AttackCommand.Attack(owner, p);
+				}
             }
             return true;
         }
         else
         {
             Debug.Log("Melee Weapon Not Equiped");
-            foreach (Pawn p in validTargets)
-            {
-                LinkPositions pushDirection;
-                pushDirection = owner.currentNode.GetRelativePosition(p.currentNode);
-                NodeBehaviour tmpNode = p.currentNode.GetLinkInDirection(pushDirection);
-                if (!tmpNode.isOccupied)
-                {
-                    p.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
-                }
+			foreach (Targetable t in validTargets)
+			{
+				Pawn p = t as Pawn;
+				if(p != null){
+	                LinkPositions pushDirection;
+	                pushDirection = owner.currentNode.GetRelativePosition(p.currentNode);
+	                NodeBehaviour tmpNode = p.currentNode.GetLinkInDirection(pushDirection);
+	                if (!tmpNode.isOccupied)
+	                {
+	                    p.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
+	                }
+				}
             }
             return true;
         }
     }
+
+	public override bool IsValidTarget(Targetable t)
+	{
+		Pawn x = t as Pawn;
+		return (x != null) && (Vector3.Distance(owner.transform.position, x.transform.position) < 1);
+	}
 }

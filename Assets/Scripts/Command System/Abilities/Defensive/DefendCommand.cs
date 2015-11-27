@@ -2,12 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DefendCommand : PawnTargetingCommand {
+public class DefendCommand : Command {
 
     int actionCost = 1;
-
-    public override List<Pawn> validTargets { get { return owner.sightList.FindAll(x => (Vector3.Distance(owner.transform.position, x.transform.position) < owner.Weapon.range) && (x.owner == owner.owner)); } }
-
+	
     public DefendCommand(Pawn pOwner)
         : base(pOwner)
     {
@@ -17,7 +15,7 @@ public class DefendCommand : PawnTargetingCommand {
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
         foreach (Pawn p in validTargets)
         {
@@ -26,4 +24,9 @@ public class DefendCommand : PawnTargetingCommand {
 
         return true;
     }
+
+	public override bool IsValidTarget(Targetable x){
+		Pawn p = x as Pawn;
+		return (p!= null) && (p.owner == owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+	}
 }

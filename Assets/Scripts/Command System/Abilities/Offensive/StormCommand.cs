@@ -2,22 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class StormCommand : NodeTargetingCommand {
+public class StormCommand : Command {
 
     int actionCost = 3;
-    int distance = 4;
-
-    public override List<NodeBehaviour> validTargets
-    {
-        //raycast all nodes in four directions, return them as paths
-       get { return Pathfinder.NodesWithinSteps(owner.currentNode, distance); }
-    }
+    int range = 4;
 
 	public StormCommand (Pawn pOwner): base (pOwner){
         name = "Storm Command";
 	}
 
-	public override bool Execute (){
-        return true;
+	public override bool Execute ()
+	{
+		if (!CheckCost(actionCost) || !CheckTarget()) return false;
+
+		//TODO: Actual implementation
+		return true;
     }
+
+	public override bool IsValidTarget (Targetable t)
+	{
+		NodeBehaviour x = t as NodeBehaviour;
+		return (x != null) && (Pathfinder.NodesWithinSteps (owner.currentNode, range).Contains (x));
+	}
 }

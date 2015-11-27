@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     {
         if (pawns.Contains(p))
         {
-            p.move = new MoveCommand(p, target);
+            p.move = new MoveCommand(p);
             if (debug) Debug.Log(p.move);
             bool result = p.move.Execute();
             if (result)
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     {
         if (pawns.Contains(p))
         {
-            p.attack = new AttackCommand(p, target);
+            p.attack = new AttackCommand(p);
             bool result = p.attack.Execute();
             if (result)
             {

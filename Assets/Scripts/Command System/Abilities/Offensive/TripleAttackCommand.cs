@@ -1,29 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TripleAttackCommand : PawnTargetingCommand
+public class TripleAttackCommand : Command
 {
-    Pawn target;
     int actionCost;
 
-    public TripleAttackCommand(Pawn pOwner, Pawn pTarget)
+    public TripleAttackCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Rage Attack Command";
-        target = pTarget;
         actionCost = owner.Weapon.actionCost * 2;
     }
 
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+
+		Pawn tPawn = target as Pawn;
 
         for (int c = 0; c < 3; c++)
         {
-            target.EffectList.Add(new HalfAccuracyTemporaryEffect(target));
-            if (!new AttackCommand(owner, target).Attack()) return false;
+			tPawn.EffectList.Add(new HalfAccuracyTemporaryEffect(tPawn));
+			AttackCommand.Attack(owner, tPawn);
         }
         return true;
     }
+
+	public override bool IsValidTarget(Targetable x)
+	{
+		Pawn p = x as Pawn;
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+	}
 }

@@ -195,6 +195,26 @@ public class Pawn : MonoBehaviour, Targetable
         get { return LineOfSightManager.GetSightList(this); }
     }
 
+	public List<Targetable> targetsList {
+		get {
+			List<Targetable> temp = new List<Targetable>();
+			foreach(Pawn p in sightList){
+				temp.Add(p as Targetable);
+			}
+			foreach(DestroyableProp d in FindObjectsOfType<DestroyableProp>()){
+				if(LineOfSightManager.CheckSight(this,d)){
+					temp.Add(d as Targetable);
+				}
+			}
+			foreach(NodeBehaviour n in GameObject.FindObjectsOfType<NodeBehaviour>()){
+				if(Vector3.Distance(this.transform.position, n.position) <=sightRange){
+					temp.Add(n as Targetable);
+				}
+			}
+			return temp;
+		}
+	}
+
 	#endregion
 
     public Command move;
