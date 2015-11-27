@@ -46,7 +46,6 @@ public class LoadXML : ReadXML {
             for (int k = 0; k < DEPTH; k++)
             {
                 layerParent = new GameObject();
-                layerParent.tag = "CustomGenerated";
                 layerParent.name = "ParentOfLayer" + counter;
                 counter++;
 
@@ -59,23 +58,19 @@ public class LoadXML : ReadXML {
                         uint tile = data[j, i, k];
                         
                         int tileID = GetTiledID(tile, out flippedHorizontal, out flippedVertical, out flippedDiagonal);
+                        Quaternion rotation = rotationSet();
 
                         if (tileID != 0)
                         {
-                            Quaternion rotation = Quaternion.identity;
-                       
-                            if (flippedVertical & !flippedDiagonal) rotation = Quaternion.Euler(0, 90, 0);
-                            else if (flippedDiagonal & !flippedVertical) rotation = Quaternion.Euler(0, 180, 0);
-                            else if (flippedDiagonal & flippedVertical) rotation = Quaternion.Euler(0, 270, 0);
-
+                            
                             UnityEngine.Debug.Log("Tile " + tileID);
                             tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);
-                            generatedObjects.Add(tempStore);
+                          //  generatedObjects.Add(tempStore);
                             tempStore.transform.parent = layerParent.transform;
-                            tempStore.tag = "CustomGenerated";
+                            
                         }
-						Debug.Log("nr of objects in scene: " + generatedObjects.Count);
-						runOnce = true;
+						
+				 		runOnce = true;
                     }
                 }
             }
@@ -84,6 +79,16 @@ public class LoadXML : ReadXML {
             UnityEngine.Debug.Log("Elapsed time to generate structure: " + sw.ElapsedMilliseconds + "ms");
         }
         
+    }
+
+    private Quaternion rotationSet() {
+        Quaternion rotation = Quaternion.identity;
+
+        if (flippedVertical & !flippedDiagonal) rotation = Quaternion.Euler(0, 90, 0);
+        else if (flippedDiagonal & !flippedVertical) rotation = Quaternion.Euler(0, 180, 0);
+        else if (flippedDiagonal & flippedVertical) rotation = Quaternion.Euler(0, 270, 0);
+
+        return rotation;
     }
 
     public static int GetTiledID(uint Data, out bool flippedH, out bool flippedD, out bool flippedV) {
