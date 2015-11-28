@@ -2,39 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FinishingAttackCommand : PawnTargetingCommand
+public class FinishingAttackCommand : Command
 {
 
-    Pawn target;
-    int actionCost = 2;
+   	int actionCost = 2;
 
-    public override List<Pawn> validTargets
-    {
-        get { return base.validTargets.FindAll(x => x.GetComponent<Health>().health < x.GetComponent<Health>().maxHealth / 3); }
-    }
-
-    public FinishingAttackCommand(Pawn pOwner, Pawn pTarget)
+    public FinishingAttackCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Execution Command";
-        target = pTarget;
     }
 
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-        if (validTargets.Contains(target))
-        {
-            target.EffectList.Add(new FinishingAttackTemporaryEffect(target));
+		Pawn tPawn = target as Pawn;
 
-            return new AttackCommand(owner, target).Attack();
-        }
-        else
-        {
-            return false;
-        }
+		tPawn.EffectList.Add(new FinishingAttackTemporaryEffect(tPawn));
 
+		AttackCommand.Attack(owner, tPawn);
+
+		return true;
     }
+
+	public override bool IsValidTarget(Targetable x)
+	{
+		Pawn p = x as Pawn;
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range) && (p.GetComponent<Health>().health < p.GetComponent<Health>().maxHealth / 3);
+	}
 }

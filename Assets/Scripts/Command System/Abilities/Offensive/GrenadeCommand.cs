@@ -2,39 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GrenadeCommand : NodeTargetingCommand {
-
-    NodeBehaviour targetNode;
+public class GrenadeCommand : Command {
+	
     int range = 5;
     int areaOfEffect = 2;
     int actionCost = 3;
     int damage = 3;
 
-    public override List<NodeBehaviour> validTargets
-    {
-        get { return Pathfinder.NodesWithinSteps(owner.currentNode, range); }
-    }
-
-    public GrenadeCommand(Pawn pOwner, NodeBehaviour pTargetNode)
+    public GrenadeCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Grenade Command";
-        targetNode = pTargetNode;
     }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+
+		NodeBehaviour targetNode = target as NodeBehaviour;
 
         foreach (NodeBehaviour n in Pathfinder.NodesWithinSteps(targetNode, areaOfEffect))
         {
-            if (n.currentObject != null) Hit(n.currentObject);
+            if (n.currentObject != null) Hit(targetNode, n.currentObject);
         }
 
         return true;
     }
 
-    void Hit(Targetable pTarget)
+	void Hit(NodeBehaviour targetNode, Targetable pTarget)
     {
         if (pTarget is Pawn)
         {
@@ -57,4 +52,9 @@ public class GrenadeCommand : NodeTargetingCommand {
         }
     }
 
+	public override bool IsValidTarget (Targetable t)
+	{
+		NodeBehaviour x = t as NodeBehaviour;
+		return (x != null) && (Pathfinder.NodesWithinSteps (owner.currentNode, range).Contains (x));
+	}
 }
