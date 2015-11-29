@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939d15a367ed97c46b76099f67b45cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: 3b79e4d11a1dc7540998ea0b9f2a377b, type: 3}
+  TiledSaveFile: {fileID: 102900000, guid: 423a94f91a6587946a73aae555023718, type: 3}
   printLayersInnerInfo: 0
   X_MarginDistance: 1
   Y_MarginDistance: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
   - {fileID: 114746, guid: 1b4339968bd0f4a49879e7df0f386a1a, type: 2}
   - {fileID: 193370, guid: 48b5e0a26608c164b97a7accb382917f, type: 2}
   - {fileID: 160978, guid: aa93364c16072be43b218bf032d2e89c, type: 2}
-  - {fileID: 172300, guid: 25e51b4a4bbdbdb4288c18c61a3ecc05, type: 2}
+  - {fileID: 188774, guid: 657d00930cfa44040a2aaa6548ea280d, type: 2}
   - {fileID: 199000, guid: 2073ff30c21c8b6448daaaa54e9b1735, type: 2}
   - {fileID: 182064, guid: 19e946501b034b945972d337888e42e7, type: 2}
   - {fileID: 119144, guid: 4691df08c2feedd4fbdb770aaa216b6e, type: 2}

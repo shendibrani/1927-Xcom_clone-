@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="55" height="55" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="37">
+  <tile id="0">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_0_Empty.png"/>
+  </tile>
+  <tile id="1">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_001_Pavement.png"/>
+  </tile>
+  <tile id="2">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_002_Pavement_Border.png"/>
+  </tile>
+  <tile id="3">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_003_Pavement_Coner.png"/>
+  </tile>
+  <tile id="4">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_004_Pavement_Inside.png"/>
+  </tile>
+  <tile id="5">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_005_Street.png"/>
+  </tile>
+  <tile id="6">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_006_Street_Corner.png"/>
+  </tile>
+  <tile id="7">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_007_Pavement_Brickwall.png"/>
+  </tile>
+  <tile id="8">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_008_HouseWall_1.png"/>
+  </tile>
+  <tile id="9">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_009_House_1_Corner.png"/>
+  </tile>
+  <tile id="10">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_010_House_1_Window.png"/>
+  </tile>
+  <tile id="11">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_011_Bench.png"/>
+  </tile>
+  <tile id="12">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_012_HalfcoverDummy.png"/>
+  </tile>
+  <tile id="13">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_013_FullcoverDummy.png"/>
+  </tile>
+  <tile id="14">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_014_ExplosiveDummy.png"/>
+  </tile>
+  <tile id="15">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_015_Stairs.png"/>
+  </tile>
+  <tile id="16">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_016_SecretObject_Dummy.png"/>
+  </tile>
+  <tile id="17">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_017_Roof_Base_Outside_R.png"/>
+  </tile>
+  <tile id="18">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_018_Roof_Base_Outside_L.png"/>
+  </tile>
+  <tile id="19">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_019_Roof_Top_R.png"/>
+  </tile>
+  <tile id="20">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_020_Roof_Top_L.png"/>
+  </tile>
+  <tile id="21">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_021_Roof_Base_Inside_R.png"/>
+  </tile>
+  <tile id="22">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_022_Roof_Base_Inside_L.png"/>
+  </tile>
+  <tile id="23">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_023_Breakable_FullCover.png"/>
+  </tile>
+  <tile id="24">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_024_Breakable_HalfCover.png"/>
+  </tile>
+  <tile id="25">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_025_BlackEmptyTile.png"/>
+  </tile>
+  <tile id="26">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_026__Wall_2.png"/>
+  </tile>
+  <tile id="27">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_027__Wall_Corner_2.png"/>
+  </tile>
+  <tile id="28">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_028_Visual_Pavement_Border.png"/>
+  </tile>
+  <tile id="29">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_029_Visual_Pavement_Corner.png"/>
+  </tile>
+  <tile id="30">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_030_Visual_Pavement_Inside.png"/>
+  </tile>
+  <tile id="31">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_031_Visual_Street.png"/>
+  </tile>
+  <tile id="32">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_032_Visual_Street_Corner.png"/>
+  </tile>
+  <tile id="33">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_033_Visual_Pavement_Brickwall.png"/>
+  </tile>
+  <tile id="34">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_034_Visual_Stairs.png"/>
+  </tile>
+  <tile id="35">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_035_Visual_Pavement.png"/>
+  </tile>
+  <tile id="36">
+   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Tilesets/Tile_036_House_2_Door.png"/>
+  </tile>
+ </tileset>
+</map>
