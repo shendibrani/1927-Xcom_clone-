@@ -6,10 +6,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Skill{
 
-    Skills skillEnum;
-    string name;
-    string description;
-    Commands abilityCommand;
+	public string name { get; private set; }
+	public string description { get; private set; }
+	public Commands abilityCommand { get; private set; }
 
     public Skill() { }
     public Skill(string pName, string pDescription, Commands pCommand)
@@ -27,7 +26,7 @@ public class Skill{
 
 public class SkillData
 {
-    public Dictionary<Skills, Skill> universalSkillList;
+    public Dictionary<Commands, Skill> universalSkillList;
 
     public static SkillData instance {
 		get {
@@ -48,43 +47,4 @@ public class SkillData
     {
 
     }
-}
-
-public enum Skills
-{
-    ActionBoost,
-    AimedAttack,
-    AllAroundAttack,
-    AllOrNothing,
-    BattleShout,
-    FinishingAttack,
-    Grenade,
-    Lifesteal,
-    Storm,
-    SureHit,
-    TripleAttack,
-
-    Defend,
-    Counter,
-    Push,
-    SmokeBomb,
-    Recover,
-    ShieldAlly,
-    Stun,
-    Taunt,
-    NapalmBarricade,
-    NuclearBlood,
-    Angst,
-
-    FirstAid,
-    Medicine,
-    Revive,
-    AccuracyBuff,
-    DefenceBuff,
-    AllyActionBoost,
-    HealArea,
-    AbsorbShield,
-    Motivate,
-    Distraction,
-    GroupBuff
 }
