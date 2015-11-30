@@ -3,7 +3,8 @@ using System.Collections;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshObstacle))]
-public class DestroyableProp : MonoBehaviour, Targetable
+[RequireComponent(typeof(Targetable))]
+public class DestroyableProp : MonoBehaviour
 {
 	Renderer intact; //destroyed;
 	[SerializeField] NodeBehaviour currentNode;
@@ -29,7 +30,5 @@ public class DestroyableProp : MonoBehaviour, Targetable
 		currentNode.currentObject = null;
 		GetComponent<NavMeshObstacle> ().enabled = false;
 	}
-
-	public void OnTargeted(Pawn targeter){}
 }
 

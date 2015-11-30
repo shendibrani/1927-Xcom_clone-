@@ -22,7 +22,7 @@ public class ActionBoostCommand : Command
 
 	public override bool IsValidTarget(Targetable t)
 	{
-		Pawn x = t as Pawn;
-		return x == owner;
+		Pawn p = t.GetComponent<Pawn>();
+		return p == owner;
 	}
 }

@@ -19,6 +19,7 @@ public class HighlightingManager
 	public void ComputeHighlightChange(Selectable previous, Selectable current)
 	{
 		ClearSelections ();
+
 		if (previous != null) {
 			if (previous.GetComponent<PawnHighlightingManager> () != null) {
 				previous.GetComponent<PawnHighlightingManager> ().UpdateNodes ();
@@ -28,9 +29,6 @@ public class HighlightingManager
 		if (current != null) {
 			if (current.GetComponent<PawnHighlightingManager> () != null && TurnManager.instance.turnPlayer.Owns (current.GetComponent<Pawn> ())) {
 				current.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Selected);
-				foreach (Pawn p in current.GetComponent<Pawn>().sightList) {
-					p.GetComponent<PawnHighlightingManager> ().SetState (PawnHighlightStates.Targetable);
-				}
 				current.GetComponent<PawnHighlightingManager> ().UpdateNodes ();
 			}
 
@@ -47,6 +45,24 @@ public class HighlightingManager
 		}
 		foreach (NodeHighlightManager nhm in GameObject.FindObjectsOfType<NodeHighlightManager>()){
 			nhm.SetState (NodeHighlightStates.Deselected);
+		}
+	}
+
+	public void ShowTargetingOptions(Command c)
+	{
+		foreach (Targetable t in c.validTargets) {
+			t.IsValidTarget(c.owner);
+		}
+	}
+
+	public void ShowTarget(Command c)
+	{
+		if (c.targetsAllValidTargets) {
+			foreach (Targetable t in c.validTargets) {
+				t.IsTargeted (c.owner);
+			}
+		} else {
+			c.target.IsTargeted(c.owner);
 		}
 	}
 }

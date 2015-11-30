@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(GridNavMeshWrapper))]
 [RequireComponent(typeof(Health))]
-public class Pawn : MonoBehaviour, Targetable
+[RequireComponent(typeof(Targetable))]
+public class Pawn : MonoBehaviour
 {
     public Player owner;
 
@@ -281,11 +282,6 @@ public class Pawn : MonoBehaviour, Targetable
 
         return CoverState.None;
     }
-
-	public void OnTargeted(Pawn targeter)
-	{
-
-	}
 
     #region Callbacks
 

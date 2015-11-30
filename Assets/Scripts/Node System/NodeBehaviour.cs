@@ -4,7 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 [ExecuteInEditMode]
-public class NodeBehaviour : MonoBehaviour, Targetable {
+[RequireComponent(typeof(Targetable))]
+public class NodeBehaviour : MonoBehaviour {
 	
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
@@ -131,32 +132,27 @@ public class NodeBehaviour : MonoBehaviour, Targetable {
 	{
 		Vector3 direction;
 
-		switch (linkDir){
+		switch (linkDir) {
 		case LinkPositions.Forward: 
 			direction = Vector3.forward;
-			return (links.Find(x => x.position == position + direction));
+			return (links.Find (x => x.position == position + direction));
 			break;
 		case LinkPositions.Right:
 			direction = Vector3.right;
-			return (links.Find(x => x.position == position + direction));
+			return (links.Find (x => x.position == position + direction));
 			break;
 		case LinkPositions.Back:
 			direction = Vector3.back;
-			return (links.Find(x => x.position == position + direction));
+			return (links.Find (x => x.position == position + direction));
 			break;
 		case LinkPositions.Left:
 			direction = Vector3.left;
-			return (links.Find(x => x.position == position + direction));
+			return (links.Find (x => x.position == position + direction));
 			break;
 		}
 
 		return null;
 	}
-
-    public void OnTargeted(Pawn targeter)
-    {
-        GetComponent<NodeHighlightManager>().SetState(NodeHighlightStates.Targeted);
-    }
 
 	void OnDrawGizmos()
 	{
