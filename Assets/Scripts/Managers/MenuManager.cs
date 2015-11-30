@@ -43,31 +43,73 @@ public class MenuManager : MonoBehaviour {
     //called by button/states to trigger transition
     public void ChangeMenu(int id)
     {
-		if (menuCanvasReference[previousMenuID] != null)
+
+        if (menuCanvasReference[activeMenuID] != null && menuCanvasReference[activeMenuID].isActive)
         {
-            menuCanvasReference[previousMenuID].deselectMenu();
+            menuCanvasReference[activeMenuID].deselectMenu();
         }
-		previousMenuID = activeMenuID; 
+
+        if (!menuCanvasReference[id].isActive)
+        {
+            menuCanvasReference[id].setMenu();
+        }
+
+        previousMenuID = activeMenuID;
         activeMenuID = id;
-        menuCanvasReference[activeMenuID].setMenu();
+
+    }
+    public void ChangeMenu(MenuCanvas menu)
+    {
+        ChangeMenu(menu.GetID());
+    }
+
+    //opens a menu without closing former menus, can be used in conjunction with closeMenu
+    public void OpenMenu(int id)
+    {
+        if (!menuCanvasReference[id].isActive)
+        {
+            menuCanvasReference[id].setMenu();
+        }
+
+        previousMenuID = activeMenuID;
+        activeMenuID = id;
+    }
+    public void OpenMenu(MenuCanvas menu)
+    {
+        OpenMenu(menu.GetID());
+    }
+
+    public void CloseMenu(int id)
+    {
+        if (menuCanvasReference[id] != null && menuCanvasReference[id].isActive)
+        {
+            menuCanvasReference[id].deselectMenu();
+        }
+
+        activeMenuID = previousMenuID;
+    }
+    public void CloseMenu(MenuCanvas menu)
+    {
+        CloseMenu(menu.GetID());
     }
 
     //returns to the previous active menu (only by one step) care for depth since it set the active menu/id to the previous menu
-    public void CloseMenu(int id)
+    public void PreviousMenu()
     {
-        menuCanvasReference[activeMenuID].deselectMenu();
-        if (menuCanvasReference[previousMenuID] != null)
+        if (menuCanvasReference[activeMenuID] != null && menuCanvasReference[activeMenuID].isActive)
         {
-            activeMenuID = previousMenuID;
-            previousMenuID = id;
-            menuCanvasReference[activeMenuID].setMenu();
+            menuCanvasReference[activeMenuID].deselectMenu();
         }
+
+        activeMenuID = previousMenuID;
     }
 
     public void CloseAllMenus()
     {
-        previousMenuID = 0;
-        menuCanvasReference[activeMenuID].deselectMenu();
+        foreach (MenuCanvas c in menuCanvasReference.Values)
+        {
+            if (c.isActive) c.deselectMenu();
+        }
     }
 
 }
