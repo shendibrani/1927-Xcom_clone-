@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class SkillTree
 {
 
@@ -18,7 +19,7 @@ public class SkillTree
         levelList = new SkillLevel[6];
         assignedLevels = 1;
     }
-
+   
     //called from button press?
     public void AssignSkill(Skill pSkill)
     {
@@ -90,6 +91,7 @@ public class SkillTree
 
 }
 
+[System.Serializable]
 public struct SkillLevel
 {
     public List<Skill> skillList;
