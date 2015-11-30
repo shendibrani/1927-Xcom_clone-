@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 787043ac8b16ec44ca242e3512338951
-timeCreated: 1448885195
+guid: 3c2632f4a52fc8d41a7394b22e76cef0
+timeCreated: 1448885134
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Barrel2
+    4300000: Crate
     9500000: //RootNode
   materials:
     importMaterials: 0

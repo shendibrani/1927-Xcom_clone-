@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 787043ac8b16ec44ca242e3512338951
-timeCreated: 1448885195
+guid: d328312fa6d57d541a5655c487feab0e
+timeCreated: 1448885134
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Barrel2
+    100000: book
+    100002: book2
+    100004: //RootNode
+    400000: book
+    400002: book2
+    400004: //RootNode
+    2300000: book
+    2300002: book2
+    3300000: book
+    3300002: book2
+    4300000: book2
+    4300002: book
     9500000: //RootNode
   materials:
     importMaterials: 0
