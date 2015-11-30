@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 787043ac8b16ec44ca242e3512338951
-timeCreated: 1448885195
+guid: ec806ef617223764db3307ca7cb40a8c
+timeCreated: 1448885134
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Barrel2
+    100000: helmet
+    100002: helmet_turned
+    100004: //RootNode
+    400000: helmet
+    400002: helmet_turned
+    400004: //RootNode
+    2300000: helmet
+    2300002: helmet_turned
+    3300000: helmet
+    3300002: helmet_turned
+    4300000: helmet_turned
+    4300002: helmet
     9500000: //RootNode
   materials:
     importMaterials: 0
