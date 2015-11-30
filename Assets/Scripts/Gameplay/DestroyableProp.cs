@@ -14,7 +14,7 @@ public class DestroyableProp : MonoBehaviour
 		//destroyed.enabled = false;
 		intact = GetComponent<Renderer> ();
 		GetComponent<Health> ().OnDeath.AddListener(ShowDestroyed);
-		currentNode.currentObject = this;
+		currentNode.currentObject = GetComponent<Targetable> ();
 	}
 
 //	void Update(){

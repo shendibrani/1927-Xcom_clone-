@@ -30,7 +30,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 				_currentNode.currentObject = null;
 			}
 			_currentNode = value;
-			_currentNode.currentObject = GetComponent<Pawn>();
+			_currentNode.currentObject = GetComponent<Targetable>();
 		}
 	}
 	

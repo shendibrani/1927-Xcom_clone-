@@ -19,7 +19,7 @@ public class GrenadeCommand : Command {
     {
         if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-		NodeBehaviour targetNode = target as NodeBehaviour;
+		NodeBehaviour targetNode = target.GetComponent<NodeBehaviour> ();
 
         foreach (NodeBehaviour n in Pathfinder.NodesWithinSteps(targetNode, areaOfEffect))
         {
@@ -31,19 +31,19 @@ public class GrenadeCommand : Command {
 
 	void Hit(NodeBehaviour targetNode, Targetable pTarget)
     {
-        if (pTarget is Pawn)
+		if (pTarget.GetComponent<Pawn>() != null)
         {
             double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, targetNode.transform.position) - 1) / (range - 1);
 
             if (RNG.NextDouble() < hitChance)
             {
-                double accuracy = Vector3.Distance(targetNode.transform.position, (pTarget as Pawn).transform.position) / 200d;
+				double accuracy = Vector3.Distance(targetNode.transform.position, pTarget.GetComponent<Pawn>().transform.position) / 200d;
                 double tmpDamageMod = (1 - accuracy) * RNG.NextDouble() + accuracy;
                 if (tmpDamageMod > 1d) tmpDamageMod = 1d;
                 int tmpDamage = (int)System.Math.Round((double)damage * tmpDamageMod);
                 if (tmpDamage < 1) tmpDamage = 1;
-                Debug.Log(owner + " hit " + (pTarget as Pawn) + " and dealt " + tmpDamage + " damage.");
-                (pTarget as Pawn).GetComponent<Health>().Damage(tmpDamage);
+				Debug.Log(owner + " hit " + (pTarget.GetComponent<Pawn>()) + " and dealt " + tmpDamage + " damage.");
+                pTarget.GetComponent<Health>().Damage(tmpDamage);
             }
         }
         else

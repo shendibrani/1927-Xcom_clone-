@@ -15,18 +15,19 @@ public class DefendCommand : Command {
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckCost(actionCost)) return false;
 
-        foreach (Pawn p in validTargets)
+        foreach (Targetable t in validTargets)
         {
-            p.EffectList.Add(Factory.GetEffect(Effects.DefendBuff, owner));
+            t.GetComponent<Pawn>().EffectList.Add(Factory.GetEffect(Effects.DefendBuff, owner));
         }
 
         return true;
     }
 
-	public override bool IsValidTarget(Targetable t){
-		Pawn p = t as Pawn;
+	public override bool IsValidTarget(Targetable t)
+	{
+		Pawn p = t.GetComponent<Pawn>();
 		return (p!= null) && (p.owner == owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
 	}
 }

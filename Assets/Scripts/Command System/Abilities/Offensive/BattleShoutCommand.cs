@@ -16,9 +16,9 @@ public class BattleShoutCommand : Command
     {
         if (!CheckCost(actionCost)) return false;
 
-        foreach (Pawn p in validTargets)
+        foreach (Targetable t in validTargets)
         {
-            p.EffectList.Add(new AccuracyBuff(p));
+			t.GetComponent<Pawn>().EffectList.Add(new AccuracyBuff(t.GetComponent<Pawn>()));
         }
         return true;
     }

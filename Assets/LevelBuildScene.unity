@@ -9168,12 +9168,13 @@ MonoBehaviour:
   X_MarginDistance: 1
   Y_MarginDistance: 1
   Z_MarginDistance: 1
+  ParentOfInstantiations: {fileID: 0}
+  defaultInstantiation: {fileID: 0}
   printLayersInnerInfo: 1
-  AutoBuild: 0
   PrefabLoader:
   - {fileID: 0}
   - {fileID: 124094, guid: 6cd1d81285476564a9ad5cdbbb93b71a, type: 2}
-  - {fileID: 179206, guid: 96a4189cdb9c0bc46a9e1ea8c8c6e0db, type: 2}
+  - {fileID: 0}
   - {fileID: 179510, guid: 2c5588d77755c994f992e0a099c03fd0, type: 2}
 --- !u!4 &234032633
 Transform:

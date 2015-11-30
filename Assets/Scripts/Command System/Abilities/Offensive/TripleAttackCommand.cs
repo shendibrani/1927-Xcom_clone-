@@ -17,7 +17,7 @@ public class TripleAttackCommand : Command
 
         if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-		Pawn tPawn = target as Pawn;
+		Pawn tPawn = target.GetComponent<Pawn> ();
 
         for (int c = 0; c < 3; c++)
         {

@@ -61,7 +61,7 @@ public class PawnHighlightingManager : MonoBehaviour
 
 	void OnValidTarget(Pawn p)
 	{
-		SetState(NodeHighlightStates.Targetable);
+		SetState(PawnHighlightStates.Targetable);
 	}
 
 	void OnTargeted (Pawn targeter)
