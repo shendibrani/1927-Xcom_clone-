@@ -11,6 +11,7 @@ public class SelectionManager
 			if (instance._selected != null){
 				instance._selected.OnDeselect();
 			}
+
 			if(instance.SelectionChange != null){
 				instance.SelectionChange.Invoke(instance._selected, value);
 			}
@@ -20,8 +21,6 @@ public class SelectionManager
 			if (instance._selected != null){
 				instance._selected.OnSelect();
 			}
-
-			//Debug.Log("Selection");
 		}
 	}
 
@@ -46,6 +45,45 @@ public class SelectionManager
 				_instance = new SelectionManager();
 			}
 			return _instance;
+		}
+	}
+
+	public static Targetable target {
+		get{
+			if (command != null) {
+				return instance._command.target;
+			}
+			return null;
+		}
+		set {
+			if(command != null){
+				if (target != null){
+					target.IsValidTarget();
+				}
+				
+				command.target = value;
+				
+				if (target != null){
+					target.IsTargeted();
+				}
+			}
+		}
+	}
+
+	private Command _command;
+	
+	public static Command command {
+		get{ return _command; }
+		
+		set {
+			instance._command = value;
+		}
+	}
+
+	public bool isInTargetingMode 
+	{
+		get {
+			return command != null;
 		}
 	}
 

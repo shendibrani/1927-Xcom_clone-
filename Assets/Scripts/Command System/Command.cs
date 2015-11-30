@@ -9,11 +9,11 @@ public abstract class Command
 
 	public Pawn owner {get; private set;}
 
-	public List<Targetable> targets;
-
 	public Targetable target;
 
 	public List<Targetable> validTargets { get {return owner.targetsList.FindAll(x => IsValidTarget(x)); } }
+
+	public bool targetsAllValidTargets { get; protected set; }
 
 	public Command(Pawn pOwner){
 		owner = pOwner;
@@ -22,7 +22,8 @@ public abstract class Command
 	public abstract bool Execute ();
 
 	/// <summary>
-	/// Determines whether t is a valid target for this command. Used to prune the sightlist to calculate the valid targets.
+	/// Determines whether t is a valid target for this command. 
+	/// Used to prune the owner's targetlist to calculate the valid targets.
 	/// If the command has multiple conditions, start with the lighter ones to speed the process.
 	/// If the conditions include a typecast (such as x is Pawn) cache the result to prevent multiple calls of the cast function.
 	/// </summary>

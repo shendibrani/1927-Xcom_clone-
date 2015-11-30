@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Selectable))]
+[RequireComponent(typeof(Targetable))]
 [RequireComponent(typeof(Pawn))]
 public class PawnHighlightingManager : MonoBehaviour
 {
@@ -16,6 +16,8 @@ public class PawnHighlightingManager : MonoBehaviour
 	{
 		SetState (PawnHighlightStates.Deselected);
 		GetComponent<GridNavMeshWrapper> ().DestinationReached += UpdateNodes;
+		GetComponent<Targetable> ().IsValidTarget += OnValidTarget;
+		GetComponent<Targetable> ().IsTargeted += OnTargeted;
 	}
 
 	public void SetState(PawnHighlightStates pState){
@@ -45,7 +47,8 @@ public class PawnHighlightingManager : MonoBehaviour
 		}
 	}
 
-	public void UpdateNodes(){
+	public void UpdateNodes()
+	{
 		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
 			node.SetState (NodeHighlightStates.Deselected);
 		}
@@ -54,6 +57,16 @@ public class PawnHighlightingManager : MonoBehaviour
 				node.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Reachable);
 			}
 		}
+	}
+
+	void OnValidTarget(Pawn p)
+	{
+		SetState(NodeHighlightStates.Targetable);
+	}
+
+	void OnTargeted (Pawn targeter)
+	{
+		SetState (PawnHighlightStates.Targetable);
 	}
 }
 

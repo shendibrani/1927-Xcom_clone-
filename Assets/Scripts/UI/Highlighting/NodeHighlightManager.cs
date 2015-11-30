@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(NodeBehaviour))]
 public class NodeHighlightManager : MonoBehaviour
 {
 
@@ -13,6 +14,8 @@ public class NodeHighlightManager : MonoBehaviour
 	void Start ()
 	{
 		SetState (NodeHighlightStates.Deselected);
+		GetComponent<Targetable> ().IsTargeted += OnTargeted;
+		GetComponent<Targetable> ().IsValidTarget += OnValidTarget;
 	}
 
 	void Update(){
@@ -43,6 +46,16 @@ public class NodeHighlightManager : MonoBehaviour
 		//Debug.Log ((int)state);
 		
 		Highlights [(int)state].SetHighlight (true);
+	}
+
+	void OnValidTarget(Pawn p)
+	{
+		SetState(NodeHighlightStates.Targetable);
+	}
+
+	void OnTargeted(Pawn p)
+	{
+		SetState(NodeHighlightStates.Targeted);
 	}
 }
 

@@ -21,7 +21,7 @@ public class StormCommand : Command {
 
 	public override bool IsValidTarget (Targetable t)
 	{
-		NodeBehaviour x = t as NodeBehaviour;
-		return (x != null) && (Pathfinder.NodesWithinSteps (owner.currentNode, range).Contains (x));
+		NodeBehaviour n = t.GetComponent<NodeBehaviour>();
+		return (n != null) && (Pathfinder.NodesWithinSteps (owner.currentNode, range).Contains (n));
 	}
 }

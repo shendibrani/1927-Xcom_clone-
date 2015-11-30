@@ -23,9 +23,9 @@ public class BattleShoutCommand : Command
         return true;
     }
 
-	public override bool IsValidTarget(Targetable x)
+	public override bool IsValidTarget(Targetable t)
 	{
-		Pawn p = x as Pawn;
+		Pawn p = t.GetComponent<Pawn>();
 		return (p != null) && (owner.owner == p.owner); 
 	}
 }

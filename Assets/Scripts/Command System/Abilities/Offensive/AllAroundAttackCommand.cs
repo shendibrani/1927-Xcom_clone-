@@ -56,7 +56,7 @@ public class AllAroundAttackCommand : Command
 
 	public override bool IsValidTarget(Targetable t)
 	{
-		Pawn x = t as Pawn;
-		return (x != null) && (Vector3.Distance(owner.transform.position, x.transform.position) < 1);
+		Pawn p = t.GetComponent<Pawn>();
+		return (p != null) && (Vector3.Distance(owner.transform.position, p.transform.position) < 1);
 	}
 }

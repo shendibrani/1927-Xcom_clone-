@@ -25,8 +25,9 @@ public class AllOrNothingCommand : Command
 		return true;
     }
 
-	public override bool IsValidTarget(Targetable x){
-		Pawn p = x as Pawn;
+	public override bool IsValidTarget(Targetable t)
+	{
+		Pawn p = t.GetComponent<Pawn>();
 		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
 	}
 }
