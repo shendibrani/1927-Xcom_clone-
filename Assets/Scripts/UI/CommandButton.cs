@@ -5,7 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Button))]
 public class CommandButton : MonoBehaviour
 {
-	public Skill skill;
+	public Skill skill { get; private set; }
 	private Button button;
 
 	// Use this for initialization
@@ -23,9 +23,21 @@ public class CommandButton : MonoBehaviour
 
 	void CacheCommand()
 	{
-		if (SelectionManager.selected == null) return;
+		if (SelectionManager.selected == null || skill == null) return;
 
 		SelectionManager.command = Factory.GetCommand(skill.abilityCommand, SelectionManager.selected.GetComponent<Pawn>());
+	}
+
+	public void Clear()
+	{
+		skill = null;
+		//button.image = skill.voidIcon;
+	}
+
+	public void Set(Skill s)
+	{
+		skill = s;
+		//button.image = skill.icon;
 	}
 }
 
