@@ -12,7 +12,7 @@ public class CommandButton : MonoBehaviour
 	void Start ()
 	{
 		button = GetComponent<Button> ();
-		button.onClick += CacheCommand;
+		button.onClick.AddListener(CacheCommand);
 	}
 	
 	// Update is called once per frame
