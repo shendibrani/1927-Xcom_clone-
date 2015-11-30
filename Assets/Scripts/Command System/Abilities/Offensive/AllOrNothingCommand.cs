@@ -18,7 +18,7 @@ public class AllOrNothingCommand : Command
         if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
         owner.EffectList.Add(new AllOrNothingTemporaryEffect(owner));
-		Pawn tPawn = target as Pawn;
+		Pawn tPawn = target.GetComponent<Pawn>();
 
 		AttackCommand.Attack(owner, tPawn);
 

@@ -18,7 +18,7 @@ public class FinishingAttackCommand : Command
 
         if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-		Pawn tPawn = target as Pawn;
+		Pawn tPawn = target.GetComponent<Pawn> ();
 
 		tPawn.EffectList.Add(new FinishingAttackTemporaryEffect(tPawn));
 

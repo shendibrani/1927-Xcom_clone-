@@ -17,7 +17,7 @@ public class PushCommand : Command
     {
         if (!CheckCost(actionCost) || !CheckTarget()) return false;
 
-		Pawn tPawn = targets [0] as Pawn;
+		Pawn tPawn = target.GetComponent<Pawn>();
 
         if (owner.Weapon.range == 1)
         {

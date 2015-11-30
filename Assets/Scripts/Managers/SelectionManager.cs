@@ -58,13 +58,13 @@ public class SelectionManager
 		set {
 			if(command != null){
 				if (target != null){
-					target.IsValidTarget();
+					target.IsValidTarget(command.owner);
 				}
 				
 				command.target = value;
 				
 				if (target != null){
-					target.IsTargeted();
+					target.IsTargeted(command.owner);
 				}
 			}
 		}
@@ -73,7 +73,7 @@ public class SelectionManager
 	private Command _command;
 	
 	public static Command command {
-		get{ return _command; }
+		get{ return instance._command; }
 		
 		set {
 			instance._command = value;

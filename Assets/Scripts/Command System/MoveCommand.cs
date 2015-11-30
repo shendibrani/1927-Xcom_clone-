@@ -13,7 +13,7 @@ public class MoveCommand : Command
 	{
 		if (!CheckTarget ()) return false;
 
-		NodeBehaviour tNode = target as NodeBehaviour;
+		NodeBehaviour tNode = target.GetComponent<NodeBehaviour>();
 
 		List<NodeBehaviour> path = Pathfinder.GetPath (owner.currentNode, tNode);
         

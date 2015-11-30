@@ -27,7 +27,7 @@ public class AllAroundAttackCommand : Command
         {
             foreach (Targetable t in validTargets)
             {
-				Pawn p = t as Pawn;
+				Pawn p = t.GetComponent<Pawn>();
 				if(p != null){
 					AttackCommand.Attack(owner, p);
 				}
@@ -39,7 +39,7 @@ public class AllAroundAttackCommand : Command
             Debug.Log("Melee Weapon Not Equiped");
 			foreach (Targetable t in validTargets)
 			{
-				Pawn p = t as Pawn;
+				Pawn p = t.GetComponent<Pawn>();
 				if(p != null){
 	                LinkPositions pushDirection;
 	                pushDirection = owner.currentNode.GetRelativePosition(p.currentNode);

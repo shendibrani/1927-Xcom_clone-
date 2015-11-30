@@ -15,7 +15,7 @@ public class AttackCommand : Command
 		if (!CheckCost (owner.Weapon.actionCost) || !CheckTarget ())
 			return false;
 
-		Pawn tPawn = target as Pawn;
+		Pawn tPawn = target.GetComponent<Pawn> ();
 
 		Attack (owner, tPawn);
 		return true;

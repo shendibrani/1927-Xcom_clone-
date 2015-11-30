@@ -19,11 +19,11 @@ public class NodeBehaviour : MonoBehaviour {
 		get{ return _currentObject;}
 		set {
 			if (_currentObject is Pawn) {
-				AddOnLeaveEffect(_currentObject as Pawn);
+				AddOnLeaveEffect(_currentObject.GetComponent<Pawn>());
 			}
 			_currentObject = value;
 			if (_currentObject is Pawn) {
-				AddOnEnterEffect(_currentObject as Pawn);
+				AddOnEnterEffect(_currentObject.GetComponent<Pawn>());
 			}
 		}
 	}
