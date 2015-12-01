@@ -17,6 +17,8 @@ GameObject:
   - 114: {fileID: 11472786}
   - 114: {fileID: 11473082}
   - 114: {fileID: 11477358}
+  - 114: {fileID: 11473080}
+  - 114: {fileID: 11444464}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -91,8 +93,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Highlights:
-  - {fileID: 11472786}
+  - {fileID: 11473080}
   - {fileID: 11473082}
+  - {fileID: 11444464}
+  - {fileID: 11472786}
 --- !u!114 &11444332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +108,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c709e9e193b32bb4e8fc6ff3b507ef10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11444464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7160cfec6327e46b57473eccde28be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighted: 0
+  reactToMouseClick: 0
+  reactToMouseOver: 0
+  material: {fileID: 2100000, guid: 8b211a67b667b464fa35276ebe04d224, type: 2}
+  startingColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 0, a: 1}
 --- !u!114 &11472786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +142,23 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 8b211a67b667b464fa35276ebe04d224, type: 2}
   startingColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &11473080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7160cfec6327e46b57473eccde28be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighted: 0
+  reactToMouseClick: 0
+  reactToMouseOver: 0
+  material: {fileID: 2100000, guid: 8b211a67b667b464fa35276ebe04d224, type: 2}
+  startingColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0, g: .783999979, b: 0, a: 1}
 --- !u!114 &11473082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,7 +205,55 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Highlights.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Highlights.Array.data[3]
+      value: 
+      objectReference: {fileID: 11472786}
+    - target: {fileID: 0}
+      propertyPath: Highlights.Array.data[0]
+      value: 
+      objectReference: {fileID: 11473080}
+    - target: {fileID: 0}
+      propertyPath: Highlights.Array.data[2]
+      value: 
+      objectReference: {fileID: 11444464}
+    - target: {fileID: 0}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b211a67b667b464fa35276ebe04d224, type: 2}
+    - target: {fileID: 0}
+      propertyPath: startingColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: highlightColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: highlightColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: highlightColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124796}

@@ -58,13 +58,14 @@ public class GridNavMeshWrapper : MonoBehaviour
 					DestinationReached ();
 				}
 			}
-			UpdateRotation();
 		}
+		UpdateRotation();
 	}
 	
 	bool ReachedDestination()
 	{
-		return GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude == 0;
+		if (debug) Debug.Log ("Reached Destination: " + (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent>().pathStatus == NavMeshPathStatus.PathComplete && GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude == 0));
+		return (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude == 0);
 	}
 	
 	public void SetPath(List<NodeBehaviour> pPath){
@@ -72,13 +73,15 @@ public class GridNavMeshWrapper : MonoBehaviour
 			if (debug) Debug.Log ("Starting Pathing");
 			GetComponent<NavMeshAgent>().destination = (pPath[pPath.Count-1].offsetPosition);
 			currentDestination = pPath[pPath.Count-1];
+			if (debug) Debug.Log ("Remaining Distance at pathing start: " + GetComponent<NavMeshAgent> ().remainingDistance);
 			stopped = false;
 		}
 	}
 
 	void UpdateRotation ()
 	{
-		if(GetComponent<NavMeshAgent> ().velocity.normalized.sqrMagnitude !=0){
+		if (debug) Debug.Log (GetComponent<NavMeshAgent> ().velocity.normalized);
+		if(GetComponent<NavMeshAgent> ().velocity.normalized.magnitude !=0){
 			modelRoot.forward = Vector3.Lerp(modelRoot.forward, GetComponent<NavMeshAgent> ().velocity.normalized, 0.5f);
 		}
 		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);

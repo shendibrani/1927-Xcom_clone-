@@ -11,7 +11,7 @@ public abstract class Command
 
 	public Targetable target;
 
-	public List<Targetable> validTargets { get {return owner.targetsList.FindAll(x => IsValidTarget(x)); } }
+	public List<Targetable> validTargets { get {return owner.targetsList.FindAll(x => x != null && IsValidTarget(x)); } }
 
 	public bool targetsAllValidTargets { get; protected set; }
 

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Pawn))]
 public class PawnHighlightingManager : MonoBehaviour
 {
+	[SerializeField] bool debug;
+
 	[SerializeField] List<Highlightable> Highlights;
 
 	public PawnHighlightStates state { get; private set;}
@@ -30,7 +32,7 @@ public class PawnHighlightingManager : MonoBehaviour
 
 	void Update(){
 		if (dirty) {
-			Debug.Log("Clearing Dirty flag");
+			if (debug) Debug.Log("Clearing Dirty flag");
 			UpdateHighlight();
 			dirty = false;
 		}

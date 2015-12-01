@@ -5,11 +5,12 @@ using System.Collections.Generic;
 [RequireComponent(typeof(NodeBehaviour))]
 public class NodeHighlightManager : MonoBehaviour
 {
+	[SerializeField] bool debug;
 
 	[SerializeField] List<Highlightable> Highlights;
 	NodeHighlightStates state;
 	bool dirty;
-
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -20,7 +21,7 @@ public class NodeHighlightManager : MonoBehaviour
 
 	void Update(){
 		if (dirty) {
-			Debug.Log("Clearing Dirty flag");
+			if (debug) Debug.Log("Clearing Dirty flag");
 			UpdateHighlight ();
 			dirty = false;
 		}
