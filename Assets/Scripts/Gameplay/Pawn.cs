@@ -24,7 +24,7 @@ public class Pawn : MonoBehaviour
     //Weapon weapon;
 
     int actionPointsPerTurn = 3;
-	public int MaxActionPointsPerTurn {	get { return actionPointsPerTurn; } }
+    public int MaxActionPointsPerTurn { get { return actionPointsPerTurn; } }
 
     int actionPoints = 3;
     int movement;
@@ -34,7 +34,7 @@ public class Pawn : MonoBehaviour
         private set;
     }
 
-	#region Properties
+    #region Properties
     public int ActionPoints
     {
         get { return actionPointsPerTurn + actionPointsMod - actionPointsSpent; }
@@ -63,10 +63,11 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.actionPointMod;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.actionPointMod;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.actionPointMod;
             }
@@ -78,10 +79,11 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.accuracyMod;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.accuracyMod;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.accuracyMod;
             }
@@ -93,10 +95,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.accuracyMulti;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.accuracyMulti;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.accuracyMulti;
             }
@@ -108,10 +111,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.hitMod;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.hitMod;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.hitMod;
             }
@@ -123,10 +127,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.hitMulti;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.hitMulti;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.hitMulti;
             }
@@ -138,10 +143,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.damageMod;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.damageMod;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.damageMod;
             }
@@ -153,10 +159,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.damageMulti;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.damageMulti;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.damageMulti;
             }
@@ -168,10 +175,11 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-			if(currentNode.tileEffect != null){
-				tmp += currentNode.tileEffect.critChanceMod;
-			}
-			foreach (PawnEffect e in EffectList)
+            if (currentNode.tileEffect != null)
+            {
+                tmp += currentNode.tileEffect.critChanceMod;
+            }
+            foreach (PawnEffect e in EffectList)
             {
                 tmp += e.critChanceMod;
             }
@@ -196,56 +204,75 @@ public class Pawn : MonoBehaviour
         get { return LineOfSightManager.GetSightList(this); }
     }
 
-	public List<Targetable> targetsList {
-		get {
-			List<Targetable> temp = new List<Targetable>();
-			foreach(Pawn p in sightList){
-				temp.Add(p.GetComponent<Targetable>());
-			}
-			foreach(DestroyableProp d in FindObjectsOfType<DestroyableProp>()){
-				if(LineOfSightManager.CheckSight(this,d)){
-					temp.Add(d.GetComponent<Targetable>());
-				}
-			}
-			foreach(NodeBehaviour n in GameObject.FindObjectsOfType<NodeBehaviour>()){
-				if(Vector3.Distance(this.transform.position, n.position) <=sightRange){
-					temp.Add(n.GetComponent<Targetable>());
-				}
-			}
-			return temp;
-		}
-	}
+    public List<Targetable> targetsList
+    {
+        get
+        {
+            List<Targetable> temp = new List<Targetable>();
+            foreach (Pawn p in sightList)
+            {
+                temp.Add(p.GetComponent<Targetable>());
+            }
+            foreach (DestroyableProp d in FindObjectsOfType<DestroyableProp>())
+            {
+                if (LineOfSightManager.CheckSight(this, d))
+                {
+                    temp.Add(d.GetComponent<Targetable>());
+                }
+            }
+            foreach (NodeBehaviour n in GameObject.FindObjectsOfType<NodeBehaviour>())
+            {
+                if (Vector3.Distance(this.transform.position, n.position) <= sightRange)
+                {
+                    temp.Add(n.GetComponent<Targetable>());
+                }
+            }
+            return temp;
+        }
+    }
 
-	#endregion
+    #endregion
 
     public Command move;
     public Command attack;
     public List<Skill> skillList;
 
+    [SerializeField]
+    public List<Commands> tmpList;
+    [SerializeField]
+    public Weapons weap;
+
     void Start()
     {
+        skillList = new List<Skill>();
+        for (int i = 0; i < tmpList.Count; i++)
+        {
+            skillList.Add(new Skill("Skill", "Description", tmpList[i]));
+        }
+        Weapon = WeaponData.instance.universalWeaponList[weap];
     }
 
     public void Initalise(Character pCharacter)
     {
         Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
-        Weapon = pCharacter.assignedWeapon;
+        //Weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
-        
-        skillList = new List<Skill>(pCharacter.skillList);
+
+        //skillList = new List<Skill>(pCharacter.skillList);
     }
 
     public void Turn()
     {
         actionPointsSpent = 0;
 
-		if(currentNode.tileEffect != null){
-			currentNode.tileEffect.Turn();
-		}
-		for (int i = EffectList.Count - 1; i >= 0; i--)
+        if (currentNode.tileEffect != null)
+        {
+            currentNode.tileEffect.Turn();
+        }
+        for (int i = EffectList.Count - 1; i >= 0; i--)
         {
             EffectList[i].Turn();
         }

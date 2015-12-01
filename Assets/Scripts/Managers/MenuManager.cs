@@ -18,10 +18,13 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     MenuCanvas[] MenuCanvasList;
 
+    public Canvas canvasRefence { get; private set; }
+
     Dictionary<int, MenuCanvas> menuCanvasReference;
 
     void Start()
     {
+        canvasRefence = GetComponent<Canvas>();
         menuCanvasReference = new Dictionary<int, MenuCanvas>();
         foreach (MenuCanvas m in MenuCanvasList)
         {
