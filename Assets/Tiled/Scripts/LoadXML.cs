@@ -46,6 +46,7 @@ public class LoadXML : ReadXML {
             for (int k = 0; k < DEPTH; k++)
             {
                 layerParent = new GameObject();
+                generatedObjects.Add(layerParent);
                 layerParent.name = "ParentOfLayer" + counter;
                 counter++;
 
@@ -63,20 +64,18 @@ public class LoadXML : ReadXML {
                         if (tileID != 0)
                         {
                             
-                            UnityEngine.Debug.Log("Tile " + tileID);
-                            tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);
-                          //  generatedObjects.Add(tempStore);
+                            tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);                            
                             tempStore.transform.parent = layerParent.transform;
-                            
+                            generatedObjects.Add(tempStore);
                         }
 						
 				 		runOnce = true;
                     }
                 }
             }
-            UnityEngine.Debug.Log("Amount of generated objects: " + generatedObjects.Count);
+          
             sw.Stop();
-            UnityEngine.Debug.Log("Elapsed time to generate structure: " + sw.ElapsedMilliseconds + "ms");
+            UnityEngine.Debug.Log("Elapsed time to generate structure: " + sw.ElapsedMilliseconds + "ms" + "||" + "Amount of generated objects: " + generatedObjects.Count);
         }
         
     }

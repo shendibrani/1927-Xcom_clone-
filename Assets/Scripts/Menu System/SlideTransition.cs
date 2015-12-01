@@ -6,10 +6,11 @@ public class SlideTransition : TransitionState
 
     [SerializeField]
     Vector3 motion;
-    [SerializeField]
-    float duration;
 
-    float timer;
+    [SerializeField]
+    double duration;
+
+    double timer;
 
     public override void EnterState()
     {
@@ -19,7 +20,7 @@ public class SlideTransition : TransitionState
     {
         if (Time.fixedTime < timer + duration)
         {
-            owner.transform.position = owner.transform.position + (motion / duration);
+            owner.GetComponent<RectTransform>().localPosition = owner.GetComponent<RectTransform>().localPosition + (motion / (float)(duration) * Time.fixedDeltaTime);
         }
         else
         {

@@ -5,6 +5,7 @@ using System.Collections;
 public class TurnMarker : MonoBehaviour 
 {
 	[SerializeField] Image turnMarker;
+    [SerializeField] Text turnCount;
 	
 	// Use this for initialization
 	void Start () {
@@ -16,5 +17,6 @@ public class TurnMarker : MonoBehaviour
 	void UpdateTurnMarker () 
 	{
 		turnMarker.sprite = TurnManager.instance.turnPlayer.playerSymbol;
+        turnCount.text = TurnManager.instance.turn.ToString();
 	}
 }
