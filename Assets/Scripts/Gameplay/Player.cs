@@ -49,34 +49,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!TurnManager.instance.busy && TurnManager.instance.turnPlayer == this)
-        {
-			if(debug) Debug.Log(SelectionManager.selected);
-            if (Input.GetMouseButtonUp(1) && SelectionManager.selected != null)
-            {
-				if(debug) Debug.Log("Right Click");
-                if (SelectionManager.selected.GetComponent<Pawn>() != null)
-                {
-                    //default movement atm
-                    cachedCommand = Factory.GetCommand(Commands.Move, SelectionManager.selected.GetComponent<Pawn>());
-                    //highlight all options for movement (validtargets?);=
-                   
-                    if (SelectionManager.hovered.GetComponent<Targetable>() != null)
-                    {
-                        if (cachedCommand.IsValidTarget(SelectionManager.hovered.GetComponent<Targetable>()))
-                        {
-                            TurnManager.instance.SetBusy();
-                            cachedCommand.Execute();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public bool Owns(Pawn p)
     {
         return pawns.Contains(p);

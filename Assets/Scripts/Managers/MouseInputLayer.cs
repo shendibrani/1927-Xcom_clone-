@@ -33,7 +33,7 @@ public class MouseInputLayer : MonoBehaviour
 					if (SelectionManager.instance.isInTargetingMode) {
 						if (hit.collider.GetComponent<Targetable> () != null) {
 							SelectionManager.target = hit.collider.GetComponent<Targetable> ();
-							SelectionManager.command.Execute ();
+							SelectionManager.Execute ();
 						}
 					} else {
 						if (SelectionManager.selected != null && 
@@ -41,7 +41,7 @@ public class MouseInputLayer : MonoBehaviour
 							hit.collider.GetComponent<NodeBehaviour> () != null) {
 							SelectionManager.command = Factory.GetCommand (Commands.Move, SelectionManager.selected.GetComponent<Pawn> ());
 							SelectionManager.command.target = hit.collider.GetComponent<Targetable> ();
-							if(SelectionManager.command.Execute ()){
+							if(SelectionManager.Execute ()){
 								TurnManager.instance.SetBusy();
 							}
 						}

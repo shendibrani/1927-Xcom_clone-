@@ -11,6 +11,7 @@ public class MoveCommand : Command
 
 	public override bool Execute ()
 	{
+		Debug.Log (target);
 		if (!CheckTarget ()) return false;
 
 		NodeBehaviour tNode = target.GetComponent<NodeBehaviour>();

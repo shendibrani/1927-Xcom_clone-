@@ -82,6 +82,14 @@ public class SelectionManager
 		}
 	}
 
+	public static bool Execute()
+	{
+		if (command == null) return false;
+		bool result = command.Execute ();
+		command = null;
+		return result;
+	}
+
 	public bool isInTargetingMode 
 	{
 		get {

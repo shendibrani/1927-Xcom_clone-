@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {x: 0, y: 20}
   - {x: 0, y: -100}
+  - {x: 0, y: 20}
   easing: .200000003
 --- !u!114 &11424120
 MonoBehaviour:
@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaf087f511e5b54a9f03d9e11918f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransitionState: {fileID: 0}
+  TransitionState: {fileID: 11424120}
 --- !u!114 &11478796
 MonoBehaviour:
   m_ObjectHideFlags: 1
