@@ -16,10 +16,9 @@ public class SlideTransition : TransitionState
         rectTransform.anchoredPosition += (positions[state] - rectTransform.anchoredPosition) * easing;
     }
 
-    public override void EnterState()
+    public override void EnterState(int pState)
     {
-        state++;
-        state = (state % positions.Count + positions.Count) % positions.Count;
+        state = pState;
     }
     public override void RunState()
     {

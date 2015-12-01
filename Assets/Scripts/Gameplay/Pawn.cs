@@ -249,13 +249,14 @@ public class Pawn : MonoBehaviour
         {
             skillList.Add(new Skill("Skill", "Description", tmpList[i]));
         }
-        Weapon = WeaponData.instance.universalWeaponList[weap];
+       
     }
 
     public void Initalise(Character pCharacter)
     {
         Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
+        Weapon = WeaponData.instance.universalWeaponList[weap];
         //Weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;

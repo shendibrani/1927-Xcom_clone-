@@ -4,15 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(RectTransform))]
 public class MenuCanvas : MonoBehaviour
 {
-
-    [SerializeField]
-    int id;
-
-    public int GetID()
-    {
-        return id;
-    }
-
     [SerializeField]
     TransitionState TransitionState;
 
@@ -29,7 +20,7 @@ public class MenuCanvas : MonoBehaviour
     {
         if (TransitionState.state == 0)
         {
-            TransitionState.EnterState();
+            TransitionState.EnterState(1);
             currentState = TransitionState;
             isActive = true;
         }
@@ -39,7 +30,7 @@ public class MenuCanvas : MonoBehaviour
     {
          if (TransitionState.state == 1)
         {
-        TransitionState.EnterState();
+        TransitionState.EnterState(0);
         currentState = TransitionState;
         isActive = false;
         }

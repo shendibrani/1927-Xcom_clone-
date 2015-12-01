@@ -512,6 +512,7 @@ GameObject:
   - 224: {fileID: 22435536}
   - 114: {fileID: 11468954}
   - 114: {fileID: 11423632}
+  - 114: {fileID: 11495972}
   m_Layer: 5
   m_Name: AbilityUI
   m_TagString: Untagged
@@ -604,7 +605,6 @@ GameObject:
   - 114: {fileID: 11401746}
   - 114: {fileID: 11404628}
   - 114: {fileID: 11438976}
-  - 114: {fileID: 11460510}
   m_Layer: 5
   m_Name: UI Layer
   m_TagString: Untagged
@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {x: 0, y: -100}
   - {x: 0, y: 20}
+  - {x: 0, y: -100}
   easing: .200000003
 --- !u!114 &11424120
 MonoBehaviour:
@@ -1797,18 +1797,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11460510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6290754690e055a43b0e98390a9662a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIMenu: {fileID: 11476540}
 --- !u!114 &11461784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2008,7 +1996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17636c2b8bbe1fd49a09ca17430c89df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   TransitionState: {fileID: 11423632}
 --- !u!114 &11470978
 MonoBehaviour:
@@ -2253,7 +2240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaf087f511e5b54a9f03d9e11918f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
   TransitionState: {fileID: 0}
 --- !u!114 &11478796
 MonoBehaviour:
@@ -2522,6 +2508,18 @@ MonoBehaviour:
   m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+--- !u!114 &11495972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6290754690e055a43b0e98390a9662a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIMenu: {fileID: 11468954}
 --- !u!114 &11497966
 MonoBehaviour:
   m_ObjectHideFlags: 1
