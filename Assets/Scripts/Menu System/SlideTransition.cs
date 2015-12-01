@@ -1,29 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SlideTransition : TransitionState
 {
-
     [SerializeField]
-    Vector3 motion;
-
+    List<Vector2> positions;
     [SerializeField]
-    double duration;
+    float easing = 0.2f;
 
-    double timer;
+    // Update is called once per frame
+    void Update()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        rectTransform.anchoredPosition += (positions[state] - rectTransform.anchoredPosition) * easing;
+    }
 
     public override void EnterState()
     {
-        timer = Time.fixedTime;
+        state++;
+        state = (state % positions.Count + positions.Count) % positions.Count;
     }
     public override void RunState()
     {
-        if (Time.fixedTime < timer + duration)
+        if (Vector2.SqrMagnitude(positions[state] - GetComponent<RectTransform>().anchoredPosition) > easing)
         {
-            owner.GetComponent<RectTransform>().localPosition = owner.GetComponent<RectTransform>().localPosition + (motion / (float)(duration) * Time.fixedDeltaTime);
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            rectTransform.anchoredPosition += (positions[state] - rectTransform.anchoredPosition) * easing;
         }
         else
         {
+            GetComponent<RectTransform>().anchoredPosition = positions[state];
             ExitState();
         }
     }

@@ -176,7 +176,6 @@ GameObject:
   - 114: {fileID: 11457290}
   - 114: {fileID: 11476540}
   - 114: {fileID: 11424120}
-  - 114: {fileID: 11440446}
   m_Layer: 5
   m_Name: MenuUI
   m_TagString: Untagged
@@ -513,7 +512,6 @@ GameObject:
   - 224: {fileID: 22435536}
   - 114: {fileID: 11468954}
   - 114: {fileID: 11423632}
-  - 114: {fileID: 11409704}
   m_Layer: 5
   m_Name: AbilityUI
   m_TagString: Untagged
@@ -847,19 +845,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11409704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d293e4888bcf484aa32c073ccff240d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  motion: {x: 0, y: -115, z: 0}
-  duration: 1
 --- !u!114 &11411746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,8 +1141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d293e4888bcf484aa32c073ccff240d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motion: {x: 0, y: 115, z: 0}
-  duration: 1
+  positions:
+  - {x: 0, y: -100}
+  - {x: 0, y: 20}
+  easing: .200000003
 --- !u!114 &11424120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,8 +1156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d293e4888bcf484aa32c073ccff240d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motion: {x: 0, y: -1080, z: 0}
-  duration: 1
+  positions:
+  - {x: 0, y: 1080}
+  - {x: 0, y: 0}
+  easing: .200000003
 --- !u!114 &11424820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1512,19 +1501,6 @@ MonoBehaviour:
   MenuCanvasList:
   - {fileID: 11468954}
   - {fileID: 11476540}
---- !u!114 &11440446
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d293e4888bcf484aa32c073ccff240d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  motion: {x: 0, y: 1080, z: 0}
-  duration: 1
 --- !u!114 &11441604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2033,8 +2009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  enterTransitionState: {fileID: 11423632}
-  exitTransitionState: {fileID: 11409704}
+  TransitionState: {fileID: 11423632}
 --- !u!114 &11470978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2279,8 +2254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  enterTransitionState: {fileID: 11424120}
-  exitTransitionState: {fileID: 11440446}
+  TransitionState: {fileID: 0}
 --- !u!114 &11478796
 MonoBehaviour:
   m_ObjectHideFlags: 1
