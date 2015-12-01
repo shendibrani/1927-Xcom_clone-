@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6cd571d5f2ca53142913786fff8097d7
-timeCreated: 1448898764
+guid: 51e4f9c68aa43d943bed4712d8ec1120
+timeCreated: 1448965399
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,9 +9,9 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Basic StreetMesh.003
+    4300000: Basic StreetMesh.001
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
