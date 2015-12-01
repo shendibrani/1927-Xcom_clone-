@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Pawn))]
 public class VisibleBasedOnLoS : MonoBehaviour
 {
 	[SerializeField] bool debug;
