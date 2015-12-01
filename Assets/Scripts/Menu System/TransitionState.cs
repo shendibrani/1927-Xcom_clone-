@@ -13,7 +13,7 @@ public abstract class TransitionState : MonoBehaviour {
         owner = GetComponent<MenuCanvas>();
     }
 
-    public abstract void EnterState();
+    public abstract void EnterState(int pState);
     public abstract void RunState();
     public abstract void ExitState();
 }
