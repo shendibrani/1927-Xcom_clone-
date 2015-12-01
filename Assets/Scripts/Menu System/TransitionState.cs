@@ -6,6 +6,8 @@ public abstract class TransitionState : MonoBehaviour {
 
     protected MenuCanvas owner;
 
+    public int state { get; protected set; }
+
     void Start()
     {
         owner = GetComponent<MenuCanvas>();
