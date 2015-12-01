@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11422202}
   - 114: {fileID: 11472786}
   - 114: {fileID: 11473082}
+  - 114: {fileID: 11477358}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,6 +138,17 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 8b211a67b667b464fa35276ebe04d224, type: 2}
   startingColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &11477358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9229bf101e7873c49abdb6058ec26214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11497768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ece97bdfecb824299a0896b273412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

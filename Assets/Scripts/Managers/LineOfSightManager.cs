@@ -72,9 +72,28 @@ public class LineOfSightManager : MonoBehaviour
 				                out hit);
 				if(hit.collider != null && hit.collider.GetComponent<Pawn>() == b){
 					//Debug.Log("LoS Checks out to "+hit.collider.name);
+					if (a.GetComponent<VisibleBasedOnLoS> () != null) {
+						a.GetComponent<VisibleBasedOnLoS> ().Visible();
+					}
+					if (b.GetComponent<VisibleBasedOnLoS> () != null) {
+						b.GetComponent<VisibleBasedOnLoS> ().Visible();
+					}
 					return true;
 				}
 			}
+			if (a.GetComponent<VisibleBasedOnLoS> () != null) {
+				a.GetComponent<VisibleBasedOnLoS> ().Hidden();
+			}
+			if (b.GetComponent<VisibleBasedOnLoS> () != null) {
+				b.GetComponent<VisibleBasedOnLoS> ().Hidden();
+			}
+			return false;
+		}
+		if (a.GetComponent<VisibleBasedOnLoS> () != null) {
+			a.GetComponent<VisibleBasedOnLoS> ().OutOfHearingRange();
+		}
+		if (b.GetComponent<VisibleBasedOnLoS> () != null) {
+			b.GetComponent<VisibleBasedOnLoS> ().OutOfHearingRange();
 		}
 		return false;
 	}
