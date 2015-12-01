@@ -137,6 +137,7 @@ GameObject:
   - 65: {fileID: 6548136}
   - 195: {fileID: 19524716}
   - 114: {fileID: 11468546}
+  - 114: {fileID: 11473558}
   m_Layer: 0
   m_Name: John
   m_TagString: Untagged
@@ -2327,6 +2328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   actionPointsSpent: 0
+  skillList: []
 --- !u!114 &11414456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2409,6 +2411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a917ab4e03f6de24188fa1137181d3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   maxHealth: 10
 --- !u!114 &11451088
 MonoBehaviour:
@@ -2494,6 +2501,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11473558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9229bf101e7873c49abdb6058ec26214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11476418
 MonoBehaviour:
   m_ObjectHideFlags: 1
