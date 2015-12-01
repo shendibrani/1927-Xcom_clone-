@@ -57,9 +57,8 @@ public class WeaponData
     public void LoadFromSave()
     {
         universalWeaponList = new Dictionary<Weapons, Weapon>();
-        List<WeaponEffects> tmpList = new List<WeaponEffects>();
-        tmpList.Add(WeaponEffects.WeaponChill);
-        //universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0.15d, 1, tmpList));
+        XMLWriter.instance.DeserializeWeapons();
+        //universalWeaponList.Add(Weapons.DefaultPistol, new Weapon("Default Pistol", 1, 5, 0, 1, tmpList));
         //universalWeaponList.Add(Weapons.AssaultRifle, new Weapon("Assault Rifle", 3, 5, 0.09d, 2, new List<WeaponEffects>()));
     }
 }
@@ -85,6 +84,7 @@ public enum WeaponEffects
 {
     WeaponChill,
     WeaponStun,
+    WeaponEndTurn
 }
 
     /*

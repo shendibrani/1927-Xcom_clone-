@@ -6,7 +6,23 @@ using System.Xml.Serialization;
 using System.IO;
 
 
-public class XMLWriter : MonoBehaviour {
+public class XMLWriter : MonoBehaviour
+{
+
+    public static XMLWriter instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new XMLWriter();
+            }
+            return _instance;
+        }
+    }
+
+    private static XMLWriter _instance;
+
     Weapon thisWeapon;
     List<Weapon> weapList = new List<Weapon>();
     // Use this for initialization
@@ -16,16 +32,16 @@ public class XMLWriter : MonoBehaviour {
         //thisWeapon = WeaponData.instance.universalWeaponList[Weapons.DefaultPistol];
     }
 
-    public void Serialize(List<Weapon> weaponInfo) {
+    public void SerializeWeapons(List<Weapon> weaponInfo) {
         XmlSerializer serializer = new XmlSerializer(typeof(List<Weapon>));
-        using (TextWriter writer = new StreamWriter(Application.dataPath + "yoursave.txt")) {
+        using (TextWriter writer = new StreamWriter(Application.dataPath + "weaponinfo.txt")) {
             serializer.Serialize(writer, weaponInfo);
         }
     }
 
     public void DeserializeWeapons() {
         XmlSerializer deserializer = new XmlSerializer(typeof(List<Weapon>));
-        TextReader reader = new StreamReader(Application.dataPath + "mysave.txt");
+        TextReader reader = new StreamReader(Application.dataPath + "weaponinfo.txt");
         object obj = deserializer.Deserialize(reader);
         List <Weapon> XmlData = (List<Weapon>)obj;
         Debug.Log(XmlData.Count);
@@ -37,9 +53,10 @@ public class XMLWriter : MonoBehaviour {
         reader.Close();
     }
 
+    /*
     void OnGUI() {
         if (GUILayout.Button("Save")) {
-            Serialize(weapList);
+            SerializeWeapons(weapList);
             Debug.Log("Saved at: " + Application.dataPath + "mysave.txt");
         }
 
@@ -50,4 +67,5 @@ public class XMLWriter : MonoBehaviour {
         }
 
     }
+     */
 }
