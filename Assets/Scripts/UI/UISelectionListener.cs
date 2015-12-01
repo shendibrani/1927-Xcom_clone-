@@ -9,21 +9,28 @@ public class UISelectionListener : MonoBehaviour {
 
     void Start()
     {
-        SelectionManager.instance.SelectionChange += instance_SelectionChange;
+        SelectionManager.instance.SelectionChange += OnSelectionChange;
     }
 
-    public void instance_SelectionChange(Selectable previous, Selectable current)
+    public void OnSelectionChange(Selectable previous, Selectable current)
     {
-        if (SelectionManager.selected != null && SelectionManager.selected.GetComponent<Pawn>() && SelectionManager.selected.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
+        Debug.Log("Pawn Player: " + current.GetComponent<Pawn>().owner);
+        Debug.Log("Current Player: " + TurnManager.instance.turnPlayer);
+        if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
-            if (UIMenu == null) Debug.LogError("There is no ability menu to active");
-            MenuManager.instance.ChangeMenu(UIMenu);
+            //if (UIMenu == null) Debug.LogError("There is no ability menu to active");
+            Debug.Log("Ability Menu Selected");
+            MenuManager.instance.OpenMenu(UIMenu);
+        }
+        else
+        {
+            MenuManager.instance.CloseMenu(UIMenu);
         }
     }
 
     void OnDestroy()
     {
-        SelectionManager.instance.SelectionChange -= instance_SelectionChange;
+        SelectionManager.instance.SelectionChange -= OnSelectionChange;
     }
 
 }

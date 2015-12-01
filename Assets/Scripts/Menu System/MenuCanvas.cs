@@ -15,6 +15,11 @@ public class MenuCanvas : MonoBehaviour
         private set;
     }
 
+    void Start()
+    {
+        isActive = false;
+    }
+
     //used to indicate the menu manager changing to this menu, sets the active state (can be transition states)
     public virtual void setMenu()
     {
@@ -28,11 +33,11 @@ public class MenuCanvas : MonoBehaviour
 
     public virtual void deselectMenu()
     {
-         if (TransitionState.state == 1)
+        if (TransitionState.state == 1)
         {
-        TransitionState.EnterState(0);
-        currentState = TransitionState;
-        isActive = false;
+            TransitionState.EnterState(0);
+            currentState = TransitionState;
+            isActive = false;
         }
     }
 
@@ -43,9 +48,9 @@ public class MenuCanvas : MonoBehaviour
 
     void Update()
     {
-        if (currentState != null) 
+        if (currentState != null)
         {
-            currentState.RunState(); 
+            currentState.RunState();
         }
     }
 }

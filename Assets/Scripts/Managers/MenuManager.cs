@@ -43,6 +43,7 @@ public class MenuManager : MonoBehaviour {
         }
 
         previousMenu = activeMenu;
+        activeMenu = menu;
     }
 
     //opens a menu without closing former menus, can be used in conjunction with closeMenu
@@ -54,6 +55,7 @@ public class MenuManager : MonoBehaviour {
         }
 
         previousMenu = activeMenu;
+        activeMenu = menu;
     }
 
     public void CloseMenu(MenuCanvas menu)

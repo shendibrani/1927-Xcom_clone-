@@ -7,31 +7,37 @@ using UnityEngine.UI;
 public class PawnAbilityUI : MenuCanvas {
     //recieves a message from selection manager detailing which pawn is selected
     //message recieved populates this, calls the menumanager change
-    Button[] buttonList;
+    CommandButton[] buttonList;
 
     void Start()
     {
-        buttonList = GetComponentsInChildren<Button>();
+        buttonList = GetComponentsInChildren<CommandButton>();
+        SelectionManager.instance.SelectionChange += OnSelectionChange;
     }
 
     public override void setMenu()
     {
-        PopulateButtons();
         base.setMenu();
     }
 
-    void PopulateButtons()
+    void OnSelectionChange(Selectable previous, Selectable current)
     {
-        List<Skill> tmpList = SelectionManager.selected.GetComponent<Pawn>().skillList;
-        for (int i = 0; i < tmpList.Count; i++)
+        if (current != null || !current.GetComponent<Pawn>() || current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
-            if (tmpList.Count > buttonList.Length)
+            List<Skill> tmpList = current.GetComponent<Pawn>().skillList;
+            foreach (CommandButton b in buttonList)
             {
-                Debug.LogError("Skill List is longer than list of buttons");
-                break;
+                b.Clear();
             }
-            buttonList[i].GetComponent<CommandButton>().Set(tmpList[i]);
-        }
+            for (int i = 0; i < tmpList.Count; i++)
+            {
+                if (tmpList.Count > buttonList.Length)
+                {
+                    Debug.LogError("Skill List is longer than list of buttons");
+                    break;
+                }
+                buttonList[i].Set(tmpList[i]);
+            }
+        }    
     }
-
 }
