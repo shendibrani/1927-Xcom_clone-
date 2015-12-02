@@ -14,8 +14,6 @@ public class UISelectionListener : MonoBehaviour {
 
     public void OnSelectionChange(Selectable previous, Selectable current)
     {
-        Debug.Log("Pawn Player: " + current.GetComponent<Pawn>().owner);
-        Debug.Log("Current Player: " + TurnManager.instance.turnPlayer);
         if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
             //if (UIMenu == null) Debug.LogError("There is no ability menu to active");
