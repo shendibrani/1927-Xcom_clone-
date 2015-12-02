@@ -14,7 +14,9 @@ public class DestroyableProp : MonoBehaviour
 		//destroyed.enabled = false;
 		intact = GetComponent<Renderer> ();
 		GetComponent<Health> ().OnDeath.AddListener(ShowDestroyed);
-		currentNode.currentObject = GetComponent<Targetable> ();
+        if (currentNode != null)
+            currentNode.currentObject = GetComponent<Targetable>();
+        else Debug.Log("Destroyable Prop " + gameObject + " is not attached to node");
 	}
 
 //	void Update(){
