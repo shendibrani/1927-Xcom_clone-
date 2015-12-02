@@ -63,7 +63,7 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.actionPointMod;
             }
@@ -79,7 +79,7 @@ public class Pawn : MonoBehaviour
         get
         {
             int tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.accuracyMod;
             }
@@ -95,7 +95,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.accuracyMulti;
             }
@@ -111,7 +111,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.hitMod;
             }
@@ -127,7 +127,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.hitMulti;
             }
@@ -143,7 +143,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.damageMod;
             }
@@ -159,7 +159,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.damageMulti;
             }
@@ -175,7 +175,7 @@ public class Pawn : MonoBehaviour
         get
         {
             double tmp = 0;
-            if (currentNode.tileEffect != null)
+            if (currentNode != null && currentNode.tileEffect != null)
             {
                 tmp += currentNode.tileEffect.critChanceMod;
             }
@@ -249,6 +249,10 @@ public class Pawn : MonoBehaviour
         {
             skillList.Add(new Skill("Skill", "Description", tmpList[i]));
         }
+        if (currentNode == null)
+        {
+            Debug.Log("Pawn" + gameObject + " is not attached to a node");
+        }
        
     }
 
@@ -301,13 +305,13 @@ public class Pawn : MonoBehaviour
 
 		RaycastHit hit;
 
-        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, 1f))
+        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, out hit, 1f))
         {
-            return CoverState.Full;
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
         }
         if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
         {
-            return CoverState.Half;
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
         }
 
         return CoverState.None;

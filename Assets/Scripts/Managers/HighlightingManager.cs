@@ -73,7 +73,7 @@ public class HighlightingManager
 					t.IsTargeted (c.owner);
 				}
 			} else {
-				c.target.IsTargeted (c.owner);
+				if(c.target != null) c.target.IsTargeted (c.owner);
 			}
 		}
 	}

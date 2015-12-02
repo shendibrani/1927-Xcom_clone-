@@ -13,50 +13,50 @@ public class AllAroundAttackCommand : Command
     {
         name = "All Around Attack Command";
         weapon = owner.Weapon;
+        targetsAllValidTargets = true;
     }
 	
     public override bool Execute()
     {
-        if (!CheckCost(actionCost)) return false;
+        if (!CheckCost(actionCost))
+            return false;
+
         if (validTargets.Count == 0)
         {
             Debug.Log("There are no valid targets");
             return false;
         }
+
         if (weapon.range == 1)
         {
             foreach (Targetable t in validTargets)
             {
-				Pawn p = t.GetComponent<Pawn>();
-				if(p != null){
-					AttackCommand.Attack(owner, p);
-				}
+					AttackCommand.Attack(owner, t.GetComponent<Pawn>());
             }
-            return true;
         }
         else
         {
             Debug.Log("Melee Weapon Not Equiped");
 			foreach (Targetable t in validTargets)
 			{
-				Pawn p = t.GetComponent<Pawn>();
-				if(p != null){
 	                LinkPositions pushDirection;
-	                pushDirection = owner.currentNode.GetRelativePosition(p.currentNode);
-	                NodeBehaviour tmpNode = p.currentNode.GetLinkInDirection(pushDirection);
+	                pushDirection = owner.currentNode.GetRelativePositionInLinks(t.GetComponent<Pawn>().currentNode);
+	                NodeBehaviour tmpNode = t.GetComponent<Pawn>().currentNode.GetLinkInDirection(pushDirection);
 	                if (!tmpNode.isOccupied)
 	                {
-	                    p.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
+	                    t.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
 	                }
-				}
             }
-            return true;
         }
+
+        Debug.Log(owner + " Executes " + name);
+
+        return true;
     }
 
 	public override bool IsValidTarget(Targetable t)
 	{
 		Pawn p = t.GetComponent<Pawn>();
-		return (p != null) && (Vector3.Distance(owner.transform.position, p.transform.position) < 1);
+		return (p != null) && (Vector3.Distance(owner.transform.position, p.transform.position) <= 1);
 	}
 }

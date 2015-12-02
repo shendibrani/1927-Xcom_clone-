@@ -8,18 +8,21 @@ public class AimedAttackCommand : Command {
     public AimedAttackCommand(Pawn pOwner)
         : base(pOwner)
     {
-        name = "Sure Hit Command";
+        name = "Aimed Attack Command";
     }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		Pawn tPawn = target.GetComponent<Pawn>();
 
-        tPawn.EffectList.Add(new SureHitTemporaryEffect(tPawn));
+        owner.EffectList.Add(Factory.GetEffect(Effects.AimedMotivationTemporary, owner));
 
 		AttackCommand.Attack(owner, tPawn);
+
+        Debug.Log(owner + " Executes " + name);
 
 		return true;
     }

@@ -10,13 +10,19 @@ public class ActionBoostCommand : Command
         : base(pOwner)
     {
         name = "Action Boost Command";
+        targetsAllValidTargets = true;
     }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost)||!CheckTarget()) return false;
-        owner.EffectList.Add(new ActionPointBoost(owner));
-        owner.EffectList.Add(new EndTurnTemporaryEffect(owner));
+        if (!CheckCost (actionCost))
+			return false;
+
+        owner.EffectList.Add(Factory.GetEffect(Effects.ActionPointBoost, owner));
+        owner.EffectList.Add(Factory.GetEffect(Effects.EndTurnTemporary, owner));
+
+        Debug.Log(owner + " Executes " + name);
+
         return true;
     }
 
