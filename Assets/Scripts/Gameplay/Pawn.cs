@@ -299,13 +299,15 @@ public class Pawn : MonoBehaviour
         Vector3 direction = other.currentNode.position - currentNode.position;
         direction.Normalize();
 
-        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, 1f))
+		RaycastHit hit;
+
+        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, out hit, 1f))
         {
-            return CoverState.Full;
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
         }
         if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
         {
-            return CoverState.Half;
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
         }
 
         return CoverState.None;

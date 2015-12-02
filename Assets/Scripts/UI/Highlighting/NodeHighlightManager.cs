@@ -8,7 +8,7 @@ public class NodeHighlightManager : MonoBehaviour
 	[SerializeField] bool debug;
 
 	[SerializeField] List<Highlightable> Highlights;
-	NodeHighlightStates state;
+	public NodeHighlightStates state { get; private set; }
 	bool dirty;
 	
 	// Use this for initialization

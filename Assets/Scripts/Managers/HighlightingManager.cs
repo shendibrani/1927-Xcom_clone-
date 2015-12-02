@@ -48,29 +48,36 @@ public class HighlightingManager
 		}
 	}
 
-	public void ShowTargetingOptions(Command c)
+	public void RefreshHighlighting()
 	{
-		foreach (Targetable t in c.validTargets) {
-			t.IsValidTarget(c.owner);
-		}
+		ClearSelections ();
+		ComputeHighlightChange (null, SelectionManager.selected);
+		ShowTargetingOptions (SelectionManager.command);
+		ShowTarget (SelectionManager.command);
 	}
 
-	public void HideTargetingOptions(Command c)
+	public void ShowTargetingOptions(Command c)
 	{
-		foreach (Targetable t in c.validTargets) {
-			t.NotTarget(c.owner);
+		if (c != null) {
+			foreach (Targetable t in c.validTargets) {
+				t.IsValidTarget (c.owner);
+			}
 		}
 	}
 
 	public void ShowTarget(Command c)
 	{
-		if (c.targetsAllValidTargets) {
-			foreach (Targetable t in c.validTargets) {
-				t.IsTargeted (c.owner);
+		if (c != null) {
+			if (c.targetsAllValidTargets) {
+				foreach (Targetable t in c.validTargets) {
+					t.IsTargeted (c.owner);
+				}
+			} else {
+				c.target.IsTargeted (c.owner);
 			}
-		} else {
-			c.target.IsTargeted(c.owner);
 		}
 	}
+
+	
 }
 
