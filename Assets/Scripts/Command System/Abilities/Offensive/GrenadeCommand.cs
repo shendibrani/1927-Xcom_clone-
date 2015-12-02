@@ -17,7 +17,8 @@ public class GrenadeCommand : Command {
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		NodeBehaviour targetNode = target.GetComponent<NodeBehaviour> ();
 
@@ -25,6 +26,8 @@ public class GrenadeCommand : Command {
         {
             if (n.currentObject != null) Hit(targetNode, n.currentObject);
         }
+
+        Debug.Log(owner + " Executes " + name);
 
         return true;
     }
@@ -46,7 +49,7 @@ public class GrenadeCommand : Command {
                 pTarget.GetComponent<Health>().Damage(tmpDamage);
             }
         }
-        else
+        if (pTarget.GetComponent<DestroyableProp>() != null)
         {
 
         }

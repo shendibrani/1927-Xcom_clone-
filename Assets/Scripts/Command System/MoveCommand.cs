@@ -26,6 +26,8 @@ public class MoveCommand : Command
 
         if (!CheckCost(cost)) return false;
 
+        Debug.Log(owner + " Executes " + name);
+
 		owner.GetComponent<GridNavMeshWrapper> ().SetPath (path);
 		//also send UI feedback at some point
 		return true;
