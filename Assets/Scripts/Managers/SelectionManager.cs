@@ -9,6 +9,8 @@ public class SelectionManager
 
 		set {
 			if(selected != value){
+				ReturnToSelectionMode();
+
 				if (instance._selected != null){
 					instance._selected.OnDeselect();
 				}
@@ -59,13 +61,15 @@ public class SelectionManager
 		}
 		set {
 			if(command != null){
-				if (target != null){
+				if (target != null)
+				{
 					target.IsValidTarget(command.owner);
 				}
 				
 				command.target = value;
 				
-				if (target != null){
+				if (target != null)
+				{
 					target.IsTargeted(command.owner);
 				}
 			}
@@ -94,6 +98,11 @@ public class SelectionManager
 		}
 	}
 
+	public static void ReturnToSelectionMode()
+	{
+		command = null;
+	}
+
 	public static bool Execute()
 	{
 		if (command == null) return false;
@@ -104,7 +113,8 @@ public class SelectionManager
 
 	public bool isInTargetingMode 
 	{
-		get {
+		get 
+		{
 			return command != null;
 		}
 	}
