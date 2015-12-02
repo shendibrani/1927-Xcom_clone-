@@ -13,9 +13,9 @@ public class VerticalEdgePanAxis : Axis {
 	{
 		_axisValue = 0;
 		if(focus){
-			if(Input.mousePosition.y <= tolerance && CheckRay()){
+			if(Input.mousePosition.y <= tolerance){
 				_axisValue = -1;
-			} else if(Input.mousePosition.y >= Screen.height - tolerance && CheckRay()){
+			} else if(Input.mousePosition.y >= Screen.height - tolerance){
 				_axisValue = 1;
 			}
 		}
@@ -31,12 +31,15 @@ public class VerticalEdgePanAxis : Axis {
         List<RaycastResult> hits = new List<RaycastResult>();
 
         // ray cast into UI and check for hits
-        EventSystem.current.RaycastAll(ped, hits);
+        //EventSystem.current.RaycastAll(ped, hits);
 
         // check any hits to see if any of them are blocking UI elements
-        foreach (RaycastResult r in hits)
+        if (hits != null)
         {
-            if (r.gameObject.GetComponent<RectTransform>()) return false;
+            foreach (RaycastResult r in hits)
+            {
+                if (r.gameObject != null && r.gameObject.GetComponent<RectTransform>()) return false;
+            }
         }
         return true;
     }
