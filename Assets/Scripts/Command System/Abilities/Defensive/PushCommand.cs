@@ -25,7 +25,7 @@ public class PushCommand : Command
         }
         
 		LinkPositions pushDirection;
-        pushDirection = owner.currentNode.GetRelativePosition(tPawn.currentNode);
+        pushDirection = owner.currentNode.GetRelativePositionInLinks(tPawn.currentNode);
         for (int i = 0; i < distance; i++)
         {
             NodeBehaviour tmpNode = tPawn.currentNode.GetLinkInDirection(pushDirection);

@@ -40,7 +40,7 @@ public class AllAroundAttackCommand : Command
 			foreach (Targetable t in validTargets)
 			{
 	                LinkPositions pushDirection;
-	                pushDirection = owner.currentNode.GetRelativePosition(t.GetComponent<Pawn>().currentNode);
+	                pushDirection = owner.currentNode.GetRelativePositionInLinks(t.GetComponent<Pawn>().currentNode);
 	                NodeBehaviour tmpNode = t.GetComponent<Pawn>().currentNode.GetLinkInDirection(pushDirection);
 	                if (!tmpNode.isOccupied)
 	                {

@@ -51,7 +51,7 @@ public class GrenadeCommand : Command {
         }
         if (pTarget.GetComponent<DestroyableProp>() != null)
         {
-
+            pTarget.GetComponent<DestroyableProp>().DamageProp();
         }
     }
 

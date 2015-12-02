@@ -107,7 +107,7 @@ public class NodeBehaviour : MonoBehaviour {
 		}
 	}
 
-	public LinkPositions GetRelativePosition(NodeBehaviour node)
+	public LinkPositions GetRelativePositionInLinks(NodeBehaviour node)
 	{
 		if(links.Contains(node)){
 			Vector3 offset = node.position - position;
@@ -127,6 +127,31 @@ public class NodeBehaviour : MonoBehaviour {
 
 		throw new UnityException ("Nodes not aligned");
 	}
+
+    public LinkPositions GetRelativePosition(NodeBehaviour node)
+    {
+            Vector3 offset = node.position - position;
+            offset = new Vector3(offset.x, 0, offset.z);
+            offset.Normalize();
+
+            if (Vector3.Dot(offset, Vector3.forward) == 1)
+            {
+                return LinkPositions.Forward;
+            }
+            else if (Vector3.Dot(offset, Vector3.right) == 1)
+            {
+                return LinkPositions.Right;
+            }
+            else if (Vector3.Dot(offset, Vector3.back) == 1)
+            {
+                return LinkPositions.Back;
+            }
+            else if (Vector3.Dot(offset, Vector3.left) == 1)
+            {
+                return LinkPositions.Left;
+            }
+            throw new UnityException("Nodes not aligned");
+    }
 
 	public NodeBehaviour GetLinkInDirection (LinkPositions linkDir)
 	{

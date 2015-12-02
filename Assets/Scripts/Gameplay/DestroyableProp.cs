@@ -24,6 +24,10 @@ public class DestroyableProp : MonoBehaviour
 //			ShowDestroyed();
 //		}
 //	}
+    public void DamageProp()
+    {
+        ShowDestroyed();
+    }
 
 	void ShowDestroyed()
 	{
