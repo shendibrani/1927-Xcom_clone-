@@ -45,7 +45,8 @@ public class AttackCommand : Command
 			owner.EffectList.Add (new FullCoverDebuff (owner));
 			break;
 		}
-		Debug.Log (System.Math.Round (hitChance * 100 * owner.hitMulti) + "% chance to hit");
+        if (owner.hitMulti != 0) hitChance *= owner.hitMulti;
+		Debug.Log (System.Math.Round (hitChance * 100) + "% chance to hit");
 		if (RNG.NextDouble () < hitChance) {
 			int damage = weapon.damage;
 			double accuracy = (owner.Accuracy * owner.accuracyMulti + owner.accuracyMod) / 100d;

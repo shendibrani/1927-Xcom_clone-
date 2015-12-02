@@ -16,7 +16,6 @@ public class UISelectionListener : MonoBehaviour {
     {
         if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
-            //if (UIMenu == null) Debug.LogError("There is no ability menu to active");
             Debug.Log("Ability Menu Selected");
             MenuManager.instance.OpenMenu(UIMenu);
         }
