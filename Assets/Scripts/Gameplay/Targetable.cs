@@ -7,5 +7,6 @@ public class Targetable : MonoBehaviour
 
 	public TargetingEvent IsValidTarget;
 	public TargetingEvent IsTargeted;
+	public TargetingEvent NotTarget;
 }
 

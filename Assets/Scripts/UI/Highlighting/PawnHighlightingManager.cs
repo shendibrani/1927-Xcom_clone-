@@ -20,6 +20,7 @@ public class PawnHighlightingManager : MonoBehaviour
 		GetComponent<GridNavMeshWrapper> ().DestinationReached += UpdateNodes;
 		GetComponent<Targetable> ().IsValidTarget += OnValidTarget;
 		GetComponent<Targetable> ().IsTargeted += OnTargeted;
+		GetComponent<Targetable> ().NotTarget += OnNotTarget;
 	}
 
 	public void SetState(PawnHighlightStates pState){
@@ -69,6 +70,11 @@ public class PawnHighlightingManager : MonoBehaviour
 	void OnTargeted (Pawn targeter)
 	{
 		SetState (PawnHighlightStates.Targetable);
+	}
+
+	void OnNotTarget (Pawn targeter)
+	{
+		SetState (PawnHighlightStates.Deselected);
 	}
 }
 

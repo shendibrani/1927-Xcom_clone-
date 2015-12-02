@@ -78,7 +78,19 @@ public class SelectionManager
 		get{ return instance._command; }
 		
 		set {
+			if(value == null && command != null){
+				HighlightingManager.instance.HideTargetingOptions(command);
+			}
+
 			instance._command = value;
+
+			if (command != null){
+				if(command.targetsAllValidTargets){
+					HighlightingManager.instance.ShowTarget(command);
+				}else{
+					HighlightingManager.instance.ShowTargetingOptions(command);
+				}
+			}
 		}
 	}
 
