@@ -101,14 +101,14 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100106}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 4025bcf4f05eb01488d47e14cb0c1490, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c265129651d6f9f42b351b0064391798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   Highlights:
   - {fileID: 11415324}
   - {fileID: 11427236}
@@ -264,6 +265,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ReflectionProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

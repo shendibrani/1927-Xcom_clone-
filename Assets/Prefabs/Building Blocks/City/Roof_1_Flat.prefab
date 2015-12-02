@@ -67,11 +67,11 @@ MeshRenderer:
   m_CastShadows: 2
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: bade4d24e16b69a4b87af7587f2cfdba, type: 2}
+  - {fileID: 2100000, guid: 9bdcaf4722f9a4942b1cf768f9032212, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -106,6 +106,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9bdcaf4722f9a4942b1cf768f9032212, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_ReflectionProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
