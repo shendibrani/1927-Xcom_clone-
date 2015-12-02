@@ -33,7 +33,7 @@ public class HighlightingManager
 			}
 
 			if (current.GetComponent<NodeHighlightManager> () != null) {
-				previous.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Selected);
+				current.GetComponent<NodeHighlightManager> ().SetState (NodeHighlightStates.Selected);
 			}
 		}
 	}
@@ -52,6 +52,13 @@ public class HighlightingManager
 	{
 		foreach (Targetable t in c.validTargets) {
 			t.IsValidTarget(c.owner);
+		}
+	}
+
+	public void HideTargetingOptions(Command c)
+	{
+		foreach (Targetable t in c.validTargets) {
+			t.NotTarget(c.owner);
 		}
 	}
 

@@ -17,6 +17,7 @@ public class NodeHighlightManager : MonoBehaviour
 		SetState (NodeHighlightStates.Deselected);
 		GetComponent<Targetable> ().IsTargeted += OnTargeted;
 		GetComponent<Targetable> ().IsValidTarget += OnValidTarget;
+		GetComponent<Targetable> ().NotTarget += OnNotTarget;
 	}
 
 	void Update(){
@@ -57,6 +58,11 @@ public class NodeHighlightManager : MonoBehaviour
 	void OnTargeted(Pawn p)
 	{
 		SetState(NodeHighlightStates.Targeted);
+	}
+
+	void OnNotTarget(Pawn p)
+	{
+		SetState(NodeHighlightStates.Deselected);
 	}
 }
 
