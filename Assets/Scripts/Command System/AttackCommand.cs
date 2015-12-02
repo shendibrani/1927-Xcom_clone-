@@ -12,8 +12,10 @@ public class AttackCommand : Command
 
     public override bool Execute()
     {
-		if (!CheckCost (owner.Weapon.actionCost) || !CheckTarget ())
+		if (!CheckTarget () || !CheckCost (owner.Weapon.actionCost))
 			return false;
+
+        Debug.Log(owner + " Executes " + name);
 
 		Pawn tPawn = target.GetComponent<Pawn> ();
 
@@ -49,13 +51,15 @@ public class AttackCommand : Command
 		Debug.Log (System.Math.Round (hitChance * 100) + "% chance to hit");
 		if (RNG.NextDouble () < hitChance) {
 			int damage = weapon.damage;
-			double accuracy = (owner.Accuracy * owner.accuracyMulti + owner.accuracyMod) / 100d;
+            double accuracy = owner.Accuracy;
+            if (owner.accuracyMulti != 0) accuracy *= owner.accuracyMulti;
+            accuracy = (accuracy + owner.accuracyMod) / 100d;
 			if (1 - accuracy <= 0)
 				accuracy = 1d;
 			double tmpDamageMod = (1 - accuracy) * RNG.NextDouble () + accuracy;
 			if (tmpDamageMod > 1d)
 				tmpDamageMod = 1d;
-			tmpDamageMod *= owner.damageMulti;
+            if (owner.damageMulti != 0) tmpDamageMod *= owner.damageMulti;
 			if (RNG.NextDouble () < weapon.criticalChance + owner.critChanceMod) {
 				damage = (int)System.Math.Round ((double)weapon.damage * 1.5d * tmpDamageMod);
 				if (damage < 1)

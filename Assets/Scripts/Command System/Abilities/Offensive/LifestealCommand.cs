@@ -8,16 +8,18 @@ public class LifestealCommand : Command {
     public LifestealCommand(Pawn pOwner)
         : base(pOwner)
     {
-        name = "Execution Command";
+        name = "Lifesteal Command";
     }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		Pawn tPawn = target.GetComponent<Pawn> ();
 
-        tPawn.EffectList.Add(new LifestealTemporaryEffect(tPawn));
+        tPawn.EffectList.Add(Factory.GetEffect(Effects.LifestealTemporary, tPawn));
+        owner.EffectList.Add(Factory.GetEffect(Effects.EndTurnTemporary, owner));
 
 		AttackCommand.Attack(owner, tPawn);
 

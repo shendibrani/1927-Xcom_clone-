@@ -10,16 +10,21 @@ public class BattleShoutCommand : Command
         : base(pOwner)
     {
         name = "Battle Cry Command";
+        targetsAllValidTargets = true;
     }
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost)) return false;
-
+        if (!CheckCost(actionCost))
+            return false;
+ 
         foreach (Targetable t in validTargets)
         {
-			t.GetComponent<Pawn>().EffectList.Add(new AccuracyBuff(t.GetComponent<Pawn>()));
+			t.GetComponent<Pawn>().EffectList.Add(Factory.GetEffect(Effects.AccuracyBuff, t.GetComponent<Pawn>()));
         }
+
+        Debug.Log(owner + " Executes " + name);
+
         return true;
     }
 

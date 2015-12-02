@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FinishingAttackCommand : Command
 {
 
-   	int actionCost = 2;
+   	int actionCost = 4;
 
     public FinishingAttackCommand(Pawn pOwner)
         : base(pOwner)
@@ -16,13 +16,16 @@ public class FinishingAttackCommand : Command
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		Pawn tPawn = target.GetComponent<Pawn> ();
 
-		tPawn.EffectList.Add(new FinishingAttackTemporaryEffect(tPawn));
+		tPawn.EffectList.Add(Factory.GetEffect(Effects.FinishingAttackTemporary, tPawn));
 
 		AttackCommand.Attack(owner, tPawn);
+
+        Debug.Log(owner + " Executes " + name);
 
 		return true;
     }

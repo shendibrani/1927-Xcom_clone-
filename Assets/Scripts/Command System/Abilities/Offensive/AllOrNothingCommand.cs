@@ -15,12 +15,16 @@ public class AllOrNothingCommand : Command
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
-        owner.EffectList.Add(new AllOrNothingTemporaryEffect(owner));
+        owner.EffectList.Add(Factory.GetEffect(Effects.AllOrNothingTemporary, owner));
+
 		Pawn tPawn = target.GetComponent<Pawn>();
 
 		AttackCommand.Attack(owner, tPawn);
+
+        Debug.Log(owner + " Executes " + name);
 
 		return true;
     }
