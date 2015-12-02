@@ -254,7 +254,7 @@ public class Pawn : MonoBehaviour
 
     public void Initalise(Character pCharacter)
     {
-        Debug.Log("Pawn " + gameObject + "initalised");
+        //Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
         Weapon = WeaponData.instance.universalWeaponList[weap];
         //Weapon = pCharacter.assignedWeapon;

@@ -47,7 +47,7 @@ public class XMLWriter : MonoBehaviour
         Debug.Log(XmlData.Count);
         for (int i = 0; i < XmlData.Count; i++)
         {
-            Debug.Log("Weapon: " + XmlData[i].name);
+            //Debug.Log("Weapon: " + XmlData[i].name);
             WeaponData.instance.universalWeaponList.Add(XmlData[i].weaponEnum, XmlData[i]);
         }
         reader.Close();
