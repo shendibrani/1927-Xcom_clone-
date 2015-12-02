@@ -9,6 +9,9 @@ public class LineOfSightManager : MonoBehaviour
 		get {
 			if(_instance == null){
 				_instance = GameObject.FindObjectOfType<LineOfSightManager>();
+				if(_instance == null){
+					Debug.LogError("There is not Line of Sight manager instance in the scene.");
+				}
 			}
 			return _instance;
 		}
