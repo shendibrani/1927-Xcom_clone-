@@ -22,7 +22,7 @@ public class PawnAbilityUI : MenuCanvas {
 
     void OnSelectionChange(Selectable previous, Selectable current)
     {
-        if (current != null || !current.GetComponent<Pawn>() || current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
+        if (current != null && current.GetComponent<Pawn>() != null && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
             List<Skill> tmpList = current.GetComponent<Pawn>().skillList;
             foreach (CommandButton b in buttonList)
