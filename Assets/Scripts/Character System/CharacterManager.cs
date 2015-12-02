@@ -18,7 +18,6 @@ public class CharacterManager : MonoBehaviour {
     {
         //loadCharacters
     }
-
     //instantiate character prefabs
     void PopulateUI()
     {
@@ -69,6 +68,4 @@ public class CharacterStaticStorage
     {
         _instance = null;
     }
-
-
 }
