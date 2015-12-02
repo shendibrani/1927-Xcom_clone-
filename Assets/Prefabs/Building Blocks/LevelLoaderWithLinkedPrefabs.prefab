@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939d15a367ed97c46b76099f67b45cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: 048b4953d7ac5a44697b6cfbc38a8983, type: 3}
+  TiledSaveFile: {fileID: 102900000, guid: 09fc319f5f9f7d147b0fe61accad8e86, type: 3}
   printLayersInnerInfo: 0
   X_MarginDistance: 1
   Y_MarginDistance: 1
