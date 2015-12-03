@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class LineOfSightManager : MonoBehaviour
 {
+	[SerializeField] bool debug;
+
 	public static LineOfSightManager instance {
 		get {
 			if(_instance == null){
@@ -92,14 +94,14 @@ public class LineOfSightManager : MonoBehaviour
 	public static bool CheckSight(Pawn a, Pawn b)
 	{
 		if (Vector3.Distance (a.transform.position, b.transform.position) <= Pawn.sightRange) {
-			//Debug.Log("Distance Checks out");
+			if (debug) Debug.Log("Distance Checks out");
 			RaycastHit hit;
 			foreach(Vector3 corner in corners){
 				Physics.Raycast(a.transform.position + verticalOffset + corner, 
 				                b.transform.position - a.transform.position,
 				                out hit);
 				if(hit.collider != null && hit.collider.GetComponent<Pawn>() == b){
-					//Debug.Log("LoS Checks out to "+hit.collider.name);
+					if (debug) Debug.Log("LoS Checks out to "+hit.collider.name);
 					return true;
 				}
 			}
