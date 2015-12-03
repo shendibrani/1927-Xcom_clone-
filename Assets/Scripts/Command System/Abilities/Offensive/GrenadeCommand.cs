@@ -22,9 +22,9 @@ public class GrenadeCommand : Command {
 
 		NodeBehaviour targetNode = target.GetComponent<NodeBehaviour> ();
 
-        foreach (NodeBehaviour n in Pathfinder.NodesWithinSteps(targetNode, areaOfEffect))
+        foreach (NodeBehaviour n in Pathfinder.NodesWithinSteps(targetNode, areaOfEffect, false))
         {
-            if (n.currentObject != null) Hit(targetNode, n.currentObject);
+            if (n.isOccupied) Hit(targetNode, n.currentObject);
         }
 
         Debug.Log(owner + " Executes " + name);
@@ -34,6 +34,8 @@ public class GrenadeCommand : Command {
 
 	void Hit(NodeBehaviour targetNode, Targetable pTarget)
     {
+        Debug.Log("Target Node " + targetNode);
+        Debug.Log("Targetable " + pTarget);
 		if (pTarget.GetComponent<Pawn>() != null)
         {
             double hitChance = 1 - (1 - 0.5) * (Vector3.Distance(owner.transform.position, targetNode.transform.position) - 1) / (range - 1);
@@ -49,7 +51,7 @@ public class GrenadeCommand : Command {
                 pTarget.GetComponent<Health>().Damage(tmpDamage);
             }
         }
-        if (pTarget.GetComponent<DestroyableProp>() != null)
+        else if (pTarget.GetComponent<DestroyableProp>() != null)
         {
             pTarget.GetComponent<DestroyableProp>().DamageProp();
         }

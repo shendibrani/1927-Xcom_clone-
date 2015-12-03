@@ -15,21 +15,24 @@ public class TripleAttackCommand : Command
     public override bool Execute()
     {
 
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		Pawn tPawn = target.GetComponent<Pawn> ();
 
         for (int c = 0; c < 3; c++)
         {
-			tPawn.EffectList.Add(new HalfAccuracyTemporaryEffect(tPawn));
-			AttackCommand.Attack(owner, tPawn);
+			owner.EffectList.Add(new HalfAccuracyTemporaryEffect(owner));
+			AttackCommand.Attack(owner, target);
         }
+
+        Debug.Log(owner + " Executes " + name);
+
         return true;
     }
 
 	public override bool IsValidTarget(Targetable t)
 	{
-		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+        return AttackCommand.DefaultAttackIsValidTarget(t, owner);
 	}
 }

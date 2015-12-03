@@ -7,7 +7,7 @@ public class PushCommand : Command
     int actionCost = 2;
     int distance = 3;
 
-    public PushCommand(Pawn pOwner, Pawn pTarget)
+    public PushCommand(Pawn pOwner)
         : base(pOwner)
     {
         name = "Push Command";
@@ -15,13 +15,14 @@ public class PushCommand : Command
 
     public override bool Execute()
     {
-        if (!CheckCost(actionCost) || !CheckTarget()) return false;
+        if (!CheckTarget() || !CheckCost(actionCost))
+            return false;
 
 		Pawn tPawn = target.GetComponent<Pawn>();
 
         if (owner.Weapon.range == 1)
         {
-			AttackCommand.Attack(owner, tPawn);
+			AttackCommand.Attack(owner, target);
         }
         
 		LinkPositions pushDirection;
@@ -39,7 +40,7 @@ public class PushCommand : Command
 
 	public override bool IsValidTarget (Targetable t)
 	{
-		Pawn p = t.GetComponent<Pawn>();;
+		Pawn p = t.GetComponent<Pawn>();
 		return (p != null) && (Vector3.Distance (owner.transform.position, p.transform.position) < 1);
 	}
 }

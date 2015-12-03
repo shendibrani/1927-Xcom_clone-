@@ -86,7 +86,6 @@ public enum WeaponEffects
     WeaponStun,
     WeaponEndTurn
 }
-
     /*
     public AssaultRifle()
     {
