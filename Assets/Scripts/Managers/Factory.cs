@@ -41,7 +41,7 @@ public static class Factory
                 return new BattleShoutCommand(owner);
                 break;
             case Commands.Counter:
-
+                return new CounterCommand(owner);
                 break;
             case Commands.DefenceBuff:
 
@@ -86,10 +86,10 @@ public static class Factory
 
                 break;
             case Commands.Push:
-
+                return new PushCommand(owner);
                 break;
             case Commands.Recover:
-
+                return new RecoverCommand(owner);
                 break;
             case Commands.ShieldAlly:
 
@@ -107,7 +107,7 @@ public static class Factory
                 return new SureHitCommand(owner);
                 break;
             case Commands.Taunt:
-
+                
                 break;
             case Commands.TripleAttack:
                 return new TripleAttackCommand(owner);
@@ -127,11 +127,14 @@ public static class Factory
             case Effects.ActionPointBoost:
                 return new ActionPointBoost(owner);
                 break;
+            case Effects.BlindDebuff:
+                return new BlindDebuff(owner);
+                break;
             case Effects.DefendBuff:
                 return new DefendBuff(owner);
                 break;
             case Effects.CounterBuff:
-                //return new DefendBuff(owner);
+                return new CounterBuff(owner);
                 break;
             case Effects.PawnChilledDebuff:
                 return new PawnChilledDebuff(owner);
@@ -159,6 +162,23 @@ public static class Factory
                 break;
         }
 
+        return null;
+    }
+
+    public static WeaponEffect GetWeaponEffect(WeaponEffects type)
+    {
+        switch (type)
+        {
+            case WeaponEffects.WeaponChill:
+                return new ApplyChilled();
+                break;
+            case WeaponEffects.WeaponStun:
+                return new ApplyStunned();
+                break;
+            case WeaponEffects.WeaponEndTurn:
+                return new OwnerEndTurn();
+                break;
+        }
         return null;
     }
 }
@@ -212,6 +232,7 @@ public enum Effects
 	DefendBuff,
     CounterBuff,
 
+    BlindDebuff,
 	PawnChilledDebuff,
 		
 	AimedMotivationTemporary,

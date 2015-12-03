@@ -132,7 +132,7 @@ public class Pathfinder
 		return total;
 	}
 
-	public static List<NodeBehaviour> NodesWithinSteps(NodeBehaviour node, int steps)
+	public static List<NodeBehaviour> NodesWithinSteps(NodeBehaviour node, int steps, bool ignoreOccupied = true)
 	{
 		List<NodeBehaviour> list = new List<NodeBehaviour>();
 		list.Add(node);
@@ -144,9 +144,12 @@ public class Pathfinder
 		
 		while(parser.Count != 0 && steps > 0){
 			foreach (NodeBehaviour neighbour in parser){
-				if(!list.Contains(neighbour) && !neighbour.isOccupied){
-					list.Add(neighbour);
-					temp.AddRange(neighbour.links);
+				if(!list.Contains(neighbour)){
+                    if (!ignoreOccupied || !neighbour.isOccupied)
+                    {
+                        list.Add(neighbour);
+                        temp.AddRange(neighbour.links);
+                    }
 				}
 			}
 			parser.AddRange(temp.FindAll(x => !list.Contains(x)));

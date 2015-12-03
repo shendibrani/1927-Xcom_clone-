@@ -18,20 +18,20 @@ public class AllAroundAttackCommand : Command
 	
     public override bool Execute()
     {
-        if (!CheckCost(actionCost))
-            return false;
-
         if (validTargets.Count == 0)
         {
             Debug.Log("There are no valid targets");
             return false;
         }
 
+        if (!CheckCost(actionCost))
+            return false;
+
         if (weapon.range == 1)
         {
             foreach (Targetable t in validTargets)
             {
-					AttackCommand.Attack(owner, t.GetComponent<Pawn>());
+					AttackCommand.Attack(owner, t);
             }
         }
         else
@@ -44,7 +44,7 @@ public class AllAroundAttackCommand : Command
 	                NodeBehaviour tmpNode = t.GetComponent<Pawn>().currentNode.GetLinkInDirection(pushDirection);
 	                if (!tmpNode.isOccupied)
 	                {
-	                    t.GetComponent<GridNavMeshWrapper>().currentNode = tmpNode;
+                        t.GetComponent<GridNavMeshWrapper>().SetPath(Pathfinder.GetPath(t.GetComponent<GridNavMeshWrapper>().currentNode, tmpNode));
 	                }
             }
         }

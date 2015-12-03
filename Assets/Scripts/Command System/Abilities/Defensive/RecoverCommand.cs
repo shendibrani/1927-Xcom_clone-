@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class CounterCommand : Command
-{
+public class RecoverCommand : Command {
+
 	int actionCost = 2;
 
-    public CounterCommand(Pawn pOwner)
+    public RecoverCommand(Pawn pOwner)
         : base(pOwner)
     {
-        name = "Counter Command";
+        name = "Recover Command";
         targetsAllValidTargets = true;
     }
 
@@ -17,7 +16,7 @@ public class CounterCommand : Command
     {
         if (!CheckCost(actionCost)) return false;
 
-        owner.EffectList.Add(Factory.GetEffect(Effects.CounterBuff,owner));
+        owner.GetComponent<Health>().Heal(owner.GetComponent<Health>().maxHealth / 10);
 
         Debug.Log(owner + " Executes " + name);
 

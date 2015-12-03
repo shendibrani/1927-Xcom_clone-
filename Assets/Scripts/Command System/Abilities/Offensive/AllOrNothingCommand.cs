@@ -22,7 +22,7 @@ public class AllOrNothingCommand : Command
 
 		Pawn tPawn = target.GetComponent<Pawn>();
 
-		AttackCommand.Attack(owner, tPawn);
+		AttackCommand.Attack(owner, target);
 
         Debug.Log(owner + " Executes " + name);
 
@@ -30,8 +30,7 @@ public class AllOrNothingCommand : Command
     }
 
 	public override bool IsValidTarget(Targetable t)
-	{
-		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+    {
+        return AttackCommand.DefaultAttackIsValidTarget(t, owner);
 	}
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class DefendCommand : Command {
 
     int actionCost = 1;
+    int defendRange = 1;
 	
     public DefendCommand(Pawn pOwner)
         : base(pOwner)
@@ -28,6 +29,6 @@ public class DefendCommand : Command {
 	public override bool IsValidTarget(Targetable t)
 	{
 		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner == owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+		return (p!= null) && (p.owner == owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < defendRange);
 	}
 }

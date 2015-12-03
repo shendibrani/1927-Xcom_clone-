@@ -23,7 +23,7 @@ public class FinishingAttackCommand : Command
 
 		tPawn.EffectList.Add(Factory.GetEffect(Effects.FinishingAttackTemporary, tPawn));
 
-		AttackCommand.Attack(owner, tPawn);
+		AttackCommand.Attack(owner, target);
 
         Debug.Log(owner + " Executes " + name);
 

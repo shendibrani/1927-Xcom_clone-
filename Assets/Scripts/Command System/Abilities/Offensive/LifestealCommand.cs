@@ -21,7 +21,9 @@ public class LifestealCommand : Command {
         tPawn.EffectList.Add(Factory.GetEffect(Effects.LifestealTemporary, tPawn));
         owner.EffectList.Add(Factory.GetEffect(Effects.EndTurnTemporary, owner));
 
-		AttackCommand.Attack(owner, tPawn);
+		AttackCommand.Attack(owner, target);
+
+        Debug.Log(owner + " Executes " + name);
 
 		return true;
     }

@@ -20,7 +20,7 @@ public class AimedAttackCommand : Command {
 
         owner.EffectList.Add(Factory.GetEffect(Effects.AimedMotivationTemporary, owner));
 
-		AttackCommand.Attack(owner, tPawn);
+		AttackCommand.Attack(owner, target);
 
         Debug.Log(owner + " Executes " + name);
 
@@ -28,7 +28,6 @@ public class AimedAttackCommand : Command {
     }
 
 	public override bool IsValidTarget(Targetable t){
-		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+        return AttackCommand.DefaultAttackIsValidTarget(t, owner);
 	}
 }
