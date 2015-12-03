@@ -94,14 +94,14 @@ public class LineOfSightManager : MonoBehaviour
 	public static bool CheckSight(Pawn a, Pawn b)
 	{
 		if (Vector3.Distance (a.transform.position, b.transform.position) <= Pawn.sightRange) {
-			if (debug) Debug.Log("Distance Checks out");
+			if (instance.debug) Debug.Log("Distance Checks out");
 			RaycastHit hit;
 			foreach(Vector3 corner in corners){
 				Physics.Raycast(a.transform.position + verticalOffset + corner, 
 				                b.transform.position - a.transform.position,
 				                out hit);
 				if(hit.collider != null && hit.collider.GetComponent<Pawn>() == b){
-					if (debug) Debug.Log("LoS Checks out to "+hit.collider.name);
+					if (instance.debug) Debug.Log("LoS Checks out to "+hit.collider.name);
 					return true;
 				}
 			}
@@ -112,14 +112,14 @@ public class LineOfSightManager : MonoBehaviour
 	public static bool CheckSight(Pawn a, DestroyableProp b)
 	{
 		if (Vector3.Distance (a.transform.position, b.transform.position) <= Pawn.sightRange) {
-			//Debug.Log("Distance Checks out");
+			if (instance.debug) Debug.Log("Distance Checks out");
 			RaycastHit hit;
 			foreach(Vector3 corner in corners){
 				Physics.Raycast(a.transform.position + verticalOffset + corner, 
 				                b.transform.position - (a.transform.position + verticalOffset),
 				                out hit);
 				if(hit.collider != null && hit.collider.GetComponent<DestroyableProp>() == b){
-					//Debug.Log("LoS Checks out to "+hit.collider.name);
+					if (instance.debug) Debug.Log("LoS Checks out to "+hit.collider.name);
 					return true;
 				}
 			}
