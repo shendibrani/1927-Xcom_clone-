@@ -37,6 +37,7 @@ public class PawnAbilityUI : MenuCanvas {
                     break;
                 }
                 buttonList[i].Set(tmpList[i]);
+                buttonList[i].GetComponentInChildren<Text>().text = tmpList[i].abilityCommand.ToString();
             }
         }    
     }

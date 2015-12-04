@@ -15,14 +15,14 @@ public class MenuManager : MonoBehaviour {
     MenuCanvas activeMenu;
     MenuCanvas previousMenu;
 
-    [SerializeField]
-    MenuCanvas[] MenuCanvasList;
+    MenuCanvas [] MenuCanvasList;
 
     public Canvas canvasRefence { get; private set; }
 
     void Start()
     {
         canvasRefence = GetComponent<Canvas>();
+        MenuCanvasList = FindObjectsOfType<MenuCanvas>();
     }
 
 	// Update is called once per frame
