@@ -11,10 +11,8 @@ public class Character
     int baseAP = 3;
     int baseHP = 10;
 
-    public SkillTree offenseTree = new SkillTree();
-    public SkillTree defenseTree = new SkillTree();
-    public SkillTree supportTree = new SkillTree();
-
+   
+/*
     public int accuracy
     {
         get
@@ -36,16 +34,10 @@ public class Character
             return (int)(baseHP + 1f/2f + (offenseTree.assignedLevels * (7 + 1f/2f)) + (defenseTree.assignedLevels * (15)) + (supportTree.assignedLevels * (7 + 1f/2f)));
         }
     }
+*/
     public int level { get; private set; }
     public int experiencePoints { get; private set; }
-
-    public int assignedPoints
-    {
-        get
-        {
-            return offenseTree.assignedLevels + defenseTree.assignedLevels + supportTree.assignedLevels;
-        }
-    }
+    public CharacterClass characterClass { get; private set; }
 
     public Weapon assignedWeapon;
 
@@ -54,9 +46,11 @@ public class Character
         get
         {
             List<Skill> tmpList = new List<Skill>();
-            tmpList.AddRange(offenseTree.GetSkills());
-            tmpList.AddRange(defenseTree.GetSkills());
-            tmpList.AddRange(supportTree.GetSkills());
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    tmpList.Add()
+            }
             return tmpList;
         }
     }
@@ -81,4 +75,11 @@ public class Character
         supportTree = pSupport;
         assignedWeapon = pWeapon;
     }
+}
+
+public enum CharacterClass
+{
+    ASSAULT,
+    DEFENDER,
+    SUPPORT
 }
