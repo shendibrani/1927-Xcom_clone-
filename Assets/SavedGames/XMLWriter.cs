@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 
-public class XMLWriter : MonoBehaviour
+public class XMLWriter
 {
 
     public static XMLWriter instance
@@ -52,7 +52,9 @@ public class XMLWriter : MonoBehaviour
         for (int i = 0; i < XmlData.Count; i++)
         {
             //Debug.Log("Weapon: " + XmlData[i].name);
-            WeaponData.instance.universalWeaponList.Add(XmlData[i].weaponEnum, XmlData[i]);
+            if (!WeaponData.instance.universalWeaponList.ContainsKey(XmlData[i].weaponEnum)){
+                WeaponData.instance.universalWeaponList.Add(XmlData[i].weaponEnum, XmlData[i]);
+            }
         }
         reader.Close();
     }
@@ -66,7 +68,7 @@ public class XMLWriter : MonoBehaviour
         }
     }
 
-    public void DeserializeWeapons(string filename)
+    public void DeserializeCharacter(string filename)
     {
         XmlSerializer deserializer = new XmlSerializer(typeof(List<Character>));
         TextReader reader = new StreamReader(Application.dataPath + filename + ".txt");
@@ -82,19 +84,55 @@ public class XMLWriter : MonoBehaviour
         reader.Close();
     }
 
-    /*
-    void OnGUI() {
-        if (GUILayout.Button("Save")) {
-            SerializeWeapons(weapList);
-            Debug.Log("Saved at: " + Application.dataPath + "mysave.txt");
-        }
-
-        if (GUILayout.Button("Load"))
+    public void SerializeSkills(Dictionary<Commands, Skill> skillList)
+    {
+        List<Skill> tmpList = new List<Skill>();
+        foreach (Commands c in SkillData.instance.universalSkillList.Keys)
         {
-            DeserializeWeapons();
-           // Debug.Log("Saved at: " + Application.dataPath + "mysave.txt");
+            tmpList.Add(SkillData.instance.universalSkillList[c]);
         }
 
+        XmlSerializer serializer = new XmlSerializer(typeof(List<Skill>));
+        using (TextWriter writer = new StreamWriter(Application.dataPath + "skillinfo.txt"))
+        {
+            serializer.Serialize(writer, tmpList);
+        }
     }
-     */
+
+    public void DeserializeSkills()
+    {
+
+        XmlSerializer deserializer = new XmlSerializer(typeof(List<Skill>));
+        TextReader reader = new StreamReader(Application.dataPath + "skillinfo.txt");
+        object obj = deserializer.Deserialize(reader);
+        List<Skill> XmlData = (List<Skill>)obj;
+        Debug.Log(XmlData.Count);
+
+        for (int i = 0; i < XmlData.Count; i++)
+        {
+            if (!SkillData.instance.universalSkillList.ContainsKey(XmlData[i].abilityCommand))
+            {
+                SkillData.instance.universalSkillList.Add(XmlData[i].abilityCommand, XmlData[i]);
+            }
+        }
+        reader.Close();
+    }
+
+
+    /* void OnGUI() {
+         if (GUILayout.Button("Save")) {
+             //SerializeWeapons(weapList);
+             CharacterStaticStorage.instance.fullCharacterList.Add(new Character());
+             SerializeCharacter(CharacterStaticStorage.instance.fullCharacterList, "testCharacter");
+             Debug.Log("Saved at: " + Application.dataPath + "mysave.txt");
+         }
+
+         if (GUILayout.Button("Load"))
+         {
+             DeserializeCharacter("testCharacter");
+            // Debug.Log("Saved at: " + Application.dataPath + "mysave.txt");
+         }
+
+     }
+      */
 }

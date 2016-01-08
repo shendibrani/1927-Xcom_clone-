@@ -47,7 +47,9 @@ public class CharacterStaticStorage
 	
 	private static CharacterStaticStorage _instance;
 
-    private CharacterStaticStorage() { }
+    private CharacterStaticStorage() {
+        fullCharacterList = new List<Character>();
+    }
 
     //load characters into reference list from XML, pass in reference to save data
     public void LoadFromSave(string filename)

@@ -22,7 +22,7 @@ public class CampaignManager : MonoBehaviour {
 
     public void initialize()
     {
-        CharacterStaticStorage.instance.LoadFromSave();
+        CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
     }
 
 }
