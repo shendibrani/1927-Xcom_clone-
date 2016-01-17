@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="42">
+ <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="42" columns="0">
   <tile id="0">
-   <image width="16" height="16" source="../Tilesets/Tile_0_Empty.png/">
+   <image width="16" height="16" source="../Tilesets/Tile_0_Empty.png"/>
   </tile>
   <tile id="1">
    <image width="16" height="16" source="../Tilesets/Tile_001_Pavement.png"/>
@@ -122,10 +122,10 @@
    <image width="16" height="16" source="../Tilesets/Tile_039_Roof_1_In.png"/>
   </tile>
   <tile id="40">
-   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Level Design/Tilesets/Tile_040_Roof_1_InConer.png"/>
+   <image width="16" height="16" source="../Tilesets/Tile_040_Roof_1_InConer.png"/>
   </tile>
   <tile id="41">
-   <image width="16" height="16" source="../../../../../../Dropbox/Project Indie/Design Week/Level Design/Tilesets/Tile_041_House_2_window.png"/>
+   <image width="16" height="16" source="../Tilesets/Tile_041_House_2_window.png"/>
   </tile>
  </tileset>
  <layer name="Level_1" width="50" height="50">

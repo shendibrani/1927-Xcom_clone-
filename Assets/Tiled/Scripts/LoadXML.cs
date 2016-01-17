@@ -63,10 +63,27 @@ public class LoadXML : ReadXML {
 
                         if (tileID != 0)
                         {
-                            
-                            tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);                            
-                            tempStore.transform.parent = layerParent.transform;
-                            generatedObjects.Add(tempStore);
+							if (PrefabLoader[tileID].gameObject.tag == "randomizer")
+							{
+								tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation); 
+
+								int _i = UnityEngine.Random.Range(0,4);
+								tempStore.transform.Rotate(0,_i * 90,0);
+
+								GameObject toDelete = tempStore;
+
+								tempStore = tempStore.GetComponent<RandomLoad>().Generate();
+								tempStore.transform.parent = layerParent.transform;
+
+								DestroyImmediate (toDelete.gameObject);
+								generatedObjects.Add(tempStore);
+                            }
+							else
+							{
+								tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);                            
+								tempStore.transform.parent = layerParent.transform;
+								generatedObjects.Add(tempStore);
+							}
                         }
 						
 				 		runOnce = true;
