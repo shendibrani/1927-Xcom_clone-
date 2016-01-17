@@ -84,7 +84,7 @@ GameObject:
   - 4: {fileID: 497760}
   m_Layer: 0
   m_Name: 015_Stairs
-  m_TagString: Untagged
+  m_TagString: withNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -381,6 +381,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: withNode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

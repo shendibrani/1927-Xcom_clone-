@@ -80,9 +80,9 @@ public class LoadXML : ReadXML {
                             }
 							else
 							{
-								tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);                            
-								tempStore.transform.parent = layerParent.transform;
+								tempStore = (GameObject)Instantiate(PrefabLoader[tileID], instanceLocation, rotation);
 								generatedObjects.Add(tempStore);
+								tempStore.transform.parent = layerParent.transform;
 							}
                         }
 						
