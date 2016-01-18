@@ -11,10 +11,15 @@ public class Character
     int baseAP = 3;
     int baseHP = 10;
 
-    public SkillTree offenseTree = new SkillTree();
-    public SkillTree defenseTree = new SkillTree();
-    public SkillTree supportTree = new SkillTree();
-
+	public CharacterClass characterClass;
+	public Commands skill;
+	public Weapon assignedWeapon;
+	public int level { get; private set; }
+	public int experiencePoints { get; private set; }
+    //public SkillTree offenseTree = new SkillTree();
+    //public SkillTree defenseTree = new SkillTree();
+    //public SkillTree supportTree = new SkillTree();
+	#region Properties
     public int accuracy
     {
         get
@@ -36,8 +41,6 @@ public class Character
             return (int)(baseHP + 1f/2f + (offenseTree.assignedLevels * (7 + 1f/2f)) + (defenseTree.assignedLevels * (15)) + (supportTree.assignedLevels * (7 + 1f/2f)));
         }
     }
-    public int level { get; private set; }
-    public int experiencePoints { get; private set; }
 
     public int assignedPoints
     {
@@ -46,8 +49,6 @@ public class Character
             return offenseTree.assignedLevels + defenseTree.assignedLevels + supportTree.assignedLevels;
         }
     }
-
-    public Weapon assignedWeapon;
 
     public List<Skill> skillList
     {
@@ -66,7 +67,7 @@ public class Character
     {
         ID = 0;
         name = "tmpName";
-        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle];
         //offenseTree = SkillTree.CreateOffenseTree();
         //defenseTree = SkillTree.CreateDefenseTree();
         //supportTree = SkillTree.CreateSupportTree();
@@ -82,3 +83,13 @@ public class Character
         assignedWeapon = pWeapon;
     }
 }
+
+public enum CharacterClass{
+	OFFENSIVE,
+	DEFENSIVE,
+	SUPPORT
+}
+public static CharacterStats{
+	Dictionary <CharacterClass, int [3]> characterStatsRef;
+}
+
