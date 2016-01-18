@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class HorizontalEdgePanAxis : Axis {
 	
 	[SerializeField] float tolerance = 25;
+    [SerializeField]
+    bool useBorder = false;
+    [SerializeField]
+    Vector2 boundsPosition = new Vector2(10, -10);
 	
 	// Update is called once per frame
 	void Update () 
@@ -14,13 +18,29 @@ public class HorizontalEdgePanAxis : Axis {
 		_axisValue = 0;
 		if(focus){
 			if(Input.mousePosition.x <= tolerance){
-				_axisValue = -1;
+                if (useBorder)
+                {
+                    if (GetComponent<CameraViewController>().transform.position.x > boundsPosition.y)
+                        _axisValue = -1;
+                }
+                else
+                {
+                    _axisValue = -1;
+                }
 			} else if(Input.mousePosition.x >= Screen.width - tolerance){
-				_axisValue = 1;
+                if (useBorder)
+                {
+                    if (GetComponent<CameraViewController>().transform.position.x < boundsPosition.x)
+                        _axisValue = 1;
+                }
+                else
+                {
+                    _axisValue = 1;
+                }
 			}
 		}
 	}
-
+        
     bool CheckRay()
     {
         // get pointer event data, then set current mouse position

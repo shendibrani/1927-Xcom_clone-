@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class VerticalEdgePanAxis : Axis {
 
 	[SerializeField] float tolerance = 25;
+    [SerializeField]
+    bool useBorder = false;
+    [SerializeField]
+    Vector2 boundsPosition = new Vector2(10, -10);
 
 	// Update is called once per frame
 	void Update () 
@@ -14,9 +18,25 @@ public class VerticalEdgePanAxis : Axis {
 		_axisValue = 0;
 		if(focus){
 			if(Input.mousePosition.y <= tolerance){
-				_axisValue = -1;
+                if (useBorder)
+                {
+                    if (GetComponent<CameraViewController>().transform.position.z > boundsPosition.y)
+                        _axisValue = -1;
+                }
+                else
+                {
+                    _axisValue = -1;
+                }
 			} else if(Input.mousePosition.y >= Screen.height - tolerance){
-				_axisValue = 1;
+                if (useBorder)
+                {
+                    if (GetComponent<CameraViewController>().transform.position.z < boundsPosition.x)
+                        _axisValue = 1;
+                }
+                else
+                {
+                    _axisValue = 1;
+                }
 			}
 		}
 	}
