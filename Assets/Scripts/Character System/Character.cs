@@ -126,3 +126,8 @@ public enum CharacterClass
     DEFENDER,
     SUPPORT
 }
+/*
+public static class CharacterStats{
+	Dictionary <CharacterClass, int [3]> characterStatsRef;
+}
+*/

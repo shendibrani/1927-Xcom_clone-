@@ -8,6 +8,7 @@ public class LoadStuff : MonoBehaviour {
     public GameObject loadingScreen;
     public GameObject progressBar;
     public GameObject text;
+    public GameObject UI;
 
     private int loadProgress = 0;
 
@@ -36,7 +37,38 @@ public class LoadStuff : MonoBehaviour {
         }
     }
 
+    IEnumerator DisplayLoadingScreen(int scene)
+    {
+        loadingScreen.SetActive(true);
+        progressBar.SetActive(true);
+        text.SetActive(true);
 
+        text.GetComponent<GUIText>().text = "Progress " + loadProgress + "%";
+        progressBar.transform.localScale = new Vector3(loadProgress, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+
+        AsyncOperation async = Application.LoadLevelAsync(scene);
+        while (!async.isDone)
+        {
+            loadProgress = (int)(async.progress * 100);
+            text.GetComponent<GUIText>().text = "Progress " + loadProgress + "%";
+            progressBar.transform.localScale = new Vector3(async.progress, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+
+            yield return null;
+        }
+    }
+
+    public void OnUse(string level)
+    {
+        UI.SetActive(false);
+        StartCoroutine(DisplayLoadingScreen(level));
+    }
+
+    public void OnUse(int sceneNum)
+    {
+        UI.SetActive(false);
+        StartCoroutine(DisplayLoadingScreen(sceneNum));
+    }
+    /*
     void OnGUI() {
         GUILayout.Box("Current scene: " + Application.loadedLevelName );
 
@@ -51,4 +83,5 @@ public class LoadStuff : MonoBehaviour {
            // Application.LoadLevel("Scene2");
         }
     }
+     */
 }

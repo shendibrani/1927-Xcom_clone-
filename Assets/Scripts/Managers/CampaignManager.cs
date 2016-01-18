@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class CampaignManager : MonoBehaviour {
 
+
+    //mission count first mission == 0;
     public int missionCount { get; private set; }
 
     public static CampaignManager instance
@@ -20,9 +22,16 @@ public class CampaignManager : MonoBehaviour {
 
     private static CampaignManager _instance;
 
-    public void initialize()
-    {
+    public void NewCampaign() {
         CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
+        missionCount = 0;
     }
+
+    public void NextMission()
+    {
+        missionCount++;
+    }
+
+
 
 }
