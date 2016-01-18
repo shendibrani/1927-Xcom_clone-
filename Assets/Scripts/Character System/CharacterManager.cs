@@ -36,8 +36,6 @@ public class CharacterStaticStorage
 
     public List<Character> fullCharacterList;
 
-    public List<Character> transferCharacterList;
-
     public static CharacterStaticStorage instance {
 		get {
 			if(_instance == null){
@@ -49,18 +47,20 @@ public class CharacterStaticStorage
 	
 	private static CharacterStaticStorage _instance;
 
-    private CharacterStaticStorage() { }
+    private CharacterStaticStorage() {
+        fullCharacterList = new List<Character>();
+    }
 
     //load characters into reference list from XML, pass in reference to save data
-    public void LoadFromSave()
+    public void LoadFromSave(string filename)
     {
-
+        
     }
 
     //save character list into XML
     public void SaveToFile()
     {
-
+      
     }
 
     //reset instance

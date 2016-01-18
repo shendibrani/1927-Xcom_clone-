@@ -40,11 +40,13 @@ public class SkillData
 
     private static SkillData _instance;
 
-    private SkillData() { }
+    private SkillData() {
+        universalSkillList = new Dictionary<Commands, Skill>();
+    }
 
     //load skills from default XML (not related to save)
     public void LoadFromSave()
     {
-
+        XMLWriter.instance.DeserializeSkills();
     }
 }

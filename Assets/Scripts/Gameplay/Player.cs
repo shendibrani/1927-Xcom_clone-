@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     List<Pawn> pawns;
 
-    List<Character> characterList { get { return CharacterStaticStorage.instance.transferCharacterList; } }
+    List<Character> characterList { get { return CharacterStaticStorage.instance.fullCharacterList; } }
 
     public List<Pawn> Pawns
     {
