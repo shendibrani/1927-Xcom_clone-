@@ -5,59 +5,94 @@ using System.Collections.Generic;
 public class Character
 {
 
-    int ID;
-    string name;
+    public int ID { get; private set; }
+    public string name { get; private set; }
     int baseAcc = 0;
     int baseAP = 3;
     int baseHP = 10;
 
-	public CharacterClass characterClass;
-	public Commands skill;
-	public Weapon assignedWeapon;
-	public int level { get; private set; }
-	public int experiencePoints { get; private set; }
-    //public SkillTree offenseTree = new SkillTree();
-    //public SkillTree defenseTree = new SkillTree();
-    //public SkillTree supportTree = new SkillTree();
-	#region Properties
     public int accuracy
     {
         get
         {
-            return (int)(baseAcc + (offenseTree.assignedLevels * (8f + 1f / 3f)) + (defenseTree.assignedLevels * (4f + 1f / 4f)) + (supportTree.assignedLevels * (4f + 1f / 4f)));
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    return (int)(baseAcc + (level * (8d + 1f / 3f)));
+                case CharacterClass.DEFENDER:
+                    return (int)(baseAcc + (level * (4f + 1f / 4f)));
+                case CharacterClass.SUPPORT:
+                    return (int)(baseAcc + (level * (4f + 1f / 4f)));
+                default:
+                    return baseAcc;
+                    //return (int)(baseAcc + (offenseTree.assignedLevels * (8f + 1f / 3f)) + (defenseTree.assignedLevels * (4f + 1f / 4f)) + (supportTree.assignedLevels * (4f + 1f / 4f)));
+            }
         }
     }
     public int actionPoints
     {
         get
         {
-            return (int)(baseAP + (offenseTree.assignedLevels * (1f / 2f)) + (defenseTree.assignedLevels * (1f / 2f)) + (supportTree.assignedLevels * (1)));
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    return (int)(baseAP + (level * (1f / 2f)));
+                case CharacterClass.DEFENDER:
+                    return (int)(baseAP + (level * (1f / 2f)));
+                case CharacterClass.SUPPORT:
+                    return (int)(baseAP + (level * (1f)));
+                default:
+                    return baseAP;
+
+                    //return (int)(baseAP + (offenseTree.assignedLevels * (1f / 2f)) + (defenseTree.assignedLevels * (1f / 2f)) + (supportTree.assignedLevels * (1f)));
+            }
         }
     }
     public int hitPoints
     {
         get
         {
-            return (int)(baseHP + 1f/2f + (offenseTree.assignedLevels * (7 + 1f/2f)) + (defenseTree.assignedLevels * (15)) + (supportTree.assignedLevels * (7 + 1f/2f)));
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    return (int)(baseHP + +1f / 2f + (level * (7 + 1f / 2f)));
+                case CharacterClass.DEFENDER:
+                    return (int)(baseHP + +1f / 2f + (level * (15)));
+                case CharacterClass.SUPPORT:
+                    return (int)(baseHP + +1f / 2f + (level * (7 + 1f / 2f)));
+                default:
+                    return baseHP;
+
+                    //return (int)(baseHP + 1f/2f + (offenseTree.assignedLevels * (7 + 1f/2f)) + (defenseTree.assignedLevels * (15)) + (supportTree.assignedLevels * (7 + 1f/2f)));
+            }
         }
     }
 
-    public int assignedPoints
-    {
-        get
-        {
-            return offenseTree.assignedLevels + defenseTree.assignedLevels + supportTree.assignedLevels;
-        }
-    }
+    public int level { get; private set; }
+    public int experiencePoints { get; private set; }
+    public CharacterClass characterClass { get; private set; }
+
+    public Weapon assignedWeapon;
 
     public List<Skill> skillList
     {
         get
         {
             List<Skill> tmpList = new List<Skill>();
-            tmpList.AddRange(offenseTree.GetSkills());
-            tmpList.AddRange(defenseTree.GetSkills());
-            tmpList.AddRange(supportTree.GetSkills());
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    tmpList.Add(SkillData.instance.universalSkillList[Commands.AimedAttack]);
+                    break;
+                case CharacterClass.DEFENDER:
+                    tmpList.Add(SkillData.instance.universalSkillList[Commands.Defend]);
+                    break;
+                case CharacterClass.SUPPORT:
+                    tmpList.Add(SkillData.instance.universalSkillList[Commands.FirstAid]);
+                    break;
+                default:
+                    break;
+            }
             return tmpList;
         }
     }
@@ -67,29 +102,32 @@ public class Character
     {
         ID = 0;
         name = "tmpName";
-        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle];
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
+        characterClass = CharacterClass.ASSAULT;
+        level = 1;
+
         //offenseTree = SkillTree.CreateOffenseTree();
         //defenseTree = SkillTree.CreateDefenseTree();
         //supportTree = SkillTree.CreateSupportTree();
     }
 
-    public Character(int uID, string pName, SkillTree pOffense, SkillTree pDefense, SkillTree pSupport, Weapon pWeapon)
+    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon)
     {
         ID = uID;
         name = pName;
-        offenseTree = pOffense;
-        defenseTree = pDefense;
-        supportTree = pSupport;
+        characterClass = pClass;
         assignedWeapon = pWeapon;
     }
 }
 
-public enum CharacterClass{
-	OFFENSIVE,
-	DEFENSIVE,
-	SUPPORT
+public enum CharacterClass
+{
+    ASSAULT,
+    DEFENDER,
+    SUPPORT
 }
-public static CharacterStats{
+/*
+public static class CharacterStats{
 	Dictionary <CharacterClass, int [3]> characterStatsRef;
 }
-
+*/
