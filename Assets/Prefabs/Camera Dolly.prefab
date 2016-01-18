@@ -13,7 +13,7 @@ GameObject:
   - 124: {fileID: 12434268}
   - 81: {fileID: 8155290}
   - 114: {fileID: 11440156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -34,7 +34,9 @@ GameObject:
   - 114: {fileID: 11418668}
   - 114: {fileID: 11417626}
   - 114: {fileID: 11478910}
-  m_Layer: 0
+  - 54: {fileID: 5466200}
+  - 65: {fileID: 6506968}
+  m_Layer: 8
   m_Name: Camera Dolly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +49,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117994}
-  m_LocalRotation: {x: .342847496, y: 0, z: 0, w: .939391077}
+  m_LocalRotation: {x: .50000006, y: 0, z: 0, w: .866025388}
   m_LocalPosition: {x: 0, y: 8, z: -9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -60,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 34, y: 0, z: -35.1599998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463624}
@@ -100,6 +102,33 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_StereoMirrorMode: 0
+--- !u!54 &5466200
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145768}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &6506968
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &8155290
 AudioListener:
   m_ObjectHideFlags: 1
@@ -140,7 +169,7 @@ MonoBehaviour:
   panSpeed: 7.5
   rotateSpeed: 270
   minDistance: 10
-  maxDistance: 30
+  maxDistance: 20
 --- !u!114 &11440156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69ab80776f333f4dbb46f82b0506ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!114 &11479052
 MonoBehaviour:
   m_ObjectHideFlags: 1
