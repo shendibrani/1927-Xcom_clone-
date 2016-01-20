@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RandomLoad : MonoBehaviour {
 
@@ -8,12 +9,29 @@ public class RandomLoad : MonoBehaviour {
 	//Randomly Spawns one of the Objects in the list, then deletes itself
 
 	public GameObject[] _Objects;
-	
+	public int[] _chance;
+	public int[] _MaximumHeight;
+	public bool _RandomRotation = false;
+
+	List<GameObject> _items = new List<GameObject>();
+
+
 	public GameObject Generate () 
 	{
-		int i = Random.Range (0, _Objects.Length);
+		for (int i = 0; i < _Objects.Length; i++)
+		{
+			int _length = _chance[i];
+			for (int j = 0; j < _length; j++)
+			{
+				if (transform.position.y <= _MaximumHeight[i]) {
+					_items.Add(_Objects[i]);
+				}
+			}
+		}
 
-		GameObject _object = (GameObject) Instantiate (_Objects [i],transform.position,transform.rotation);
+		int _i = Random.Range (0, _items.Count);
+
+		GameObject _object = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
 
 		return _object;
 	}

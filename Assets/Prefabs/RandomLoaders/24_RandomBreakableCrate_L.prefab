@@ -44,6 +44,9 @@ MonoBehaviour:
   - {fileID: 167166, guid: c324108fe402a7c48a39486af04ed3b2, type: 2}
   - {fileID: 184708, guid: 4f9c4b0586f35dc468acf3c897fc09da, type: 2}
   - {fileID: 141490, guid: 31dbc87b83563d145b00f4114f78eb2d, type: 2}
+  _chance: 01000000010000000100000001000000
+  _MaximumHeight: 0a0000000a0000000a0000000a000000
+  _RandomRotation: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -52,7 +55,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: _chance.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: _Objects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -71,6 +82,46 @@ Prefab:
       propertyPath: _Objects.Array.data[3]
       value: 
       objectReference: {fileID: 141490, guid: 31dbc87b83563d145b00f4114f78eb2d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _RandomRoation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _RandomRotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[3]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151004}

@@ -43,6 +43,9 @@ MonoBehaviour:
   - {fileID: 112538, guid: eb589ee4772ea9e49849cb1893f361b9, type: 2}
   - {fileID: 171298, guid: a49aa4ef9292a034c820ea9fa879a095, type: 2}
   - {fileID: 136844, guid: 7746d7fce5367274984b1ece131346a1, type: 2}
+  _chance: 010000000100000001000000
+  _MaximumHeight: 0a0000000a0000000a000000
+  _RandomRotation: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -51,7 +54,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: _chance.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: _Objects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -69,6 +80,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: randomizer
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _RandomRoation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _chance.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _MaximumHeight.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _RandomRotation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
