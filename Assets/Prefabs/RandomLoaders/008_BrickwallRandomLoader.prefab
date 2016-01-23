@@ -45,7 +45,7 @@ MonoBehaviour:
   - {fileID: 173766, guid: d1cc1bec814d1a34ba0f9037ee4fbaf3, type: 2}
   - {fileID: 180522, guid: eca95e74e0632754faa942cb32a2404e, type: 2}
   - {fileID: 191582, guid: 86750863e8ca32a4ab83e340b10ce70b, type: 2}
-  _chance: 1400000001000000010000000100000001000000
+  _chance: 1400000000000000000000000000000000000000
   _MaximumHeight: 0a00000002000000020000000200000002000000
   _RandomRotation: 0
 --- !u!1001 &100100000
@@ -93,19 +93,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _chance.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _chance.Array.data[2]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _chance.Array.data[3]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _chance.Array.data[4]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString

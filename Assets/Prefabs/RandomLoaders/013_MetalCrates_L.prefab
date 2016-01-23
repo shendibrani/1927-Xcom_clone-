@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &119296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 416516}
+  - 114: {fileID: 11471322}
+  m_Layer: 0
+  m_Name: 013_MetalCrates_L
+  m_TagString: randomizer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &416516
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.5075455, y: 1.17749786, z: -38.0611305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11471322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d52c7e4f601d5746a3b973b115c3cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Objects:
+  - {fileID: 121486, guid: 56239bd65cc762e46a4e0a086250fd7e, type: 2}
+  - {fileID: 185520, guid: 960bb122d3f27604ca843411062a50bb, type: 2}
+  - {fileID: 170914, guid: b87d1f2cbd855e041a1d77134dda6f52, type: 2}
+  _chance: 010000000100000001000000
+  _MaximumHeight: 0a0000000a0000000a000000
+  _RandomRotation: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 119296}
+  m_IsPrefabParent: 1
