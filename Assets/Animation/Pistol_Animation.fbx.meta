@@ -82,20 +82,20 @@ ModelImporter:
     400072: UpperLeg_L
     400074: UpperLeg_R
     4300000: Character_UnfinishedSkinning
-    7400000: Idle_Stand
-    7400002: Walk
-    7400004: Shoot_Stand
-    7400006: Stand_To_Crouch
-    7400008: Idle_Crouch
-    7400010: Shoot_Crouch
-    7400012: Crouch_To_Stand
-    7400014: Shoot_HighCover
-    7400016: Damage_Stand
-    7400018: Die_Crouch
-    7400020: Die_Stand
-    7400022: Damage_Crouch
-    7400024: Jump
-    7400026: Land
+    7400000: Pistol_Idle_Stand
+    7400002: Pistol_Walk
+    7400004: Pistol_Shoot_Stand
+    7400006: Pistol_Stand_To_Crouch
+    7400008: Pistol_Idle_Crouch
+    7400010: Pistol_Shoot_Crouch
+    7400012: Pistol_Crouch_To_Stand
+    7400014: Pistol_Shoot_HighCover
+    7400016: Pistol_Damage_Stand
+    7400018: Pistol_Die_Crouch
+    7400020: Pistol_Die_Stand
+    7400022: Pistol_Damage_Crouch
+    7400024: Pistol_Jump
+    7400026: Pistol_Land
     9500000: //RootNode
     13700000: Character_UnfinishedSkinning
   materials:
@@ -111,7 +111,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -119,7 +119,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle_Stand
+      name: Pistol_Idle_Stand
       takeName: Take 001
       firstFrame: 6
       lastFrame: 45
@@ -223,7 +223,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Walk
+      name: Pistol_Walk
       takeName: Take 001
       firstFrame: 70
       lastFrame: 94
@@ -327,7 +327,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Shoot_Stand
+      name: Pistol_Shoot_Stand
       takeName: Take 001
       firstFrame: 100
       lastFrame: 125
@@ -431,7 +431,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Stand_To_Crouch
+      name: Pistol_Stand_To_Crouch
       takeName: Take 001
       firstFrame: 130
       lastFrame: 155
@@ -535,7 +535,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Idle_Crouch
+      name: Pistol_Idle_Crouch
       takeName: Take 001
       firstFrame: 160
       lastFrame: 200
@@ -639,7 +639,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Shoot_Crouch
+      name: Pistol_Shoot_Crouch
       takeName: Take 001
       firstFrame: 210
       lastFrame: 255
@@ -743,7 +743,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Crouch_To_Stand
+      name: Pistol_Crouch_To_Stand
       takeName: Take 001
       firstFrame: 260
       lastFrame: 283
@@ -847,7 +847,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Shoot_HighCover
+      name: Pistol_Shoot_HighCover
       takeName: Take 001
       firstFrame: 290
       lastFrame: 327
@@ -951,7 +951,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Damage_Stand
+      name: Pistol_Damage_Stand
       takeName: Take 001
       firstFrame: 330
       lastFrame: 343
@@ -1055,7 +1055,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Die_Crouch
+      name: Pistol_Die_Crouch
       takeName: Take 001
       firstFrame: 350
       lastFrame: 381
@@ -1159,7 +1159,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Die_Stand
+      name: Pistol_Die_Stand
       takeName: Take 001
       firstFrame: 390
       lastFrame: 412
@@ -1263,7 +1263,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Damage_Crouch
+      name: Pistol_Damage_Crouch
       takeName: Take 001
       firstFrame: 420
       lastFrame: 435
@@ -1367,7 +1367,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Jump
+      name: Pistol_Jump
       takeName: Take 001
       firstFrame: 440
       lastFrame: 456
@@ -1471,7 +1471,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Land
+      name: Pistol_Land
       takeName: Take 001
       firstFrame: 460
       lastFrame: 475
@@ -1577,7 +1577,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 10
+    globalScale: 12
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
