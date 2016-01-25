@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class CharacterManager : MonoBehaviour {
 
-    [SerializeField]
-    GameObject characterDisplayPrefab;
     List<Character> characterList { 
         get 
         {
@@ -16,18 +14,19 @@ public class CharacterManager : MonoBehaviour {
     //load game data in static??
     void LoadCharacters()
     {
+        CharacterStaticStorage.instance.LoadFromSave("charactersave");
         //loadCharacters
-    }
-    //instantiate character prefabs
-    void PopulateUI()
-    {
-
     }
 
     void Start()
     {
         LoadCharacters();
-        PopulateUI();
+        int i = 0;
+        foreach (CharacterTabUI u in GetComponentsInChildren<CharacterTabUI>())
+        {
+            u.PopulateUI(characterList[i]);
+            i++;
+        }
     }
 }
 
@@ -54,13 +53,15 @@ public class CharacterStaticStorage
     //load characters into reference list from XML, pass in reference to save data
     public void LoadFromSave(string filename)
     {
-        
+        fullCharacterList = new List<Character>();
+        XMLWriter.instance.DeserializeCharacter(filename);
+        //CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
     }
 
     //save character list into XML
     public void SaveToFile()
     {
-      
+        XMLWriter.instance.SerializeCharacter(fullCharacterList,"charactersave");
     }
 
     //reset instance

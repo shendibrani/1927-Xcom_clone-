@@ -2,11 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CampaignManager : MonoBehaviour {
-
+public class CampaignManager {
 
     //mission count first mission == 0;
-    public int missionCount { get; private set; }
+    public int missionCount { get; private set; }   
 
     public static CampaignManager instance
     {
@@ -24,6 +23,7 @@ public class CampaignManager : MonoBehaviour {
 
     public void NewCampaign() {
         CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
+        CharacterStaticStorage.instance.SaveToFile();
         missionCount = 0;
     }
 
