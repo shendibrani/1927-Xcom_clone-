@@ -18,7 +18,7 @@ public class ChainOfCommands : MonoBehaviour
 				Command command = Factory.GetCommand(commands[counter], executors[counter]);
 				command.target = targets[counter];
 				command.Execute();
-				counter++
+				counter++;
 			}
 		}
 	}
