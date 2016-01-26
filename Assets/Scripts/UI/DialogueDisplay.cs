@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+[RequireComponent(typeof(UIDrawerBehaviour))]
 public class DialogueDisplay : MonoBehaviour 
 {
 	#region Singleton
@@ -11,7 +12,7 @@ public class DialogueDisplay : MonoBehaviour
 			if(_instance == null){
 				_instance = GameObject.FindObjectOfType<DialogueDisplay>();
 				if(_instance == null){
-					Debug.LogError("There is not Line of Sight manager instance in the scene.");
+					Debug.LogError("There is not DialogueDisplay instance in the scene.");
 				}
 			}
 			return _instance;
@@ -23,6 +24,7 @@ public class DialogueDisplay : MonoBehaviour
 	#endregion
 
 	[SerializeField] DialogueLine currentLine;
+	[SerializeField] Dialogue currentDialogue;
 
 	[SerializeField] bool showCharacterByCharacter;
 	[SerializeField] float letterDelayInSeconds;
@@ -38,22 +40,33 @@ public class DialogueDisplay : MonoBehaviour
 
 
 
-	void Update () 
+	void FixedUpdate () 
 	{
-		if (showCharacterByCharacter && currentLine.line.Length > 0) 
-		{
-			dialogueField.text += currentLine.line[0];
-			currentLine.line = currentLine.line.Remove(0,1);
-		}
+		if (currentDialogue != null) {
 
-		if (Input.GetKeyUp(KeyCode.Return) || Input.GetMouseButtonUp(0))
-		{
-			FinishCurrentLine();
+			if (showCharacterByCharacter && currentLine.line.Length > 0) {
+				dialogueField.text += currentLine.line [0];
+				currentLine.line = currentLine.line.Remove (0, 1);
+			}
+
+			if (currentLine.line == string.Empty && (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0))) {
+				SetLine( currentDialogue.GetNextLine());
+			} else if (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0)) {
+				FinishCurrentLine ();
+			}
+
+
 		}
 	}
 
 	public void SetLine(DialogueLine line)
 	{
+		if (line == null) {
+			currentDialogue = null;
+			currentLine = null;
+			GetComponent<UIDrawerBehaviour>().Hide();
+		}
+
 		dialogueField.text = string.Empty;
 
 		portrait.sprite = portraits [line.characterID];
@@ -81,10 +94,18 @@ public class DialogueDisplay : MonoBehaviour
 		dialogueField.text += currentLine.line;
 		currentLine.line = string.Empty;
 	}
+
+	public void StartDialogue(Dialogue d)
+	{
+		currentDialogue = d;
+		SetLine( currentDialogue.GetNextLine());
+		GetComponent<UIDrawerBehaviour>().Show();
+	}
+	
 }
 
 [System.Serializable]
-public struct DialogueLine 
+public class DialogueLine 
 {
 	public int characterID;
 	public string line;
@@ -99,10 +120,14 @@ public class Dialogue
 {
 	DialogueLine[] lines;
 
-	int currentLine;
+	int currentLine = 0;
 
 	public DialogueLine GetNextLine()
 	{
+		if(currentLine >= lines.Length){
+			return null;
+		}
+
 		DialogueLine line = lines[currentLine];
 		currentLine++;
 		return line;
