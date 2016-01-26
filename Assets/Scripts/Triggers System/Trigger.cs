@@ -10,7 +10,7 @@ public abstract class Trigger : MonoBehaviour {
 	[SerializeField] [Tooltip("Tick this if this trigger needs to fire only once and deactivate")] protected bool oneOff;
 
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		if (Condition ()) {
 			fulfilled.Invoke();
