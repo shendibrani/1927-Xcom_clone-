@@ -23,8 +23,8 @@ public class DialogueDisplay : MonoBehaviour
 
 	#endregion
 
-	[SerializeField] DialogueLine currentLine;
-	[SerializeField] Dialogue currentDialogue;
+	DialogueLine currentLine;
+	Dialogue currentDialogue;
 
 	[SerializeField] bool showCharacterByCharacter;
 	[SerializeField] float letterDelayInSeconds;
@@ -116,6 +116,7 @@ public enum PortraitPositions{
 	Left, Center, Right
 }
 
+[System.Serializable]
 public class Dialogue 
 {
 	DialogueLine[] lines;
