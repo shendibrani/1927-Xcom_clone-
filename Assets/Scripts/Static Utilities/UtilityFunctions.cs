@@ -23,6 +23,24 @@ public static class UtilityFunctions {
 		return tObjects[0];
 	}
 
+	public static T GetClosestWithTag<T> (Vector3 position, string tag) where T : MonoBehaviour {
+		
+		List<T> tObjects = new List<T>(GameObject.FindObjectsOfType<T>());
+		tObjects = tObjects.FindAll(x => x.gameObject.tag == tag);
+		
+		tObjects.Sort((x,y) => Vector3.Distance(position, x.transform.position).CompareTo(Vector3.Distance(y.transform.position, position)));
+		
+		return tObjects[0];
+	}
+
+	public static List<T> GetObjectsWithTag<T> (string tag) where T : MonoBehaviour {
+		
+		List<T> tObjects = new List<T>(GameObject.FindObjectsOfType<T>());
+		tObjects = tObjects.FindAll(x => x.gameObject.tag == tag);
+	
+		return tObjects;
+	}
+
     public static List<T> FindAllObjectsWithinRange<T>(Vector3 position, float distance) where T : MonoBehaviour
     {
         List<T> objects = new List<T>();

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CustomGenerated
   - randomizer
+  - withNode
+  - EnemySpawnPoint
   layers:
   - Default
   - TransparentFX

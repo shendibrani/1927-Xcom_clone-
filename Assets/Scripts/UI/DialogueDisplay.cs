@@ -119,7 +119,7 @@ public enum PortraitPositions{
 [System.Serializable]
 public class Dialogue 
 {
-	DialogueLine[] lines;
+	[SerializeField] DialogueLine[] lines;
 
 	int currentLine = 0;
 
