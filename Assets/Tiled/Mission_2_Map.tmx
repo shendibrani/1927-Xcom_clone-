@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="70" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="43">
+ <tileset firstgid="1" name="City_Tileset" tilewidth="16" tileheight="16" tilecount="43" columns="0">
   <tile id="0">
    <image width="16" height="16" source="../Tilesets/Tile_0_Empty.png"/>
   </tile>

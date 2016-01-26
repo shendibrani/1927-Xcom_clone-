@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939d15a367ed97c46b76099f67b45cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiledSaveFile: {fileID: 102900000, guid: 3b79e4d11a1dc7540998ea0b9f2a377b, type: 3}
+  TiledSaveFile: {fileID: 102900000, guid: 048b4953d7ac5a44697b6cfbc38a8983, type: 3}
   printLayersInnerInfo: 0
   X_MarginDistance: 1
   Y_MarginDistance: 1
@@ -59,9 +59,9 @@ MonoBehaviour:
   - {fileID: 161862, guid: fcda485392876d24bb704a4856f5c251, type: 2}
   - {fileID: 110438, guid: 7baecd6b68b494a488091778168e4a8e, type: 2}
   - {fileID: 114746, guid: 1b4339968bd0f4a49879e7df0f386a1a, type: 2}
-  - {fileID: 111454, guid: 7d225edcd4297bf45817ac90405fc789, type: 2}
-  - {fileID: 133578, guid: edc548e865d3eb64d8e0dabbb9f64d6c, type: 2}
-  - {fileID: 188774, guid: 657d00930cfa44040a2aaa6548ea280d, type: 2}
+  - {fileID: 188356, guid: 021bf0a9f2e896e4297839f95964d0cb, type: 2}
+  - {fileID: 119296, guid: d98d3f2d4ced9a84c85ee604da444d4b, type: 2}
+  - {fileID: 131280, guid: 3e8d9c593604fbe49943803f293c5e9b, type: 2}
   - {fileID: 199000, guid: 2073ff30c21c8b6448daaaa54e9b1735, type: 2}
   - {fileID: 109296, guid: b1e25099b19720340834682d09c338de, type: 2}
   - {fileID: 119144, guid: 4691df08c2feedd4fbdb770aaa216b6e, type: 2}
