@@ -24,6 +24,7 @@ public class NodeBehaviour : MonoBehaviour {
 			_currentObject = value;
 			if (_currentObject is Pawn) {
 				AddOnEnterEffect(_currentObject.GetComponent<Pawn>());
+				_currentObject.GetComponent<GridNavMeshWrapper>().currentNode = this;
 			}
 		}
 	}
@@ -198,6 +199,17 @@ public class NodeBehaviour : MonoBehaviour {
 	void AddOnLeaveEffect(Pawn target)
 	{
 
+	}
+
+	public static NodeBehaviour GetClosestFreeSpawnNode(Vector3 position)
+	{
+		List<NodeBehaviour> nodes = UtilityFunctions.GetObjectsWithTag<NodeBehaviour>("EnemySpawnPoint");
+		nodes = nodes.FindAll(x => x.currentObject == null);
+		nodes.Sort((x,y) => Vector3.Distance(position, x.transform.position).CompareTo(Vector3.Distance(y.transform.position, position)));
+		if(nodes.Count == 0){
+			return null;
+		}
+		return nodes[0];
 	}
 }
 

@@ -54,6 +54,13 @@ public class Player : MonoBehaviour
         return pawns.Contains(p);
     }
 
+	public void AddPawn(Pawn p)
+	{
+		if(p.owner == null){
+			p.owner = this;
+			pawns.Add(p);
+		}
+	}
 
     bool Move(Pawn p, NodeBehaviour target)
     {
