@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -121,12 +122,15 @@ public class Dialogue
 {
 	[SerializeField] DialogueLine[] lines;
 
+	[SerializeField] UnityEvent DialogueEnd;
+
 	int currentLine = 0;
 
 	public DialogueLine GetNextLine()
 	{
 		if(currentLine >= lines.Length){
 			return null;
+			DialogueEnd.Invoke();
 		}
 
 		DialogueLine line = lines[currentLine];
