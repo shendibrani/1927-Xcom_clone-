@@ -12,11 +12,11 @@ public class ChainOfCommands : MonoBehaviour
 	// Update is called once per frame
 	void Execute ()
 	{
-		for (int counter = 0; counter < commands.Length; counter++){
-			Command command = Factory.GetCommand(commands[counter], executors[counter]);
-			command.target = targets[counter];
-			command.Execute();
-		}
+	//	for (int counter = 0; counter < commands.Length; counter++){
+	//		Command command = Factory.GetCommand(commands[counter], executors[counter]);
+	//		command.target = targets[counter];
+	//command.Execute();
+	//	}
 	}
 }
 
