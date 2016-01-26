@@ -38,9 +38,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115714}
-  m_LocalRotation: {x: -0.10588747, y: -0.70441717, z: 0.70034146, w: 0.045893684}
-  m_LocalPosition: {x: 0.098, y: 0.007, z: 0.011}
-  m_LocalScale: {x: 0.8844963, y: 0.88438493, z: 0.89711195}
+  m_LocalRotation: {x: -.0469388254, y: -.710732579, z: .694453418, w: .101933993}
+  m_LocalPosition: {x: .0980056897, y: .00701902993, z: -.0110434704}
+  m_LocalScale: {x: .872115731, y: -.87161696, z: .89671731}
   m_Children: []
   m_Father: {fileID: 415126}
   m_RootOrder: 0
@@ -52,7 +52,7 @@ Transform:
   m_GameObject: {fileID: 131664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413214}
   m_Father: {fileID: 0}
@@ -75,10 +75,8 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0

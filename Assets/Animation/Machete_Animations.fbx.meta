@@ -1,0 +1,1305 @@
+fileFormatVersion: 2
+guid: bdd9f5c66ce6c9249b79aa95cf1f4480
+timeCreated: 1453802260
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Character_UnfinishedSkinning
+    100002: Elbow_L
+    100004: Elbow_R
+    100006: Foot_L
+    100008: Foot_R
+    100010: Hand_CRTL
+    100012: Hand_CRTL1
+    100014: Hand_End_L
+    100016: Hand_End_R
+    100018: Hand_L
+    100020: Hand_R
+    100022: Head
+    100024: Head_CRTL
+    100026: Head_End
+    100028: Hips_CRTL
+    100030: LowerArm_L
+    100032: LowerArm_R
+    100034: LowerLeg_L
+    100036: LowerLeg_R
+    100038: //RootNode
+    100040: Neck
+    100042: Neck_CRTL
+    100044: Root_CRTL
+    100046: Spine_1
+    100048: Spine_2
+    100050: Spine_2_CRTL
+    100052: Spine_3
+    100054: Spine_3_CRTL
+    100056: Toe_L
+    100058: Toe_L 1
+    100060: Toe_R
+    100062: Toe_R 1
+    100064: transform12
+    100066: transform13
+    100068: UpperArm_L
+    100070: UpperArm_R
+    100072: UpperLeg_L
+    100074: UpperLeg_R
+    400000: Character_UnfinishedSkinning
+    400002: Elbow_L
+    400004: Elbow_R
+    400006: Foot_L
+    400008: Foot_R
+    400010: Hand_CRTL
+    400012: Hand_CRTL1
+    400014: Hand_End_L
+    400016: Hand_End_R
+    400018: Hand_L
+    400020: Hand_R
+    400022: Head
+    400024: Head_CRTL
+    400026: Head_End
+    400028: Hips_CRTL
+    400030: LowerArm_L
+    400032: LowerArm_R
+    400034: LowerLeg_L
+    400036: LowerLeg_R
+    400038: //RootNode
+    400040: Neck
+    400042: Neck_CRTL
+    400044: Root_CRTL
+    400046: Spine_1
+    400048: Spine_2
+    400050: Spine_2_CRTL
+    400052: Spine_3
+    400054: Spine_3_CRTL
+    400056: Toe_L
+    400058: Toe_L 1
+    400060: Toe_R
+    400062: Toe_R 1
+    400064: transform12
+    400066: transform13
+    400068: UpperArm_L
+    400070: UpperArm_R
+    400072: UpperLeg_L
+    400074: UpperLeg_R
+    4300000: Character_UnfinishedSkinning
+    7400000: M_Idle
+    7400002: M_Walk
+    7400004: M_Attack
+    7400006: M_Crouch
+    7400008: M_Crouch_Idle
+    7400010: M_Stand_Damage
+    7400012: M_Crouch_Die
+    7400014: M_Stand_Die
+    7400016: M_Crouch_Damage
+    7400018: M_Jump
+    7400020: M_Land
+    9500000: //RootNode
+    13700000: Character_UnfinishedSkinning
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: M_Idle
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Walk
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 93
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Attack
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Crouch
+      takeName: Take 001
+      firstFrame: 140
+      lastFrame: 165
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Crouch_Idle
+      takeName: Take 001
+      firstFrame: 170
+      lastFrame: 209
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Stand_Damage
+      takeName: Take 001
+      firstFrame: 340
+      lastFrame: 353
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Crouch_Die
+      takeName: Take 001
+      firstFrame: 360
+      lastFrame: 391
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Stand_Die
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 422
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Crouch_Damage
+      takeName: Take 001
+      firstFrame: 430
+      lastFrame: 445
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Jump
+      takeName: Take 001
+      firstFrame: 450
+      lastFrame: 466
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: M_Land
+      takeName: Take 001
+      firstFrame: 470
+      lastFrame: 485
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_UnfinishedSkinning
+        weight: 1
+      - path: Root_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL
+        weight: 1
+      - path: Root_CRTL/Hand_CRTL1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/Head/Head_End
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/transform12/UpperArm_R/Elbow_R/LowerArm_R/Hand_R/Hand_End_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/Spine_2/Spine_3/Neck/UpperArm_L/Elbow_L/LowerArm_L/Hand_L/Hand_End_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/transform13/UpperLeg_R/LowerLeg_R/Foot_R/Toe_R/Toe_R
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_1/UpperLeg_L/LowerLeg_L/Foot_L/Toe_L/Toe_L
+          1
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL
+        weight: 1
+      - path: Root_CRTL/Hips_CRTL/Spine_2_CRTL/Spine_3_CRTL/Neck_CRTL/Head_CRTL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 12
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
