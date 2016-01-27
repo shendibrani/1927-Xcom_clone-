@@ -34,7 +34,7 @@ public class NumberOfUnitsKilled : Trigger
 		}
 	}
 
-	void Reset(){
+	void Reset(Pawn p){
 		counter = 0;
 	}
 

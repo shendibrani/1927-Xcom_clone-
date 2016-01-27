@@ -26,10 +26,10 @@ public class DestroyableProp : MonoBehaviour
 //	}
     public void DamageProp()
     {
-        ShowDestroyed();
+        ShowDestroyed(null);
     }
 
-	void ShowDestroyed()
+	void ShowDestroyed(Pawn p)
 	{
 		intact.enabled = false;
 		//destroyed.enabled = true;
