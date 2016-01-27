@@ -133,11 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af42d66250804c45a9d8a9303031679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLine:
-    characterID: 0
-    line: 'I am Sterling Archer. I am a... secret agent... You''re reading this in
-      my voice. Possibly drunk. You, or me. Either really. '
-    portraitPosition: 0
   showCharacterByCharacter: 1
   letterDelayInSeconds: 0
   dialogueField: {fileID: 11434800}
@@ -189,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812e13d5743c6d646beda80c906d8e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visiblePosition: {x: 0, y: 0}
-  hiddenPosition: {x: 0, y: 0}
+  visiblePosition: {x: 0, y: 200}
+  hiddenPosition: {x: 0, y: -645}
   easing: .200000003
 --- !u!222 &22255356
 CanvasRenderer:
@@ -243,7 +238,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 190}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453756
