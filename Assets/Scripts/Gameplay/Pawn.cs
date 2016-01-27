@@ -272,7 +272,7 @@ public class Pawn : MonoBehaviour
         //skillList = new List<Skill>(pCharacter.skillList);
     }
 
-    public void Turn()
+    public virtual void Turn()
     {
         actionPointsSpent = 0;
 
@@ -303,22 +303,27 @@ public class Pawn : MonoBehaviour
 
     public CoverState GetCoverState(Pawn other)
     {
-        Vector3 direction = other.currentNode.position - currentNode.position;
-        direction.Normalize();
-
-		RaycastHit hit;
-
-        if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, out hit, 1f))
-        {
-			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
-        }
-        if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
-        {
-			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
-        }
-
-        return CoverState.None;
+		GetCoverAtNode(currentNode, other);
     }
+
+	public static CoverState GetCoverAtNode(NodeBehaviour node, Pawn other)
+	{
+		Vector3 direction = other.currentNode.position - node.position;
+		direction.Normalize();
+		
+		RaycastHit hit;
+		
+		if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, out hit, 1f))
+		{
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
+		}
+		if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
+		{
+			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
+		}
+		
+		return CoverState.None;
+	}
 
     #region Callbacks
 
@@ -327,7 +332,7 @@ public class Pawn : MonoBehaviour
 
 public enum CoverState
 {
-    None, Half, Full
+    None = 0, Half = 1, Full = 2
 }
 
 [System.Serializable]
