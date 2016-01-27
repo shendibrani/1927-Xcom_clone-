@@ -240,8 +240,6 @@ public class Pawn : MonoBehaviour
 
     [SerializeField]
     public List<Commands> tmpList;
-    [SerializeField]
-    public Weapons weap;
 
     void Start()
     {
@@ -261,12 +259,11 @@ public class Pawn : MonoBehaviour
     {
         //Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
-        Weapon = WeaponData.instance.universalWeaponList[weap];
+        Weapon = pCharacter.assignedWeapon;
         //Weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
-
         //skillList = new List<Skill>(pCharacter.skillList);
     }
 

@@ -111,12 +111,30 @@ public class Character
         //supportTree = SkillTree.CreateSupportTree();
     }
 
-    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon)
+    public Character(CharacterClass pClass, string pName, int pLevel = 1)
+    {
+        name = pName;
+        characterClass = pClass;
+        assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
+        level = pLevel;
+    }
+
+    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon, int pLevel)
     {
         ID = uID;
         name = pName;
         characterClass = pClass;
         assignedWeapon = pWeapon;
+        level = pLevel;
+    }
+
+    public Character(int uID, string pName, CharacterClass pClass, Weapons pWeapon, int pLevel)
+    {
+        ID = uID;
+        name = pName;
+        characterClass = pClass;
+        assignedWeapon = WeaponData.instance.universalWeaponList[pWeapon].Clone();
+        level = pLevel;
     }
 }
 

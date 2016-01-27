@@ -181,6 +181,20 @@ public static class Factory
         }
         return null;
     }
+
+    public static Character GetCharacter(CharacterClass cClass, int level = 1)
+    {
+        int nFirst = RNG.Next(0, Enum.GetNames(typeof(FirstName)).Length - 1);
+        int nLast = RNG.Next(0, Enum.GetNames(typeof(LastName)).Length - 1);
+        return new Character(cClass, ((FirstName) nFirst).ToString() + ((LastName) nLast).ToString(), level);
+    }
+
+    public static Character GetEnemy(int level = 1)
+    {
+        int nClass = RNG.Next(0, Enum.GetNames(typeof(CharacterClass)).Length - 1);
+        int nWeapon = RNG.Next(0, Enum.GetNames(typeof(Weapons)).Length -1);
+        return new Character(RNG.Next(), "Enemy", (CharacterClass)nClass, (Weapons) nWeapon, level);
+    }
 }
 
 public enum Commands 
@@ -242,4 +256,18 @@ public enum Effects
 	HalfAccuracyTemporary,
 	LifestealTemporary,
 	SureHitTemporary
+}
+
+public enum FirstName
+{
+    Name,
+    Name1,
+    Nane2
+}
+
+public enum LastName
+{
+    Name,
+    Name1,
+    Name2
 }

@@ -48,7 +48,7 @@ public class XMLWriter
         TextReader reader = new StreamReader(Application.dataPath + "weaponinfo.txt");
         object obj = deserializer.Deserialize(reader);
         List<Weapon> XmlData = (List<Weapon>)obj;
-        Debug.Log(XmlData.Count);
+        Debug.Log("Weapons: " + XmlData.Count);
         for (int i = 0; i < XmlData.Count; i++)
         {
             //Debug.Log("Weapon: " + XmlData[i].name);
