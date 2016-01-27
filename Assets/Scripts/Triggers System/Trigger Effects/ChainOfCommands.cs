@@ -10,12 +10,14 @@ public class ChainOfCommands : MonoBehaviour
 	[SerializeField] Targetable[] targets;
 
 	// Update is called once per frame
-	void Execute ()
+	void Execute (Pawn p)
 	{
 		int counter = 0; 
 		while (counter < commands.Length){
 			if(!TurnManager.instance.busy){
+				if(executors[counter] == null) {executors[counter] = p;}
 				Command command = Factory.GetCommand(commands[counter], executors[counter]);
+				command.freeExec = true;
 				command.target = targets[counter];
 				command.Execute();
 				counter++;

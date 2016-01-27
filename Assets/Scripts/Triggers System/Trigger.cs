@@ -5,15 +5,17 @@ using System.Collections;
 public abstract class Trigger : MonoBehaviour {
 
 
-	[SerializeField] protected UnityEvent fulfilled;
+	[SerializeField] protected PawnEvent fulfilled;
 
 	[SerializeField] [Tooltip("Tick this if this trigger needs to fire only once and deactivate")] protected bool oneOff;
+
+	protected Pawn triggerer;
 
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		if (Condition ()) {
-			fulfilled.Invoke();
+			fulfilled.Invoke(triggerer);
 			if(oneOff){
 				this.enabled = false;
 			}

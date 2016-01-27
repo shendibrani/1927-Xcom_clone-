@@ -15,6 +15,10 @@ public abstract class Command
 
 	public bool targetsAllValidTargets { get; protected set; }
 
+	public bool freeExec;
+
+	//TODO: move the cost to class level if applicable.
+
 	public Command(Pawn pOwner){
 		owner = pOwner;
 	}
@@ -39,6 +43,8 @@ public abstract class Command
 	//check against specific action point cost and apply charge
 	protected bool CheckCost(int cost)
 	{
+		if(freeExec){return true;}
+
 		if (owner.ActionPoints < cost)
 		{
 			Debug.Log("Not enough action points");
