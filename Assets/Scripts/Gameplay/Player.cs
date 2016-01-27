@@ -37,14 +37,15 @@ public class Player : MonoBehaviour
         for (int i = 0; i < pawns.Count; i++)
         {
             pawns[i].owner = this;
-            if (characterList != null)
+            if (characterList != null && characterList.Count > 0)
             {
-                if (i <= characterList.Count - 1 & characterList[i] != null)
-                { pawns[i].Initalise(characterList[i]); }
+                if (i < characterList.Count && characterList[i] != null)
+                { pawns[i].Initalise(characterList[i]);	}
             }
             else
             {
                 pawns[i].Initalise(new Character());
+
             }
         }
     }
