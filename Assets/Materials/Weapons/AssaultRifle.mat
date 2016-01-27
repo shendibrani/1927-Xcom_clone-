@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Machete
+  m_Name: AssaultRifle
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: e8bedb516e0d56548b1f87f83b416668, type: 3}
+          m_Texture: {fileID: 2800000, guid: 9b17e20e69308534387d27c423db0e72, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 5fad6bbc96d434d449aeefe8c18cbd86, type: 3}
+          m_Texture: {fileID: 2800000, guid: 22694d6245dec5b488d5103b0d843501, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,7 +75,7 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: f8dd22ccf43b83e44a6e1a811203d06b, type: 3}
+          m_Texture: {fileID: 2800000, guid: e3798115209da254294db43dc18c34e5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
