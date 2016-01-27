@@ -12,7 +12,7 @@ public class Pawn : MonoBehaviour
     //unique id for the pawn to determine who is doing what
     int pawnID;
 
-    Character character;
+    public Character character { get; private set; }
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
 
     public Weapon Weapon

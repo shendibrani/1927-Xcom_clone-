@@ -9,6 +9,9 @@ public class PawnAbilityUI : MenuCanvas {
     //message recieved populates this, calls the menumanager change
     CommandButton[] buttonList;
 
+    [SerializeField]
+    CharacterTabUI characterDisplay;
+
     void Start()
     {
         buttonList = GetComponentsInChildren<CommandButton>();
@@ -25,6 +28,7 @@ public class PawnAbilityUI : MenuCanvas {
         if (current != null && current.GetComponent<Pawn>() != null && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
             List<Skill> tmpList = current.GetComponent<Pawn>().skillList;
+            if (characterDisplay != null) characterDisplay.PopulateUI(current.GetComponent<Pawn>().character);
             foreach (CommandButton b in buttonList)
             {
                 b.Clear();

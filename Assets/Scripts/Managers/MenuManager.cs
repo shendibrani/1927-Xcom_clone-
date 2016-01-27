@@ -82,6 +82,24 @@ public class MenuManager : MonoBehaviour {
         activeMenu = previousMenu;
     }
 
+    public void CycleMenu(MenuCanvas menu)
+    {
+        if (!menu.isActive)
+        {
+            menu.setMenu();
+            previousMenu = activeMenu;
+            activeMenu = menu;
+        }
+        
+        else if (menu != null && menu.isActive)
+        {
+            menu.deselectMenu();
+            activeMenu = previousMenu;
+        }
+
+        
+    }
+
     public void CloseAllMenus()
     {
         foreach (MenuCanvas c in MenuCanvasList)

@@ -24,8 +24,11 @@ public class CharacterManager : MonoBehaviour {
         int i = 0;
         foreach (CharacterTabUI u in GetComponentsInChildren<CharacterTabUI>())
         {
-            u.PopulateUI(characterList[i]);
-            i++;
+            if (i < characterList.Count)
+            {
+                u.PopulateUI(characterList[i]);
+                i++;
+            }
         }
     }
 }
