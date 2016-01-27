@@ -13,7 +13,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 	public NodeBehaviour StartingNode;
 	
 	[SerializeField] Transform modelRoot;
-	
+
 	public Vector3 position 
 	{ 
 		get { return gameObject.transform.position; } 
@@ -87,5 +87,9 @@ public class GridNavMeshWrapper : MonoBehaviour
 		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
 	}
 
+	public void SetModelRoot(Transform _object)
+	{
+		modelRoot = _object;
+	}
 }
 
