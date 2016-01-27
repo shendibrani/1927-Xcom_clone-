@@ -328,4 +328,5 @@ public enum CoverState
     None, Half, Full
 }
 
+[System.Serializable]
 public class PawnEvent : UnityEvent<Pawn>{}
