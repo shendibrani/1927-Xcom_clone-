@@ -87,7 +87,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
 	}
 
-	public SetModelRoot(Transform _object)
+	public void SetModelRoot(Transform _object)
 	{
 		modelRoot = _object;
 	}
