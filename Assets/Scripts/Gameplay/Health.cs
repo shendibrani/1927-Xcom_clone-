@@ -6,7 +6,7 @@ public class Health : MonoBehaviour {
 
 	int _health;
 
-	public UnityEvent OnDeath;
+	public PawnEvent OnDeath;
 
 	public int health { 
 		get {
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour {
 	{
 		health -= damage;
 		if (health <= 0 && OnDeath != null) {
-			OnDeath.Invoke();
+			OnDeath.Invoke(GetComponent<Pawn>());
 		}
 	}
 

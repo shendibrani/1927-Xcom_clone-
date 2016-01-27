@@ -28,11 +28,13 @@ public class NumberOfUnitsKilled : Trigger
 		}
 	}
 
-	void AddDeath() {
-		counter++;
+	void AddDeath(Pawn p) {
+		if(p!= null){
+			counter++;
+		}
 	}
 
-	void Reset(){
+	void Reset(Pawn p){
 		counter = 0;
 	}
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -326,3 +327,6 @@ public enum CoverState
 {
     None, Half, Full
 }
+
+[System.Serializable]
+public class PawnEvent : UnityEvent<Pawn>{}
