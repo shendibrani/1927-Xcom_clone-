@@ -22,8 +22,8 @@ public class LoadingClassGUI : MonoBehaviour {
             //SkillData.instance.universalSkillList.Add(Commands.Defend, new Skill("Defend", "Generic Description", Commands.Defend));
             //SkillData.instance.universalSkillList.Add(Commands.FirstAid, new Skill("First Aid", "Generic Description", Commands.FirstAid));
             //XMLWriter.instance.SerializeSkills(SkillData.instance.universalSkillList);
-            CharacterStaticStorage.instance.fullCharacterList.Add(new Character(0,"Name", CharacterClass.ASSAULT, WeaponData.instance.universalWeaponList[Weapons.AssaultRifle]));
-            XMLWriter.instance.SerializeCharacter(CharacterStaticStorage.instance.fullCharacterList, "testCharacter");
+            //CharacterStaticStorage.instance.fullCharacterList.Add(new Character(0,"Name", CharacterClass.ASSAULT, WeaponData.instance.universalWeaponList[Weapons.AssaultRifle]));
+            //XMLWriter.instance.SerializeCharacter(CharacterStaticStorage.instance.fullCharacterList, "testCharacter");
             //Debug.Log("Saved at: " + Application.dataPath + "testCharacter.txt");
         }
 

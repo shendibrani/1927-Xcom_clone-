@@ -303,7 +303,7 @@ public class Pawn : MonoBehaviour
 
     public CoverState GetCoverState(Pawn other)
     {
-		GetCoverAtNode(currentNode, other);
+		return GetCoverAtNode(currentNode, other);
     }
 
 	public static CoverState GetCoverAtNode(NodeBehaviour node, Pawn other)
@@ -313,11 +313,11 @@ public class Pawn : MonoBehaviour
 		
 		RaycastHit hit;
 		
-		if (Physics.Raycast(transform.position + (Vector3.up * 1.5f), direction, out hit, 1f))
+		if (Physics.Raycast(node.offsetPosition + (Vector3.up * 1.5f), direction, out hit, 1f))
 		{
 			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
 		}
-		if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, 1f))
+        if (Physics.Raycast(node.offsetPosition + (Vector3.up * 0.5f), direction, 1f))
 		{
 			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
 		}

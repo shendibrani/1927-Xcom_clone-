@@ -18,7 +18,7 @@ public class AIPawn : Pawn
 
 		if(currentNode != bestCover){
 			Command move = Factory.GetCommand(Commands.Move, this);
-			move.target = bestCover;
+			move.target = bestCover.GetComponent<Targetable>();
 			move.Execute();
 		}
 	}
@@ -32,7 +32,7 @@ public class AIPawn : Pawn
 		int bestScore = 0;
 
 		foreach (Pawn enemy in enemies){
-			bestScore += Pawn.GetCoverAtNode(previousBest, enemy);
+			bestScore += (int)Pawn.GetCoverAtNode(previousBest, enemy);
 		}
 		bestScore /= enemies.Count;
 
@@ -44,14 +44,14 @@ public class AIPawn : Pawn
 				if(!scoringTables.ContainsKey(node)){
 					float coverScore = 0;
 					foreach (Pawn enemy in enemies){
-						coverScore += Pawn.GetCoverAtNode(node, enemy);
+						coverScore += (float)Pawn.GetCoverAtNode(node, enemy);
 					}
 					coverScore /= enemies.Count;
 					scoringTables.Add(node, coverScore);
 				}
 			}
 
-			NodeBehaviour currentBest;
+			NodeBehaviour currentBest = previousBest;
 
 			foreach (NodeBehaviour node in scoringTables.Keys){
 				if(scoringTables[currentBest] < scoringTables[node]){
@@ -63,6 +63,7 @@ public class AIPawn : Pawn
 				return currentBest;
 			}
 		}
+        return null;
 	}
 }
 
