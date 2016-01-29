@@ -11,14 +11,24 @@ public class GridNavMeshWrapperCustomEditor : Editor {
 	{
 		DrawDefaultInspector();
 		if(GUILayout.Button("Set Starting Node")){
-			RaycastHit hit;
-			if(Physics.Raycast((target as GridNavMeshWrapper).transform.position, Vector3.down, out hit)){
+            //RaycastHit[] hit = Physics.RaycastAll((target as GridNavMeshWrapper).transform.position, Vector3.down,3f);
+            RaycastHit[] hit = Physics.SphereCastAll((target as GridNavMeshWrapper).transform.position, 0.1f, Vector3.down,3f);
+            //Physics.RaycastAll();
+            foreach (RaycastHit r in hit){
+                if(r.transform.GetComponent<NodeBehaviour>() != null){
+					(target as GridNavMeshWrapper).StartingNode = r.collider.GetComponent<NodeBehaviour>();
+					(target as GridNavMeshWrapper).position = (target as GridNavMeshWrapper).StartingNode.offsetPosition;
+					EditorUtility.SetDirty(target);
+                    break;
+				}
+            }
+			/*if(Physics.RaycastAll((target as GridNavMeshWrapper).transform.position, Vector3.down, out hit)){
 				if(hit.collider.GetComponent<NodeBehaviour>() != null){
 					(target as GridNavMeshWrapper).StartingNode = hit.collider.GetComponent<NodeBehaviour>();
 					(target as GridNavMeshWrapper).position = (target as GridNavMeshWrapper).StartingNode.offsetPosition;
 					EditorUtility.SetDirty(target);
 				}
-			}
+			}*/
 		}
 	}
 }

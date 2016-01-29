@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class GridNavMeshWrapper : MonoBehaviour
 {
 	[SerializeField] bool debug;
+    [SerializeField] bool automaticFindNode = true;
 	
 	bool stopped = true;
 	
@@ -40,7 +41,10 @@ public class GridNavMeshWrapper : MonoBehaviour
 	
 	void Start () 
 	{
-        RaycastToStartingNode();
+        if (automaticFindNode)
+        {
+            RaycastToStartingNode();
+        }
 		position = StartingNode.offsetPosition;
 		currentNode = StartingNode;
 		currentDestination = StartingNode;
@@ -90,13 +94,15 @@ public class GridNavMeshWrapper : MonoBehaviour
 
     void RaycastToStartingNode()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        RaycastHit[] hit = Physics.SphereCastAll(transform.position, 0.1f, Vector3.down, 3f);
+
+        foreach (RaycastHit r in hit)
         {
-            if (hit.collider.GetComponent<NodeBehaviour>() != null)
+            if (r.transform.GetComponent<NodeBehaviour>() != null)
             {
-                StartingNode = hit.collider.GetComponent<NodeBehaviour>();
-                transform.position = StartingNode.offsetPosition;
+                StartingNode = r.collider.GetComponent<NodeBehaviour>();
+                position = StartingNode.offsetPosition;
+                break;
             }
         }
     }
