@@ -40,6 +40,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 	
 	void Start () 
 	{
+        RaycastToStartingNode();
 		position = StartingNode.offsetPosition;
 		currentNode = StartingNode;
 		currentDestination = StartingNode;
@@ -87,9 +88,24 @@ public class GridNavMeshWrapper : MonoBehaviour
 		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
 	}
 
+    void RaycastToStartingNode()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            if (hit.collider.GetComponent<NodeBehaviour>() != null)
+            {
+                StartingNode = hit.collider.GetComponent<NodeBehaviour>();
+                transform.position = StartingNode.offsetPosition;
+            }
+        }
+    }
+
 	public void SetModelRoot(Transform _object)
 	{
 		modelRoot = _object;
 	}
+
+    
 }
 
