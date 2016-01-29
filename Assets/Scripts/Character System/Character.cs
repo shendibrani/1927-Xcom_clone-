@@ -72,7 +72,32 @@ public class Character
     public int experiencePoints { get; private set; }
     public CharacterClass characterClass { get; private set; }
 
+    public Weapons weaponEnum;
+
     public Weapon assignedWeapon;
+
+    public List<Commands> skillEnumList
+    {
+        get
+        {
+            List<Commands> tmpList = new List<Commands>();
+            switch (characterClass)
+            {
+                case CharacterClass.ASSAULT:
+                    tmpList.Add(Commands.AimedAttack);
+                    break;
+                case CharacterClass.DEFENDER:
+                    tmpList.Add(Commands.Defend);
+                    break;
+                case CharacterClass.SUPPORT:
+                    tmpList.Add(Commands.FirstAid);
+                    break;
+                default:
+                    break;
+            }
+            return tmpList;
+        }
+    }
 
     public List<Skill> skillList
     {

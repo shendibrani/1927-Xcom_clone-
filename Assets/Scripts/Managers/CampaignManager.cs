@@ -23,6 +23,9 @@ public class CampaignManager {
 
     public void NewCampaign() {
         CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
+        CharacterStaticStorage.instance.fullCharacterList.Add(Factory.GetCharacter(CharacterClass.ASSAULT));
+        CharacterStaticStorage.instance.fullCharacterList.Add(Factory.GetCharacter(CharacterClass.DEFENDER));
+        CharacterStaticStorage.instance.fullCharacterList.Add(Factory.GetCharacter(CharacterClass.SUPPORT));
         CharacterStaticStorage.instance.SaveToFile();
         missionCount = 0;
     }
