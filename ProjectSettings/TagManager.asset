@@ -8,6 +8,9 @@ TagManager:
   - randomizer
   - withNode
   - EnemySpawnPoint
+  - CharacterMesh
+  - Enemy
+  - PlayerChar
   layers:
   - Default
   - TransparentFX

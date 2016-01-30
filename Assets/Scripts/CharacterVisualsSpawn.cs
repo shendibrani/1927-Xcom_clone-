@@ -10,37 +10,45 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 	public GameObject[] _Weapons =  new GameObject[0];
 
 	public int _Gender = 0;
-	public int _Color = 0;
 	int _Weapon;
+	int _AnimCode;
 
 	Pawn _pawn;
 
 	// Use this for initialization
 	public void Initialize (Weapons _wep)
 	{
+		_pawn = GetComponent<Pawn> ();
+
 		if (_wep ==  Weapons.AssaultRifle || _wep == Weapons.PrototypeAssaultRifle)
 		{
 			_Weapon = 0;
+			_AnimCode = 1;
 		}
 		else if(_wep == Weapons.SniperRifle || _wep == Weapons.PrototypeSniperRifle)
 		{
 			_Weapon = 1;
+			_AnimCode = 1;
 		}
 		else if(_wep == Weapons.Shotgun || _wep == Weapons.PrototypeShotgun)
 		{
 			_Weapon = 2;
+			_AnimCode = 1;
 		}
 		else if(_wep == Weapons.Machete || _wep == Weapons.ElectricMachete)
 		{
 			_Weapon = 3;
+			_AnimCode = 3;
 		}
 		else if(_wep == Weapons.Cryogun || _wep == Weapons.PrototypeShockGun)
 		{
 			_Weapon = 4;
+			_AnimCode = 2;
 		}
 		else if(_wep == Weapons.DefaultPistol)
 		{
 			_Weapon = 5;
+			_AnimCode = 0;
 		}
 
 		if (_Gender == 2)
@@ -52,6 +60,17 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_Hooman.transform.parent = this.transform;
 		_Hooman.transform.localPosition = new Vector3 (0, 0.013f, 0);
 		_Hooman.transform.localRotation = Quaternion.identity;
+
+		if (_pawn.owner.gameObject.tag == "PlayerChar")
+		{
+			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[0];
+		}
+		else
+		{
+			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[1];
+		}
+
+		_Hooman.GetComponent<Animator> ().SetInteger ("Weapon", _AnimCode);
 
 		this.GetComponent<GridNavMeshWrapper> ().SetModelRoot (_Hooman.transform);
 
