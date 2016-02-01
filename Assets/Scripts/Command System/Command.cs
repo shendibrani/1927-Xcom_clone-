@@ -28,6 +28,9 @@ public abstract class Command
 	//TODO: move the cost to class level if applicable.
 
 	public Command(Pawn pOwner){
+		if(pOwner == null){
+			Debug.LogError("Command is initialised with null owner. This hsould never happen. WTF is going on?");
+		}
 		owner = pOwner;
 	}
 
