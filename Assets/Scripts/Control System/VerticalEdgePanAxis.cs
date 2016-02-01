@@ -17,7 +17,8 @@ public class VerticalEdgePanAxis : Axis {
 	{
 		_axisValue = 0;
 		if(focus){
-			if(Input.mousePosition.y <= tolerance){
+			if(Input.mousePosition.y <= tolerance && CheckRay())
+            {
                 if (useBorder)
                 {
                     if (GetComponent<CameraViewController>().transform.position.z > boundsPosition.y)
@@ -27,7 +28,7 @@ public class VerticalEdgePanAxis : Axis {
                 {
                     _axisValue = -1;
                 }
-			} else if(Input.mousePosition.y >= Screen.height - tolerance){
+			} else if(Input.mousePosition.y >= Screen.height - tolerance && CheckRay()){
                 if (useBorder)
                 {
                     if (GetComponent<CameraViewController>().transform.position.z < boundsPosition.x)
@@ -51,7 +52,7 @@ public class VerticalEdgePanAxis : Axis {
         List<RaycastResult> hits = new List<RaycastResult>();
 
         // ray cast into UI and check for hits
-        //EventSystem.current.RaycastAll(ped, hits);
+        EventSystem.current.RaycastAll(ped, hits);
 
         // check any hits to see if any of them are blocking UI elements
         if (hits != null)
