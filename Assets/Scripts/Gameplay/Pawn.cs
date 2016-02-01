@@ -10,6 +10,8 @@ public class Pawn : MonoBehaviour
 {
     public Player owner;
 
+	[SerializeField] bool debug;
+
     //unique id for the pawn to determine who is doing what
     int pawnID;
 
@@ -303,6 +305,7 @@ public class Pawn : MonoBehaviour
 
     public CoverState GetCoverState(Pawn other)
     {
+		if (debug) Debug.Log ("Node: " + currentNode + " Pawn: " + other);
 		return GetCoverAtNode(currentNode, other);
     }
 
@@ -310,14 +313,14 @@ public class Pawn : MonoBehaviour
 	{
 		Vector3 direction = other.currentNode.position - node.position;
 		direction.Normalize();
-		
+
 		RaycastHit hit;
-		
+
 		if (Physics.Raycast(node.offsetPosition + (Vector3.up * 1.5f), direction, out hit, 1f))
 		{
 			if (hit.collider.gameObject != other.gameObject) return CoverState.Full;
 		}
-        if (Physics.Raycast(node.offsetPosition + (Vector3.up * 0.5f), direction, 1f))
+		if (Physics.Raycast(node.offsetPosition + (Vector3.up * 0.5f), direction, out hit, 1f))
 		{
 			if (hit.collider.gameObject != other.gameObject) return CoverState.Half;
 		}
