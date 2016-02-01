@@ -9,8 +9,16 @@ public abstract class Command
 
 	public Pawn owner {get; private set;}
 
-	public Targetable target;
-
+	private Targetable _target;
+	public Targetable target { 
+		get {return _target;}
+		set {if(IsValidTarget(value)){
+				_target = value;
+			} else {
+				_target = null;
+			}
+		}
+	}
 	public List<Targetable> validTargets { get {return owner.targetsList.FindAll(x => x != null && IsValidTarget(x)); } }
 
 	public bool targetsAllValidTargets { get; protected set; }

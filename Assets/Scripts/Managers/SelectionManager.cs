@@ -60,17 +60,10 @@ public class SelectionManager
 		}
 		set {
 			if(command != null){
-				if (target != null)
-				{
-					target.IsValidTarget(command.owner);
-				}
-				
+
 				command.target = value;
 				
-				if (target != null)
-				{
-					target.IsTargeted(command.owner);
-				}
+				HighlightingManager.instance.RefreshHighlighting();
 			}
 		}
 	}
