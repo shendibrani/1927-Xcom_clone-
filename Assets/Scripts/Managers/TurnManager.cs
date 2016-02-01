@@ -35,7 +35,7 @@ public class TurnManager
 	{
 		turnOrder = new List<Player> ();
 		turnOrder.AddRange (GameObject.FindObjectsOfType<Player> ());
-
+		TurnEnd += SelectionManager.Clear;
 	}
 
 	public void NextTurn(){

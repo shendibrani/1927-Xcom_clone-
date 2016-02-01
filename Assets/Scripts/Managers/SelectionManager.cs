@@ -92,6 +92,12 @@ public class SelectionManager
 		command = null;
 	}
 
+	public static void Clear()
+	{
+		command = null;
+		selected = null;
+	}
+
 	public static bool Execute()
 	{
 		if (command == null) return false;
