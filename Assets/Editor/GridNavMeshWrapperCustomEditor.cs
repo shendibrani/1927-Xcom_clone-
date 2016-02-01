@@ -30,5 +30,20 @@ public class GridNavMeshWrapperCustomEditor : Editor {
 				}
 			}*/
 		}
+
+		if(GUILayout.Button("Set All Starting Nodes"){
+			foreach(GridNavMeshWrapper gnmw in GameObject.FindObjectsOfType<GridNavMeshWrapper>()){
+				RaycastHit[] hit = Physics.SphereCastAll((gnmw).transform.position, 0.1f, Vector3.down,3f);
+				//Physics.RaycastAll();
+				foreach (RaycastHit r in hit){
+					if(r.transform.GetComponent<NodeBehaviour>() != null){
+						(gnmw).StartingNode = r.collider.GetComponent<NodeBehaviour>();
+						(gnmw).position = (gnmw).StartingNode.offsetPosition;
+						EditorUtility.SetDirty(target);
+						break;
+					}
+				}
+			}
+		}
 	}
 }
