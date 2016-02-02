@@ -17,7 +17,7 @@ public class HorizontalEdgePanAxis : Axis {
 	{
 		_axisValue = 0;
 		if(focus){
-			if(Input.mousePosition.x <= tolerance){
+			if(Input.mousePosition.x <= tolerance && CheckRay()){
                 if (useBorder)
                 {
                     if (GetComponent<CameraViewController>().transform.position.x > boundsPosition.y)
@@ -27,7 +27,7 @@ public class HorizontalEdgePanAxis : Axis {
                 {
                     _axisValue = -1;
                 }
-			} else if(Input.mousePosition.x >= Screen.width - tolerance){
+			} else if(Input.mousePosition.x >= Screen.width - tolerance && CheckRay()){
                 if (useBorder)
                 {
                     if (GetComponent<CameraViewController>().transform.position.x < boundsPosition.x)
@@ -51,7 +51,7 @@ public class HorizontalEdgePanAxis : Axis {
         List<RaycastResult> hits = new List<RaycastResult>();
 
         // ray cast into UI and check for hits
-        //EventSystem.current.RaycastAll(ped, hits);
+        EventSystem.current.RaycastAll(ped, hits);
 
         // check any hits to see if any of them are blocking UI elements
         if (hits != null)
