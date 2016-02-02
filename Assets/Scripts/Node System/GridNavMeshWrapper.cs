@@ -69,13 +69,12 @@ public class GridNavMeshWrapper : MonoBehaviour
 	
 	bool ReachedDestination()
 	{
-		if (debug) Debug.Log ("Reached Destination: " + (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent>().pathStatus == NavMeshPathStatus.PathComplete && GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude == 0));
+		if (debug) Debug.Log ("Reached Destination: " + (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent>().pathStatus == NavMeshPathStatus.PathComplete && GetComponent<NavMeshAgent> ().remainingDistance == 0));
 		if (debug) Debug.Log ("PathPending: " + (!GetComponent<NavMeshAgent> ().pathPending));
 		if (debug) Debug.Log ("PathStatus == complete: " + (GetComponent<NavMeshAgent> ().pathStatus == NavMeshPathStatus.PathComplete));
 		if (debug) Debug.Log ("Remainingistance == 0: " + (GetComponent<NavMeshAgent> ().remainingDistance == 0));
-		if (debug) Debug.Log ("Velocity == 0: " + (GetComponent<NavMeshAgent> ().velocity.sqrMagnitude <= float.Epsilon));
-		if (debug) Debug.Log ("Velocity Squared == " + GetComponent<NavMeshAgent> ().velocity.sqrMagnitude);
-		return (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent> ().remainingDistance == 0 && GetComponent<NavMeshAgent> ().velocity.sqrMagnitude <= float.Epsilon);
+
+		return (!GetComponent<NavMeshAgent> ().pathPending && GetComponent<NavMeshAgent> ().remainingDistance == 0);
 	}
 	
 	public void SetPath(List<NodeBehaviour> pPath){
