@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Pawn))]
 public class PawnAnimationManager : MonoBehaviour
 {
+	[SerializeField] bool debug;
+
 	bool skipFrame;
 	bool isAnimating;
 	Animator _animator;
@@ -16,12 +18,9 @@ public class PawnAnimationManager : MonoBehaviour
 		}
 	}
 
-	RuntimeAnimatorController animatorController;
-
 	// Use this for initialization
 	void Start ()
 	{
-		animatorController = GetComponentInChildren<RuntimeAnimatorController> ();
 		GetComponent<Health> ().OnDeath.AddListener (SetDead);
 		GetComponent<Health> ().OnDamage += SetDamaged;
 	}
@@ -34,10 +33,8 @@ public class PawnAnimationManager : MonoBehaviour
 			return;
 		}
 
-		if (isAnimating) {
-			animator.SetBool ("Shooting", false);
-			animator.SetBool ("Damaged", false);
-		}
+		animator.SetBool ("Shooting", false);
+		animator.SetBool ("Damaged", false);
 
 		if (isAnimating && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
 			TurnManager.instance.SetFree();
@@ -47,6 +44,7 @@ public class PawnAnimationManager : MonoBehaviour
 
 	public void SetShooting(Targetable p)
 	{
+		if (debug) Debug.Log ("Set Shooting Called");
 		animator.SetBool ("Shooting", true);
 		animator.gameObject.transform.LookAt (new Vector3(p.transform.position.x, animator.transform.position.y, p.transform.position.z));
 		if (p.GetComponent<Pawn> () != null) {
@@ -59,11 +57,13 @@ public class PawnAnimationManager : MonoBehaviour
 
 	public void SetDead(Pawn p)
 	{
+		if (debug) Debug.Log ("Set Dead Called");
 		animator.SetBool ("Dead", true);
 	}
 
 	public void SetDamaged(Pawn p, int Damage)
 	{
+		if (debug) Debug.Log ("Set Damaged Called");
 		animator.SetBool ("Damaged", true);
 		skipFrame = true;
 	}
