@@ -24,8 +24,8 @@ public class AIPawn : Pawn
 
 		if (Weapon.actionCost < ActionPoints) {
 			Command attack = Factory.GetCommand(Commands.Attack, this);
-			if(attack.validTargets > 0){
-				attack.target = GetBestTarget(attack.validTargets);
+			if(attack.validTargets.Count > 0){
+				attack.target = GetBestTarget(attack.validTargets).GetComponent<Targetable>();
 				attack.Execute();
 			}
 		}
@@ -74,24 +74,25 @@ public class AIPawn : Pawn
         return null;
 	}
 
-	Pawn GetBestTarget(List<Pawn> validTargets){
+	Pawn GetBestTarget(List<Targetable> validTargets){
 
-		Pawn bestTarget;
+		Pawn bestTarget = null;
 		double bestHitchance = 0;
+		int effectiveRange = Weapon.range;
 
-		foreach (Pawn target in validTargets) {
-			int effectiveRange = Weapon.range;
-			if (owner.transform.position.y - target.transform.position.y > 0) {
-				effectiveRange += (int)((owner.transform.position.y - target.transform.position.y) / 2f);
-			}
-			double hitChance = 1 - (1 - 0.5) * (Vector3.Distance (owner.transform.position, target.transform.position) - 1) / (effectiveRange - 1);
+		foreach (Targetable target in validTargets) {
+			if(target.GetComponent<Pawn>() != null){
+				if (owner.transform.position.y - target.transform.position.y > 0) {
+					effectiveRange += (int)((owner.transform.position.y - target.transform.position.y) / 2f);
+				}
+				double hitChance = 1 - (1 - 0.5) * (Vector3.Distance (owner.transform.position, target.transform.position) - 1) / (effectiveRange - 1);
 
-			if(bestHitchance < hitChance){
-				bestHitchance = hitChance;
-				bestTarget = target;
+				if(bestHitchance < hitChance){
+					bestHitchance = hitChance;
+					bestTarget = target.GetComponent<Pawn>();
+				}
 			}
 		}
-
 		return bestTarget;
 	}
 }
