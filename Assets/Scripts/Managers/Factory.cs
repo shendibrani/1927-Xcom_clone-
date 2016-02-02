@@ -160,6 +160,9 @@ public static class Factory
             case Effects.SureHitTemporary:
                 return new SureHitTemporaryEffect(owner);
                 break;
+			case Effects.Poison:
+			return new PoisonEffect(owner);
+				break;
         }
 
         return null;
@@ -255,7 +258,8 @@ public enum Effects
 	FinishingAttackTemporary,
 	HalfAccuracyTemporary,
 	LifestealTemporary,
-	SureHitTemporary
+	SureHitTemporary,
+	Poison
 }
 
 public enum FirstName
