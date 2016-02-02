@@ -51,12 +51,12 @@ public class PawnAnimationManager : MonoBehaviour
 		skipFrame = true;
 	}
 
-	public void SetDead()
+	public void SetDead(Pawn p)
 	{
 		GetComponentInChildren<Animator> ().SetBool ("Dead", true);
 	}
 
-	public void SetDamaged()
+	public void SetDamaged(Pawn p, int Damage)
 	{
 		GetComponentInChildren<Animator> ().SetBool ("Damaged", true);
 		skipFrame = true;
