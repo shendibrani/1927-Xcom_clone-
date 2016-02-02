@@ -21,6 +21,14 @@ public class AIPawn : Pawn
 			move.target = bestCover.GetComponent<Targetable>();
 			move.Execute();
 		}
+
+		if (Weapon.actionCost < ActionPoints) {
+			Command attack = Factory.GetCommand(Commands.Attack, this);
+			if(attack.validTargets > 0){
+				attack.target = GetBestTarget(attack.validTargets);
+				attack.Execute();
+			}
+		}
 	}
 
 	NodeBehaviour GetBestCoverWithinReach()
@@ -64,6 +72,27 @@ public class AIPawn : Pawn
 			}
 		}
         return null;
+	}
+
+	Pawn GetBestTarget(List<Pawn> validTargets){
+
+		Pawn bestTarget;
+		double bestHitchance = 0;
+
+		foreach (Pawn target in validTargets) {
+			int effectiveRange = Weapon.range;
+			if (owner.transform.position.y - target.transform.position.y > 0) {
+				effectiveRange += (int)((owner.transform.position.y - target.transform.position.y) / 2f);
+			}
+			double hitChance = 1 - (1 - 0.5) * (Vector3.Distance (owner.transform.position, target.transform.position) - 1) / (effectiveRange - 1);
+
+			if(bestHitchance < hitChance){
+				bestHitchance = hitChance;
+				bestTarget = target;
+			}
+		}
+
+		return bestTarget;
 	}
 }
 
