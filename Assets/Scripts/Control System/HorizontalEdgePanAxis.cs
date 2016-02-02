@@ -20,7 +20,7 @@ public class HorizontalEdgePanAxis : Axis {
 			if(Input.mousePosition.x <= tolerance && CheckRay()){
                 if (useBorder)
                 {
-                    if (GetComponent<CameraViewController>().transform.position.x > boundsPosition.y)
+                    if (transform.position.x > boundsPosition.y)
                         _axisValue = -1;
                 }
                 else
@@ -30,7 +30,7 @@ public class HorizontalEdgePanAxis : Axis {
 			} else if(Input.mousePosition.x >= Screen.width - tolerance && CheckRay()){
                 if (useBorder)
                 {
-                    if (GetComponent<CameraViewController>().transform.position.x < boundsPosition.x)
+                    if (transform.position.x < boundsPosition.x)
                         _axisValue = 1;
                 }
                 else

@@ -21,7 +21,7 @@ public class VerticalEdgePanAxis : Axis {
             {
                 if (useBorder)
                 {
-                    if (GetComponent<CameraViewController>().transform.position.z > boundsPosition.y)
+                    if (transform.position.z > boundsPosition.y)
                         _axisValue = -1;
                 }
                 else
@@ -31,7 +31,7 @@ public class VerticalEdgePanAxis : Axis {
 			} else if(Input.mousePosition.y >= Screen.height - tolerance && CheckRay()){
                 if (useBorder)
                 {
-                    if (GetComponent<CameraViewController>().transform.position.z < boundsPosition.x)
+                    if (transform.position.z < boundsPosition.x)
                         _axisValue = 1;
                 }
                 else
