@@ -7,28 +7,31 @@ using UnityEngine.EventSystems;
 public class MouseInputLayer : MonoBehaviour 
 {
     //checks if ray does not hit a UI Element (RectTransform), returns true when no UI;
-    bool CheckRay()
-    {
-        // get pointer event data, then set current mouse position
-        PointerEventData ped = new PointerEventData(EventSystem.current);
-        ped.position = Input.mousePosition;
-
-        // create an empty list of raycast results
-        List<RaycastResult> hits = new List<RaycastResult>();
-
-        // ray cast into UI and check for hits
-        EventSystem.current.RaycastAll(ped, hits);
-
-        // check any hits to see if any of them are blocking UI elements
-        if (hits != null)
-        {
-            foreach (RaycastResult r in hits)
-            {
-                if (r.gameObject != null && r.gameObject.GetComponent<RectTransform>()) return false;
-            }
-        }
-        return true;
-    }
+	bool CheckRay()
+	{
+		// get pointer event data, then set current mouse position
+		//PointerEventData ped = new PointerEventData(EventSystem.current);
+		//ped.position = Input.mousePosition;
+		
+		
+		// create an empty list of raycast results
+		//List<RaycastHit> hits = new List<RaycastHit>();
+		RaycastHit[] hits;
+		
+		// ray cast into UI and check for hits
+		//EventSystem.current.RaycastAll(ped, hits);
+		hits = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition), 100, Physics.IgnoreRaycastLayer);
+		
+		// check any hits to see if any of them are blocking UI elements
+		if (hits != null)
+		{
+			foreach (RaycastHit r in hits)
+			{
+				if (r.collider.gameObject != null && r.collider.gameObject.GetComponent<RectTransform>()) return false;
+			}
+		}
+		return true;
+	}
 
     // Update is called once per frame
     void Update()
