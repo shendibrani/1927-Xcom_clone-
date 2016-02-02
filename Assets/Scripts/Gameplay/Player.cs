@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public void OnLevelLoaded()
     {
         Initilisation();
+        TurnManager.instance.SetFree();
     }
 
     public void Start()
