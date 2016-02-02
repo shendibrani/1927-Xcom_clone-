@@ -55,13 +55,16 @@ public class GridNavMeshWrapper : MonoBehaviour
 	void Update () 
 	{
 		if (!stopped) {
+			GetComponentInChildren<Animator>().SetBool("Moving", GetComponent<NavMeshAgent>().isOnNavMesh);
+			GetComponentInChildren<Animator>().SetBool("Air", GetComponent<NavMeshAgent>().isOnOffMeshLink);
 			if (ReachedDestination ()) {
 				currentNode = currentDestination;
 				//position = currentNode.offsetPosition;
 				stopped = true;
-				GetComponentInChildren<Animator>().SetBool("Moving", false);
 				if (DestinationReached != null) {
 					DestinationReached ();
+					GetComponentInChildren<Animator>().SetBool("Moving",false);
+					GetComponentInChildren<Animator>().SetBool("Air", false);
 				}
 			}
 		}

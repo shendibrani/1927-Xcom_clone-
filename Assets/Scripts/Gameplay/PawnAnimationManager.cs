@@ -11,7 +11,6 @@ public class PawnAnimationManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		animator = GetComponentInChildren<Animator> ();
 		animatorController = GetComponentInChildren<RuntimeAnimatorController> ();
 	}
 	
@@ -24,10 +23,10 @@ public class PawnAnimationManager : MonoBehaviour
 		}
 
 		if (isAnimating) {
-			animator.SetBool ("Shooting", false);
+			GetComponentInChildren<Animator> ().SetBool ("Shooting", false);
 		}
 
-		if (isAnimating && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+		if (isAnimating && GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
 			TurnManager.instance.SetFree();
 			isAnimating = false;
 		}
@@ -35,7 +34,7 @@ public class PawnAnimationManager : MonoBehaviour
 
 	public void SetShooting()
 	{
-		animator.SetBool ("Shooting", true);
+		GetComponentInChildren<Animator> ().SetBool ("Shooting", true);
 		isAnimating = true;
 		dirty = true;
 	}
