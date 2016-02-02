@@ -18,7 +18,7 @@ public class AttackCommand : Command
         Debug.Log(owner + " Executes " + name);
 
         Pawn tPawn = target.GetComponent<Pawn>();
-		owner.GetComponent<PawnAnimationManager> ().SetShooting ();
+		owner.GetComponent<PawnAnimationManager> ().SetShooting (target);
         Attack(owner, target);
         return true;
     }

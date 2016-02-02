@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Pawn))]
 public class PawnAnimationManager : MonoBehaviour
 {
 	bool skipFrame;
@@ -34,31 +35,36 @@ public class PawnAnimationManager : MonoBehaviour
 		}
 
 		if (isAnimating) {
-			GetComponentInChildren<Animator> ().SetBool ("Shooting", false);
-			GetComponentInChildren<Animator> ().SetBool ("Damaged", false);
+			animator.SetBool ("Shooting", false);
+			animator.SetBool ("Damaged", false);
 		}
 
-		if (isAnimating && GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+		if (isAnimating && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
 			TurnManager.instance.SetFree();
 			isAnimating = false;
 		}
 	}
 
-	public void SetShooting()
+	public void SetShooting(Targetable p)
 	{
-		GetComponentInChildren<Animator> ().SetBool ("Shooting", true);
+		animator.SetBool ("Shooting", true);
+		animator.gameObject.transform.LookAt (new Vector3(p.transform.position.x, animator.transform.position.y, p.transform.position.z));
+		if (p.GetComponent<Pawn> () != null) {
+			animator.SetBool ("HighCoverInWay", GetComponent<Pawn> ().GetCoverState (p.GetComponent<Pawn>()) == CoverState.Full);
+		}
+
 		isAnimating = true;
 		skipFrame = true;
 	}
 
 	public void SetDead(Pawn p)
 	{
-		GetComponentInChildren<Animator> ().SetBool ("Dead", true);
+		animator.SetBool ("Dead", true);
 	}
 
 	public void SetDamaged(Pawn p, int Damage)
 	{
-		GetComponentInChildren<Animator> ().SetBool ("Damaged", true);
+		animator.SetBool ("Damaged", true);
 		skipFrame = true;
 	}
 }

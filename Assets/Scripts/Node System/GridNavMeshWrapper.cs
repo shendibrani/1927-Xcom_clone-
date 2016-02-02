@@ -65,6 +65,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 					DestinationReached ();
 					GetComponentInChildren<Animator>().SetBool("Moving",false);
 					GetComponentInChildren<Animator>().SetBool("Air", false);
+					UpdateCurrentCoverState();
 				}
 			}
 		}
@@ -121,6 +122,19 @@ public class GridNavMeshWrapper : MonoBehaviour
 		modelRoot = _object;
 	}
 
-    
+    void UpdateCurrentCoverState()
+	{
+		CoverState cs = CoverState.Full;
+
+		List<Pawn> enemies = GetComponent<Pawn>().sightList.FindAll(x => x.owner != GetComponent<Pawn>().owner);
+
+		GetComponentInChildren<Animator>().SetBool("Ducking",false);
+
+		foreach (Pawn e in enemies) {
+			if (Pawn.GetCoverAtNode(GetComponent<Pawn>().currentNode, e) == CoverState.Half){
+				GetComponentInChildren<Animator>().SetBool("Ducking",true);
+			}
+		}
+	}
 }
 
