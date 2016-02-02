@@ -3,31 +3,42 @@ using System.Collections;
 
 public class PawnAnimationManager : MonoBehaviour
 {
-	bool dirty;
+	bool skipFrame;
 	bool isAnimating;
-	Animator animator;
+	Animator _animator;
+	Animator animator {
+		get {
+			if (_animator == null) {
+				_animator = GetComponentInChildren<Animator> ();
+			}
+			return _animator;
+		}
+	}
+
 	RuntimeAnimatorController animatorController;
 
 	// Use this for initialization
 	void Start ()
 	{
-		animator = GetComponentInChildren<Animator> ();
 		animatorController = GetComponentInChildren<RuntimeAnimatorController> ();
+		GetComponent<Health> ().OnDeath.AddListener (SetDead);
+		GetComponent<Health> ().OnDamage += SetDamaged;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (dirty) {
-			dirty = false;
+		if (skipFrame) {
+			skipFrame = false;
 			return;
 		}
 
 		if (isAnimating) {
-			animator.SetBool ("Shooting", false);
+			GetComponentInChildren<Animator> ().SetBool ("Shooting", false);
+			GetComponentInChildren<Animator> ().SetBool ("Damaged", false);
 		}
 
-		if (isAnimating && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+		if (isAnimating && GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
 			TurnManager.instance.SetFree();
 			isAnimating = false;
 		}
@@ -35,9 +46,20 @@ public class PawnAnimationManager : MonoBehaviour
 
 	public void SetShooting()
 	{
-		animator.SetBool ("Shooting", true);
+		GetComponentInChildren<Animator> ().SetBool ("Shooting", true);
 		isAnimating = true;
-		dirty = true;
+		skipFrame = true;
+	}
+
+	public void SetDead(Pawn p)
+	{
+		GetComponentInChildren<Animator> ().SetBool ("Dead", true);
+	}
+
+	public void SetDamaged(Pawn p, int Damage)
+	{
+		GetComponentInChildren<Animator> ().SetBool ("Damaged", true);
+		skipFrame = true;
 	}
 }
 

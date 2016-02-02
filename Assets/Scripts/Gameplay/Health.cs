@@ -7,6 +7,8 @@ public class Health : MonoBehaviour {
 	int _health;
 
 	public PawnEvent OnDeath;
+	public delegate void DamageEvent ( Pawn p, int damage);
+	public DamageEvent OnDamage;
 
 	public int health { 
 		get {
@@ -32,6 +34,10 @@ public class Health : MonoBehaviour {
 	public void Damage (int damage)
 	{
 		health -= damage;
+		if (OnDamage != null) {
+			OnDamage(GetComponent<Pawn>(),damage);
+		}
+
 		if (health <= 0 && OnDeath != null) {
 			OnDeath.Invoke(GetComponent<Pawn>());
 		}
