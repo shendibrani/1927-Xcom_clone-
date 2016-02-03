@@ -34,11 +34,14 @@ public class Health : MonoBehaviour {
 	public void Damage (int damage)
 	{
 		health -= damage;
+		Debug.Log ("damage");
 		if (OnDamage != null) {
+			Debug.Log("on damage != null");
 			OnDamage(GetComponent<Pawn>(),damage);
 		}
 
-		if (health <= 0 && OnDeath != null) {
+		if (health <= 0){ //&& OnDeath != null) {
+			Debug.Log("health <= 0");
 			OnDeath.Invoke(GetComponent<Pawn>());
 		}
 	}

@@ -28,13 +28,13 @@ public class StormCommand : Command
             if (n.GetLinkInDirection(direction) != null)
             {
                 n = n.GetLinkInDirection(direction);
-                if (n.currentObject != null && n.currentObject.GetComponent<DestroyableProp>() != null) {n.currentObject.GetComponent<DestroyableProp>().DamageProp(); }
+				if (n.currentObject != null && n.currentObject.GetComponent<DestroyableProp>() != null) {n.currentObject.GetComponent<Health>().Damage(1); }
                 foreach (LinkPositions d in LinkPositions.GetValues(typeof(LinkPositions)))
                 {
                     if (n.GetLinkInDirection(d) != null)
                     {
                         Targetable c = n.GetLinkInDirection(d).currentObject;
-                        if (c != null && c.GetComponent<DestroyableProp>() != null) { c.GetComponent<DestroyableProp>().DamageProp(); }
+                        if (c != null && c.GetComponent<DestroyableProp>() != null) { c.GetComponent<Health>().Damage(1); }
                     }
                 }
             }
