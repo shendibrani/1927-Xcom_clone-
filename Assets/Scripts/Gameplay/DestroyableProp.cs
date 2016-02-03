@@ -12,7 +12,7 @@ public class DestroyableProp : MonoBehaviour
 	void Start ()
 	{
 		//destroyed.enabled = false;
-		intact = GetComponent<Renderer> ();
+		//intact = GetComponent<Renderer> ();
 		GetComponent<Health> ().OnDeath.AddListener(ShowDestroyed);
         if (currentNode != null)
             currentNode.currentObject = GetComponent<Targetable>();
@@ -27,7 +27,7 @@ public class DestroyableProp : MonoBehaviour
 
 	public void ShowDestroyed(Pawn p)
 	{
-		intact.enabled = false;
+		//intact.enabled = false;
 		//destroyed.enabled = true;
 		currentNode.currentObject = null;
 		GetComponent<NavMeshObstacle> ().enabled = false;

@@ -47,6 +47,8 @@ MonoBehaviour:
   _chance: 01000000010000000100000001000000
   _MaximumHeight: 0a0000000a0000000a0000000a000000
   _RandomRotation: 1
+  _FuncProp: 1
+  _FunctionalityObject: {fileID: 162660, guid: 5111f3402e7817d478812daa2ef324cd, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -122,6 +124,14 @@ Prefab:
       propertyPath: _MaximumHeight.Array.data[3]
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _FuncProp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _FunctionalityObject
+      value: 
+      objectReference: {fileID: 162660, guid: 5111f3402e7817d478812daa2ef324cd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151004}
