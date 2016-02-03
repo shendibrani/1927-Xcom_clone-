@@ -11,6 +11,8 @@ public class CameraViewController : MonoBehaviour {
 	MouseRotateAxis rotateAxis;
 	MouseWheelAxis scrollAxis;
 
+	[SerializeField] Transform topLeft,bottomRight;
+
 	[SerializeField] float panSpeed = 0.5f;
 	[SerializeField] float rotateSpeed = 36f;
 
@@ -50,6 +52,8 @@ public class CameraViewController : MonoBehaviour {
             SlideCamera();
         }
 		ZoomCamera ();
+
+		ComputeBorders();
 	}
 
     //move camera according to mouse offest in axis values according to dolly rotation
@@ -78,6 +82,14 @@ public class CameraViewController : MonoBehaviour {
     {
         transform.Rotate(pRotation);
     }
+
+	void ComputeBorders ()
+	{
+		transform.position = new Vector3 (Mathf.Clamp(transform.position.x, topLeft.position.x, bottomRight.position.x), 
+		                                  transform.position.y, 
+		                                  Mathf.Clamp(transform.position.z, topLeft.position.z, bottomRight.position.z)
+		                                  );
+	}
 
     public void SetPosition(Transform pPosition)
     {
