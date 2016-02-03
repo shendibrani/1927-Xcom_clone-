@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 public class Character
 {
@@ -74,8 +77,10 @@ public class Character
 
     public Weapons weaponEnum;
 
+    [XmlIgnore]
     public Weapon assignedWeapon;
 
+    [XmlIgnore]
     public List<Commands> skillEnumList
     {
         get
@@ -99,6 +104,7 @@ public class Character
         }
     }
 
+    [XmlIgnore]
     public List<Skill> skillList
     {
         get

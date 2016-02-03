@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCharacter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Character>
-    <assignedWeapon>
-      <weaponEffects />
-      <weaponEnum>AssaultRifle</weaponEnum>
-      <name>Assault Rifle</name>
-      <damage>3</damage>
-      <range>5</range>
-      <criticalChance>0.09</criticalChance>
-      <actionCost>2</actionCost>
-    </assignedWeapon>
+    <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
     <name>Name</name>
     <level>0</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>ASSAULT</characterClass>
-    <skillList>
-      <Skill>
-        <name>Aimed Attack</name>
-        <description>Generic Description</description>
-        <abilityCommand>AimedAttack</abilityCommand>
-      </Skill>
-    </skillList>
+  </Character>
+<Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Name</name>
+    <level>0</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>DEFENDER</characterClass>
+  </Character>
+<Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Name</name>
+    <level>0</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>SUPPORT</characterClass>
   </Character>
 </ArrayOfCharacter>

@@ -2,10 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CampaignManager {
+public class CampaignManager
+{
 
     //mission count first mission == 0;
-    public int missionCount { get; private set; }   
+    int missionCount;
+
+    public int MissionCount
+    {
+        get
+        {
+            return missionCount;
+        }
+        private set
+        {
+            PlayerPrefs.SetInt("MissionCount", value);
+            missionCount = value;
+        }
+    }
 
     public static CampaignManager instance
     {
@@ -21,7 +35,8 @@ public class CampaignManager {
 
     private static CampaignManager _instance;
 
-    public void NewCampaign() {
+    public void NewCampaign()
+    {
         CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
         CharacterStaticStorage.instance.fullCharacterList.Add(Factory.GetCharacter(CharacterClass.ASSAULT));
         CharacterStaticStorage.instance.fullCharacterList.Add(Factory.GetCharacter(CharacterClass.DEFENDER));
@@ -35,6 +50,10 @@ public class CampaignManager {
         missionCount++;
     }
 
-
+    public void LoadCampaign()
+    {
+        CharacterStaticStorage.instance.LoadFromSave();
+        missionCount = PlayerPrefs.GetInt("MissionCount");
+    }
 
 }

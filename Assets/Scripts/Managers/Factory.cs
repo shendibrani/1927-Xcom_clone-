@@ -187,15 +187,23 @@ public static class Factory
 
     public static Character GetCharacter(CharacterClass cClass, int level = 1)
     {
-        int nFirst = RNG.Next(0, Enum.GetNames(typeof(FirstName)).Length - 1);
-        int nLast = RNG.Next(0, Enum.GetNames(typeof(LastName)).Length - 1);
+        int nFirst = RNG.Next(0, Enum.GetNames(typeof(FirstName)).Length);
+        int nLast = RNG.Next(0, Enum.GetNames(typeof(LastName)).Length);
         return new Character(cClass, ((FirstName) nFirst).ToString() + ((LastName) nLast).ToString(), level);
+    }
+
+    public static Character GetCharacter(int level = 1)
+    {
+        int nFirst = RNG.Next(0, Enum.GetNames(typeof(FirstName)).Length);
+        int nLast = RNG.Next(0, Enum.GetNames(typeof(LastName)).Length);
+        int nClass = RNG.Next(0, Enum.GetNames(typeof(CharacterClass)).Length);
+        return new Character((CharacterClass)nClass, ((FirstName)nFirst).ToString() + ((LastName)nLast).ToString(), level);
     }
 
     public static Character GetEnemy(int level = 1)
     {
-        int nClass = RNG.Next(0, Enum.GetNames(typeof(CharacterClass)).Length - 1);
-        int nWeapon = RNG.Next(0, Enum.GetNames(typeof(Weapons)).Length -1);
+        int nClass = RNG.Next(0, Enum.GetNames(typeof(CharacterClass)).Length);
+        int nWeapon = RNG.Next(0, Enum.GetNames(typeof(Weapons)).Length);
         return new Character(RNG.Next(), "Enemy", (CharacterClass)nClass, (Weapons) nWeapon, level);
     }
 }

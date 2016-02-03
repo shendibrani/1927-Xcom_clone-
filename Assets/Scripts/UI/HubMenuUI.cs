@@ -25,7 +25,7 @@ public class HubMenuUI : MenuCanvas {
 
     public void StartMission()
     {
-        int mNum = CampaignManager.instance.missionCount + 2;
+        int mNum = CampaignManager.instance.MissionCount + 2;
         FindObjectOfType<LoadStuff>().OnUse(mNum);
     }
 

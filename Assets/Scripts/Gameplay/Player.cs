@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     List<Pawn> pawns;
 
+    [SerializeField]
+    bool isPlayer;
+
     List<Character> characterList { get { return CharacterStaticStorage.instance.fullCharacterList; } }
 
     public List<Pawn> Pawns
@@ -38,15 +41,17 @@ public class Player : MonoBehaviour
         for (int i = 0; i < pawns.Count; i++)
         {
             pawns[i].owner = this;
-            if (characterList != null && characterList.Count > 0)
+            if (characterList != null && characterList.Count > 0 && isPlayer)
             {
                 if (i < characterList.Count && characterList[i] != null)
                 { pawns[i].Initalise(characterList[i]);	}
             }
             else
             {
-                pawns[i].Initalise(new Character());
-
+                if (isPlayer)
+                    pawns[i].Initalise(Factory.GetCharacter());
+                else
+                    pawns[i].Initalise(Factory.GetEnemy());
             }
         }
     }

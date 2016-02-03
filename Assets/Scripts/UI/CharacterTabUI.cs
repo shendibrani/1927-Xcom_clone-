@@ -6,20 +6,21 @@ using UnityEngine.UI;
 public class CharacterTabUI : MenuCanvas {
 
     Character characterReference;
-    Skill SkillRef;
     Weapon WeaponRef;
 
     [System.Serializable]
     public class CharacterTabData
     {
         public Text CharacterNameText;
-        public Text CharacterClassText;
         public Text LevelValue;
         public Text HealthValue;
         public Text ActionPointsValue;
         public Text AccuracyValue;
-        public Text SkillValue;
+        public Text RangeValue;
         public Text WeaponValue;
+        public Text AttackValue;
+        public Text APCostValue;
+        public Text CritChanceValue;
     }
 
     [SerializeField]
@@ -44,19 +45,22 @@ public class CharacterTabUI : MenuCanvas {
     //character's assigned weapone can be changed through this
     public void PopulateUI(Character c)
     {
+        Debug.Log("Populate");
         characterReference = c;
 
         characterStruct.CharacterNameText.text = c.name;
-        characterStruct.CharacterClassText.text = c.characterClass.ToString();
         characterStruct.LevelValue.text = c.level.ToString();
         characterStruct.HealthValue.text = c.hitPoints.ToString();
         characterStruct.ActionPointsValue.text = c.actionPoints.ToString();
         characterStruct.AccuracyValue.text = c.accuracy.ToString();
 
-        SkillRef = c.skillList[0];
         WeaponRef = c.assignedWeapon;
-        characterStruct.SkillValue.text = c.skillList[0].name;
         characterStruct.WeaponValue.text = c.assignedWeapon.name;
+        characterStruct.RangeValue.text = c.assignedWeapon.range.ToString();
+        characterStruct.AttackValue.text = c.assignedWeapon.damage.ToString();
+        characterStruct.APCostValue.text = c.assignedWeapon.actionCost.ToString();
+        characterStruct.CritChanceValue.text = (int)(c.assignedWeapon.criticalChance * 100) + "%";
+
 
     }
 
