@@ -63,9 +63,10 @@ public class DialogueDisplay : MonoBehaviour
 	public void SetLine(DialogueLine line)
 	{
 		if (line == null) {
+			GetComponent<UIDrawerBehaviour>().Hide();
+			currentDialogue.DialogueEnd.Invoke();
 			currentDialogue = null;
 			currentLine = null;
-			GetComponent<UIDrawerBehaviour>().Hide();
 			return;
 		}
 
@@ -123,14 +124,13 @@ public class Dialogue
 {
 	[SerializeField] DialogueLine[] lines;
 
-	[SerializeField] UnityEvent DialogueEnd;
+	public UnityEvent DialogueEnd;
 
 	int currentLine = 0;
 
 	public DialogueLine GetNextLine()
 	{
 		if(currentLine >= lines.Length){
-			DialogueEnd.Invoke();
 			return null;
 		}
 
