@@ -13,6 +13,9 @@ public class RandomLoad : MonoBehaviour {
 	public int[] _MaximumHeight;
 	public bool _RandomRotation = false;
 
+	public bool _FuncProp = false;
+	public GameObject _FunctionalityObject;
+
 	List<GameObject> _items = new List<GameObject>();
 
 
@@ -31,7 +34,19 @@ public class RandomLoad : MonoBehaviour {
 
 		int _i = Random.Range (0, _items.Count);
 
-		GameObject _object = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
+		GameObject _object;
+
+		if (_FuncProp)
+		{
+			_object = (GameObject) Instantiate (_FunctionalityObject ,transform.position,transform.rotation);
+			GameObject _ModelObject = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
+			_ModelObject.transform.parent = _object.transform.GetChild(0).transform;
+		}
+		else
+		{
+			_object = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
+		}
+
 
 		return _object;
 	}
