@@ -9,8 +9,13 @@ public class CoupledSound
 }
 
 public enum SoundEffects {
-    HIT,
-    WALK
+    ASSAULT,
+	FLAMETHROWER,
+	FREEZE,
+	MACHETE,
+	SHOTGUN,
+	SNIPER
+    
 }
 
 public class SoundManager : MonoBehaviour
@@ -48,27 +53,28 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    public void PlaySound(SoundEffects se)
+    public void PlaySound(SoundEffects se, AudioSource _source)
     {
 
         AudioClip[] clipArray = coupledSoundList.Find(x => x.TheSoundEffect == se).PlayClips;
         
         int index = Random.Range(0, clipArray.Length);
-        source.clip = clipArray[index];
+        //source.clip = clipArray[index];
+		_source.clip = clipArray[index];
 
-        if (!source.isPlaying)
+        if (!_source.isPlaying)
         {
-            source.Play();
+            _source.Play();
         }
 
-        else
+     /*   else
         {
 
             AudioSource newSource = gameObject.AddComponent<AudioSource>();
             newSource.clip = clipArray[index];
             newSource.Play();
 
-        }
+        }*/
 
     }
 

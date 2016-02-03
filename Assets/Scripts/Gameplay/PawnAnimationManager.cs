@@ -48,6 +48,8 @@ public class PawnAnimationManager : MonoBehaviour
 	public void SetShooting(Targetable p)
 	{
 		animator.SetBool ("Shooting", true);
+		SoundManager.instance.PlaySound (SoundEffects.ASSAULT,GetComponent<AudioSource>());
+
 		animator.gameObject.transform.LookAt (new Vector3(p.transform.position.x, animator.transform.position.y, p.transform.position.z));
 		if (p.GetComponent<Pawn> () != null) {
 			animator.SetBool ("HighCoverInWay", GetComponent<Pawn> ().GetCoverState (p.GetComponent<Pawn>()) == CoverState.Full);
@@ -60,6 +62,7 @@ public class PawnAnimationManager : MonoBehaviour
 	public void SetDead(Pawn p)
 	{
 		animator.SetBool ("Dead", true);
+		
 	}
 
 	public void SetDamaged(Pawn p, int Damage)
