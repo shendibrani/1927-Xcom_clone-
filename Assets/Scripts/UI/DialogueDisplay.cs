@@ -66,6 +66,7 @@ public class DialogueDisplay : MonoBehaviour
 			currentDialogue = null;
 			currentLine = null;
 			GetComponent<UIDrawerBehaviour>().Hide();
+			return;
 		}
 
 		dialogueField.text = string.Empty;
