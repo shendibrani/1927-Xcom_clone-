@@ -25,7 +25,7 @@ public class CameraViewController : MonoBehaviour {
 		rotateAxis = GetComponent<MouseRotateAxis> ();
 		scrollAxis = GetComponent<MouseWheelAxis> ();
 
-		Camera.main.transform.localPosition = Camera.main.transform.forward * -1 * maxDistance/2;
+		Camera.main.transform.localPosition = Camera.main.transform.forward * -1 * minDistance;
 	}
 	
 	// Update is called once per frame
