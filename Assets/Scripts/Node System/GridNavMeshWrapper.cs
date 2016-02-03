@@ -88,16 +88,18 @@ public class GridNavMeshWrapper : MonoBehaviour
 			GetComponent<NavMeshAgent>().destination = (pPath[pPath.Count-1].offsetPosition);
 			currentDestination = pPath[pPath.Count-1];
 			if (debug) Debug.Log ("Remaining Distance at pathing start: " + GetComponent<NavMeshAgent> ().remainingDistance);
-			stopped = false;
 			GetComponentInChildren<Animator>().SetBool("Moving", true);
+			stopped = false;
 		}
 	}
 
 	void UpdateRotation ()
 	{
 		if (debug) Debug.Log (GetComponent<NavMeshAgent> ().velocity.normalized);
-		if(GetComponent<NavMeshAgent> ().velocity.normalized.magnitude !=0){
-			modelRoot.forward = Vector3.Lerp(modelRoot.forward, GetComponent<NavMeshAgent> ().velocity.normalized, 0.5f);
+		if (GetComponent<NavMeshAgent> ().velocity.magnitude != 0) {
+			modelRoot.forward = Vector3.Lerp (modelRoot.forward, GetComponent<NavMeshAgent> ().velocity.normalized, 0.5f);
+		} else {
+			modelRoot.forward = Vector3.Lerp (modelRoot.forward, GetComponent<NavMeshAgent> ().destination - transform.position, 0.5f);
 		}
 		modelRoot.forward = new Vector3(modelRoot.forward.x, 0, modelRoot.forward.z);
 	}

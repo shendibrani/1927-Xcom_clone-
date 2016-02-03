@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(NodeBehaviour))]
+[RequireComponent(typeof(Targetable))]
 public class NodeHighlightManager : MonoBehaviour
 {
 	[SerializeField] bool debug;

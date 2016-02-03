@@ -131,6 +131,7 @@ public class Dialogue
 	public DialogueLine GetNextLine()
 	{
 		if(currentLine >= lines.Length){
+			currentLine = 0;
 			return null;
 		}
 
