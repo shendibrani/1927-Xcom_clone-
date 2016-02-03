@@ -87,7 +87,7 @@ public class CameraViewController : MonoBehaviour {
 	{
 		transform.position = new Vector3 (Mathf.Clamp(transform.position.x, topLeft.position.x, bottomRight.position.x), 
 		                                  transform.position.y, 
-		                                  Mathf.Clamp(transform.position.z, topLeft.position.z, bottomRight.position.z)
+		                                  Mathf.Clamp(transform.position.z, bottomRight.position.z, topLeft.position.z)
 		                                  );
 	}
 
