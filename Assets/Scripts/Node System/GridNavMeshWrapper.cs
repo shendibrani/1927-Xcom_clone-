@@ -89,6 +89,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 			currentDestination = pPath[pPath.Count-1];
 			if (debug) Debug.Log ("Remaining Distance at pathing start: " + GetComponent<NavMeshAgent> ().remainingDistance);
 			GetComponentInChildren<Animator>().SetBool("Moving", true);
+			GetComponentInChildren<Animator>().SetBool("Ducking",false);
 			stopped = false;
 		}
 	}
