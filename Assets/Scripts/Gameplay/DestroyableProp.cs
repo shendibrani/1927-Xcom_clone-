@@ -35,6 +35,7 @@ public class DestroyableProp : MonoBehaviour
 		//destroyed.enabled = true;
 		currentNode.currentObject = null;
 		GetComponent<NavMeshObstacle> ().enabled = false;
+		Destroy (this.gameObject);
 	}
 }
 
