@@ -19,36 +19,43 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 	public void Initialize (Weapons _wep)
 	{
 		_pawn = GetComponent<Pawn> ();
+		PawnAnimationManager _anim = GetComponent<PawnAnimationManager> ();
 
 		if (_wep ==  Weapons.AssaultRifle || _wep == Weapons.PrototypeAssaultRifle)
 		{
 			_Weapon = 0;
 			_AnimCode = 1;
+			_anim._ShootSound = SoundEffects.ASSAULT;
 		}
 		else if(_wep == Weapons.SniperRifle || _wep == Weapons.PrototypeSniperRifle)
 		{
 			_Weapon = 1;
 			_AnimCode = 1;
+			_anim._ShootSound = SoundEffects.SNIPER;
 		}
 		else if(_wep == Weapons.Shotgun || _wep == Weapons.PrototypeShotgun)
 		{
 			_Weapon = 2;
 			_AnimCode = 1;
+			_anim._ShootSound = SoundEffects.SHOTGUN;
 		}
 		else if(_wep == Weapons.Machete || _wep == Weapons.ElectricMachete)
 		{
 			_Weapon = 3;
 			_AnimCode = 3;
+			_anim._ShootSound = SoundEffects.MACHETE;
 		}
 		else if(_wep == Weapons.Cryogun || _wep == Weapons.PrototypeShockGun)
 		{
 			_Weapon = 4;
 			_AnimCode = 2;
+			_anim._ShootSound = SoundEffects.SHOTGUN;
 		}
 		else if(_wep == Weapons.DefaultPistol)
 		{
 			_Weapon = 5;
 			_AnimCode = 0;
+			_anim._ShootSound = SoundEffects.SHOTGUN;
 		}
 
 		if (_Gender == 2)

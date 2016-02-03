@@ -18,11 +18,15 @@ public class PawnAnimationManager : MonoBehaviour
 		}
 	}
 
+	AudioSource _audioSource;
+	public SoundEffects _ShootSound;
+
 	// Use this for initialization
 	void Start ()
 	{
 		GetComponent<Health> ().OnDeath.AddListener (SetDead);
 		GetComponent<Health> ().OnDamage += SetDamaged;
+		_audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -46,7 +50,8 @@ public class PawnAnimationManager : MonoBehaviour
 	{
 		if (debug) Debug.Log ("Set Shooting Called");
 		animator.SetBool ("Shooting", true);
-		SoundManager.instance.PlaySound (SoundEffects.ASSAULT,GetComponent<AudioSource>());
+
+		SoundManager.instance.PlaySound (_ShootSound,_audioSource);
 
 		animator.gameObject.transform.LookAt (new Vector3(p.transform.position.x, animator.transform.position.y, p.transform.position.z));
 		if (p.GetComponent<Pawn> () != null) {

@@ -209,7 +209,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2.5, z: 7}
+  m_LocalPosition: {x: 30, y: .5, z: -36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22496098}
@@ -275,9 +275,10 @@ AudioSource:
   m_GameObject: {fileID: 110420}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24325092, guid: 7f93d9ea1cb5447488bd25bb8a941744,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -311,7 +312,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -492,6 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a4ee3ec7114fe43bf0d05751c9082e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
+  _ShootSound: 0
 --- !u!114 &11451088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,6 +1061,15 @@ Prefab:
       propertyPath: _Gender
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24325092, guid: 7f93d9ea1cb5447488bd25bb8a941744,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110420}

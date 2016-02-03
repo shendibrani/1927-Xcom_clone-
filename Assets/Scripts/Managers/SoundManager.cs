@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 [System.Serializable]
 public class CoupledSound
@@ -20,7 +21,7 @@ public enum SoundEffects {
 
 public class SoundManager : MonoBehaviour
 {
-
+	public AudioMixerGroup _output;
     private AudioSource source;
 
     private AudioSource musicPlayer;
@@ -46,6 +47,7 @@ public class SoundManager : MonoBehaviour
     {
     
         musicPlayer = gameObject.AddComponent<AudioSource>();
+		musicPlayer.outputAudioMixerGroup = _output;
         musicPlayer.clip = music;
         musicPlayer.loop = true;
         musicPlayer.playOnAwake = true;
@@ -53,18 +55,18 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    public void PlaySound(SoundEffects se, AudioSource _source)
+    public void PlaySound(SoundEffects se, AudioSource _3DSource)
     {
 
         AudioClip[] clipArray = coupledSoundList.Find(x => x.TheSoundEffect == se).PlayClips;
         
         int index = Random.Range(0, clipArray.Length);
         //source.clip = clipArray[index];
-		_source.clip = clipArray[index];
+		_3DSource.clip = clipArray[index];
 
-        if (!_source.isPlaying)
+		if (!_3DSource.isPlaying)
         {
-            _source.Play();
+			_3DSource.Play();
         }
 
      /*   else
