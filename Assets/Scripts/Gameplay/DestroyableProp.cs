@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Targetable))]
-public class DestroyableProp : Targetable
+public class DestroyableProp : MonoBehaviour
 {
 	Renderer intact; //destroyed;
 	[SerializeField] NodeBehaviour currentNode;

@@ -13,7 +13,8 @@ public class UISelectionListener : MonoBehaviour {
     }
 
     public void OnSelectionChange(Selectable previous, Selectable current)
-    {
+	{
+		Debug.Log("Selection Change");
         if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
         {
             Debug.Log("Ability Menu Selected");
