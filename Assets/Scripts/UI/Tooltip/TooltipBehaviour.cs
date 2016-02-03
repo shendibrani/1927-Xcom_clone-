@@ -25,6 +25,10 @@ public class TooltipBehaviour : MonoBehaviour
 		{
 			r.color += new Color (0,0,0,(targetAlpha-r.color.a)*easing);
 		}
+		foreach(Outline o in tooltip.GetComponentsInChildren<Outline>())
+		{
+			o.effectColor += new Color (0,0,0,(targetAlpha-o.effectColor.a)*easing);
+		}
 	}
 
 	void OnMouseEnter()
