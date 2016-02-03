@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LifestealCommand : Command {
@@ -31,6 +31,6 @@ public class LifestealCommand : Command {
 	public override bool IsValidTarget(Targetable t)
 	{
 		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
 	}
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ public class AllAroundAttackCommand : Command
         : base(pOwner)
     {
         name = "All Around Attack Command";
-        weapon = owner.Weapon;
+        weapon = owner.weapon;
         targetsAllValidTargets = true;
     }
 	

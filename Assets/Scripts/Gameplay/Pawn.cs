@@ -18,7 +18,7 @@ public class Pawn : MonoBehaviour
     public Character character { get; private set; }
     //public Character character; //a reference to character, only used to initilise the pawn/update the character after level (could be stored in player for mission.) maybe use a passer
 
-    public Weapon Weapon
+    public Weapon weapon
     {
         get;
         private set;
@@ -263,13 +263,13 @@ public class Pawn : MonoBehaviour
     {
        // Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
-        Weapon = WeaponData.instance.universalWeaponList[weap];
+        weapon = WeaponData.instance.universalWeaponList[weap];
         //Weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
 
-		GetComponent<CharacterVisualsSpawn> ().Initialize (Weapon.weaponEnum);
+		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
         //skillList = new List<Skill>(pCharacter.skillList);
     }
@@ -331,6 +331,12 @@ public class Pawn : MonoBehaviour
     #region Callbacks
 
     #endregion
+
+	void OnDrawGizmos()
+	{
+		UnityEditor.Handles.color = Color.green;
+		UnityEditor.Handles.DrawWireDisc(transform.position , transform.up, weapon.range);
+	}
 }
 
 public enum CoverState

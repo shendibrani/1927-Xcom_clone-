@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -29,6 +29,6 @@ public class TextDisplay : MonoBehaviour {
         nameText.text = pawn.character.name;
         levelText.text = pawn.character.level.ToString();
         healthText.text = pawn.GetComponent<Health>().health.ToString();
-        weaponText.text = pawn.Weapon.name;
+        weaponText.text = pawn.weapon.name;
 	}
 }

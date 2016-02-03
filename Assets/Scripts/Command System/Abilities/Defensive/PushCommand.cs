@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,7 +20,7 @@ public class PushCommand : Command
 
 		Pawn tPawn = target.GetComponent<Pawn>();
 
-        if (owner.Weapon.range == 1)
+        if (owner.weapon.range == 1)
         {
 			AttackCommand.Attack(owner, target);
         }

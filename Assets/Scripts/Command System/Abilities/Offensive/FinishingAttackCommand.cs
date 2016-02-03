@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,6 +33,6 @@ public class FinishingAttackCommand : Command
 	public override bool IsValidTarget(Targetable t)
 	{
 		Pawn p = t.GetComponent<Pawn>();
-		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range) && (p.GetComponent<Health>().health < p.GetComponent<Health>().maxHealth / 3);
+		return (p!= null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range) && (p.GetComponent<Health>().health < p.GetComponent<Health>().maxHealth / 3);
 	}
 }

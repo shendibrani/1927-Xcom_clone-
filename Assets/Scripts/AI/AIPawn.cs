@@ -22,7 +22,7 @@ public class AIPawn : Pawn
 			move.Execute();
 		}
 
-		if (Weapon.actionCost < ActionPoints) {
+		if (weapon.actionCost < ActionPoints) {
 			Command attack = Factory.GetCommand(Commands.Attack, this);
 			if(attack.validTargets.Count > 0){
 				attack.target = GetBestTarget(attack.validTargets).GetComponent<Targetable>();
@@ -78,7 +78,7 @@ public class AIPawn : Pawn
 
 		Pawn bestTarget = null;
 		double bestHitchance = 0;
-		int effectiveRange = Weapon.range;
+		int effectiveRange = weapon.range;
 
 		foreach (Targetable target in validTargets) {
 			if(target.GetComponent<Pawn>() != null){

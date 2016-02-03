@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ public class AttackCommand : Command
 
     public override bool Execute()
     {
-        if (!CheckTarget() || !CheckCost(owner.Weapon.actionCost))
+        if (!CheckTarget() || !CheckCost(owner.weapon.actionCost))
             return false;
 
         Debug.Log(owner + " Executes " + name);
@@ -28,9 +28,9 @@ public class AttackCommand : Command
         Pawn p = t.GetComponent<Pawn>();
         DestroyableProp d = t.GetComponent<DestroyableProp>();
         if (p != null)
-            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
         else if (d != null)
-            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.Weapon.range);
+            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
         else
             return false;
     }
@@ -40,9 +40,9 @@ public class AttackCommand : Command
         Pawn p = t.GetComponent<Pawn>();
         DestroyableProp d = t.GetComponent<DestroyableProp>();
         if (p != null)
-            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.Weapon.range);
+            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
         else if (d != null)
-            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.Weapon.range);
+            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
         else
             return false;
     }
@@ -51,7 +51,7 @@ public class AttackCommand : Command
     {
         if (target.GetComponent<DestroyableProp>() != null)
         {
-            Weapon weapon = owner.Weapon;
+            Weapon weapon = owner.weapon;
 
             int effectiveRange = weapon.range;
             if (owner.transform.position.y - target.transform.position.y > 0)
@@ -77,7 +77,7 @@ public class AttackCommand : Command
         }
         else if (target.GetComponent<Pawn>() != null)
         {
-            Weapon weapon = owner.Weapon;
+            Weapon weapon = owner.weapon;
 
             int effectiveRange = weapon.range;
             if (owner.transform.position.y - target.transform.position.y > 0)

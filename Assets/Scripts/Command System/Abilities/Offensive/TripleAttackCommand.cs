@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TripleAttackCommand : Command
@@ -9,7 +9,7 @@ public class TripleAttackCommand : Command
         : base(pOwner)
     {
         name = "Rage Attack Command";
-        actionCost = owner.Weapon.actionCost * 2;
+        actionCost = owner.weapon.actionCost * 2;
     }
 
     public override bool Execute()
