@@ -129,8 +129,8 @@ public class Dialogue
 	public DialogueLine GetNextLine()
 	{
 		if(currentLine >= lines.Length){
-			return null;
 			DialogueEnd.Invoke();
+			return null;
 		}
 
 		DialogueLine line = lines[currentLine];
