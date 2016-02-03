@@ -64,9 +64,8 @@ public class DialogueDisplay : MonoBehaviour
 	{
 		if (line == null) {
 			GetComponent<UIDrawerBehaviour>().Hide();
+			enabled=false;
 			currentDialogue.DialogueEnd.Invoke();
-			currentDialogue = null;
-			currentLine = null;
 			return;
 		}
 
@@ -100,6 +99,7 @@ public class DialogueDisplay : MonoBehaviour
 
 	public void StartDialogue(Dialogue d)
 	{
+		enabled = true;
 		currentDialogue = d;
 		SetLine( currentDialogue.GetNextLine());
 		GetComponent<UIDrawerBehaviour>().Show();
