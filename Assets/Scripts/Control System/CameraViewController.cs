@@ -17,6 +17,8 @@ public class CameraViewController : MonoBehaviour {
 	[SerializeField] float minDistance = 5f;
 	[SerializeField] float maxDistance = 30f;
 
+	public bool hasMoved { get; private set; }
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,6 +33,14 @@ public class CameraViewController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		hasMoved = false;
+		if (verticalAxis.axisValue != 0f || 
+		    horizontalAxis.axisValue != 0f || 
+		    rotateAxis.axisValue != 0f || 
+		    scrollAxis.axisValue != 0f) {
+			hasMoved = true;
+		}
+
         if (Input.GetMouseButton(2))
         {
             RotateCamera();
