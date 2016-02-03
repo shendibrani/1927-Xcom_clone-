@@ -64,7 +64,7 @@ public class AttackCommand : Command
             if (RNG.NextDouble() < hitChance)
             {
                 Debug.Log(owner + " hit " + target);
-                target.GetComponent<DestroyableProp>().DamageProp();
+                target.GetComponent<Health>().Damage(1);
             }
             else
             {

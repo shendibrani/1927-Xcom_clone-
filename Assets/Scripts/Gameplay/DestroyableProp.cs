@@ -24,12 +24,8 @@ public class DestroyableProp : MonoBehaviour
 //			ShowDestroyed();
 //		}
 //	}
-    public void DamageProp()
-    {
-        ShowDestroyed(null);
-    }
 
-	void ShowDestroyed(Pawn p)
+	public void ShowDestroyed(Pawn p)
 	{
 		intact.enabled = false;
 		//destroyed.enabled = true;
