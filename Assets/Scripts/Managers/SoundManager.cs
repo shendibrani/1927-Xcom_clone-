@@ -71,15 +71,14 @@ public class SoundManager : MonoBehaviour
         {
 			_3DSource.Play();
         }
-
-     /*   else
+        else
         {
 
             AudioSource newSource = gameObject.AddComponent<AudioSource>();
             newSource.clip = clipArray[index];
             newSource.Play();
 
-        }*/
+        }
 
     }
 

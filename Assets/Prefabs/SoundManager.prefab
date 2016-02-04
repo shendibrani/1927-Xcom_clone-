@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcde423a8bf94748a5d212bda09685d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _output: {fileID: 24351714, guid: 7f93d9ea1cb5447488bd25bb8a941744, type: 2}
   music: {fileID: 8300000, guid: c61dda8dd6658a74ab3253d2eb7f0ed7, type: 3}
   menuMusic: {fileID: 0}
   coupledSoundList:
@@ -60,6 +61,18 @@ MonoBehaviour:
   - TheSoundEffect: 5
     PlayClips:
     - {fileID: 8300000, guid: e7c4b5f555123de498908527c5feba84, type: 3}
+  - TheSoundEffect: 5
+    PlayClips:
+    - {fileID: 8300000, guid: e7c4b5f555123de498908527c5feba84, type: 3}
+  - TheSoundEffect: 6
+    PlayClips:
+    - {fileID: 8300000, guid: 703ca1b3283c4e444a66f11097c00de0, type: 3}
+  - TheSoundEffect: 7
+    PlayClips:
+    - {fileID: 8300000, guid: 827d4c4e4c02d824384127845a0663cb, type: 3}
+  - TheSoundEffect: 8
+    PlayClips:
+    - {fileID: 8300000, guid: d6ddb83d09f7fd442a1887db9990eadc, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

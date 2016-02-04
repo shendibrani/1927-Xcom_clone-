@@ -73,13 +73,13 @@ public class PawnAnimationManager : MonoBehaviour
 	{
 		if (debug) Debug.Log ("Set Damaged Called");
 		animator.SetBool ("Damaged", true);
+        
         if (gameObject.GetComponent<CharacterVisualsSpawn>()._Gender == 0)
-        { 
             SoundManager.instance.PlaySound(SoundEffects.HITMALE, _audioSource);
-        }
-        if (gameObject.GetComponent<CharacterVisualsSpawn>()._Gender == 1) {
+        
+        if (gameObject.GetComponent<CharacterVisualsSpawn>()._Gender == 1) 
             SoundManager.instance.PlaySound(SoundEffects.HITFEMALE, _audioSource);
-        }
+        
         skipFrame = true;
 	}
 }

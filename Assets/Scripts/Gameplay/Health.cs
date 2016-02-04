@@ -38,6 +38,7 @@ public class Health : MonoBehaviour {
 		if (OnDamage != null) {
 			Debug.Log("on damage != null");
 			OnDamage(p,damage);
+            GetComponent<PawnAnimationManager>().SetDamaged(p, damage);
 		}
 
 		if (health <= 0){ //&& OnDeath != null) {
