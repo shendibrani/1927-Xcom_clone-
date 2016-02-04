@@ -20,7 +20,7 @@ public class PickupCollectable : MonoBehaviour {
         {
             attachedNode.currentObject.GetComponent<Pawn>().LevelUp();
             attachedNode = null;
-            DestroyObject(this);
+            Destroy(this.gameObject);
         }
 	}
 

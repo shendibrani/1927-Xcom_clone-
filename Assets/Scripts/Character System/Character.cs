@@ -14,6 +14,8 @@ public class Character
     int baseAP = 3;
     int baseHP = 10;
 
+    public Gender characterGender { get; private set; }
+
     public int accuracy
     {
         get
@@ -136,7 +138,7 @@ public class Character
         assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
         characterClass = CharacterClass.ASSAULT;
         level = 1;
-
+        characterGender = Gender.RANDOM;
         //offenseTree = SkillTree.CreateOffenseTree();
         //defenseTree = SkillTree.CreateDefenseTree();
         //supportTree = SkillTree.CreateSupportTree();
@@ -148,24 +150,27 @@ public class Character
         characterClass = pClass;
         assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
         level = pLevel;
+        characterGender = Gender.RANDOM;
     }
 
-    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon, int pLevel)
+    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon, int pLevel, Gender pGender = Gender.RANDOM)
     {
         ID = uID;
         name = pName;
         characterClass = pClass;
         assignedWeapon = pWeapon;
         level = pLevel;
+        characterGender = pGender;
     }
 
-    public Character(int uID, string pName, CharacterClass pClass, Weapons pWeapon, int pLevel)
+    public Character(int uID, string pName, CharacterClass pClass, Weapons pWeapon, int pLevel, Gender pGender = Gender.RANDOM)
     {
         ID = uID;
         name = pName;
         characterClass = pClass;
         assignedWeapon = WeaponData.instance.universalWeaponList[pWeapon].Clone();
         level = pLevel;
+        characterGender = pGender;
     }
 
     public void LevelUp()
@@ -179,6 +184,13 @@ public enum CharacterClass
     ASSAULT,
     DEFENDER,
     SUPPORT
+}
+
+public enum Gender
+{
+    MALE,
+    FEMALE,
+    RANDOM
 }
 /*
 public static class CharacterStats{

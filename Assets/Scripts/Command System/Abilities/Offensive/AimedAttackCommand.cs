@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AimedAttackCommand : Command {
 
-	int actionCost = 4;
+    int actionCost = 3;
 
     public AimedAttackCommand(Pawn pOwner)
         : base(pOwner)
