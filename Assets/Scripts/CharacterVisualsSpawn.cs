@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterVisualsSpawn : MonoBehaviour {
+public class CharacterVisualsSpawn : MonoBehaviour 
+{
+	[SerializeField] bool debug;
 
 	public GameObject[] _Model = new GameObject[0];
 
@@ -18,7 +20,7 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 	// Use this for initialization
 	public void Initialize (Weapons _wep)
 	{
-		Debug.Log (_wep);
+		//Debug.Log (_wep);
 
 		_pawn = GetComponent<Pawn> ();
 		PawnAnimationManager _anim = GetComponent<PawnAnimationManager> ();
@@ -65,7 +67,10 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 			_Gender = Random.Range(0,2);
 		}
 
+		//Debug.Log ("Gender: " + _Gender);
+
 		GameObject _Hooman = (GameObject) Instantiate(_Model[_Gender]);
+		if(debug) Debug.Log("Hooman is null: " + (_Hooman == null));
 		_Hooman.transform.parent = this.transform;
 		_Hooman.transform.localPosition = new Vector3 (0, 0.013f, 0);
 		_Hooman.transform.localRotation = Quaternion.identity;
@@ -85,6 +90,8 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		this.GetComponent<GridNavMeshWrapper> ().SetModelRoot (_Hooman.transform);
 
 		GameObject _WeaponModel = (GameObject)Instantiate (_Weapons [_Weapon]);
+		if(debug) Debug.Log("WeaponModel is null: " + (_WeaponModel == null));
+
 		Transform _Hand = _Hooman.GetComponent<HumanSaveHand> ()._HoomanHand.transform;
 
 		_WeaponModel.transform.parent = _Hand;
@@ -92,7 +99,7 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
 
-		Debug.Log (_WeaponModel.GetComponentsInChildren<Renderer> ().Length);
+		//Debug.Log (_WeaponModel.GetComponentsInChildren<Renderer> ().Length);
 
 		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<SkinnedMeshRenderer> ());
 		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_WeaponModel.GetComponentsInChildren<Renderer> ());

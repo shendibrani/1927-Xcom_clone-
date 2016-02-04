@@ -75,8 +75,6 @@ public enum Weapons
     ElectricMachete,
     Cryogun,
     PrototypeShockGun,
-    DoublePistol,
-    DoublePrototypePistol,
     DefaultPistol
 }
 

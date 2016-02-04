@@ -100,24 +100,6 @@
 	</Weapon>
 	<Weapon>
 		<weaponEffects />
-		<weaponEnum>DoublePistol</weaponEnum>
-		<name>Duel Wielded Pistols</name>
-		<damage>4</damage>
-		<range>6</range>
-		<criticalChance>0.08</criticalChance>
-		<actionCost>2</actionCost>
-	</Weapon>
-	<Weapon>
-		<weaponEffects />
-		<weaponEnum>DoublePrototypePistol</weaponEnum>
-		<name>Duel Wielded Prototype Pistols</name>
-		<damage>6</damage>
-		<range>6</range>
-		<criticalChance>0.08</criticalChance>
-		<actionCost>2</actionCost>
-	</Weapon>
-	<Weapon>
-		<weaponEffects />
 		<weaponEnum>DefaultPistol</weaponEnum>
 		<name>Pistol</name>
 		<damage>2</damage>

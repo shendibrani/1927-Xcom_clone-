@@ -259,19 +259,31 @@ public class Pawn : MonoBehaviour
 
     public void Initalise(Character pCharacter)
     {
-       // Debug.Log("Pawn " + gameObject + "initalised");
-        character = pCharacter;
+    	// Debug.Log("Pawn " + gameObject + "initalised");
+    	character = pCharacter;
+		if(debug) Debug.Log("Character: " + character.name);
         //weapon = WeaponData.instance.universalWeaponList[weap];
 
         weapon = pCharacter.assignedWeapon;
+		if(debug) Debug.Log("Weapon: " + weapon.name);
+
         accuracy = pCharacter.accuracy;
+		if(debug) Debug.Log("Accuracy: " + accuracy);
+
         actionPoints = pCharacter.actionPoints;
+		if(debug) Debug.Log("Action Points: " + actionPoints);
+
         actionPointsPerTurn = pCharacter.actionPoints;
+		if(debug) Debug.Log("Weapon: " + weapon);
+
         GetComponent<Health>().maxHealth = character.hitPoints;
+		if(debug) Debug.Log("Max Health: " + GetComponent<Health>().maxHealth);
+
         GetComponent<Health>().health = character.hitPoints;
+		if(debug) Debug.Log("Health: " + GetComponent<Health>().health);
 
 		//Debug.Log("Pawn " + gameObject + " name:" + character.name);
-
+		if(debug) Debug.Log("Calling visuals Init");
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
         //skillList = new List<Skill>(pCharacter.skillList);
