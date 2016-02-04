@@ -90,7 +90,7 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
 
-		GetComponent<VisibleBasedOnLoS> ().models.Add (_Hooman.GetComponent<Renderer> ());
-		GetComponent<VisibleBasedOnLoS> ().models.Add (_WeaponModel.GetComponent<Renderer> ());
+		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<Renderer> ());
+		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_WeaponModel.GetComponentsInChildren<Renderer> ());
 	}
 }
