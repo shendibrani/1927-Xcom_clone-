@@ -41,17 +41,23 @@ public class Player : MonoBehaviour
         for (int i = 0; i < pawns.Count; i++)
         {
             pawns[i].owner = this;
-            if (characterList != null && characterList.Count > 0 && isPlayer)
+			if ( isPlayer && characterList != null && characterList.Count > 0)
             {
-                if (i < characterList.Count && characterList[i] != null)
-                { pawns[i].Initalise(characterList[i]);	}
+                if (i < characterList.Count && characterList[i] != null){
+					if(debug) Debug.Log("Init from character list");
+					pawns[i].Initalise(characterList[i]);	
+				}
             }
             else
             {
-                if (isPlayer)
+                if (isPlayer){
+					if(debug) Debug.Log("Init character from factory");
                     pawns[i].Initalise(Factory.GetCharacter());
-                else
+				}
+                else{
+					if(debug) Debug.Log("Init enemy from factory");
                     pawns[i].Initalise(Factory.GetEnemy());
+				}
             }
         }
     }
