@@ -5,6 +5,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Targetable))]
 public class NodeHighlightManager : MonoBehaviour
 {
+	private static List<NodeHighlightManager> _all;
+	
+	public static List<NodeHighlightManager> all {
+		get{
+			if(_all == null){
+				_all = new List<NodeHighlightManager>(FindObjectsOfType<NodeHighlightManager>());
+			}
+			return _all;
+		}
+	}
+
 	[SerializeField] bool debug;
 
 	[SerializeField] List<Highlightable> Highlights;
@@ -64,6 +75,15 @@ public class NodeHighlightManager : MonoBehaviour
 	{
 		SetState(NodeHighlightStates.Deselected);
 	}
+
+	#region Callbacks
+	
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
+	}
+	
+	#endregion
 }
 
 public enum NodeHighlightStates

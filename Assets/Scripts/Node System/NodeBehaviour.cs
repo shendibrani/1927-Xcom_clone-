@@ -5,8 +5,19 @@ using System.Collections.Generic;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Targetable))]
-public class NodeBehaviour : MonoBehaviour {
+public class NodeBehaviour : MonoBehaviour 
+{
+	private static List<NodeBehaviour> _all;
 	
+	public static List<NodeBehaviour> all {
+		get{
+			if(_all == null){
+				_all = new List<NodeBehaviour>(FindObjectsOfType<NodeBehaviour>());
+			}
+			return _all;
+		}
+	}
+
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
@@ -191,15 +202,14 @@ public class NodeBehaviour : MonoBehaviour {
 		}
 	}
 
-	void AddOnEnterEffect (Pawn target)
-	{
-		
+	#region Callbacks
+	
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
 	}
-
-	void AddOnLeaveEffect(Pawn target)
-	{
-
-	}
+	
+	#endregion
 
 	public static NodeBehaviour GetClosestFreeSpawnNode(Vector3 position)
 	{

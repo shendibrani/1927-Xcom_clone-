@@ -17,7 +17,7 @@ public class NumberOfUnitsKilled : Trigger
 
 		} else { 
 
-			foreach(Pawn p in FindObjectsOfType<Pawn>()){
+			foreach(Pawn p in Pawn.all){
 				p.GetComponent<Health>().OnDeath.AddListener(AddDeath);
 			}
 

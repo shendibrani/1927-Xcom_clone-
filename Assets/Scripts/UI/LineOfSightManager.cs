@@ -35,25 +35,21 @@ public class LineOfSightManager : MonoBehaviour
 	
 	private static LineOfSightManager _instance;
 
-	List<Pawn> pawns;
-
 	Dictionary<Pawn, List<Pawn>> sightMap;
 	List<VisibleBasedOnLoS> seeingPawns;
 	List<VisibleBasedOnLoS> visibleObjects;
 
 	void Start()
 	{
-		pawns 			= new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
 		sightMap 		= new Dictionary<Pawn, List<Pawn>> ();
 
 		seeingPawns 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
+		visibleObjects 	= new List<VisibleBasedOnLoS> (seeingPawns);
 		seeingPawns 	= seeingPawns.FindAll(x => x.generatesLineOfSight);
 
-		visibleObjects 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS>());
+		dirtyPawns 		= new List<Pawn>(Pawn.all);
 
-		dirtyPawns 		= new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
-
-		foreach (Pawn p in pawns) {
+		foreach (Pawn p in Pawn.all) {
 			sightMap.Add(p,new List<Pawn>());
 		}
 	}

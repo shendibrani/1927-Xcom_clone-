@@ -6,6 +6,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Pawn))]
 public class PawnHighlightingManager : MonoBehaviour
 {
+	private static List<PawnHighlightingManager> _all;
+	
+	public static List<PawnHighlightingManager> all {
+		get{
+			if(_all == null){
+				_all = new List<PawnHighlightingManager>(FindObjectsOfType<PawnHighlightingManager>());
+			}
+			return _all;
+		}
+	}
+
 	[SerializeField] bool debug;
 
 	[SerializeField] List<Highlightable> Highlights;
@@ -52,7 +63,7 @@ public class PawnHighlightingManager : MonoBehaviour
 
 	public void UpdateNodes()
 	{
-		foreach (NodeHighlightManager node in FindObjectsOfType<NodeHighlightManager>()) {
+		foreach (NodeHighlightManager node in NodeHighlightManager.all) {
 			node.SetState (NodeHighlightStates.Deselected);
 		}
 		if (state == PawnHighlightStates.Selected) {
@@ -76,6 +87,15 @@ public class PawnHighlightingManager : MonoBehaviour
 	{
 		SetState (PawnHighlightStates.Deselected);
 	}
+
+	#region Callbacks
+	
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
+	}
+	
+	#endregion
 }
 
 public enum PawnHighlightStates
