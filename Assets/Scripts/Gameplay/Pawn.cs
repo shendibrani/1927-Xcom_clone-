@@ -234,30 +234,26 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    #endregion
+	public bool isDead { get; private set; }
 
-    public bool isDead;
+    #endregion
 
     public Command move;
     public Command attack;
     public List<Skill> skillList;
 
-    [SerializeField]
-    public List<Commands> tmpList;
-    [SerializeField]
-    public Weapons weap;
-
     void Start()
     {
-        skillList = new List<Skill>();
+        /*skillList = new List<Skill>();
         for (int i = 0; i < tmpList.Count; i++)
         {
             skillList.Add(new Skill("Skill", "Description", tmpList[i]));
-        }
+        }*/
         if (currentNode == null)
         {
             Debug.Log("Pawn" + gameObject + " is not attached to a node");
         }
+    	
 		GetComponent<Health> ().OnDeath.AddListener (SetDead);
     }
 
@@ -265,19 +261,19 @@ public class Pawn : MonoBehaviour
     {
        // Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
-        weapon = WeaponData.instance.universalWeaponList[weap];
-        //Weapon = pCharacter.assignedWeapon;
+        //weapon = WeaponData.instance.universalWeaponList[weap];
+        weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
+        GetComponent<Health>().maxHealth = character.hitPoints;
+        GetComponent<Health>().health = character.hitPoints;
 
-		Debug.Log("Pawn " + gameObject + " name:" + character.name);
+		//Debug.Log("Pawn " + gameObject + " name:" + character.name);
 
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
-        skillList = new List<Skill>();
-		skillList.Add(new Skill("Skill", "Description", Commands.Attack));
-        skillList.AddRange(pCharacter.skillList);
+        //skillList = new List<Skill>(pCharacter.skillList);
     }
 
     public virtual void Turn()
@@ -294,11 +290,6 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    public void SetDead(Pawn p)
-    {
-        isDead = true;
-    }
-
     public NodeBehaviour currentNode
     {
         get { return GetComponent<GridNavMeshWrapper>().currentNode; }
@@ -307,6 +298,16 @@ public class Pawn : MonoBehaviour
     public List<NodeBehaviour> reachableNodes
     {
         get { return Pathfinder.NodesWithinSteps(currentNode, Movement); }
+    }
+
+    public void LevelUp()
+    {
+        int prevHP = GetComponent<Health>().maxHealth;
+        character.LevelUp();
+        accuracy = character.accuracy;
+        actionPointsPerTurn = character.actionPoints;
+        GetComponent<Health>().maxHealth = character.hitPoints;
+        GetComponent<Health>().Heal(GetComponent<Health>().maxHealth - prevHP);
     }
 
     public override string ToString()
@@ -339,16 +340,22 @@ public class Pawn : MonoBehaviour
 		return CoverState.None;
 	}
 
+	void SetDead (Pawn arg0)
+	{
+		isDead = true;
+	}
+
     #region Callbacks
 
     #endregion
 
 	void OnDrawGizmos()
 	{
-		if (weapon != null) {
-			UnityEditor.Handles.color = Color.green;
-			UnityEditor.Handles.DrawWireDisc (transform.position, transform.up, weapon.range);
-		}
+        if (weapon != null)
+        {
+            UnityEditor.Handles.color = Color.green;
+            UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, weapon.range);
+        }
 	}
 }
 

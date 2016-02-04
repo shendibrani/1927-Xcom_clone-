@@ -167,6 +167,11 @@ public class Character
         assignedWeapon = WeaponData.instance.universalWeaponList[pWeapon].Clone();
         level = pLevel;
     }
+
+    public void LevelUp()
+    {
+        level++;
+    }
 }
 
 public enum CharacterClass

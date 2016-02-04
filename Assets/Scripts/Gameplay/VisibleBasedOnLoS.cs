@@ -12,6 +12,11 @@ public class VisibleBasedOnLoS : MonoBehaviour
 
 	public bool generatesLineOfSight;
 
+	void Start()
+	{
+		GetComponent<Health> ().OnDeath.AddListener (StopGeneratingLoS);
+	}
+
 	public void Visible ()
 	{
 		if (!generatesLineOfSight) {
@@ -46,6 +51,11 @@ public class VisibleBasedOnLoS : MonoBehaviour
 			}
 			ripple.enableEmission = false;
 		}
+	}
+
+	void StopGeneratingLoS(Pawn p)
+	{
+		generatesLineOfSight = false;
 	}
 }
 
