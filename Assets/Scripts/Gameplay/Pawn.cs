@@ -240,18 +240,13 @@ public class Pawn : MonoBehaviour
     public Command attack;
     public List<Skill> skillList;
 
-    [SerializeField]
-    public List<Commands> tmpList;
-    [SerializeField]
-    public Weapons weap;
-
     void Start()
     {
-        skillList = new List<Skill>();
+        /*skillList = new List<Skill>();
         for (int i = 0; i < tmpList.Count; i++)
         {
             skillList.Add(new Skill("Skill", "Description", tmpList[i]));
-        }
+        }*/
         if (currentNode == null)
         {
             Debug.Log("Pawn" + gameObject + " is not attached to a node");
@@ -263,13 +258,15 @@ public class Pawn : MonoBehaviour
     {
        // Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
-        weapon = WeaponData.instance.universalWeaponList[weap];
-        //Weapon = pCharacter.assignedWeapon;
+        //weapon = WeaponData.instance.universalWeaponList[weap];
+        weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
+        GetComponent<Health>().maxHealth = character.hitPoints;
+        GetComponent<Health>().health = character.hitPoints;
 
-		Debug.Log("Pawn " + gameObject + " name:" + character.name);
+		//Debug.Log("Pawn " + gameObject + " name:" + character.name);
 
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
@@ -298,6 +295,16 @@ public class Pawn : MonoBehaviour
     public List<NodeBehaviour> reachableNodes
     {
         get { return Pathfinder.NodesWithinSteps(currentNode, Movement); }
+    }
+
+    public void LevelUp()
+    {
+        int prevHP = GetComponent<Health>().maxHealth;
+        character.LevelUp();
+        accuracy = character.accuracy;
+        actionPointsPerTurn = character.actionPoints;
+        GetComponent<Health>().maxHealth = character.hitPoints;
+        GetComponent<Health>().Heal(GetComponent<Health>().maxHealth - prevHP);
     }
 
     public override string ToString()
@@ -336,8 +343,11 @@ public class Pawn : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		UnityEditor.Handles.color = Color.green;
-		UnityEditor.Handles.DrawWireDisc(transform.position , transform.up, weapon.range);
+        if (weapon != null)
+        {
+            UnityEditor.Handles.color = Color.green;
+            UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, weapon.range);
+        }
 	}
 }
 

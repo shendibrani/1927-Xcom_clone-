@@ -36,7 +36,21 @@ public class CharacterTabUI : MenuCanvas {
     }
 	// Update is called once per frame
 	void Update () {
-	
+        if (characterReference != null)
+        {
+            characterStruct.CharacterNameText.text = characterReference.name;
+            characterStruct.LevelValue.text = characterReference.level.ToString();
+            characterStruct.HealthValue.text = characterReference.hitPoints.ToString();
+            characterStruct.ActionPointsValue.text = characterReference.actionPoints.ToString();
+            characterStruct.AccuracyValue.text = characterReference.accuracy.ToString();
+
+            WeaponRef = characterReference.assignedWeapon;
+            characterStruct.WeaponValue.text = characterReference.assignedWeapon.name;
+            characterStruct.RangeValue.text = characterReference.assignedWeapon.range.ToString();
+            characterStruct.AttackValue.text = characterReference.assignedWeapon.damage.ToString();
+            characterStruct.APCostValue.text = characterReference.assignedWeapon.actionCost.ToString();
+            characterStruct.CritChanceValue.text = (int)(characterReference.assignedWeapon.criticalChance * 100) + "%";
+        }
 	}
 
     //called from generic scene manager of some sort [[TO DO]] pass in character reference
