@@ -4,6 +4,7 @@
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
     <name>Name</name>
+    <characterGender>RANDOM</characterGender>
     <level>0</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>ASSAULT</characterClass>
@@ -12,6 +13,7 @@
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
     <name>Name</name>
+    <characterGender>RANDOM</characterGender>
     <level>0</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>DEFENDER</characterClass>
@@ -20,6 +22,7 @@
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
     <name>Name</name>
+    <characterGender>RANDOM</characterGender>
     <level>0</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>SUPPORT</characterClass>
@@ -28,6 +31,7 @@
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
     <name>Nane2Name2</name>
+    <characterGender>RANDOM</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>ASSAULT</characterClass>
@@ -35,7 +39,8 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>Name1Name</name>
+    <name>Name1Name2</name>
+    <characterGender>RANDOM</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>DEFENDER</characterClass>
@@ -43,7 +48,8 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>NameName1</name>
+    <name>NameName2</name>
+    <characterGender>RANDOM</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>SUPPORT</characterClass>

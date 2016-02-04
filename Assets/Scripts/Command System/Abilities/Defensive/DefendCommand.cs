@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class DefendCommand : Command {
 
     int actionCost = 1;
-    int defendRange = 1;
+    int defendRange = 2;
 	
     public DefendCommand(Pawn pOwner)
         : base(pOwner)

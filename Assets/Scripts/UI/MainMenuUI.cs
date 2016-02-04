@@ -23,11 +23,6 @@ public class MainMenuUI : MenuCanvas {
 
     }
 
-    public void StartCampaign()
-    {
-        CampaignManager.instance.NewCampaign();
-    }
-
     public void QuitToDesktop()
     {
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class FirstAidCommand : Command {
 
     int actionCost = 2;
-    int firstAidRange = 2;
+    int firstAidRange = 6;
 
     public FirstAidCommand(Pawn pOwner)
         : base(pOwner)
