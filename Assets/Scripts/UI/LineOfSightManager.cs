@@ -39,20 +39,21 @@ public class LineOfSightManager : MonoBehaviour
 
 	Dictionary<Pawn, List<Pawn>> sightMap;
 	List<VisibleBasedOnLoS> seeingPawns;
-	//Dictionary<Pawn, bool> redundancyList;
+	List<VisibleBasedOnLoS> visibleObjects;
 
 	void Start()
 	{
-		pawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
-		//redundancyList = new Dictionary<Pawn, bool> ();
-		sightMap = new Dictionary<Pawn, List<Pawn>> ();
-		seeingPawns = new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
-		seeingPawns = seeingPawns.FindAll(x => x.generatesLineOfSight);
+		pawns 			= new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
+		sightMap 		= new Dictionary<Pawn, List<Pawn>> ();
 
-		dirtyPawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
+		seeingPawns 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
+		seeingPawns 	= seeingPawns.FindAll(x => x.generatesLineOfSight);
+
+		visibleObjects 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS>());
+
+		dirtyPawns 		= new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
 
 		foreach (Pawn p in pawns) {
-			//redundancyList.Add(p,false);
 			sightMap.Add(p,new List<Pawn>());
 		}
 	}
@@ -65,14 +66,14 @@ public class LineOfSightManager : MonoBehaviour
 
 		dirtyPawns.Clear ();
 
-		foreach(VisibleBasedOnLoS s in FindObjectsOfType<VisibleBasedOnLoS>())
+		foreach(VisibleBasedOnLoS s in visibleObjects)
 		{
 			s.OutOfHearingRange();
 		}
 
 		foreach (VisibleBasedOnLoS p in seeingPawns) 
 		{
-			foreach (VisibleBasedOnLoS s in FindObjectsOfType<VisibleBasedOnLoS>()) {
+			foreach (VisibleBasedOnLoS s in visibleObjects) {
 				if (Vector3.Distance (p.transform.position, s.transform.position) <= Pawn.sightRange) {
 					s.Hidden ();
 					break;
