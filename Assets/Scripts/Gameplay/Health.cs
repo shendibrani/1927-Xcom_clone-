@@ -31,18 +31,18 @@ public class Health : MonoBehaviour {
 		health = maxHealth;
 	}
 
-	public void Damage (int damage)
+	public void Damage (Pawn p, int damage)
 	{
 		health -= damage;
 		Debug.Log ("damage");
 		if (OnDamage != null) {
 			Debug.Log("on damage != null");
-			OnDamage(GetComponent<Pawn>(),damage);
+			OnDamage(p,damage);
 		}
 
 		if (health <= 0){ //&& OnDeath != null) {
 			Debug.Log("health <= 0");
-			OnDeath.Invoke(GetComponent<Pawn>());
+			OnDeath.Invoke(p);
 		}
 	}
 

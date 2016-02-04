@@ -14,7 +14,7 @@ public class FinishingAttackTemporaryEffect : PawnEffect
     public override void OnDefense(Pawn pOther) { }
     public override void OnHit(Pawn pOther, int value)
     {
-        owner.GetComponent<Health>().Damage(owner.GetComponent<Health>().health);
+		owner.GetComponent<Health>().Damage(owner,owner.GetComponent<Health>().health);
         owner.EffectList.Remove(this);
     }
     public override void OnRemove() { owner.EffectList.Remove(this); }

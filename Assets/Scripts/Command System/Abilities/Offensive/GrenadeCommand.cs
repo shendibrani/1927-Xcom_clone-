@@ -48,12 +48,12 @@ public class GrenadeCommand : Command {
                 int tmpDamage = (int)System.Math.Round((double)damage * tmpDamageMod);
                 if (tmpDamage < 1) tmpDamage = 1;
 				Debug.Log(owner + " hit " + (pTarget.GetComponent<Pawn>()) + " and dealt " + tmpDamage + " damage.");
-                pTarget.GetComponent<Health>().Damage(tmpDamage);
+				pTarget.GetComponent<Health>().Damage(owner,tmpDamage);
             }
         }
         else if (pTarget.GetComponent<DestroyableProp>() != null)
         {
-            pTarget.GetComponent<Health>().Damage(1);
+            pTarget.GetComponent<Health>().Damage(owner,1);
         }
     }
 
