@@ -12,6 +12,12 @@ public class VisibleBasedOnLoS : MonoBehaviour
 
 	public bool generatesLineOfSight;
 
+	void Awake()
+	{
+		if (models == null) {
+			models = new List<Renderer> ();
+		}
+	}
 	void Start()
 	{
 		GetComponent<Health> ().OnDeath.AddListener (StopGeneratingLoS);
@@ -56,6 +62,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 	void StopGeneratingLoS(Pawn p)
 	{
 		generatesLineOfSight = false;
+		LineOfSightManager.instance.StopGeneratingLoS (this);
 	}
 }
 

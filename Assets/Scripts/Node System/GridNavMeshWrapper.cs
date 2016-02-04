@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Pawn))]
 [System.Serializable]
 public class GridNavMeshWrapper : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class GridNavMeshWrapper : MonoBehaviour
 	void Update () 
 	{
 		if (!stopped) {
+			LineOfSightManager.instance.SetPawnDirty(GetComponent<Pawn>());
 			GetComponentInChildren<Animator>().SetBool("Moving", GetComponent<NavMeshAgent>().isOnNavMesh);
 			GetComponentInChildren<Animator>().SetBool("Air", GetComponent<NavMeshAgent>().isOnOffMeshLink);
 			if (ReachedDestination ()) {

@@ -555,10 +555,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   debug: 0
   actionPointsSpent: 0
-  isDead: 0
   skillList: []
-  tmpList: 010000000a000000
-  weap: 0
 --- !u!114 &11429562
 MonoBehaviour:
   m_ObjectHideFlags: 1

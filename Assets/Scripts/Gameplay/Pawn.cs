@@ -262,6 +262,7 @@ public class Pawn : MonoBehaviour
        // Debug.Log("Pawn " + gameObject + "initalised");
         character = pCharacter;
         //weapon = WeaponData.instance.universalWeaponList[weap];
+
         weapon = pCharacter.assignedWeapon;
         accuracy = pCharacter.accuracy;
         actionPoints = pCharacter.actionPoints;
