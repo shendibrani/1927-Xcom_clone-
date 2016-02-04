@@ -21,6 +21,12 @@ public class VisibleBasedOnLoS : MonoBehaviour
 	void Start()
 	{
 		GetComponent<Health> ().OnDeath.AddListener (StopGeneratingLoS);
+		if(generatesLineOfSight){
+			foreach (Renderer r in models) {
+				r.enabled = true;
+			}
+			ripple.enableEmission = false;
+		}
 	}
 
 	public void Visible ()
