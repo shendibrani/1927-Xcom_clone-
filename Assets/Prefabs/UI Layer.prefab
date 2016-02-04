@@ -692,6 +692,7 @@ GameObject:
   - 114: {fileID: 11486782}
   - 114: {fileID: 11463818}
   - 114: {fileID: 11493942}
+  - 82: {fileID: 8263764}
   m_Layer: 5
   m_Name: UI Layer
   m_TagString: Untagged
@@ -920,6 +921,80 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 400, y: 200}
+--- !u!82 &8263764
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170922}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11401436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1006,6 +1081,15 @@ MonoBehaviour:
   centralPortraitPosition: {x: 0, y: 350}
   portraitOffsetFromCenter: 690
   portraits:
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
   - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
 --- !u!114 &11406132
 MonoBehaviour:
@@ -3142,12 +3226,31 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 8263764}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgument: {fileID: 8300000, guid: ad17935a50a20d34ab5aa6b4463fc5cf,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8263764}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 56d023fc11cd5a44885f2a29c54adaca,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
