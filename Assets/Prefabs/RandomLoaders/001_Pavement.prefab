@@ -57,6 +57,10 @@ Prefab:
       propertyPath: m_TagString
       value: randomizer
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _Objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 151944, guid: 7fbeda12a58a7174a97cebd50db29ace, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104556}
