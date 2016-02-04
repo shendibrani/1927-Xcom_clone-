@@ -140,7 +140,6 @@ GameObject:
   - 4: {fileID: 491854}
   - 33: {fileID: 3330612}
   - 23: {fileID: 2354486}
-  - 95: {fileID: 9508380}
   - 114: {fileID: 11463492}
   - 114: {fileID: 11413674}
   m_Layer: 0
@@ -229,7 +228,6 @@ GameObject:
   - 4: {fileID: 487210}
   - 33: {fileID: 3356944}
   - 23: {fileID: 2391790}
-  - 95: {fileID: 9599130}
   - 114: {fileID: 11409764}
   - 114: {fileID: 11400952}
   m_Layer: 0
@@ -532,40 +530,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!95 &9508380
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143278}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b196e5d81cdd63444955e4f46bf1c8d9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9599130
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177936}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b196e5d81cdd63444955e4f46bf1c8d9, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1057,10 +1021,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   debug: 0
   actionPointsSpent: 0
-  isDead: 0
   skillList: []
-  tmpList: 010000000a000000
-  weap: 0
 --- !u!114 &11470056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2373,9 +2334,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

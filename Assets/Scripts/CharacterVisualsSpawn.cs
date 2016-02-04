@@ -18,6 +18,8 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 	// Use this for initialization
 	public void Initialize (Weapons _wep)
 	{
+		Debug.Log (_wep);
+
 		_pawn = GetComponent<Pawn> ();
 		PawnAnimationManager _anim = GetComponent<PawnAnimationManager> ();
 
@@ -90,7 +92,9 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
 
-		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<Renderer> ());
+		Debug.Log (_WeaponModel.GetComponentsInChildren<Renderer> ().Length);
+
+		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<SkinnedMeshRenderer> ());
 		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_WeaponModel.GetComponentsInChildren<Renderer> ());
 	}
 }
