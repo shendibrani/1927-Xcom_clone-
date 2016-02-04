@@ -195,6 +195,16 @@ public class NodeBehaviour : MonoBehaviour
 		return null;
 	}
 
+	void AddOnEnterEffect (Pawn pawn)
+	{
+		//throw new System.NotImplementedException ();
+	}
+
+	void AddOnLeaveEffect (Pawn pawn)
+	{
+		//throw new System.NotImplementedException ();
+	}
+
 	void OnDrawGizmos()
 	{
 		if (links == null) {

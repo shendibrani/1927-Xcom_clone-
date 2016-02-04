@@ -93,10 +93,10 @@ public class LineOfSightManager : MonoBehaviour
 			sl.Remove(p);
 		}
 
-		for (int counter = 0; counter < pawns.Count - 1; counter++) {
-			if (CheckSight (pawns [counter], p)) {
-				sightMap [pawns [counter]].Add (p);
-				sightMap [p].Add (pawns [counter]);
+		for (int counter = 0; counter < Pawn.all.Count - 1; counter++) {
+			if (CheckSight (Pawn.all [counter], p)) {
+				sightMap [Pawn.all [counter]].Add (p);
+				sightMap [p].Add (Pawn.all [counter]);
 			}
 		}
 	}
