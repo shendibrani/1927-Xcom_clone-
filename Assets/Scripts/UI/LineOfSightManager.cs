@@ -7,6 +7,8 @@ public class LineOfSightManager : MonoBehaviour
 {
 	[SerializeField] bool debug;
 
+	List<Pawn> dirtyPawns;
+
 	public static LineOfSightManager instance {
 		get {
 			if(_instance == null){
@@ -36,6 +38,7 @@ public class LineOfSightManager : MonoBehaviour
 	List<Pawn> pawns;
 
 	Dictionary<Pawn, List<Pawn>> sightMap;
+	List<VisibleBasedOnLoS> seeingPawns;
 	//Dictionary<Pawn, bool> redundancyList;
 
 	void Start()
@@ -43,6 +46,10 @@ public class LineOfSightManager : MonoBehaviour
 		pawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
 		//redundancyList = new Dictionary<Pawn, bool> ();
 		sightMap = new Dictionary<Pawn, List<Pawn>> ();
+		seeingPawns = new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
+		seeingPawns = seeingPawns.FindAll(x => x.generatesLineOfSight);
+
+		dirtyPawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
 
 		foreach (Pawn p in pawns) {
 			//redundancyList.Add(p,false);
@@ -52,21 +59,11 @@ public class LineOfSightManager : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		foreach (List<Pawn> l in sightMap.Values) {
-			l.Clear();
+		foreach (Pawn p in dirtyPawns) {
+			UpdatePawnLoS (p);
 		}
 
-		for (int counter = 0; counter < pawns.Count-1; counter++) {
-			for (int matcher = counter+1; matcher < pawns.Count; matcher++){
-				if(CheckSight(pawns[counter], pawns[matcher])){
-					sightMap[pawns[counter]].Add(pawns[matcher]);
-					sightMap[pawns[matcher]].Add(pawns[counter]);
-				}
-			}
-		}
-
-		List<VisibleBasedOnLoS> seeingPawns = new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
-		seeingPawns = seeingPawns.FindAll(x => x.generatesLineOfSight);
+		dirtyPawns.Clear ();
 
 		foreach(VisibleBasedOnLoS s in FindObjectsOfType<VisibleBasedOnLoS>())
 		{
@@ -87,6 +84,22 @@ public class LineOfSightManager : MonoBehaviour
 		{
 			foreach (Pawn s in sightMap[p.GetComponent<Pawn>()]) {
 				s.GetComponent<VisibleBasedOnLoS>().Visible();
+			}
+		}
+	}
+
+	void UpdatePawnLoS (Pawn p)
+	{
+		sightMap[p].Clear ();
+
+		foreach(List<Pawn> sl in sightMap.Values){
+			sl.Remove(p);
+		}
+
+		for (int counter = 0; counter < pawns.Count - 1; counter++) {
+			if (CheckSight (pawns [counter], p)) {
+				sightMap [pawns [counter]].Add (p);
+				sightMap [p].Add (pawns [counter]);
 			}
 		}
 	}
@@ -130,6 +143,16 @@ public class LineOfSightManager : MonoBehaviour
 	public static List<Pawn> GetSightList(Pawn p)
 	{
 		return instance.sightMap [p];
+	}
+
+	public void SetPawnDirty(Pawn p)
+	{
+		if(!dirtyPawns.Contains(p)) dirtyPawns.Add (p);
+	}
+
+	public void StopGeneratingLoS(VisibleBasedOnLoS seeingPawn)
+	{
+		seeingPawns.Remove (seeingPawn);
 	}
 }
 

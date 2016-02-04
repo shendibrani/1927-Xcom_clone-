@@ -64,7 +64,7 @@ public class AttackCommand : Command
             if (RNG.NextDouble() < hitChance)
             {
                 Debug.Log(owner + " hit " + target);
-                target.GetComponent<Health>().Damage(1);
+                target.GetComponent<Health>().Damage(owner,1);
             }
             else
             {
@@ -115,15 +115,15 @@ public class AttackCommand : Command
                     if (damage < 1)
                         damage = 1;
                     Debug.Log(owner + " critically hit " + target + " and dealt " + damage + " damage.");
-                    target.GetComponent<Health>().Damage(damage);
-                }
-                else
+					target.GetComponent<Health>().Damage(owner,damage);
+				}
+				else
                 {
                     damage = (int)System.Math.Round((double)weapon.damage * tmpDamageMod);
                     if (damage < 1)
                         damage = 1;
                     Debug.Log(owner + " hit " + target + " and dealt " + damage + " damage.");
-                    target.GetComponent<Health>().Damage(damage);
+					target.GetComponent<Health>().Damage(owner,damage);
                 }
                 if (weapon.weaponEffects != null)
                 {

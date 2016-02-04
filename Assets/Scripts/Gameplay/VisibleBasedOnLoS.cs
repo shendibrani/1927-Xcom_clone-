@@ -62,6 +62,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 	void StopGeneratingLoS(Pawn p)
 	{
 		generatesLineOfSight = false;
+		LineOfSightManager.instance.StopGeneratingLoS (this);
 	}
 }
 

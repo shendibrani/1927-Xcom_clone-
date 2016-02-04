@@ -10,7 +10,7 @@ public class PoisonEffect : PawnEffect
 	
 	public override void OnTurn() 
 	{
-		owner.GetComponent<Health> ().Damage (damage);
+		owner.GetComponent<Health> ().Damage (owner,damage);
 	}
 	public override void OnAttack() { }
 	public override void OnDefense(Pawn pOther) { }

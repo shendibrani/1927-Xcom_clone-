@@ -14,7 +14,7 @@ public class CounterBuff : PawnEffect
     public override void OnHit(Pawn pOther, int value) {
         Debug.Log(owner + " Counters");
         owner.GetComponent<Health>().Heal(value);
-    pOther.GetComponent<Health>().Damage(value);
+		pOther.GetComponent<Health>().Damage(owner,value);
     owner.EffectList.Remove(this);
     }
     public override void OnRemove() {  }
