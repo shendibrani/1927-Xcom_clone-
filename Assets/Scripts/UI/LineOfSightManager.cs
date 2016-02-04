@@ -36,16 +36,16 @@ public class LineOfSightManager : MonoBehaviour
 	List<Pawn> pawns;
 
 	Dictionary<Pawn, List<Pawn>> sightMap;
-	Dictionary<Pawn, bool> redundancyList;
+	//Dictionary<Pawn, bool> redundancyList;
 
 	void Start()
 	{
 		pawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
-		redundancyList = new Dictionary<Pawn, bool> ();
+		//redundancyList = new Dictionary<Pawn, bool> ();
 		sightMap = new Dictionary<Pawn, List<Pawn>> ();
 
 		foreach (Pawn p in pawns) {
-			redundancyList.Add(p,false);
+			//redundancyList.Add(p,false);
 			sightMap.Add(p,new List<Pawn>());
 		}
 	}
