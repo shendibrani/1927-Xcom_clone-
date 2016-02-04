@@ -1,11 +1,23 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Targetable))]
 public class DestroyableProp : MonoBehaviour
 {
+	private static List<DestroyableProp> _all;
+	
+	public static List<DestroyableProp> all {
+		get{
+			if(_all == null){
+				_all = new List<DestroyableProp>(FindObjectsOfType<DestroyableProp>());
+			}
+			return _all;
+		}
+	}
+
 	Renderer intact; //destroyed;
 	[SerializeField] NodeBehaviour currentNode;
 
@@ -33,5 +45,14 @@ public class DestroyableProp : MonoBehaviour
 		GetComponent<NavMeshObstacle> ().enabled = false;
 		Destroy (this.gameObject);
 	}
+
+	#region Callbacks
+	
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
+	}
+	
+	#endregion
 }
 

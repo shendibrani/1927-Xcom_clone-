@@ -35,24 +35,21 @@ public class LineOfSightManager : MonoBehaviour
 	
 	private static LineOfSightManager _instance;
 
-	List<Pawn> pawns;
-
 	Dictionary<Pawn, List<Pawn>> sightMap;
 	List<VisibleBasedOnLoS> seeingPawns;
-	//Dictionary<Pawn, bool> redundancyList;
+	List<VisibleBasedOnLoS> visibleObjects;
 
 	void Start()
 	{
-		pawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
-		//redundancyList = new Dictionary<Pawn, bool> ();
-		sightMap = new Dictionary<Pawn, List<Pawn>> ();
-		seeingPawns = new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
-		seeingPawns = seeingPawns.FindAll(x => x.generatesLineOfSight);
+		sightMap 		= new Dictionary<Pawn, List<Pawn>> ();
 
-		dirtyPawns = new List<Pawn>(GameObject.FindObjectsOfType<Pawn> ());
+		seeingPawns 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
+		visibleObjects 	= new List<VisibleBasedOnLoS> (seeingPawns);
+		seeingPawns 	= seeingPawns.FindAll(x => x.generatesLineOfSight);
 
-		foreach (Pawn p in pawns) {
-			//redundancyList.Add(p,false);
+		dirtyPawns 		= new List<Pawn>(Pawn.all);
+
+		foreach (Pawn p in Pawn.all) {
 			sightMap.Add(p,new List<Pawn>());
 		}
 	}
@@ -65,14 +62,14 @@ public class LineOfSightManager : MonoBehaviour
 
 		dirtyPawns.Clear ();
 
-		foreach(VisibleBasedOnLoS s in FindObjectsOfType<VisibleBasedOnLoS>())
+		foreach(VisibleBasedOnLoS s in visibleObjects)
 		{
 			s.OutOfHearingRange();
 		}
 
 		foreach (VisibleBasedOnLoS p in seeingPawns) 
 		{
-			foreach (VisibleBasedOnLoS s in FindObjectsOfType<VisibleBasedOnLoS>()) {
+			foreach (VisibleBasedOnLoS s in visibleObjects) {
 				if (Vector3.Distance (p.transform.position, s.transform.position) <= Pawn.sightRange) {
 					s.Hidden ();
 					break;
@@ -96,10 +93,10 @@ public class LineOfSightManager : MonoBehaviour
 			sl.Remove(p);
 		}
 
-		for (int counter = 0; counter < pawns.Count - 1; counter++) {
-			if (CheckSight (pawns [counter], p)) {
-				sightMap [pawns [counter]].Add (p);
-				sightMap [p].Add (pawns [counter]);
+		for (int counter = 0; counter < Pawn.all.Count - 1; counter++) {
+			if (CheckSight (Pawn.all [counter], p)) {
+				sightMap [Pawn.all [counter]].Add (p);
+				sightMap [p].Add (Pawn.all [counter]);
 			}
 		}
 	}

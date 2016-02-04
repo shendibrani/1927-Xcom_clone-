@@ -5,8 +5,19 @@ using System.Collections.Generic;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Targetable))]
-public class NodeBehaviour : MonoBehaviour {
+public class NodeBehaviour : MonoBehaviour 
+{
+	private static List<NodeBehaviour> _all;
 	
+	public static List<NodeBehaviour> all {
+		get{
+			if(_all == null){
+				_all = new List<NodeBehaviour>(FindObjectsOfType<NodeBehaviour>());
+			}
+			return _all;
+		}
+	}
+
 	public Vector3 position { get { return gameObject.transform.position; } }
 	public Vector3 offsetPosition { get { return gameObject.transform.position + (Vector3.up * 0.5f); } }
 
@@ -103,6 +114,10 @@ public class NodeBehaviour : MonoBehaviour {
 	protected virtual void OnDestroy() 
 	{
 		if (debug) Debug.Log ("Destroying");
+
+		if(_all != null)
+			_all.Remove(this);
+
 		for (int counter = links.Count -1; counter >= 0; counter--){
 			Unbind(links[counter]);
 		}
@@ -180,6 +195,16 @@ public class NodeBehaviour : MonoBehaviour {
 		return null;
 	}
 
+	void AddOnEnterEffect (Pawn pawn)
+	{
+		//throw new System.NotImplementedException ();
+	}
+
+	void AddOnLeaveEffect (Pawn pawn)
+	{
+		//throw new System.NotImplementedException ();
+	}
+
 	void OnDrawGizmos()
 	{
 		if (links == null) {
@@ -189,16 +214,6 @@ public class NodeBehaviour : MonoBehaviour {
 		foreach (NodeBehaviour node in links) {
 			Gizmos.DrawLine(position, node.position);
 		}
-	}
-
-	void AddOnEnterEffect (Pawn target)
-	{
-		
-	}
-
-	void AddOnLeaveEffect(Pawn target)
-	{
-
 	}
 
 	public static NodeBehaviour GetClosestFreeSpawnNode(Vector3 position)

@@ -8,6 +8,18 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Targetable))]
 public class Pawn : MonoBehaviour
 {
+	private static List<Pawn> _all;
+
+	public static List<Pawn> all {
+		get{
+			if(_all == null){
+				_all = new List<Pawn>(FindObjectsOfType<Pawn>());
+			}
+			return _all;
+		}
+	}
+
+
     public Player owner;
 
 	[SerializeField] bool debug;
@@ -216,14 +228,14 @@ public class Pawn : MonoBehaviour
             {
                 temp.Add(p.GetComponent<Targetable>());
             }
-            foreach (DestroyableProp d in FindObjectsOfType<DestroyableProp>())
+            foreach (DestroyableProp d in DestroyableProp.all)
             {
                 if (LineOfSightManager.CheckSight(this, d))
                 {
                     temp.Add(d.GetComponent<Targetable>());
                 }
             }
-            foreach (NodeBehaviour n in GameObject.FindObjectsOfType<NodeBehaviour>())
+            foreach (NodeBehaviour n in NodeBehaviour.all)
             {
                 if (Vector3.Distance(this.transform.position, n.position) <= sightRange)
                 {
@@ -372,6 +384,11 @@ public class Pawn : MonoBehaviour
 	}
 
     #region Callbacks
+
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
+	}
 
     #endregion
 

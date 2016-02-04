@@ -40,10 +40,10 @@ public class HighlightingManager
 
 	public void ClearSelections()
 	{
-		foreach (PawnHighlightingManager phm in GameObject.FindObjectsOfType<PawnHighlightingManager>()){
+		foreach (PawnHighlightingManager phm in PawnHighlightingManager.all){
 			phm.SetState (PawnHighlightStates.Deselected);
 		}
-		foreach (NodeHighlightManager nhm in GameObject.FindObjectsOfType<NodeHighlightManager>()){
+		foreach (NodeHighlightManager nhm in NodeHighlightManager.all){
 			nhm.SetState (NodeHighlightStates.Deselected);
 		}
 	}
