@@ -258,7 +258,7 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log("Pawn" + gameObject + " is not attached to a node");
         }
-       
+		GetComponent<Health> ().OnDeath.AddListener (SetDead);
     }
 
     public void Initalise(Character pCharacter)
@@ -294,7 +294,7 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    public void SetDead()
+    public void SetDead(Pawn p)
     {
         isDead = true;
     }

@@ -7,7 +7,7 @@ public class PlayerHasNoPawnsLeftTrigger : Trigger
 	
 	protected override bool Condition ()
 	{
-		return player.Pawns.Count == 0;
+		return player.Pawns.FindAll(x => !x.isDead).Count == 0;
 	}
 	
 }
