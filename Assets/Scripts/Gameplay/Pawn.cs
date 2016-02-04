@@ -261,6 +261,7 @@ public class Pawn : MonoBehaviour
         {
             skillList.Add(new Skill("Skill", "Description", tmpList[i]));
         }*/
+
         if (currentNode == null)
         {
             Debug.Log("Pawn" + gameObject + " is not attached to a node");
@@ -298,7 +299,19 @@ public class Pawn : MonoBehaviour
 		if(debug) Debug.Log("Calling visuals Init");
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
-        //skillList = new List<Skill>(pCharacter.skillList);
+        skillList = new List<Skill>();
+        skillList.Add(new Skill("Attack", "Basic Attack", Commands.Attack));
+        foreach (Skill s in pCharacter.skillList)
+        {
+            skillList.Add(s);
+        }
+        if (debug)
+        {
+            foreach (Skill s in skillList)
+            {
+                Debug.Log("Skill " + s.name);
+            }
+        }
     }
 
     public virtual void Turn()
