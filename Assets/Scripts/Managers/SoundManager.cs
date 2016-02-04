@@ -15,7 +15,10 @@ public enum SoundEffects {
 	FREEZE,
 	MACHETE,
 	SHOTGUN,
-	SNIPER
+	SNIPER,
+    HITMALE,
+    HITFEMALE,
+    MISS
     
 }
 
