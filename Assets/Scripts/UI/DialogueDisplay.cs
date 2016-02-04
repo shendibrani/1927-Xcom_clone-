@@ -48,7 +48,7 @@ public class DialogueDisplay : MonoBehaviour
 
 			if (showCharacterByCharacter && currentText.Length > 0) {
 				dialogueField.text += currentText [0];
-				currentLine.line = currentText.Remove (0, 1);
+				currentText = currentText.Remove (0, 1);
 			}
 
 			if (currentText == string.Empty && (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0))) {
