@@ -55,7 +55,7 @@ public class PawnAnimationManager : MonoBehaviour
 
 		animator.gameObject.transform.LookAt (new Vector3(p.transform.position.x, animator.transform.position.y, p.transform.position.z));
 		if (p.GetComponent<Pawn> () != null) {
-			animator.SetBool ("HighCoverInWay", GetComponent<Pawn> ().GetCoverState (p.GetComponent<Pawn>()) == CoverState.Full);
+			//animator.SetBool ("HighCoverInWay", GetComponent<Pawn> ().GetCoverState (p.GetComponent<Pawn>()) == CoverState.Full);
 		}
 
 		isAnimating = true;

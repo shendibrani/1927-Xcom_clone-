@@ -68,6 +68,7 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_Hooman.transform.localPosition = new Vector3 (0, 0.013f, 0);
 		_Hooman.transform.localRotation = Quaternion.identity;
 
+
 		if (_pawn.owner.gameObject.tag == "PlayerChar")
 		{
 			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[0];
@@ -88,5 +89,8 @@ public class CharacterVisualsSpawn : MonoBehaviour {
 		_WeaponModel.transform.localPosition = Vector3.zero;
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
+
+		GetComponent<VisibleBasedOnLoS> ().models.Add (_Hooman.GetComponent<Renderer> ());
+		GetComponent<VisibleBasedOnLoS> ().models.Add (_WeaponModel.GetComponent<Renderer> ());
 	}
 }

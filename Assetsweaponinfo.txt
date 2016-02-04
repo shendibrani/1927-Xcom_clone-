@@ -4,8 +4,8 @@
 		<weaponEffects />
 		<weaponEnum>AssaultRifle</weaponEnum>
 		<name>Assault Rifle</name>
-		<damage>3</damage>
-		<range>10</range>
+		<damage>6</damage>
+		<range>8</range>
 		<criticalChance>0.09</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -13,8 +13,8 @@
 		<weaponEffects />
 		<weaponEnum>PrototypeAssaultRifle</weaponEnum>
 		<name>Assault Rifle</name>
-		<damage>4</damage>
-		<range>10</range>
+		<damage>8</damage>
+		<range>8</range>
 		<criticalChance>0.09</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -24,8 +24,8 @@
 		</weaponEffects>
 		<weaponEnum>SniperRifle</weaponEnum>
 		<name>Sniper Rifle</name>
-		<damage>5</damage>
-		<range>20</range>
+		<damage>10</damage>
+		<range>15</range>
 		<criticalChance>0.15</criticalChance>
 		<actionCost>3</actionCost>
 	</Weapon>
@@ -35,8 +35,8 @@
 		</weaponEffects>
 		<weaponEnum>PrototypeSniperRifle</weaponEnum>
 		<name>Prototype Sniper Rifle</name>
-		<damage>6</damage>
-		<range>20</range>
+		<damage>12</damage>
+		<range>15</range>
 		<criticalChance>0.15</criticalChance>
 		<actionCost>3</actionCost>
 	</Weapon>
@@ -44,8 +44,8 @@
 		<weaponEffects />
 		<weaponEnum>Shotgun</weaponEnum>
 		<name>Shotgun</name>
-		<damage>4</damage>
-		<range>6</range>
+		<damage>8</damage>
+		<range>5</range>
 		<criticalChance>0.12</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -53,8 +53,8 @@
 		<weaponEffects />
 		<weaponEnum>PrototypeShotgun</weaponEnum>
 		<name>Prototype Shotgun</name>
-		<damage>4</damage>
-		<range>6</range>
+		<damage>8</damage>
+		<range>5</range>
 		<criticalChance>0.12</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -62,7 +62,7 @@
 		<weaponEffects />
 		<weaponEnum>Machete</weaponEnum>
 		<name>Machete</name>
-		<damage>2</damage>
+		<damage>4</damage>
 		<range>1</range>
 		<criticalChance>0.25</criticalChance>
 		<actionCost>1</actionCost>
@@ -71,7 +71,7 @@
 		<weaponEffects />
 		<weaponEnum>ElectricMachete</weaponEnum>
 		<name>Electric Machete</name>
-		<damage>5</damage>
+		<damage>10</damage>
 		<range>1</range>
 		<criticalChance>0.25</criticalChance>
 		<actionCost>3</actionCost>
@@ -82,8 +82,8 @@
 		</weaponEffects>
 		<weaponEnum>Cryogun</weaponEnum>
 		<name>Cryogun</name>
-		<damage>2</damage>
-		<range>8</range>
+		<damage>4</damage>
+		<range>6</range>
 		<criticalChance>0.05</criticalChance>
 		<actionCost>3</actionCost>
 	</Weapon>
@@ -93,8 +93,8 @@
 		</weaponEffects>
 		<weaponEnum>PrototypeShockGun</weaponEnum>
 		<name>Prototype Shockgun</name>
-		<damage>4</damage>
-		<range>8</range>
+		<damage>8</damage>
+		<range>6</range>
 		<criticalChance>0.02</criticalChance>
 		<actionCost>3</actionCost>
 	</Weapon>
@@ -102,8 +102,8 @@
 		<weaponEffects />
 		<weaponEnum>DoublePistol</weaponEnum>
 		<name>Duel Wielded Pistols</name>
-		<damage>2</damage>
-		<range>8</range>
+		<damage>4</damage>
+		<range>6</range>
 		<criticalChance>0.08</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -111,8 +111,8 @@
 		<weaponEffects />
 		<weaponEnum>DoublePrototypePistol</weaponEnum>
 		<name>Duel Wielded Prototype Pistols</name>
-		<damage>3</damage>
-		<range>8</range>
+		<damage>6</damage>
+		<range>6</range>
 		<criticalChance>0.08</criticalChance>
 		<actionCost>2</actionCost>
 	</Weapon>
@@ -120,8 +120,8 @@
 		<weaponEffects />
 		<weaponEnum>DefaultPistol</weaponEnum>
 		<name>Pistol</name>
-		<damage>1</damage>
-		<range>10</range>
+		<damage>2</damage>
+		<range>8</range>
 		<criticalChance>0.00</criticalChance>
 		<actionCost>1</actionCost>
 	</Weapon>

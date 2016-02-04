@@ -5,7 +5,7 @@ public class HighlightWithObject : Highlightable
 {
 	[SerializeField] Renderer highlighting;
 
-	[SerializeField] Color startingColor;
+	//[SerializeField] Color startingColor;
 
 	protected override void Start()
 	{
@@ -14,12 +14,14 @@ public class HighlightWithObject : Highlightable
 
 	public override void ProcessHighlight ()
 	{
-		if(highlighted){
-			highlighting.material.color = startingColor;
-		}
-		else {
-			highlighting.material.color = Color.clear;
-		}
+//		if(highlighted){
+//			highlighting.material.color = startingColor;
+//		}
+//		else {
+//			highlighting.material.color = Color.clear;
+//		}
+
+		highlighting.enabled = highlighted;
 	}
 }
 
