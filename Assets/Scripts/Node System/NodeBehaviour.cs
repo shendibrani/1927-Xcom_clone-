@@ -114,6 +114,10 @@ public class NodeBehaviour : MonoBehaviour
 	protected virtual void OnDestroy() 
 	{
 		if (debug) Debug.Log ("Destroying");
+
+		if(_all != null)
+			_all.Remove(this);
+
 		for (int counter = links.Count -1; counter >= 0; counter--){
 			Unbind(links[counter]);
 		}
@@ -201,15 +205,6 @@ public class NodeBehaviour : MonoBehaviour
 			Gizmos.DrawLine(position, node.position);
 		}
 	}
-
-	#region Callbacks
-	
-	void OnDestroy(){
-		if(_all != null)
-			_all.Remove(this);
-	}
-	
-	#endregion
 
 	public static NodeBehaviour GetClosestFreeSpawnNode(Vector3 position)
 	{
