@@ -48,6 +48,8 @@ MonoBehaviour:
   _chance: 1400000001000000010000000100000001000000
   _MaximumHeight: 0a00000002000000020000000200000002000000
   _RandomRotation: 0
+  _FuncProp: 0
+  _FunctionalityObject: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

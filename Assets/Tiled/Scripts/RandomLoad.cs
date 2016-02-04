@@ -40,7 +40,13 @@ public class RandomLoad : MonoBehaviour {
 		{
 			_object = (GameObject) Instantiate (_FunctionalityObject ,transform.position,transform.rotation);
 			GameObject _ModelObject = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
-			_ModelObject.transform.parent = _object.transform.GetChild(0).transform;
+
+			if (_object.transform.childCount > 0) {
+				_ModelObject.transform.parent = _object.transform.GetChild(0).transform;
+			}
+			else {
+				_ModelObject.transform.parent = _object.transform;
+			}
 		}
 		else
 		{
