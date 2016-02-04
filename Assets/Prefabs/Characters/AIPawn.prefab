@@ -1081,11 +1081,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Model:
-  - {fileID: 164310, guid: 0d2a2121f306552498baa1de0be5b39d, type: 2}
-  - {fileID: 177412, guid: 9ea30523d5438884a993efd13c6a7e5a, type: 2}
+  - {fileID: 149436, guid: 04285f787e7a6614db8d1dfb8310d755, type: 2}
+  - {fileID: 132808, guid: d69f773d77b56dd46b62137e01cef8c2, type: 2}
   _Colors:
-  - {fileID: 2100000, guid: eebe8cf8a024fed428c1c5fda460da2a, type: 2}
-  - {fileID: 2100000, guid: 9a6d2fca44309eb4493c6e8f3db40a44, type: 2}
+  - {fileID: 2100000, guid: 2c50161e350829f4abe9512b1f42f7a0, type: 2}
+  - {fileID: 2100000, guid: e135865f8badc434c9c65c8106cb8330, type: 2}
   _Weapons:
   - {fileID: 110544, guid: 4503c945e9ad4d0448c14263a51d292c, type: 2}
   - {fileID: 103912, guid: cc982aa48a396524ea6b976827066fa9, type: 2}
@@ -1588,7 +1588,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _Model.Array.data[1]
+      value: 
+      objectReference: {fileID: 132808, guid: d69f773d77b56dd46b62137e01cef8c2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Model.Array.data[0]
+      value: 
+      objectReference: {fileID: 149436, guid: 04285f787e7a6614db8d1dfb8310d755, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Colors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c50161e350829f4abe9512b1f42f7a0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Colors.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e135865f8badc434c9c65c8106cb8330, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192112}
