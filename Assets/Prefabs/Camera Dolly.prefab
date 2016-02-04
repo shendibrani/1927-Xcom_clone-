@@ -9,13 +9,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 463624}
   - 20: {fileID: 2013584}
-  - 92: {fileID: 9296850}
   - 124: {fileID: 12434268}
   - 81: {fileID: 8155290}
   - 114: {fileID: 11440156}
+  - 114: {fileID: 11463914}
+  - 114: {fileID: 11495196}
   - 114: {fileID: 11444280}
   - 114: {fileID: 11497488}
-  m_Layer: 8
+  - 92: {fileID: 9296850}
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -36,12 +38,12 @@ GameObject:
   - 114: {fileID: 11418668}
   - 114: {fileID: 11417626}
   - 114: {fileID: 11478910}
+  - 114: {fileID: 11452490}
   - 54: {fileID: 5466200}
   - 65: {fileID: 6506968}
-  - 114: {fileID: 11461802}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Camera Dolly
-  m_TagString: Untagged
+  m_TagString: CameraDolly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117994}
   m_LocalRotation: {x: .50000006, y: 0, z: 0, w: .866025388}
-  m_LocalPosition: {x: 0, y: 9.23999977, z: -10.21}
+  m_LocalPosition: {x: 0, y: 10.0200005, z: -10.6599998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 481776}
@@ -65,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 36.0499992, y: 0, z: -28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463624}
@@ -169,9 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617263cf780957c42b311e44abde4f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: .5
-  rotateSpeed: 36
-  minDistance: 10
+  topLeft: {fileID: 0}
+  bottomRight: {fileID: 0}
+  panSpeed: 7.5
+  rotateSpeed: 270
+  minDistance: 9.5
   maxDistance: 11.5
 --- !u!114 &11440156
 MonoBehaviour:
@@ -195,12 +199,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: .300000012
+  threshold: .649999976
   intensity: 1
   blurSize: 2
   blurIterations: 1
   blurType: 0
   fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+--- !u!114 &11452490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9d0d7245a7a6e44993622c461d221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpFactor: .00999999978
+  waypoints:
+  - {fileID: 0}
+  startAtPosZero: 0
 --- !u!114 &11458702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +234,7 @@ MonoBehaviour:
   easingFactor: .600000024
   tolerance: 25
   useBorder: 0
-  boundsPosition: {x: 10, y: -10}
+  boundsPosition: {x: -14, y: -36}
 --- !u!114 &11459530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,20 +249,27 @@ MonoBehaviour:
   easingFactor: .600000024
   tolerance: 25
   useBorder: 0
-  boundsPosition: {x: 10, y: -10}
---- !u!114 &11461802
+  boundsPosition: {x: 36, y: 14}
+--- !u!114 &11463914
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145768}
+  m_GameObject: {fileID: 117994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0f68e7af8d7b748baf763a2d9cd8a3, type: 3}
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTime: 3
-  lerpFactor: .5
+  m_Radius: .400000006
+  m_SampleCount: 1
+  m_OcclusionIntensity: 2.5
+  m_Blur: 2
+  m_Downsampling: 1
+  m_OcclusionAttenuation: 1
+  m_MinZ: .00999999978
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!114 &11478910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +295,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easingFactor: .600000024
   tolerance: 25
+--- !u!114 &11495196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3309686a9fbbe6e42a182d5e0257704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: .180000007
+  threshold: 0
+  blurSpread: 1
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  contrastCompositeShader: {fileID: 4800000, guid: 273404942eede4ea1883ca1fb2942507,
+    type: 3}
 --- !u!114 &11497488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,7 +348,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: CameraDolly
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDistance
+      value: 9.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145768}

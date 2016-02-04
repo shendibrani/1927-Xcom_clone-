@@ -11,6 +11,7 @@ TagManager:
   - CharacterMesh
   - Enemy
   - PlayerChar
+  - CameraDolly
   layers:
   - Default
   - TransparentFX
