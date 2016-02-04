@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Pawn))]
 public class VisibleBasedOnLoS : MonoBehaviour
 {
 	[SerializeField] bool debug;
 
-	[SerializeField] Renderer[] model;
+	public List<Renderer> models;
 	[SerializeField] ParticleSystem ripple;
 
 	public bool generatesLineOfSight;
@@ -16,7 +17,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("Visible");
-			foreach (Renderer r in model) {
+			foreach (Renderer r in models) {
 				r.enabled = true;
 			}
 			ripple.enableEmission = false;
@@ -28,7 +29,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("Hidden");
-			foreach (Renderer r in model) {
+			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
 			ripple.enableEmission = true;
@@ -40,7 +41,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("OutOfHearingRange");
-			foreach (Renderer r in model) {
+			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
 			ripple.enableEmission = false;
