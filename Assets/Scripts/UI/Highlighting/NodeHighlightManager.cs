@@ -25,6 +25,9 @@ public class NodeHighlightManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		if (_all != null) {
+			_all.Add (this);
+		}
 		SetState (NodeHighlightStates.Deselected);
 		GetComponent<Targetable> ().IsTargeted += OnTargeted;
 		GetComponent<Targetable> ().IsValidTarget += OnValidTarget;
