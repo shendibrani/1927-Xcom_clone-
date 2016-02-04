@@ -336,8 +336,10 @@ public class Pawn : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		UnityEditor.Handles.color = Color.green;
-		UnityEditor.Handles.DrawWireDisc(transform.position , transform.up, weapon.range);
+		if (weapon != null) {
+			UnityEditor.Handles.color = Color.green;
+			UnityEditor.Handles.DrawWireDisc (transform.position, transform.up, weapon.range);
+		}
 	}
 }
 
