@@ -28,9 +28,9 @@ public class AttackCommand : Command
         Pawn p = t.GetComponent<Pawn>();
         DestroyableProp d = t.GetComponent<DestroyableProp>();
         if (p != null)
-            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
+            return (p != null) && (!p.isDead) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
         else if (d != null)
-            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
+            return (d != null) && (!p.isDead) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
         else
             return false;
     }
@@ -40,9 +40,9 @@ public class AttackCommand : Command
         Pawn p = t.GetComponent<Pawn>();
         DestroyableProp d = t.GetComponent<DestroyableProp>();
         if (p != null)
-            return (p != null) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
+            return (p != null) && (!p.isDead) && (p.owner != owner.owner) && (Vector3.Distance(owner.transform.position, p.transform.position) < owner.weapon.range);
         else if (d != null)
-            return (d != null) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
+            return (d != null) && (!p.isDead) && (Vector3.Distance(owner.transform.position, d.transform.position) < owner.weapon.range);
         else
             return false;
     }

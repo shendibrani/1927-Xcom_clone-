@@ -43,6 +43,7 @@ public class Health : MonoBehaviour {
 		if (health <= 0){ //&& OnDeath != null) {
 			Debug.Log("health <= 0");
 			OnDeath.Invoke(GetComponent<Pawn>());
+            GetComponent<Pawn>().SetDead();
 		}
 	}
 

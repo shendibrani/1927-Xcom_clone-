@@ -26,6 +26,7 @@ public class DialogueDisplay : MonoBehaviour
 
 	DialogueLine currentLine;
 	Dialogue currentDialogue;
+    string currentText;
 
 	[SerializeField] bool showCharacterByCharacter;
 	[SerializeField] float letterDelayInSeconds;
@@ -45,12 +46,12 @@ public class DialogueDisplay : MonoBehaviour
 	{
 		if (currentDialogue != null) {
 
-			if (showCharacterByCharacter && currentLine.line.Length > 0) {
-				dialogueField.text += currentLine.line [0];
-				currentLine.line = currentLine.line.Remove (0, 1);
+			if (showCharacterByCharacter && currentText.Length > 0) {
+				dialogueField.text += currentText [0];
+				currentLine.line = currentText.Remove (0, 1);
 			}
 
-			if (currentLine.line == string.Empty && (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0))) {
+			if (currentText == string.Empty && (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0))) {
 				SetLine( currentDialogue.GetNextLine());
 			} else if (Input.GetKeyUp (KeyCode.Return) || Input.GetMouseButtonUp (0)) {
 				FinishCurrentLine ();
@@ -73,6 +74,7 @@ public class DialogueDisplay : MonoBehaviour
 
 		portrait.sprite = portraits [line.characterID];
 		currentLine = line;
+        currentText = line.line;
 		switch (line.portraitPosition){
 		case PortraitPositions.Left:
 			portrait.rectTransform.anchoredPosition = centralPortraitPosition + Vector2.left*portraitOffsetFromCenter;
@@ -93,8 +95,8 @@ public class DialogueDisplay : MonoBehaviour
 
 	public void FinishCurrentLine()
 	{
-		dialogueField.text += currentLine.line;
-		currentLine.line = string.Empty;
+		dialogueField.text += currentText;
+		currentText = string.Empty;
 	}
 
 	public void StartDialogue(Dialogue d)
