@@ -256,6 +256,10 @@ public class Pawn : MonoBehaviour
 
     void Start()
     {
+		if (_all != null) {
+			_all.Add (this);
+		}
+
         /*skillList = new List<Skill>();
         for (int i = 0; i < tmpList.Count; i++)
         {

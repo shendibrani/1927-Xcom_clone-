@@ -37,14 +37,12 @@ public class LineOfSightManager : MonoBehaviour
 
 	Dictionary<Pawn, List<Pawn>> sightMap;
 	List<VisibleBasedOnLoS> seeingPawns;
-	List<VisibleBasedOnLoS> visibleObjects;
 
 	void Start()
 	{
 		sightMap 		= new Dictionary<Pawn, List<Pawn>> ();
 
-		seeingPawns 	= new List<VisibleBasedOnLoS> (FindObjectsOfType<VisibleBasedOnLoS> ());
-		visibleObjects 	= new List<VisibleBasedOnLoS> (seeingPawns);
+		seeingPawns 	= new List<VisibleBasedOnLoS> (VisibleBasedOnLoS.all);
 		seeingPawns 	= seeingPawns.FindAll(x => x.generatesLineOfSight);
 
 		dirtyPawns 		= new List<Pawn>(Pawn.all);
@@ -62,14 +60,14 @@ public class LineOfSightManager : MonoBehaviour
 
 		dirtyPawns.Clear ();
 
-		foreach(VisibleBasedOnLoS s in visibleObjects)
+		foreach(VisibleBasedOnLoS s in VisibleBasedOnLoS.all)
 		{
 			s.OutOfHearingRange();
 		}
 
 		foreach (VisibleBasedOnLoS p in seeingPawns) 
 		{
-			foreach (VisibleBasedOnLoS s in visibleObjects) {
+			foreach (VisibleBasedOnLoS s in VisibleBasedOnLoS.all) {
 				if (Vector3.Distance (p.transform.position, s.transform.position) <= Pawn.sightRange) {
 					s.Hidden ();
 					break;
