@@ -236,6 +236,8 @@ public class Pawn : MonoBehaviour
 
     #endregion
 
+    public bool isDead;
+
     public Command move;
     public Command attack;
     public List<Skill> skillList;
@@ -273,7 +275,9 @@ public class Pawn : MonoBehaviour
 
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
-        //skillList = new List<Skill>(pCharacter.skillList);
+        skillList = new List<Skill>();
+		skillList.Add(new Skill("Skill", "Description", Commands.Attack));
+        skillList.AddRange(pCharacter.skillList);
     }
 
     public virtual void Turn()
@@ -288,6 +292,11 @@ public class Pawn : MonoBehaviour
         {
             EffectList[i].Turn();
         }
+    }
+
+    public void SetDead()
+    {
+        isDead = true;
     }
 
     public NodeBehaviour currentNode

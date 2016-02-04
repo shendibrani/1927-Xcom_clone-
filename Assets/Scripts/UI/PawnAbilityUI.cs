@@ -35,19 +35,13 @@ public class PawnAbilityUI : MenuCanvas {
             }
             for (int i = 0; i < tmpList.Count; i++)
             {
-                //Debug.Log(tmpList[i].abilityCommand.ToString());
                 if (tmpList.Count > buttonList.Length)
                 {
                     Debug.LogError("Skill List is longer than list of buttons");
                     break;
                 }
                 buttonList[i].Set(tmpList[i]);
-                if (tmpList[i].abilityCommand != Commands.Attack || tmpList[i].abilityCommand != Commands.Move)
-                {
-                    if (buttonList[i].gameObject.GetComponentInChildren<tipSkillTool>() != null) {
-                        buttonList[i].gameObject.GetComponentInChildren<tipSkillTool>().Populate(tmpList[i]);
-                    }
-                }
+               // buttonList[i].GetComponentInChildren<Text>().text = tmpList[i].abilityCommand.ToString();
             }
         }    
     }

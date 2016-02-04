@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &455552
 Transform:
@@ -48,13 +48,13 @@ MonoBehaviour:
   PrefabLoader:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 151944, guid: 7fbeda12a58a7174a97cebd50db29ace, type: 2}
-  - {fileID: 131714, guid: 2222b639094a24046b3ae231be8dd3b2, type: 2}
-  - {fileID: 124124, guid: db87a73b020eee34ca0b440bd052a67f, type: 2}
-  - {fileID: 189378, guid: 3ca843281696a8f47b70bcb4a73ef491, type: 2}
-  - {fileID: 162316, guid: d1f1d5f58cfc0e143a4607a9d731892f, type: 2}
-  - {fileID: 167534, guid: 945aadd7eacceba4aab8bca9c2f55c45, type: 2}
-  - {fileID: 115446, guid: 1b28afd1cd860c94fa01f12cb9efc166, type: 2}
+  - {fileID: 104556, guid: 9564706bc99a3654db76345638608430, type: 2}
+  - {fileID: 120044, guid: 0e086c6faad423f4dbd678ed9a8331cf, type: 2}
+  - {fileID: 111586, guid: a280eb5bdbf1c534187579a6a3b77419, type: 2}
+  - {fileID: 111586, guid: b9ee932b60d04334698d7e4c3452a77f, type: 2}
+  - {fileID: 158146, guid: 023110e0e12a5a644845fa3d780ac018, type: 2}
+  - {fileID: 121106, guid: 300365ee35cc27043a966e7b02ffd166, type: 2}
+  - {fileID: 103178, guid: e8ef6e9ff170837458d95b91d5c200f8, type: 2}
   - {fileID: 179712, guid: 0e936cb447cc13740a3089e6dbd2f553, type: 2}
   - {fileID: 136208, guid: 4d91c01cb9d249641aa6de01bf19ffdb, type: 2}
   - {fileID: 139772, guid: 5c8b3ba92cc9cbb48be784b10a29401e, type: 2}
@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 188356, guid: 021bf0a9f2e896e4297839f95964d0cb, type: 2}
   - {fileID: 119296, guid: d98d3f2d4ced9a84c85ee604da444d4b, type: 2}
   - {fileID: 131280, guid: 3e8d9c593604fbe49943803f293c5e9b, type: 2}
-  - {fileID: 199000, guid: 2073ff30c21c8b6448daaaa54e9b1735, type: 2}
+  - {fileID: 106684, guid: 53776bfac5d3ece40ae63de0c6508119, type: 2}
   - {fileID: 109296, guid: b1e25099b19720340834682d09c338de, type: 2}
   - {fileID: 119144, guid: 4691df08c2feedd4fbdb770aaa216b6e, type: 2}
   - {fileID: 171136, guid: 1d88e682b818a8b42a63d0ebc1e0cbe8, type: 2}
