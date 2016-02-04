@@ -35,11 +35,13 @@ public class PawnAbilityUI : MenuCanvas {
             }
             for (int i = 0; i < tmpList.Count; i++)
             {
+                //Debug.Log("SelectionChange Ability UI");
                 if (tmpList.Count > buttonList.Length)
                 {
                     Debug.LogError("Skill List is longer than list of buttons");
                     break;
                 }
+                Debug.Log(buttonList[i] + "Skill " + tmpList[i].name);
                 buttonList[i].Set(tmpList[i]);
                // buttonList[i].GetComponentInChildren<Text>().text = tmpList[i].abilityCommand.ToString();
             }

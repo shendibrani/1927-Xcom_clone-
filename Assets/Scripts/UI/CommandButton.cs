@@ -37,6 +37,7 @@ public class CommandButton : MonoBehaviour
 	public void Set(Skill s)
 	{
 		skill = s;
+        Debug.Log(skill.name);
 		//button.image = skill.icon;
 	}
 }
