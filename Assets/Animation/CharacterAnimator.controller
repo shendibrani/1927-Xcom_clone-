@@ -56,6 +56,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: StartOffset
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -2916,12 +2922,12 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_Motion: {fileID: 7400000, guid: a74bc9f06a75dd24e83e9cdc25921a8a, type: 3}
   m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: StartOffset
 --- !u!1102 &110219400
 AnimatorState:
   serializedVersion: 5
@@ -3483,12 +3489,12 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_Motion: {fileID: 7400000, guid: bdd9f5c66ce6c9249b79aa95cf1f4480, type: 3}
   m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: StartOffset
 --- !u!1102 &110258162
 AnimatorState:
   serializedVersion: 5
@@ -3514,12 +3520,12 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_Motion: {fileID: 7400000, guid: a74bc9f06a75dd24e83e9cdc25921a8a, type: 3}
   m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: StartOffset
 --- !u!1102 &110258628
 AnimatorState:
   serializedVersion: 5
@@ -4058,12 +4064,12 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_Motion: {fileID: 7400000, guid: e0a96f8a774541c499b9e63825d9fc60, type: 3}
   m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: StartOffset
 --- !u!1102 &110298968
 AnimatorState:
   serializedVersion: 5

@@ -598,13 +598,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8812389f4373494a85f85f985aa2b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   _Model:
   - {fileID: 149436, guid: 04285f787e7a6614db8d1dfb8310d755, type: 2}
   - {fileID: 132808, guid: d69f773d77b56dd46b62137e01cef8c2, type: 2}
   _Colors:
   - {fileID: 2100000, guid: 2c50161e350829f4abe9512b1f42f7a0, type: 2}
   - {fileID: 2100000, guid: e135865f8badc434c9c65c8106cb8330, type: 2}
+  _Helmets:
+  - {fileID: 2100000, guid: 9c05c5dfb04613840b630fb0f3e8121d, type: 2}
+  - {fileID: 2100000, guid: b945976816a50e94f8c661736c5a3dfd, type: 2}
   _Weapons:
   - {fileID: 110544, guid: 4503c945e9ad4d0448c14263a51d292c, type: 2}
   - {fileID: 103912, guid: cc982aa48a396524ea6b976827066fa9, type: 2}
@@ -612,6 +615,9 @@ MonoBehaviour:
   - {fileID: 198470, guid: 8b164fb164ddb1643af7cbe7e0434217, type: 2}
   - {fileID: 195912, guid: a095aaf9283c78a42a22e335763a4a34, type: 2}
   - {fileID: 146378, guid: 0c50c53d6c3193e44be064cecb9c2efe, type: 2}
+  _Helmet: {fileID: 176274, guid: ed8515dfec2c18048b36f70ff71a6bb3, type: 2}
+  _GasMask: {fileID: 140784, guid: 923244c89fd3c7d4f9cc9a8f71cd9090, type: 2}
+  _Gasmask: 0
   _Gender: 2
 --- !u!114 &11430420
 MonoBehaviour:
@@ -1129,12 +1135,12 @@ MonoBehaviour:
   Selected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11450272}
-        m_MethodName: Damage
-        m_Mode: 3
+      - m_Target: {fileID: 11494520, guid: 5a7121d4e3af18c409da717ec4845b65, type: 2}
+        m_MethodName: Cheat
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11429144}
+          m_ObjectArgumentAssemblyTypeName: Pawn, Assembly-CSharp
           m_IntArgument: 9999
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2254,9 +2260,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2292,9 +2296,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2320,9 +2322,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2348,9 +2348,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2742,6 +2740,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: _Helmets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: _Model.Array.data[1]
       value: 
       objectReference: {fileID: 132808, guid: d69f773d77b56dd46b62137e01cef8c2, type: 2}
@@ -2757,6 +2759,47 @@ Prefab:
       propertyPath: _Colors.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: e135865f8badc434c9c65c8106cb8330, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Helmet
+      value: 
+      objectReference: {fileID: 176274, guid: ed8515dfec2c18048b36f70ff71a6bb3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _GasMask
+      value: 
+      objectReference: {fileID: 140784, guid: 923244c89fd3c7d4f9cc9a8f71cd9090, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Helmets.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c05c5dfb04613840b630fb0f3e8121d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: _Helmets.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b945976816a50e94f8c661736c5a3dfd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Selected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11494520, guid: 5a7121d4e3af18c409da717ec4845b65,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: Selected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cheat
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Selected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Selected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Pawn, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Selected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11429144}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126144}

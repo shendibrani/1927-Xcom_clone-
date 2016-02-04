@@ -14,6 +14,7 @@ public class RandomLoad : MonoBehaviour {
 	public bool _RandomRotation = false;
 
 	public bool _FuncProp = false;
+	public bool _specialChildCase = false;
 	public GameObject _FunctionalityObject;
 
 	List<GameObject> _items = new List<GameObject>();
@@ -41,7 +42,7 @@ public class RandomLoad : MonoBehaviour {
 			_object = (GameObject) Instantiate (_FunctionalityObject ,transform.position,transform.rotation);
 			GameObject _ModelObject = (GameObject) Instantiate (_items [_i],transform.position,transform.rotation);
 
-			if (_object.transform.childCount > 0) {
+			if (_object.transform.childCount > 0 && _specialChildCase) {
 				_ModelObject.transform.parent = _object.transform.GetChild(0).transform;
 			}
 			else {

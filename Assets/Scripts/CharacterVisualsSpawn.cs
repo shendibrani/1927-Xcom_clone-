@@ -8,8 +8,13 @@ public class CharacterVisualsSpawn : MonoBehaviour
 	public GameObject[] _Model = new GameObject[0];
 
 	public Material[] _Colors = new Material[0];
+	public Material[] _Helmets = new Material[0];
 
 	public GameObject[] _Weapons =  new GameObject[0];
+
+	public GameObject _Helmet;
+	public GameObject _GasMask;
+	public bool _Gasmask;
 
 	public int _Gender = 0;
 	int _Weapon;
@@ -75,17 +80,8 @@ public class CharacterVisualsSpawn : MonoBehaviour
 		_Hooman.transform.localPosition = new Vector3 (0, 0.013f, 0);
 		_Hooman.transform.localRotation = Quaternion.identity;
 
-
-		if (_pawn.owner.gameObject.tag == "PlayerChar")
-		{
-			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[0];
-		}
-		else
-		{
-			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[1];
-		}
-
 		_Hooman.GetComponent<Animator> ().SetInteger ("Weapon", _AnimCode);
+		_Hooman.GetComponent<Animator> ().SetFloat("StartOffset", Random.value);
 
 		this.GetComponent<GridNavMeshWrapper> ().SetModelRoot (_Hooman.transform);
 
@@ -93,15 +89,42 @@ public class CharacterVisualsSpawn : MonoBehaviour
 		if(debug) Debug.Log("WeaponModel is null: " + (_WeaponModel == null));
 
 		Transform _Hand = _Hooman.GetComponent<HumanSaveHand> ()._HoomanHand.transform;
-
 		_WeaponModel.transform.parent = _Hand;
 		_WeaponModel.transform.localPosition = Vector3.zero;
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
 
+		Transform _Head = _Hooman.GetComponent<HumanSaveHand> ()._HoomanHead.transform;
+		GameObject _HelmetModel = (GameObject)Instantiate (_Helmet);
+		_HelmetModel.transform.parent = _Head;
+		_HelmetModel.transform.localPosition = Vector3.zero;
+		_HelmetModel.transform.localRotation = Quaternion.identity;
+		_HelmetModel.transform.localScale = new Vector3(1,1,1);
+
+		if (_Gasmask)
+		{
+			GameObject _GasMaskModel = (GameObject)Instantiate (_GasMask);
+			_GasMaskModel.transform.parent = _Head;
+			_GasMaskModel.transform.localPosition = Vector3.zero;
+			_GasMaskModel.transform.localRotation = Quaternion.identity;
+			_GasMaskModel.transform.localScale = new Vector3(1,1,1);
+			
+		}
+
+		if (_pawn.owner.gameObject.tag == "PlayerChar")
+		{
+			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[0];
+			_HelmetModel.GetComponentInChildren<Renderer>().material = _Helmets[0];
+		}
+		else
+		{
+			_Hooman.GetComponentInChildren<Renderer>().material = _Colors[1];
+			_HelmetModel.GetComponentInChildren<Renderer>().material = _Helmets[1];
+		}
+
 		//Debug.Log (_WeaponModel.GetComponentsInChildren<Renderer> ().Length);
 
-		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<SkinnedMeshRenderer> ());
+		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_Hooman.GetComponentsInChildren<Renderer> ());
 		GetComponent<VisibleBasedOnLoS> ().models.AddRange (_WeaponModel.GetComponentsInChildren<Renderer> ());
 	}
 }
