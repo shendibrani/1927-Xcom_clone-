@@ -48,6 +48,10 @@ public class NodeBehaviour : MonoBehaviour
 	{
 		if(debug) Debug.Log ("Exist");
 
+		if (_all != null) {
+			_all.Add (this);
+		}
+
 		NodeSetup ();
 	}
 

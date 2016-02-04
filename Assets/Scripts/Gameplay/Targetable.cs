@@ -15,6 +15,12 @@ public class Targetable : MonoBehaviour
 		}
 	}
 
+	void Start(){
+		if (_all != null) {
+			_all.Add (this);
+		}
+	}
+
 	public delegate void TargetingEvent(Pawn targeter);
 
 	public TargetingEvent IsValidTarget;

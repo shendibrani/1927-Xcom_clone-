@@ -5,6 +5,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Pawn))]
 public class VisibleBasedOnLoS : MonoBehaviour
 {
+	private static List<VisibleBasedOnLoS> _all;
+	
+	public static List<VisibleBasedOnLoS> all {
+		get{
+			if(_all == null){
+				_all = new List<VisibleBasedOnLoS>(FindObjectsOfType<VisibleBasedOnLoS>());
+			}
+			return _all;
+		}
+	}
+
 	[SerializeField] bool debug;
 
 	public List<Renderer> models;
@@ -20,6 +31,10 @@ public class VisibleBasedOnLoS : MonoBehaviour
 	}
 	void Start()
 	{
+		if (_all != null) {
+			_all.Add (this);
+		}
+
 		GetComponent<Health> ().OnDeath.AddListener (StopGeneratingLoS);
 		if(generatesLineOfSight){
 			foreach (Renderer r in models) {
@@ -70,5 +85,14 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		generatesLineOfSight = false;
 		LineOfSightManager.instance.StopGeneratingLoS (this);
 	}
+
+	#region Callbacks
+	
+	void OnDestroy(){
+		if(_all != null)
+			_all.Remove(this);
+	}
+	
+	#endregion
 }
 
