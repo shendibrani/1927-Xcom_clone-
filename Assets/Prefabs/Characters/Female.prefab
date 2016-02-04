@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _HoomanHand: {fileID: 106018}
+  _HoomanHead: {fileID: 129170}
 --- !u!137 &13780016
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
