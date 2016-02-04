@@ -105,8 +105,10 @@ public class Player : MonoBehaviour
 
     public void Turn()
     {
+		Debug.Log (name + " is executing its turn.");
         foreach (Pawn p in pawns)
         {
+			Debug.Log (p.name);
             p.Turn();
         }
     }

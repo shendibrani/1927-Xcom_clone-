@@ -15,8 +15,9 @@ public class AIPawn : Pawn
 		base.Turn ();
 
 		NodeBehaviour bestCover = GetBestCoverWithinReach();
+		Debug.Log (bestCover);
 
-		if(currentNode != bestCover){
+		if(currentNode != bestCover && bestCover != null){
 			Command move = Factory.GetCommand(Commands.Move, this);
 			move.target = bestCover.GetComponent<Targetable>();
 			move.Execute();
@@ -25,8 +26,11 @@ public class AIPawn : Pawn
 		if (weapon.actionCost < ActionPoints) {
 			Command attack = Factory.GetCommand(Commands.Attack, this);
 			if(attack.validTargets.Count > 0){
-				attack.target = GetBestTarget(attack.validTargets).GetComponent<Targetable>();
-				attack.Execute();
+				Pawn bestTarget = GetBestTarget(attack.validTargets);
+				if(bestTarget != null){
+					attack.target = bestTarget.GetComponent<Targetable>();
+					attack.Execute();
+				}
 			}
 		}
 	}
@@ -37,18 +41,18 @@ public class AIPawn : Pawn
 	
 		List<Pawn> enemies = visibleEnemies;
 
-		int bestScore = 0;
+		float bestScore = 0;
 
 		foreach (Pawn enemy in enemies){
-			bestScore += (int)Pawn.GetCoverAtNode(previousBest, enemy);
+			bestScore += (int) Pawn.GetCoverAtNode(previousBest, enemy);
 		}
 		bestScore /= enemies.Count;
 
 		Dictionary<NodeBehaviour, float> scoringTables = new Dictionary<NodeBehaviour, float>();
 		scoringTables.Add(previousBest,bestScore);
 
-		for(int counter = 0; counter <= ActionPoints; counter++){
-			foreach(NodeBehaviour node in Pathfinder.NodesWithinSteps(currentNode, 3)){
+		for(int counter = 1; counter <= ActionPoints; counter++){
+			foreach(NodeBehaviour node in Pathfinder.NodesWithinSteps(currentNode, 3*counter)){
 				if(!scoringTables.ContainsKey(node)){
 					float coverScore = 0;
 					foreach (Pawn enemy in enemies){
@@ -67,10 +71,13 @@ public class AIPawn : Pawn
 				}
 			}
 
-			if(currentBest == previousBest){
+			if(currentBest == previousBest && (int)scoringTables[currentBest] > 0){
 				return currentBest;
 			}
+
+			previousBest = currentBest;
 		}
+
         return null;
 	}
 

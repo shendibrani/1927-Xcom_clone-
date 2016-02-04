@@ -269,6 +269,8 @@ public class Pawn : MonoBehaviour
         actionPoints = pCharacter.actionPoints;
         actionPointsPerTurn = pCharacter.actionPoints;
 
+		Debug.Log("Pawn " + gameObject + " name:" + character.name);
+
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 
         //skillList = new List<Skill>(pCharacter.skillList);
