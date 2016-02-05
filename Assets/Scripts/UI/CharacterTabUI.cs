@@ -40,7 +40,8 @@ public class CharacterTabUI : MenuCanvas {
 	void Update () {
         if (characterReference != null)
         {
-            buttonText.text = characterReference.name;
+			if(buttonText != null)
+            	buttonText.text = characterReference.name;
 
             characterStruct.CharacterNameText.text = characterReference.name;
             characterStruct.LevelValue.text = characterReference.level.ToString();
@@ -66,7 +67,8 @@ public class CharacterTabUI : MenuCanvas {
         Debug.Log("Populate");
         characterReference = c;
 
-        buttonText.text = characterReference.name;
+		if(buttonText != null)
+        	buttonText.text = characterReference.name;
 
         characterStruct.CharacterNameText.text = c.name;
         characterStruct.LevelValue.text = c.level.ToString();
