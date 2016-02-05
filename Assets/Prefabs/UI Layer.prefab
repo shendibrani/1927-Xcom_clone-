@@ -1077,10 +1077,10 @@ MonoBehaviour:
   centralPortraitPosition: {x: 0, y: 350}
   portraitOffsetFromCenter: 690
   portraits:
+  - {fileID: 21300000, guid: abe3b86b2e42a4c48b23c6c5d096e7d1, type: 3}
+  - {fileID: 21300000, guid: 6ee4d69fd02988845b61953c8acaeed1, type: 3}
   - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
-  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
-  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
-  - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
+  - {fileID: 21300000, guid: 7d018372bd9f3764cb5ec740dc8a823a, type: 3}
   - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
   - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
   - {fileID: 21300000, guid: 20e4fff31c0cca94598fdfc41e4d4417, type: 3}
