@@ -14,23 +14,29 @@ public class MissionMenuUI : MenuCanvas {
         base.deselectMenu();
     }
 
-    public void LoadButton()
-    {
-
-    }
-
     public void QuitToMenu()
     {
-
+        Application.LoadLevel(0);
     }
 
     public void RestartMission()
     {
-
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     public void QuitToDesktop()
     {
+        Application.Quit();
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!this.isActive)
+                MenuManager.instance.ChangeMenu(this);
+            else
+                MenuManager.instance.CloseMenu(this);
+        }
     }
 }
