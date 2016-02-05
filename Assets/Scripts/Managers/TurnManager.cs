@@ -61,10 +61,10 @@ public class TurnManager
 	}
 
 	public void StartGame(){
-		turnPlayer.Turn ();
 		if (TurnStart != null) {
 			TurnStart.Invoke ();
 		}
+		turnPlayer.Turn ();
 	}
 
 	public void SetBusy(){
