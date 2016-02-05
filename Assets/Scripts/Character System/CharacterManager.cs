@@ -56,7 +56,10 @@ public class CharacterStaticStorage
     //load characters into reference list from XML, pass in reference to save data
     public void LoadFromSave(string filename = "charactersave")
     {
-        fullCharacterList = new List<Character>();
+        if (fullCharacterList == null)
+        {
+            fullCharacterList = new List<Character>();
+        }
         XMLWriter.instance.DeserializeCharacter(filename);
         //CharacterStaticStorage.instance.LoadFromSave("defaultCharacters");
     }
