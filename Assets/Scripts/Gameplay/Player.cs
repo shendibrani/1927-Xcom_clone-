@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     bool debug;
 
     [SerializeField]
-    List<Pawn> pawns;
+    protected List<Pawn> pawns;
 
     [SerializeField]
     bool _isPlayer;
