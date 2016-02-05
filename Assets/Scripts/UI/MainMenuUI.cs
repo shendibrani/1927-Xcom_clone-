@@ -18,7 +18,7 @@ public class MainMenuUI : MenuCanvas {
         CharacterStaticStorage.instance.ClearList();
         CharacterStaticStorage.instance.LoadFromSave();
         //Application.LoadLevel(PlayerPrefs.GetInt("MissionCount"));
-        FindObjectOfType<LoadStuff>().OnUse(PlayerPrefs.GetInt("MissionCount"));
+        FindObjectOfType<LoadStuff>().OnUse(1);
     }
 
     public void QuitToDesktop()

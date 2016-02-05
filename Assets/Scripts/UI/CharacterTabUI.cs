@@ -7,7 +7,7 @@ public class CharacterTabUI : MenuCanvas {
 
     Character characterReference;
     Weapon WeaponRef;
-
+    int w = 0;
     [SerializeField]
     Text buttonText;
 
@@ -90,23 +90,21 @@ public class CharacterTabUI : MenuCanvas {
     //simply decreases (left) or increases (right) value and finds the correct weapon
     public void CycleWeapon(bool isLeft)
     {
-        int w = (int)WeaponRef.weaponEnum;
+        
+        //int w = (int)WeaponRef.weaponEnum;
+        Debug.Log(w);
+        Debug.Log(Weapons.GetNames(typeof(Weapons)).Length);
         if (isLeft)
         {
             w--;
-            if (w < 0)
-            {
-                w = Weapons.GetNames(typeof(Weapons)).Length - 1;
-            }
         }
         else if (!isLeft)
         {
             w++;
-            if (w > Weapons.GetNames(typeof(Weapons)).Length - 1)
-            {
-                w = 0;
-            }
         }
+
+        if (w < 0) w = Weapons.GetNames(typeof(Weapons)).Length;
+        w = w % Weapons.GetNames(typeof(Weapons)).Length;
 
         characterReference.assignedWeapon = WeaponData.instance.universalWeaponList[(Weapons)w].Clone();
         WeaponRef = characterReference.assignedWeapon;

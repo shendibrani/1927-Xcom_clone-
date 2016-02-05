@@ -3,7 +3,7 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>fafdsfads</name>
+    <name>Bruce</name>
     <characterGender>MALE</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
@@ -30,8 +30,8 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>NameName2</name>
-    <characterGender>MALE</characterGender>
+    <name>Name1Name</name>
+    <characterGender>FEMALE</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
     <characterClass>ASSAULT</characterClass>
@@ -39,7 +39,7 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>Nane2Name1</name>
+    <name>NameName</name>
     <characterGender>MALE</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>
@@ -48,7 +48,7 @@
   <Character>
     <weaponEnum>AssaultRifle</weaponEnum>
     <ID>0</ID>
-    <name>Name1Name2</name>
+    <name>NameName</name>
     <characterGender>FEMALE</characterGender>
     <level>1</level>
     <experiencePoints>0</experiencePoints>

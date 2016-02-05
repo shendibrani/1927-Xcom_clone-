@@ -10,12 +10,6 @@ public class CharacterNameUI : MenuCanvas {
     [SerializeField]
     float easing = 0.2f;
 
-    [SerializeField]
-    Button maleButton;
-
-    [SerializeField]
-    Button femaleButton;
-
     public override void deselectMenu()
     {
         base.deselectMenu();
@@ -34,7 +28,7 @@ public class CharacterNameUI : MenuCanvas {
 	// Update is called once per frame
 	void Update () {
 	
-        if (tmpGender == Gender.MALE)
+        /*if (tmpGender == Gender.MALE)
         {
             float tmpColor = (1f - maleButton.image.color.r) * easing;
             maleButton.image.color += new Color(tmpColor, tmpColor, tmpColor, 1);
@@ -48,6 +42,7 @@ public class CharacterNameUI : MenuCanvas {
             tmpColor = (0.4f - maleButton.image.color.r) * easing;
             maleButton.image.color += new Color(tmpColor, tmpColor, tmpColor, 1);
         }
+         * */
 	}
 
     public void StartCampaign()
