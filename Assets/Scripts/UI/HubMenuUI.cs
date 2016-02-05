@@ -13,11 +13,6 @@ public class HubMenuUI : MenuCanvas {
         base.deselectMenu();
     }
 
-    public void LoadButton()
-    {
-
-    }
-
     public void QuitToMenu()
     {
         FindObjectOfType<LoadStuff>().OnUse(0);
