@@ -61,7 +61,7 @@ public class DialogueDisplay : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentDialogue != null)
+        if (currentDialogue != null && currentText != null)
         {
 
             if (showCharacterByCharacter && currentText.Length > 0)
@@ -96,11 +96,11 @@ public class DialogueDisplay : MonoBehaviour
         portrait.sprite = portraits[line.characterID];
         currentLine = line;
         string tmpText = line.line;
-        if (CharacterStaticStorage.instance.fullCharacterList[0] != null)
+        if (CharacterStaticStorage.instance.fullCharacterList.Count != 0 && CharacterStaticStorage.instance.fullCharacterList[0] != null)
         {
             tmpText.Replace("[NAME]", CharacterStaticStorage.instance.fullCharacterList[0].name);
         }
-        tmpText = tmpText.Replace("[NAME]", CharacterStaticStorage.instance.fullCharacterList[0].name);
+        //tmpText = tmpText.Replace("[NAME]", CharacterStaticStorage.instance.fullCharacterList[0].name);
         currentText = tmpText;
         switch (line.portraitPosition)
         {
