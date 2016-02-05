@@ -51,6 +51,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 			if (debug)
 				Debug.Log ("Visible");
 			tooltip.enabled = true;
+			GetComponentInChildren<Light>().enabled = true;
 			foreach (Renderer r in models) {
 				r.enabled = true;
 			}
@@ -64,6 +65,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 			if (debug)
 				Debug.Log ("Hidden");
 			tooltip.enabled = false;
+			GetComponentInChildren<Light>().enabled = false;
 			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
@@ -77,6 +79,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 			if (debug)
 				Debug.Log ("OutOfHearingRange");
 			tooltip.enabled = false;
+			GetComponentInChildren<Light>().enabled = false;
 			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
