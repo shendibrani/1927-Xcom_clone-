@@ -24,6 +24,8 @@ public class AIPawn : Pawn
 				move.Execute();
 			}
 
+			StartCoroutine(WaitForFree());
+
 			if (weapon.actionCost < ActionPoints) {
 				Command attack = Factory.GetCommand(Commands.Attack, this);
 				if(attack.validTargets.Count > 0){
@@ -34,6 +36,8 @@ public class AIPawn : Pawn
 					}
 				}
 			}
+
+			StartCoroutine(WaitForFree());
 		}
 	}
 
@@ -103,6 +107,12 @@ public class AIPawn : Pawn
 			}
 		}
 		return bestTarget;
+	}
+
+	IEnumerator WaitForFree(){
+		while (TurnManager.instance.busy) {
+			yield return null; // wait until next frame
+		}
 	}
 }
 
