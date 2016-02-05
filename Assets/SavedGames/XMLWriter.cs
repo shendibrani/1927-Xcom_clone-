@@ -36,7 +36,7 @@ public class XMLWriter
     public void SerializeWeapons(List<Weapon> weaponInfo)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(List<Weapon>));
-        using (TextWriter writer = new StreamWriter(Application.dataPath + "weaponinfo.txt"))
+        using (TextWriter writer = new StreamWriter(Application.dataPath + "/Resources/weaponinfo.txt"))
         {
             serializer.Serialize(writer, weaponInfo);
         }
@@ -45,10 +45,10 @@ public class XMLWriter
     public void DeserializeWeapons()
     {
         XmlSerializer deserializer = new XmlSerializer(typeof(List<Weapon>));
-        TextReader reader = new StreamReader(Application.dataPath + "weaponinfo.txt");
+        TextReader reader = new StreamReader(Application.dataPath + "/Resources/weaponinfo.txt");
         object obj = deserializer.Deserialize(reader);
         List<Weapon> XmlData = (List<Weapon>)obj;
-        Debug.Log("Weapons: " + XmlData.Count);
+        //Debug.Log("Weapons: " + XmlData.Count);
         for (int i = 0; i < XmlData.Count; i++)
         {
             //Debug.Log("Weapon: " + XmlData[i].name);
@@ -62,7 +62,7 @@ public class XMLWriter
     public void SerializeCharacter(List<Character> characterInfo, string filename)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(List<Character>));
-        using (TextWriter writer = new StreamWriter(Application.dataPath + filename + ".txt"))
+        using (TextWriter writer = new StreamWriter(Application.dataPath + "/Resources/" + filename + ".txt"))
         {
             serializer.Serialize(writer, characterInfo);
         }
@@ -71,7 +71,7 @@ public class XMLWriter
     public void DeserializeCharacter(string filename)
     {
         XmlSerializer deserializer = new XmlSerializer(typeof(List<Character>));
-        TextReader reader = new StreamReader(Application.dataPath + filename + ".txt");
+        TextReader reader = new StreamReader(Application.dataPath + "/Resources/" + filename + ".txt");
         object obj = deserializer.Deserialize(reader);
         List<Character> XmlData = (List<Character>)obj;
         Debug.Log(XmlData.Count);
@@ -93,7 +93,7 @@ public class XMLWriter
         }
 
         XmlSerializer serializer = new XmlSerializer(typeof(List<Skill>));
-        using (TextWriter writer = new StreamWriter(Application.dataPath + "skillinfo.txt"))
+        using (TextWriter writer = new StreamWriter(Application.dataPath + "/Resources/skillinfo.txt"))
         {
             serializer.Serialize(writer, tmpList);
         }
@@ -103,7 +103,7 @@ public class XMLWriter
     {
 
         XmlSerializer deserializer = new XmlSerializer(typeof(List<Skill>));
-        TextReader reader = new StreamReader(Application.dataPath + "skillinfo.txt");
+        TextReader reader = new StreamReader(Application.dataPath + "/Resources/skillinfo.txt");
         object obj = deserializer.Deserialize(reader);
         List<Skill> XmlData = (List<Skill>)obj;
         Debug.Log(XmlData.Count);
