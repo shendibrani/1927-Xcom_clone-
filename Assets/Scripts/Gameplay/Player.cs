@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
     List<Pawn> pawns;
 
     [SerializeField]
-    bool isPlayer;
+    bool _isPlayer;
+
+	public bool isPlayer { get { return _isPlayer;}}
 
     List<Character> characterList { get { return CharacterStaticStorage.instance.fullCharacterList; } }
 
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < pawns.Count; i++)
         {
             pawns[i].owner = this;
-			if ( isPlayer && characterList != null && characterList.Count > 0)
+			if ( _isPlayer && characterList != null && characterList.Count > 0)
             {
                 if (i < characterList.Count && characterList[i] != null){
 					if(debug) Debug.Log("Init from character list");
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if (isPlayer){
+                if (_isPlayer){
 					if(debug) Debug.Log("Init character from factory");
                     pawns[i].Initalise(Factory.GetCharacter());
 				}
@@ -109,7 +111,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void Turn()
+    public virtual void Turn()
     {
 		Debug.Log (name + " is executing its turn.");
         foreach (Pawn p in pawns)
