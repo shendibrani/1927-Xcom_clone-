@@ -96,13 +96,13 @@ public class CharacterVisualsSpawn : MonoBehaviour
 		_WeaponModel.transform.localRotation = Quaternion.identity;
 		_WeaponModel.transform.localScale = new Vector3(1,1,1);
 
-		
+		/*
 		if (_wep == Weapons.PrototypeAssaultRifle || _wep == Weapons.PrototypeSniperRifle || _wep == Weapons.PrototypeShotgun || _wep == Weapons.ElectricMachete || _wep == Weapons.PrototypeShockGun) {
 			GameObject _LightInst = (GameObject)Instantiate (_Light);
 			_LightInst.transform.parent = _Hand.transform;
 			_LightInst.transform.position = Vector3.zero;
 		}
-
+*/
 		Transform _Head = _Hooman.GetComponent<HumanSaveHand> ()._HoomanHead.transform;
 		GameObject _HelmetModel = (GameObject)Instantiate (_Helmet);
 		_HelmetModel.transform.parent = _Head;
