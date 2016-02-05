@@ -138,22 +138,22 @@ public class Character
         assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
         characterClass = CharacterClass.ASSAULT;
         level = 1;
-        characterGender = Gender.RANDOM;
+        characterGender = Gender.MALE;
         //offenseTree = SkillTree.CreateOffenseTree();
         //defenseTree = SkillTree.CreateDefenseTree();
         //supportTree = SkillTree.CreateSupportTree();
     }
 
-    public Character(CharacterClass pClass, string pName, int pLevel = 1)
+    public Character(CharacterClass pClass, string pName, Gender pGender, int pLevel = 1)
     {
         name = pName;
         characterClass = pClass;
         assignedWeapon = WeaponData.instance.universalWeaponList[Weapons.AssaultRifle].Clone();
         level = pLevel;
-        characterGender = Gender.RANDOM;
+        characterGender = pGender;
     }
 
-    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon, int pLevel, Gender pGender = Gender.RANDOM)
+    public Character(int uID, string pName, CharacterClass pClass, Weapon pWeapon, int pLevel, Gender pGender = Gender.MALE)
     {
         ID = uID;
         name = pName;
@@ -163,7 +163,7 @@ public class Character
         characterGender = pGender;
     }
 
-    public Character(int uID, string pName, CharacterClass pClass, Weapons pWeapon, int pLevel, Gender pGender = Gender.RANDOM)
+    public Character(int uID, string pName, CharacterClass pClass, Weapons pWeapon, int pLevel, Gender pGender = Gender.MALE)
     {
         ID = uID;
         name = pName;
@@ -189,8 +189,7 @@ public enum CharacterClass
 public enum Gender
 {
     MALE,
-    FEMALE,
-    RANDOM
+    FEMALE
 }
 /*
 public static class CharacterStats{

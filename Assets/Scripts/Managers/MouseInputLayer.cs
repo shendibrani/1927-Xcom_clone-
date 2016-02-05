@@ -38,7 +38,7 @@ public class MouseInputLayer : MonoBehaviour
     {
         if (CheckRay())
         {
-            if (!TurnManager.instance.busy)
+            if (!TurnManager.instance.busy && !DialogueDisplay.instance.isActive)
             {
                 if (Input.GetMouseButtonUp(0))
                 {
