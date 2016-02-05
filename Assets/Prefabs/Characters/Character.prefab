@@ -377,7 +377,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: .5, z: -34}
+  m_LocalPosition: {x: 48.3240395, y: .550000012, z: -33.7471848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22419600}
@@ -403,7 +403,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -427,7 +429,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -630,6 +634,7 @@ MonoBehaviour:
   debug: 0
   models: []
   ripple: {fileID: 19823810}
+  tooltip: {fileID: 11420502}
   generatesLineOfSight: 1
 --- !u!114 &11420502
 MonoBehaviour:
@@ -1236,9 +1241,7 @@ MonoBehaviour:
   _Colors:
   - {fileID: 2100000, guid: 2c50161e350829f4abe9512b1f42f7a0, type: 2}
   - {fileID: 2100000, guid: e135865f8badc434c9c65c8106cb8330, type: 2}
-  _Helmets:
-  - {fileID: 2100000, guid: 9c05c5dfb04613840b630fb0f3e8121d, type: 2}
-  - {fileID: 2100000, guid: b945976816a50e94f8c661736c5a3dfd, type: 2}
+  _Helmets: []
   _Weapons:
   - {fileID: 110544, guid: 4503c945e9ad4d0448c14263a51d292c, type: 2}
   - {fileID: 103912, guid: cc982aa48a396524ea6b976827066fa9, type: 2}
@@ -1246,8 +1249,8 @@ MonoBehaviour:
   - {fileID: 198470, guid: 8b164fb164ddb1643af7cbe7e0434217, type: 2}
   - {fileID: 195912, guid: a095aaf9283c78a42a22e335763a4a34, type: 2}
   - {fileID: 146378, guid: 0c50c53d6c3193e44be064cecb9c2efe, type: 2}
-  _Helmet: {fileID: 176274, guid: ed8515dfec2c18048b36f70ff71a6bb3, type: 2}
-  _GasMask: {fileID: 140784, guid: 923244c89fd3c7d4f9cc9a8f71cd9090, type: 2}
+  _Helmet: {fileID: 0}
+  _GasMask: {fileID: 0}
   _Gasmask: 0
   _Gender: 2
 --- !u!195 &19565292
@@ -2341,7 +2344,9 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -2377,7 +2382,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

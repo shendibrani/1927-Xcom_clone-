@@ -14,7 +14,7 @@ public class UISelectionListener : MonoBehaviour {
 
     public void OnSelectionChange(Selectable previous, Selectable current)
     {
-        if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer)
+		if (current != null && current.GetComponent<Pawn>() && current.GetComponent<Pawn>().owner == TurnManager.instance.turnPlayer && current.GetComponent<Pawn>().owner.isPlayer)
         {
             Debug.Log("Ability Menu Selected");
             MenuManager.instance.OpenMenu(UIMenu);

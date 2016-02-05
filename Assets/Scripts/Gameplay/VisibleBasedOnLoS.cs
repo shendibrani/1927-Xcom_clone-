@@ -20,6 +20,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 
 	public List<Renderer> models;
 	[SerializeField] ParticleSystem ripple;
+	[SerializeField] TooltipBehaviour tooltip;
 
 	public bool generatesLineOfSight;
 
@@ -49,6 +50,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("Visible");
+			tooltip.enabled = true;
 			foreach (Renderer r in models) {
 				r.enabled = true;
 			}
@@ -61,6 +63,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("Hidden");
+			tooltip.enabled = false;
 			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
@@ -73,6 +76,7 @@ public class VisibleBasedOnLoS : MonoBehaviour
 		if (!generatesLineOfSight) {
 			if (debug)
 				Debug.Log ("OutOfHearingRange");
+			tooltip.enabled = false;
 			foreach (Renderer r in models) {
 				r.enabled = false;
 			}
