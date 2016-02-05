@@ -300,6 +300,9 @@ public class Pawn : MonoBehaviour
 		if(debug) Debug.Log("Health: " + GetComponent<Health>().health);
 
 		//Debug.Log("Pawn " + gameObject + " name:" + character.name);
+        if (debug) Debug.Log("Setting Visual Gender");
+        GetComponent<CharacterVisualsSpawn>()._Gender = (int)pCharacter.characterGender;
+
 		if(debug) Debug.Log("Calling visuals Init");
 		GetComponent<CharacterVisualsSpawn> ().Initialize (weapon.weaponEnum);
 

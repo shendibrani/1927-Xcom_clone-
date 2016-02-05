@@ -74,9 +74,10 @@ public class SelectionManager
 		get{ return instance._command; }
 		
 		set {
-			instance._command = value;
-
-			HighlightingManager.instance.RefreshHighlighting();
+			if(selected.GetComponent<Pawn>() != null && selected.GetComponent<Pawn>().owner.isPlayer){
+				instance._command = value;
+				HighlightingManager.instance.RefreshHighlighting();
+			}
 		}
 	}
 
