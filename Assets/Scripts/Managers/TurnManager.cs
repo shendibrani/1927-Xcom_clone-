@@ -44,10 +44,10 @@ public class TurnManager
 		}
 		turn++;
 		Debug.Log (turnPlayer);
-		turnPlayer.Turn ();
 		if (TurnStart != null) {
 			TurnStart.Invoke ();
 		}
+		turnPlayer.Turn ();
 	}
 
 	public void AddPlayer(Player p){
