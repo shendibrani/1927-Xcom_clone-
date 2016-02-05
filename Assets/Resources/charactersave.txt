@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCharacter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>fafdsfads</name>
+    <characterGender>MALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>ASSAULT</characterClass>
+  </Character>
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Anna Marie</name>
+    <characterGender>FEMALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>DEFENDER</characterClass>
+  </Character>
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Gasmask</name>
+    <characterGender>MALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>SUPPORT</characterClass>
+  </Character>
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>NameName2</name>
+    <characterGender>MALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>ASSAULT</characterClass>
+  </Character>
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Nane2Name1</name>
+    <characterGender>MALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>DEFENDER</characterClass>
+  </Character>
+  <Character>
+    <weaponEnum>AssaultRifle</weaponEnum>
+    <ID>0</ID>
+    <name>Name1Name2</name>
+    <characterGender>FEMALE</characterGender>
+    <level>1</level>
+    <experiencePoints>0</experiencePoints>
+    <characterClass>SUPPORT</characterClass>
+  </Character>
+</ArrayOfCharacter>

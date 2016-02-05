@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSkill xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Skill>
+    <name>Aimed Attack</name>
+    <description>Generic Description</description>
+    <abilityCommand>AimedAttack</abilityCommand>
+  </Skill>
+  <Skill>
+    <name>Defend</name>
+    <description>Generic Description</description>
+    <abilityCommand>Defend</abilityCommand>
+  </Skill>
+  <Skill>
+    <name>First Aid</name>
+    <description>Generic Description</description>
+    <abilityCommand>FirstAid</abilityCommand>
+  </Skill>
+</ArrayOfSkill>

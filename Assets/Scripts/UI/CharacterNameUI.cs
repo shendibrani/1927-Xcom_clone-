@@ -55,6 +55,7 @@ public class CharacterNameUI : MenuCanvas {
         Debug.Log(tmpName);
         CharacterStaticStorage.instance.fullCharacterList.Add(new Character(0, tmpName, CharacterClass.ASSAULT, WeaponData.instance.universalWeaponList[Weapons.AssaultRifle], 1, tmpGender));
         CampaignManager.instance.NewCampaign();
+        FindObjectOfType<LoadStuff>().OnUse(1);
     }
 
     public void SetName(string pName)
