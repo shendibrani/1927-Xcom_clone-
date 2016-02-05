@@ -398,7 +398,7 @@ public class Pawn : MonoBehaviour
 	}
 
     #endregion
-
+	/*
 	void OnDrawGizmos()
 	{
         if (weapon != null)
@@ -406,7 +406,7 @@ public class Pawn : MonoBehaviour
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(transform.position, transform.up, weapon.range);
         }
-	}
+	}*/
 }
 
 public enum CoverState

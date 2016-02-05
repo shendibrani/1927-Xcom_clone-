@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -209,6 +209,7 @@ public class NodeBehaviour : MonoBehaviour
 		//throw new System.NotImplementedException ();
 	}
 
+	/*
 	void OnDrawGizmos()
 	{
 		if (links == null) {
@@ -218,7 +219,7 @@ public class NodeBehaviour : MonoBehaviour
 		foreach (NodeBehaviour node in links) {
 			Gizmos.DrawLine(position, node.position);
 		}
-	}
+	}*/
 
 	public static NodeBehaviour GetClosestFreeSpawnNode(Vector3 position)
 	{

@@ -96,10 +96,10 @@ public class DialogueDisplay : MonoBehaviour
         portrait.sprite = portraits[line.characterID];
         currentLine = line;
         string tmpText = line.line;
-        /*if (CharacterStaticStorage.instance.fullCharacterList[0] != null)
+        if (CharacterStaticStorage.instance.fullCharacterList[0] != null)
         {
             tmpText.Replace("[NAME]", CharacterStaticStorage.instance.fullCharacterList[0].name);
-        }*/
+        }
         tmpText = tmpText.Replace("[NAME]", CharacterStaticStorage.instance.fullCharacterList[0].name);
         currentText = tmpText;
         switch (line.portraitPosition)
