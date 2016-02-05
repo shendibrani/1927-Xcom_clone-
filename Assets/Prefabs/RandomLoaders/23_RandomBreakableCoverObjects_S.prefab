@@ -47,8 +47,8 @@ MonoBehaviour:
   _MaximumHeight: 0a0000000a0000000a000000
   _RandomRotation: 1
   _FuncProp: 1
-  _specialChildCase: 1
-  _FunctionalityObject: {fileID: 161682, guid: 6fffb69bef4133b42b6943b2ea66e60b, type: 2}
+  _specialChildCase: 0
+  _FunctionalityObject: {fileID: 189374, guid: 2c8083305d298684f8881d6ef9568f67, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -123,7 +123,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _FunctionalityObject
       value: 
-      objectReference: {fileID: 161682, guid: 6fffb69bef4133b42b6943b2ea66e60b, type: 2}
+      objectReference: {fileID: 189374, guid: 2c8083305d298684f8881d6ef9568f67, type: 2}
     - target: {fileID: 0}
       propertyPath: _specialChildCase
       value: 1
