@@ -15,6 +15,8 @@ public class AIPawn : Pawn
 		if(!isDead){
 			base.Turn ();
 
+			StartCoroutine(WaitForFree());
+
 			NodeBehaviour bestCover = GetBestCoverWithinReach();
 			Debug.Log (bestCover);
 
