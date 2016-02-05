@@ -12,24 +12,26 @@ public class AIPawn : Pawn
 
 	public override void Turn ()
 	{
-		base.Turn ();
+		if(!isDead){
+			base.Turn ();
 
-		NodeBehaviour bestCover = GetBestCoverWithinReach();
-		Debug.Log (bestCover);
+			NodeBehaviour bestCover = GetBestCoverWithinReach();
+			Debug.Log (bestCover);
 
-		if(currentNode != bestCover && bestCover != null){
-			Command move = Factory.GetCommand(Commands.Move, this);
-			move.target = bestCover.GetComponent<Targetable>();
-			move.Execute();
-		}
+			if(currentNode != bestCover && bestCover != null){
+				Command move = Factory.GetCommand(Commands.Move, this);
+				move.target = bestCover.GetComponent<Targetable>();
+				move.Execute();
+			}
 
-		if (weapon.actionCost < ActionPoints) {
-			Command attack = Factory.GetCommand(Commands.Attack, this);
-			if(attack.validTargets.Count > 0){
-				Pawn bestTarget = GetBestTarget(attack.validTargets);
-				if(bestTarget != null){
-					attack.target = bestTarget.GetComponent<Targetable>();
-					attack.Execute();
+			if (weapon.actionCost < ActionPoints) {
+				Command attack = Factory.GetCommand(Commands.Attack, this);
+				if(attack.validTargets.Count > 0){
+					Pawn bestTarget = GetBestTarget(attack.validTargets);
+					if(bestTarget != null){
+						attack.target = bestTarget.GetComponent<Targetable>();
+						attack.Execute();
+					}
 				}
 			}
 		}
