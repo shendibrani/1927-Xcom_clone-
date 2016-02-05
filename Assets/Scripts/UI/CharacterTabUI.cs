@@ -8,6 +8,9 @@ public class CharacterTabUI : MenuCanvas {
     Character characterReference;
     Weapon WeaponRef;
 
+    [SerializeField]
+    Text buttonText;
+
     [System.Serializable]
     public class CharacterTabData
     {
@@ -27,7 +30,6 @@ public class CharacterTabUI : MenuCanvas {
     CharacterTabData characterStruct;
 	// Use this for initialization
 	void Start () {
-	 
 	}
 
     public override void setMenu()
@@ -38,6 +40,8 @@ public class CharacterTabUI : MenuCanvas {
 	void Update () {
         if (characterReference != null)
         {
+            buttonText.text = characterReference.name;
+
             characterStruct.CharacterNameText.text = characterReference.name;
             characterStruct.LevelValue.text = characterReference.level.ToString();
             characterStruct.HealthValue.text = characterReference.hitPoints.ToString();
@@ -61,6 +65,8 @@ public class CharacterTabUI : MenuCanvas {
     {
         Debug.Log("Populate");
         characterReference = c;
+
+        buttonText.text = characterReference.name;
 
         characterStruct.CharacterNameText.text = c.name;
         characterStruct.LevelValue.text = c.level.ToString();

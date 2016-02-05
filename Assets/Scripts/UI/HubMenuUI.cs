@@ -20,7 +20,7 @@ public class HubMenuUI : MenuCanvas {
 
     public void QuitToMenu()
     {
-
+        FindObjectOfType<LoadStuff>().OnUse(0);
     }
 
     public void StartMission()
@@ -31,6 +31,17 @@ public class HubMenuUI : MenuCanvas {
 
     public void QuitToDesktop()
     {
+        Application.Quit();
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!this.isActive)
+                MenuManager.instance.ChangeMenu(this);
+            else
+                MenuManager.instance.CloseMenu(this);
+        }
     }
 }

@@ -70,6 +70,11 @@ public class CharacterStaticStorage
         XMLWriter.instance.SerializeCharacter(fullCharacterList,"charactersave");
     }
 
+    public void ClearList()
+    {
+        fullCharacterList = new List<Character>();
+    }
+
     //reset instance
     public static void ResetInstance()
     {
